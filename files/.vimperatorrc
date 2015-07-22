@@ -1,0 +1,16 @@
+noremap j 5j
+noremap k 5k
+
+noremap K gt
+noremap J gT
+
+colorscheme darkness
+
+set hintchars=hjlkasdfgyuowertzxcb
+
+hi CmdLine -append font-size:15px
+hi StatusLine -append font-size:15px
+
+highlight Hint font-size:110%;color:white;background-color:red;padding:2px;
+
+imap C-c <Esc>

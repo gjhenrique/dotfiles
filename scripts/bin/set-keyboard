@@ -1,0 +1,24 @@
+#! /bin/bash
+
+#045e:0745 Microsoft Keyboard (Home)
+#1a2c:0c21 Teclado de Londrina
+declare -a devices=("045e:0745" "1a2c:0c21")
+
+NUM_KB=0
+
+for i in ${!devices[@]}; 
+do 
+    if (( $(lsusb | grep ${devices[$i]} | wc -l) >= 1)); then
+        (( NUM_KB++ ))
+    fi
+done
+
+setxkbmap -option ''
+
+if (( $NUM_KB >= 1 )); then
+  setxkbmap -option 'compose:menu,caps:swapescape,altwin:left_meta_win,altwin:meta_alt'
+else
+  setxkbmap -option 'compose:menu,caps:swapescape,altwin:left_meta_win'
+fi
+
+(sleep 1 && setxkbmap br)

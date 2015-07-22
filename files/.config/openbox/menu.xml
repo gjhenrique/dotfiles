@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+	<menu id="apps-accessories-menu" label="Accessories">
+		<item label="Calculator">
+			<action name="Execute">
+				<command>gnome-calculator</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+				</startupnotify>
+			</action>
+		</item>
+	</menu>
+	<menu id="apps-editors-menu" label="Editors">
+		<item label="Android Studio">
+			<action name="Execute">
+				<execute>/opt/android-studio/bin/studio.sh</execute>
+			</action>
+		</item>
+		<item label="GVim">
+			<action name="Execute">
+				<command>gvim</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+					<wmclass>GVim</wmclass>
+				</startupnotify>
+			</action>
+		</item>
+		<item label="Intellij Ultimate">
+			<action name="Execute">
+				<execute>/opt/intellij-ultimate/bin/idea.sh</execute>
+			</action>
+		</item>
+	</menu>
+	<menu id="apps-term-menu" label="Terminals">
+		<item label="Yakuake">
+			<action name="Execute">
+				<execute>yakuake</execute>
+			</action>
+		</item>
+		<item label="Gnome Terminal">
+			<action name="Execute">
+				<command>gnome-terminal</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+				</startupnotify>
+			</action>
+		</item>
+	</menu>
+	<menu id="apps-net-menu" label="Internet">
+		<item label="Chromium">
+			<action name="Execute">
+				<execute>chromium</execute>
+			</action>
+		</item>
+		<item label="Firefox">
+			<action name="Execute">
+				<command>firefox</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+					<wmclass>Firefox</wmclass>
+				</startupnotify>
+			</action>
+		</item>
+	</menu>
+	<menu id="apps-mult-menu" label="Multimidia">
+		<item label="Skype">
+			<action name="Execute">
+				<execute>skype</execute>
+			</action>
+		</item>
+		<item label="vlc">
+			<action name="Execute">
+				<execute>vlc</execute>
+			</action>
+		</item>
+	</menu>
+	<menu id="apps-office-menu" label="Office">
+		<item label="OpenOffice Base">
+			<action name="Execute">
+				<command>ooffice -base</command>
+			</action>
+		</item>
+		<item label="OpenOffice Calc">
+			<action name="Execute">
+				<command>ooffice -calc</command>
+			</action>
+		</item>
+		<item label="OpenOffice Draw">
+			<action name="Execute">
+				<command>ooffice -draw</command>
+			</action>
+		</item>
+		<item label="OpenOffice Impress">
+			<action name="Execute">
+				<command>ooffice -impress</command>
+			</action>
+		</item>
+		<item label="OpenOffice Math">
+			<action name="Execute">
+				<command>ooffice -math</command>
+			</action>
+		</item>
+		<item label="OpenOffice Printer Administration">
+			<action name="Execute">
+				<command>ooffice-printeradmin</command>
+			</action>
+		</item>
+		<item label="OpenOffice Writer">
+			<action name="Execute">
+				<command>ooffice -writer</command>
+			</action>
+		</item>
+	</menu>
+	<menu id="apps-fileman-menu" label="File Managers">
+		<item label="Thunar">
+			<action name="Execute">
+				<command>Thunar</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+				</startupnotify>
+			</action>
+		</item>
+	</menu>
+	<menu id="apps-graphics-menu" label="Graphics">
+		<item label="Gimp">
+			<action name="Execute">
+				<command>gimp</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+				</startupnotify>
+			</action>
+		</item>
+	</menu>
+	<menu id="system-menu" label="System">
+		<item label="Lxappearence">
+			<action name="Execute">
+				<execute>lxappearance</execute>
+			</action>
+		</item>
+		<item label="Openbox Configuration Manager">
+			<action name="Execute">
+				<command>obconf</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+				</startupnotify>
+			</action>
+		</item>
+		<separator/>
+		<item label="Reconfigure Openbox">
+			<action name="Reconfigure"/>
+		</item>
+	</menu>
+	<menu id="root-menu" label="Openbox 3">
+		<separator label="Applications"/>
+		<menu id="apps-accessories-menu"/>
+		<menu id="apps-editors-menu"/>
+		<menu id="apps-graphics-menu"/>
+		<menu id="apps-net-menu"/>
+		<menu id="apps-office-menu"/>
+		<menu id="apps-mult-menu"/>
+		<menu id="apps-term-menu"/>
+		<menu id="apps-fileman-menu"/>
+		<separator label="System"/>
+		<menu id="system-menu"/>
+		<separator/>
+		<item label="Log Out">
+			<action name="Exit">
+				<prompt>yes</prompt>
+			</action>
+		</item>
+	</menu>
+</openbox_menu>

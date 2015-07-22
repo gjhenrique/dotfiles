@@ -1,0 +1,6 @@
+#! /bin/sh
+
+sudo chown -R $1 $2
+sudo chmod -R g+rw $2
+sudo find $2 -type d -print0 | sudo xargs -0 chmod g+s
+sudo setfacl -Rd -m g::rwx $2

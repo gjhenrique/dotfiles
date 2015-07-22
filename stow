@@ -1,0 +1,19 @@
+#/bin/bash
+
+stow --adopt files -t ~
+sudo stow scripts -t /opt
+stow conky -t ~
+
+# Criar playlist do mpd
+
+# Instalar hsetroot
+# Instalar spacemacs
+# Instalar oh-my-zshrc
+# Script para criar playlist do mpd
+
+# Instalar rbenv
+# Intalar pyenv
+# Instalar nvm
+
+# /home/guilherme/.vimperatorrc/colors - repositorio git
+

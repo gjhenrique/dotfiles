@@ -1,0 +1,7 @@
+(sleep 2 && xcompmgr) &
+
+(sleep 1 && /opt/scripts/conky_setup) &
+synapse -s &
+(sleep 3 && mpd && mpc pause) &
+
+hsetroot -solid "#000009"

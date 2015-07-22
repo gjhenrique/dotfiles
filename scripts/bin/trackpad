@@ -1,0 +1,26 @@
+#!/bin/bash
+
+trackpad() {
+ if [[ $1 == "on" ]]; then
+	synclient TouchpadOff=0
+ elif [[ $1 == "off" ]]; then
+	synclient TouchpadOff=1
+ fi
+}
+
+if [[ $1 == "on" ]] || [[ $1 == "off" ]]; then
+    trackpad $1
+elif [[ $1 == "toggle" ]]; then
+    STATUS=$(synclient | grep TouchpadOff | cut -d '=' -f 2 | cut -f 2 -d ' ')
+    if [[ $STATUS == "1" ]]; then
+        trackpad "on"
+    elif [[ $STATUS == "0" ]]; then
+        trackpad "off"
+    else
+        echo "Cant get status of trackpad"
+    fi
+else
+    >&2 echo "On or Off"
+fi
+
+

@@ -1,0 +1,14 @@
+#! /bin/sh
+
+killall conky
+VGA_MONITOR=$(xrandr | grep -w 'connected' | sed -n '3p' | cut -f 1 -d ' ')
+
+if [ -n "$VGA_MONITOR" ]; then
+    conky -c ~/.conky/clock.conkyrc &
+    conky -c ~/.conky/system_stats.conkyrc &
+    conky -c ~/.conky/log.conkyrc &
+    conky -c ~/.conky/lyrics.conkyrc &
+else
+    conky -c ~/.conky/clock.conkyrc &
+    conky -c ~/.conky/system_stats.conkyrc &
+fi

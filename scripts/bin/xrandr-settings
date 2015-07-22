@@ -1,0 +1,19 @@
+#!/bin/bash
+
+VGA_MONITOR=$(xrandr | grep -w 'connected' | sed -n '3p' | cut -f 1 -d ' ')
+HDMI_MONITOR=$(xrandr | grep -w 'connected' | sed -n '2p' | cut -f 1 -d ' ')
+
+if [ -n "$VGA_MONITOR" ]; then
+  if [ -n "$HDMI_MONITOR" ]; then
+    xrandr --output LVDS1 --off
+    xrandr --output $VGA_MONITOR --auto
+    xrandr --output $HDMI_MONITOR --auto --primary --left-of $VGA_MONITOR
+  else
+    xrandr --output $VGA_MONITOR  --auto --primary --right-of LVDS1
+  fi
+elif [ -n "$HDMI_MONITOR" ]; then
+    xrandr --output LVDS1 --off
+    xrandr --output $HDMI_MONITOR --auto --primary
+else
+  xrandr --output LVDS1 --auto  
+fi
