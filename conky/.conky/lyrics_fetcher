@@ -1,0 +1,45 @@
+#! /usr/bin/env ruby
+
+require 'lyricfy'
+
+SEPARATOR = "{}"
+
+MUSIC_NAME_FILE = "/tmp/current_song"
+LYRICS_FILE = "/tmp/current_lyrics"
+
+raw_music_info = `mpc --format "%artist%#{SEPARATOR}%title%" | head -1`.strip
+
+list_music_info = raw_music_info.split(SEPARATOR)
+
+artist, title = list_music_info[0], list_music_info[1]
+
+def get_lyrics artist,title
+  fetcher = Lyricfy::Fetcher.new
+  fetcher.search artist, title
+end
+
+def write_to_file file_name, file_content
+
+  out_file = File.new(file_name, "w")
+  out_file.print file_content
+  out_file.close
+
+end
+
+# Create file if not exists
+file = File.open(MUSIC_NAME_FILE, File::CREAT)
+file.close
+
+if File.read(MUSIC_NAME_FILE) == raw_music_info
+
+  puts File.read(LYRICS_FILE)
+
+else
+
+  song = get_lyrics artist, title
+  write_to_file LYRICS_FILE, song.body("\n")
+  puts song.body("\n")
+
+  write_to_file MUSIC_NAME_FILE, raw_music_info
+end
+  
