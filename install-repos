@@ -1,0 +1,23 @@
+#! /bin/bash
+
+if [ -d ~/.emacs.d ]; then
+    echo "emacs.d exists. It was not possible install spacemacs" 1>&2
+else
+    echo "Installing spacemacs"
+    git clone --recursive https://github.com/syl20bnr/spacemacs.git ~/.emacs.d
+fi
+
+if [ -d ~/.oh-my-zsh ]; then
+    echo "oh-my-zsh is already installed"
+else
+    echo "Installing oh-my-zsh"
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
+
+if [ -d ~/.vimperator/colors ]; then
+    echo "vimperator-colors is already installed"
+else
+    echo "Installing vimperator-colors"
+    git clone https://github.com/vimpr/vimperator-colors.git ~/.vimperator/colors
+fi
+

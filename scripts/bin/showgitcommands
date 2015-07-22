@@ -1,0 +1,5 @@
+#!/bin/bash
+
+GIT_FILE=~/.oh-my-zsh/plugins/git/git.plugin.zsh
+grep '^alias' $GIT_FILE | cut -d' ' -f2- | less
+

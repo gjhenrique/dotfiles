@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ -d ~/.rbenv ]; then
+    echo "rbenv is already installed"
+else
+    echo "Installing rbenv"
+    git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+    git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+    echo "rbenv install -l to install new versions"
+fi
+
+if [ -d ~/.pyenv ]; then
+    echo "pyenv is already installed"
+else
+    echo "Installing pyenv"
+    git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+    git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+    echo "pyenv install -l to install new versions"
+fi
+
+if [ -d ~/.nvm ]; then
+    echo "nvm is already installed"
+else
+    echo "Installing nvm"
+    git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+    git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+    echo "nvm ls-remote to install new versions"
+fi
