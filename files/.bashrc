@@ -39,17 +39,7 @@ source $BASH_IT/bash_it.sh
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" ]
 #export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-export NVM_DIR="/home/guilherme/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-alias java6="source /opt/scripts/java_set /usr/lib/jvm/jdk1.6.0_45"
+source $HOME/.langs
 
 alias grep="/usr/bin/grep $GREP_OPTIONS"
 unset GREP_OPTIONS

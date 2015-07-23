@@ -1,0 +1,22 @@
+function gi() { curl https://www.gitignore.io/api/$@ ;}
+
+# If tmux is enabled, then startx in invoked, it gives the error xf86OpenConsole: VT_ACTIVATE failed: Operation not permitted
+# Therefore, it only launches tmux when there is a X window
+if [ "$TERM" != "linux" ]
+then
+    # Start shell with tmux
+    # If not running interactively, do not do anything
+    [[ $- != *i* ]] && return
+    [[ -z "$TMUX" ]] && exec tmux -2
+fi
+
+function git_prompt_info() {
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}${ZSH_THEME_GIT_PROMPT_CLEAN}${ZSH_THEME_GIT_PROMPT_SUFFIX}".
+}
+
+function mako_system_cm() {
+    adb reboot-booloader
+    sudo fastboot flash system $HOME/Projects/CM/out/target/product/mako/system.img
+    sudo fastboot reboot
+}

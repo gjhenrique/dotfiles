@@ -1,9 +1,8 @@
 #/bin/bash
 
-
 stow --adopt files -t ~
 
-if [ $1 = "home" ]; then
+if [ "$1" = "home" ]; then
      stow scripts -t ~
 else
     sudo stow scripts -t /opt
@@ -28,3 +27,4 @@ stow --adopt conky -t ~
 # Patch do vimperator colors
 # Tema do GTK
 
+# No script de nova máquina, colocar a mudanca de shell para zsh. Copiar do oh-my-zsh
