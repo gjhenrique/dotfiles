@@ -107,7 +107,13 @@ export MAVEN_HOME="/opt/maven/"
 export ANT_HOME="/opt/ant"
 export ANDROID_HOME="/opt/sdk-android" 
 export SCALA_HOME="/opt/scala"
-export SCRIPTS_HOME="/opt/bin"
+
+if [ -d /opt/bin]; then
+    export SCRIPTS_HOME="/opt/bin"
+else
+    export SCRIPTS_HOME="~/bin"
+fi
+
 export GRADLE_HOME="/opt/gradle"
 export VAGRANT_HOME="/opt/vagrant"
 export ACTIVATOR_HOME="/opt/activator"

@@ -1,10 +1,16 @@
 #/bin/bash
 
+
 stow --adopt files -t ~
-sudo stow scripts -t /opt
+
+if [ $1 = "home" ]; then
+     stow scripts -t ~
+else
+    sudo stow scripts -t /opt
+fi
+
 stow --adopt conky -t ~
 
-# Criar playlist do mpd em outro script
 
 # Instalar spacemacs OK
 # Instalar oh-my-zshrc OK
@@ -21,3 +27,4 @@ stow --adopt conky -t ~
 # mv ~/.zshrc.pre*
 # Patch do vimperator colors
 # Tema do GTK
+

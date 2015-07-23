@@ -12,6 +12,7 @@ if [ -d ~/.oh-my-zsh ]; then
 else
     echo "Installing oh-my-zsh"
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    mv ~/.zshrc-pre-oh-my-zsh ~/.zshrc
 fi
 
 if [ -d ~/.vimperator/colors ]; then
