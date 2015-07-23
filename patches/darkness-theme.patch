@@ -1,0 +1,29 @@
+diff --git a/darkness.vimp b/darkness.vimp
+index 51ec411..2aabd74 100644
+--- a/darkness.vimp
++++ b/darkness.vimp
+@@ -4,7 +4,7 @@
+ " ==Darkness_Colorscheme_Settings==
+ 
+ "StatusLine settings
+-hi StatusLine           color: #ffffff; background: #000000; "font-size: 8pt;
++hi StatusLine           color: #fffff; background: #1e1e1e
+ " hi StatusLineBroken     color: #000000; background: #afafff; "font-size: 8pt;
+ " hi StatusLineSecure     color: #000000; background: #afffaf; "font-size: 8pt;
+ 
+@@ -33,15 +33,6 @@ hi FrameIndicator       background-color: #222222; opacity: 0.5; z-index: 999; p
+ hi Bell                 border: 0 none; background-color: #222222;
+ hi ErrorMsg             color: #ffffff; background: red; font-weight: bold;
+ 
+-
+-"Hint section
+-"hi Hint                 font-family: Sans; font-size: 10px; font-weight: bold; color: #f6e9e9; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding 0px 1px 0px 1px;
+-hi Hint               	font-family: Sans; font-size: 10px; font-weight: bold; color: white; background-color: rgba(0, 0, 0, 0.5); border: solid 1px LightGray;
+-hi Hint::after          content: attr(number);
+-hi HintActive           background: blue; color: #f6e9e9;
+-hi HintElem             background-color: #222222; color: #f6e9e9;
+-hi HintImage            opacity: .5;
+-
+ "Other important stuff
+ hi InfoMsg              color: #afafaf; background: #222222;
+ hi Message              white-space: normal; min-width: 100%; padding-left: 2em; text-indent: -2em; display: block;

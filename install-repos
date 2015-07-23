@@ -27,4 +27,5 @@ if [ -d ~/.vimperator/colors ]; then
 else
     echo "Installing vimperator-colors"
     git clone https://github.com/vimpr/vimperator-colors.git ~/.vimperator/colors
+    git -C "$HOME/.vimperator/colors" apply "$PWD/patches/darkness-theme.patch"
 fi
