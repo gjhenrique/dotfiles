@@ -17,4 +17,7 @@ stow --adopt conky -t ~
 # Instalar nvm
 
 # Instalar conky, hsetroot
-
+# Atualizar packages
+# mv ~/.zshrc.pre*
+# Patch do vimperator colors
+# Tema do GTK

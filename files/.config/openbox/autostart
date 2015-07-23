@@ -1,6 +1,6 @@
 (sleep 2 && xcompmgr) &
 
-(sleep 1 && /opt/scripts/conky_setup) &
+(sleep 1 && /opt/bin/conky_setup) &
 synapse -s &
 (sleep 3 && mpd && mpc pause) &
 

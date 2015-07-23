@@ -91,7 +91,6 @@ fi
 # User configuration
 alias xc="xclip -sel clip"
 alias xco="xclip -o -sel clip"
-alias shortgit="less /home/guilherme/.oh-my-zsh/plugins/git/git-aliases"
 alias pg="ping google.com"
 alias youtube-dl="noglob youtube-dl"
 alias sv="sudo gvim"

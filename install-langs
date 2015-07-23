@@ -22,7 +22,6 @@ if [ -d ~/.nvm ]; then
     echo "nvm is already installed"
 else
     echo "Installing nvm"
-    git clone https://github.com/yyuu/pyenv.git ~/.pyenv
-    git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.4/install.sh | bash
     echo "nvm ls-remote to install new versions"
 fi
