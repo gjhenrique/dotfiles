@@ -1,6 +1,6 @@
 #/bin/bash
 
-stow --adopt files -t ~
+stow files -t ~
 
 if [ "$1" = "home" ]; then
      stow scripts -t ~
@@ -8,8 +8,7 @@ else
     sudo stow scripts -t /opt
 fi
 
-stow --adopt conky -t ~
-
+stow conky -t ~
 
 # Instalar spacemacs OK
 # Instalar oh-my-zshrc OK
@@ -17,14 +16,10 @@ stow --adopt conky -t ~
 
 # Script para criar playlist do mpd
 
-# Instalar rbenv
-# Intalar pyenv
-# Instalar nvm
+# Instalar rbenv OK
+# Intalar pyenv OK
+# Instalar nvm OK
 
-# Instalar conky, hsetroot
-# Atualizar packages
-# mv ~/.zshrc.pre*
-# Patch do vimperator colors
 # Tema do GTK
 
 # No script de nova máquina, colocar a mudanca de shell para zsh. Copiar do oh-my-zsh

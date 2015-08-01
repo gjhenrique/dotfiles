@@ -10,6 +10,7 @@
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
+
    dotspacemacs-configuration-layers
    '(
      ;; ----------------------------------------------------------------
@@ -22,12 +23,16 @@
      emacs-lisp
      git
      github
-     c-c++ :variables c-c++-enable-clang-support t
+     (c-c++ :variables c-c++-enable-clang-support t)
+     ruby
+     python
+     shell
      ;; (git :variables
      ;;      git-gutter-use-fringe t)
-     ;; markdown
+     markdown
      org
-     ;; shell
+     shell
+     gtags
      ;; syntax-checking
      )
    ;; List of additional packages that will be installed wihout being
@@ -153,6 +158,7 @@ before layers configuration."
 
 (defun dotspacemacs/config ()
   (global-linum-mode) ; Show line numbers by default
+  (global-company-mode)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
