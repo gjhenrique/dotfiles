@@ -1,0 +1,1 @@
+source ~/.git-prompt.sh
