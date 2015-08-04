@@ -20,6 +20,7 @@
      ;; ----------------------------------------------------------------
      auto-completion
      ;; better-defaults
+     (colors :variables colors-enable-nyan-cat-progress-bar t)
      emacs-lisp
      git
      github
@@ -158,7 +159,6 @@ before layers configuration."
 
 (defun dotspacemacs/config ()
   (global-linum-mode) ; Show line numbers by default
-  (global-company-mode)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will

@@ -2,7 +2,7 @@ ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="bira"
 
-plugins=(git gem history-substring-search fasd vagrant mvn node npm docker)
+plugins=(git gem history-substring-search fasd vagrant mvn node npm tmux)
 
 source $HOME/.functions
 source $HOME/.aliases
