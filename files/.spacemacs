@@ -18,16 +18,22 @@
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     ansible
      auto-completion
      ;; better-defaults
-     (colors :variables colors-enable-nyan-cat-progress-bar t)
+     clojure
      emacs-lisp
      git
+     gtags
      github
+     latex
      (c-c++ :variables c-c++-enable-clang-support t)
      ruby
+     ruby-on-rails
      python
      shell
+     sql
+     javascript
      ;; (git :variables
      ;;      git-gutter-use-fringe t)
      markdown
@@ -35,6 +41,10 @@
      shell
      gtags
      syntax-checking
+     xkcd
+     yaml
+     html
+     zezin
      )
    ;; List of additional packages that will be installed wihout being
    ;; wrapped in a layer. If you need some configuration for these
@@ -159,7 +169,31 @@ before layers configuration."
 
 (defun dotspacemacs/config ()
   (global-linum-mode) ; Show line numbers by default
+  (add-hook 'with-editor-mode-hook 'evil-insert-state)
+  (setq-default js2-basic-offset 2)
+  (setq-default js-indent-level 2)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ahs-case-fold-search nil)
+ '(ahs-default-range (quote ahs-range-whole-buffer))
+ '(ahs-idle-interval 0.25)
+ '(ahs-idle-timer 0 t)
+ '(ahs-inhibit-face-list nil)
+ '(magit-log-arguments (quote ("--graph" "--color" "--decorate")))
+ '(paradox-github-token t)
+ '(ring-bell-function (quote ignore) t))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
