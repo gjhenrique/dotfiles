@@ -22,6 +22,7 @@
      auto-completion
      ;; better-defaults
      clojure
+     dockerfile
      emacs-lisp
      git
      gtags
@@ -34,9 +35,11 @@
      shell
      sql
      javascript
+     spell-checking
      ;; (git :variables
      ;;      git-gutter-use-fringe t)
      markdown
+     latex
      org
      shell
      gtags
@@ -172,6 +175,15 @@ before layers configuration."
   (add-hook 'with-editor-mode-hook 'evil-insert-state)
   (setq-default js2-basic-offset 2)
   (setq-default js-indent-level 2)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((dot . t)))
+  (defun my-org-confirm-babel-evaluate (lang body)
+    (not (string= lang "dot")))
+  (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
+  (setq org-html-htmlize-output-type 'css)
+  (setq browse-url-browser-function 'browse-url-generic
+        browse-url-generic-program "chromium")
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -186,9 +198,184 @@ before layers configuration."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(compilation-message-face (quote default))
+ '(cua-global-mark-cursor-color "#2aa198")
+ '(cua-normal-cursor-color "#657b83")
+ '(cua-overwrite-cursor-color "#b58900")
+ '(cua-read-only-cursor-color "#859900")
+ '(custom-safe-themes
+   (quote
+    ("232f715279fc131ed4facf6a517b84d23dca145fcc0e09c5e0f90eb534e1680f" "ff02e8e37c9cfd192d6a0cb29054777f5254c17b1bf42023ba52b65e4307b76a" default)))
+ '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
+ '(highlight-symbol-colors
+   (--map
+    (solarized-color-blend it "#fdf6e3" 0.25)
+    (quote
+     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+ '(highlight-symbol-foreground-color "#586e75")
+ '(highlight-tail-colors
+   (quote
+    (("#3E3D31" . 0)
+     ("#67930F" . 20)
+     ("#349B8D" . 30)
+     ("#21889B" . 50)
+     ("#968B26" . 60)
+     ("#A45E0A" . 70)
+     ("#A41F99" . 85)
+     ("#3E3D31" . 100))))
+ '(hl-bg-colors
+   (quote
+    ("#DEB542" "#F2804F" "#FF6E64" "#F771AC" "#9EA0E5" "#69B7F0" "#69CABF" "#B4C342")))
+ '(hl-fg-colors
+   (quote
+    ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
+ '(magit-diff-use-overlays nil)
  '(magit-log-arguments (quote ("--graph" "--color" "--decorate")))
+ '(nrepl-message-colors
+   (quote
+    ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(paradox-github-token t)
- '(ring-bell-function (quote ignore) t))
+ '(pos-tip-background-color "#A6E22E")
+ '(pos-tip-foreground-color "#272822")
+ '(ring-bell-function (quote ignore) t)
+ '(safe-local-variable-values
+   (quote
+    ((eval let
+           ((root-dir
+             (locate-dominating-file buffer-file-name ".dir-locals.el")))
+           (setq org-publish-project-alist
+                 (\`
+                  (("org-zezin" :base-directory
+                    (\,
+                     (concat root-dir "org"))
+                    :base-extension "org" :publishing-directory
+                    (\,
+                     (concat root-dir "_posts"))
+                    :recursive t :publishing-function org-html-publish-to-html :headline-levels 6 :html-extension "html" :body-only t :with-toc nil :section-numbers nil :table-of-contents nil :author "Guilherme Henrique" :email "gjhenrique@gmail.com")
+                   ("org-static-zezin" :base-directory
+                    (\,
+                     (concat root-dir "org"))
+                    :base-extension "css\\|js\\|png\\|jpg\\|ico\\|gif\\|pdf\\|mp3\\|flac\\|ogg\\|swf\\|php\\|markdown\\|md\\|html\\|htm\\|sh\\|xml\\|gz\\|bz2\\|vcf\\|zip\\|txt\\|tex\\|otf\\|ttf\\|eot\\|rb\\|yml\\|htaccess\\|gitignore\\|svg" :publishing-directory
+                    (\, root-dir)
+                    :recursive t :publishing-function org-publish-attachment)
+                   ("zezin" :components
+                    ("org-zezin" "org-static-zezin"))))))
+     (org-publish-project-alist
+      ("org-zezin" :base-directory
+       (concat default-directory "org/")
+       :base-extension "org" :publishing-directory
+       (concat default-directory "_posts/")
+       :recursive t :publishing-function org-html-publish-to-html :headline-levels 6 :html-extension "html" :body-only t :with-toc nil :section-numbers nil :table-of-contents nil :author "Guilherme Henrique" :email "gjhenrique@gmail.com")
+      ("org-static-zezin" :base-directory
+       (concat default-directory "org/")
+       :base-extension "css\\|js\\|png\\|jpg\\|ico\\|gif\\|pdf\\|mp3\\|flac\\|ogg\\|swf\\|php\\|markdown\\|md\\|html\\|htm\\|sh\\|xml\\|gz\\|bz2\\|vcf\\|zip\\|txt\\|tex\\|otf\\|ttf\\|eot\\|rb\\|yml\\|htaccess\\|gitignore\\|svg" :publishing-directory
+       (concat default-directory "emerald/")
+       :recursive t :publishing-function org-publish-attachment)
+      ("zezin" :components
+       ("org-zezin" "org-static-zezin")))
+     (org-publish-project-alist
+      (("org-zezin" :base-directory
+        (\,
+         (concat default-directory "org/"))
+        :base-extension "org" :publishing-directory
+        (concat default-directory "_posts/")
+        :recursive t :publishing-function org-html-publish-to-html :headline-levels 6 :html-extension "html" :body-only t :with-toc nil :section-numbers nil :table-of-contents nil :author "Guilherme Henrique" :email "gjhenrique@gmail.com")
+       ("org-static-zezin" :base-directory
+        (concat default-directory "org/")
+        :base-extension "css\\|js\\|png\\|jpg\\|ico\\|gif\\|pdf\\|mp3\\|flac\\|ogg\\|swf\\|php\\|markdown\\|md\\|html\\|htm\\|sh\\|xml\\|gz\\|bz2\\|vcf\\|zip\\|txt\\|tex\\|otf\\|ttf\\|eot\\|rb\\|yml\\|htaccess\\|gitignore\\|svg" :publishing-directory
+        (concat default-directory "emerald/")
+        :recursive t :publishing-function org-publish-attachment)
+       ("zezin" :components
+        ("org-zezin" "org-static-zezin"))))
+     (org-publish-project-alist
+      (\`
+       (("org-zezin" :base-directory
+         (\,
+          (concat default-directory "org/"))
+         :base-extension "org" :publishing-directory
+         (concat default-directory "_posts/")
+         :recursive t :publishing-function org-html-publish-to-html :headline-levels 6 :html-extension "html" :body-only t :with-toc nil :section-numbers nil :table-of-contents nil :author "Guilherme Henrique" :email "gjhenrique@gmail.com")
+        ("org-static-zezin" :base-directory
+         (concat default-directory "org/")
+         :base-extension "css\\|js\\|png\\|jpg\\|ico\\|gif\\|pdf\\|mp3\\|flac\\|ogg\\|swf\\|php\\|markdown\\|md\\|html\\|htm\\|sh\\|xml\\|gz\\|bz2\\|vcf\\|zip\\|txt\\|tex\\|otf\\|ttf\\|eot\\|rb\\|yml\\|htaccess\\|gitignore\\|svg" :publishing-directory
+         (concat default-directory "emerald/")
+         :recursive t :publishing-function org-publish-attachment)
+        ("zezin" :components
+         ("org-zezin" "org-static-zezin")))))
+     (org-publish-project-alist \`
+                                (("org-zezin" :base-directory
+                                  (\,
+                                   (concat default-directory "org/"))
+                                  :base-extension "org" :publishing-directory
+                                  (concat default-directory "_posts/")
+                                  :recursive t :publishing-function org-html-publish-to-html :headline-levels 6 :html-extension "html" :body-only t :with-toc nil :section-numbers nil :table-of-contents nil :author "Guilherme Henrique" :email "gjhenrique@gmail.com")
+                                 ("org-static-zezin" :base-directory
+                                  (concat default-directory "org/")
+                                  :base-extension "css\\|js\\|png\\|jpg\\|ico\\|gif\\|pdf\\|mp3\\|flac\\|ogg\\|swf\\|php\\|markdown\\|md\\|html\\|htm\\|sh\\|xml\\|gz\\|bz2\\|vcf\\|zip\\|txt\\|tex\\|otf\\|ttf\\|eot\\|rb\\|yml\\|htaccess\\|gitignore\\|svg" :publishing-directory
+                                  (concat default-directory "emerald/")
+                                  :recursive t :publishing-function org-publish-attachment)
+                                 ("zezin" :components
+                                  ("org-zezin" "org-static-zezin"))))
+     (org-publish-project-alist quote
+                                (("org-zezin" :base-directory
+                                  (\,
+                                   (concat default-directory "org/"))
+                                  :base-extension "org" :publishing-directory
+                                  (concat default-directory "_posts/")
+                                  :recursive t :publishing-function org-html-publish-to-html :headline-levels 6 :html-extension "html" :body-only t :with-toc nil :section-numbers nil :table-of-contents nil :author "Guilherme Henrique" :email "gjhenrique@gmail.com")
+                                 ("org-static-zezin" :base-directory
+                                  (concat default-directory "org/")
+                                  :base-extension "css\\|js\\|png\\|jpg\\|ico\\|gif\\|pdf\\|mp3\\|flac\\|ogg\\|swf\\|php\\|markdown\\|md\\|html\\|htm\\|sh\\|xml\\|gz\\|bz2\\|vcf\\|zip\\|txt\\|tex\\|otf\\|ttf\\|eot\\|rb\\|yml\\|htaccess\\|gitignore\\|svg" :publishing-directory
+                                  (concat default-directory "emerald/")
+                                  :recursive t :publishing-function org-publish-attachment)
+                                 ("zezin" :components
+                                  ("org-zezin" "org-static-zezin"))))
+     (org-publish-project-alist quote
+                                (("org-zezin" :base-directory
+                                  (concat default-directory "org/")
+                                  :base-extension "org" :publishing-directory
+                                  (concat default-directory "_posts/")
+                                  :recursive t :publishing-function org-html-publish-to-html :headline-levels 6 :html-extension "html" :body-only t :with-toc nil :section-numbers nil :table-of-contents nil :author "Guilherme Henrique" :email "gjhenrique@gmail.com")
+                                 ("org-static-zezin" :base-directory
+                                  (concat default-directory "org/")
+                                  :base-extension "css\\|js\\|png\\|jpg\\|ico\\|gif\\|pdf\\|mp3\\|flac\\|ogg\\|swf\\|php\\|markdown\\|md\\|html\\|htm\\|sh\\|xml\\|gz\\|bz2\\|vcf\\|zip\\|txt\\|tex\\|otf\\|ttf\\|eot\\|rb\\|yml\\|htaccess\\|gitignore\\|svg" :publishing-directory
+                                  (concat default-directory "emerald/")
+                                  :recursive t :publishing-function org-publish-attachment)
+                                 ("zezin" :components
+                                  ("org-zezin" "org-static-zezin")))))))
+ '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
+ '(term-default-bg-color "#fdf6e3")
+ '(term-default-fg-color "#657b83")
+ '(vc-annotate-background "#2B2B2B")
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#BC8383")
+     (40 . "#CC9393")
+     (60 . "#DFAF8F")
+     (80 . "#D0BF8F")
+     (100 . "#E0CF9F")
+     (120 . "#F0DFAF")
+     (140 . "#5F7F5F")
+     (160 . "#7F9F7F")
+     (180 . "#8FB28F")
+     (200 . "#9FC59F")
+     (220 . "#AFD8AF")
+     (240 . "#BFEBBF")
+     (260 . "#93E0E3")
+     (280 . "#6CA0A3")
+     (300 . "#7CB8BB")
+     (320 . "#8CD0D3")
+     (340 . "#94BFF3")
+     (360 . "#DC8CC3"))))
+ '(vc-annotate-very-old-color "#DC8CC3")
+ '(weechat-color-list
+   (unspecified "#272822" "#3E3D31" "#A20C41" "#F92672" "#67930F" "#A6E22E" "#968B26" "#E6DB74" "#21889B" "#66D9EF" "#A41F99" "#FD5FF0" "#349B8D" "#A1EFE4" "#F8F8F2" "#F8F8F0"))
+ '(xterm-color-names
+   ["#eee8d5" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#073642"])
+ '(xterm-color-names-bright
+   ["#fdf6e3" "#cb4b16" "#93a1a1" "#839496" "#657b83" "#6c71c4" "#586e75" "#002b36"]))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
