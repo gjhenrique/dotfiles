@@ -1,8 +1,8 @@
 ; Inspired by https://github.com/kaushalmodi/.emacs.d/
-(defvar modi/fns-in-edebug nil
+(defvar zezin/fns-in-edebug nil
   "List of functions for which `edebug' is instrumented.")
 
-(defconst modi/fns-regexp (concat "(\\s-*"
+(defconst zezin/fns-regexp (concat "(\\s-*"
                                   "\\(cl-\\)*"
                                   "\\(defun\\|defmacro\\|defsubst\\)"
                                   "\\**"
@@ -10,7 +10,7 @@
                                   "\\(?1:\\(\\w\\|\\s_\\)+\\)\\_>") ; word or symbol char
   "Regexp to find defun or defmacro definition.")
 
-(defun modi/toggle-edebug()
+(defun zezin/toggle-edebug()
   (interactive)
   (save-excursion
     (re-search-backward modi/fns-regexp)

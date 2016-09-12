@@ -4,21 +4,26 @@
 #1a2c:0c21 Teclado de Londrina
 declare -a devices=("045e:0745" "1a2c:0c21")
 
-NUM_KB=0
+ACTIVATE_ALTWIN=0
 
-for i in ${!devices[@]}; 
-do 
+for i in ${!devices[@]};
+do
     if (( $(lsusb | grep ${devices[$i]} | wc -l) >= 1)); then
-        (( NUM_KB++ ))
+        (( ACTIVATE_ALTWIN++ ))
     fi
 done
 
-setxkbmap -option ''
+# Notebook from work.
+# Complete keyboard
+if [ $(hostname) = 'Hal9000u' ];
+then
+    ACTIVATE_ALTWIN=1
+fi
 
-if (( $NUM_KB >= 1 )); then
-  setxkbmap -option 'compose:menu,caps:swapescape,altwin:left_meta_win,altwin:meta_alt'
+if (( $ACTIVATE_ALTWIN >= 1 )); then
+    setxkbmap -option 'compose:menu,caps:swapescape,altwin:left_meta_win,altwin:meta_alt'
 else
-  setxkbmap -option 'compose:menu,caps:swapescape,altwin:left_meta_win'
+    setxkbmap -option 'compose:menu,caps:swapescape,altwin:left_meta_win'
 fi
 
 (sleep 1 && setxkbmap br)

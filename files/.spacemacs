@@ -28,6 +28,7 @@
      gtags
      github
      latex
+     markdown
      (c-c++ :variables c-c++-enable-clang-support t)
      ruby
      ruby-on-rails
@@ -38,8 +39,6 @@
      spell-checking
      ;; (git :variables
      ;;      git-gutter-use-fringe t)
-     markdown
-     latex
      org
      shell
      gtags
