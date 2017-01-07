@@ -92,7 +92,7 @@ short_units yes
 
 TEXT
 ${color}${alignc}${font GE Inspira:pixelsize=80}${time %H:%M}${font}
-${voffset 20}${alignc}${color2}${font GE Inspira:pixelsize=26}${time %d}${font}${color}${voffset -8}${font GE Inspira:pixelsize=15} ${time %B} ${time %Y}${font}${font}${voffset 10}
+${voffset 20}${alignc}${color2}${font GE Inspira:pixelsize=26}${time %d}${font}${color}${voffset -8}${font GE Inspira:pixelsize=15} ${time %B} ${time %Y}${font}${voffset 10}
 
 ${color2}SYSTEM ${hr 2} 
 ${color}${voffset 5}${alignc -8}Asus K45VM-VX105H
@@ -114,7 +114,6 @@ ${voffset 2} ${top_mem name 4} ${alignr}${top_mem mem_res 4}
 ${voffset 2} ${top_mem name 5} ${alignr}${top_mem mem_res 5}   ${font}
 
 ${color2}NETWORK ${hr 2}
-${color}${voffset 5}External: ${alignr} ${execi 30 ~/.conky/ping_test.sh google.com}
 ${voffset 5}Down: ${downspeed wlp3s0} ${alignr}Up: ${upspeed wlp3s0} 
 ${downspeedgraph wlp3s0 30,120 FFFF00 FF0000} ${alignr}${upspeedgraph wlp30 30,120 FFFF00 FF0000}$color
 Total: ${totaldown wlp3s0} ${alignr}Total: ${totalup wlp3s0}

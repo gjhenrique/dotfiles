@@ -1,6 +1,3 @@
 #! /bin/sh
-
 killall conky
-VGA_MONITOR=$(xrandr | grep -w 'connected' | sed -n '3p' | cut -f 1 -d ' ')
-
 conky -c ~/.conky/system_stats.conkyrc &
