@@ -169,8 +169,8 @@ before layers configuration."
   ;; User initialization goes here
   )
 
-(defun dotspacemacs/config ()
-  (global-linum-mode) ; Show line numbers by default
+(defun dotspacemacs/user-config ()
+  (global-linum-mode)
   (add-hook 'with-editor-mode-hook 'evil-insert-state)
   (setq-default js2-basic-offset 2)
   (setq-default js-indent-level 2)
@@ -199,6 +199,8 @@ before layers configuration."
  '(ahs-inhibit-face-list nil)
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
+ '(ansi-term-color-vector
+   [unspecified "#181818" "#ab4642" "#a1b56c" "#f7ca88" "#7cafc2" "#ba8baf" "#7cafc2" "#d8d8d8"] t)
  '(compilation-message-face (quote default))
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#657b83")
@@ -206,7 +208,7 @@ before layers configuration."
  '(cua-read-only-cursor-color "#859900")
  '(custom-safe-themes
    (quote
-    ("232f715279fc131ed4facf6a517b84d23dca145fcc0e09c5e0f90eb534e1680f" "ff02e8e37c9cfd192d6a0cb29054777f5254c17b1bf42023ba52b65e4307b76a" default)))
+    ("cdfb22711f64d0e665f40b2607879fcf2607764b2b70d672ddaa26d2da13049f" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "0b6645497e51d80eda1d337d6cabe31814d6c381e69491931a688836c16137ed" "232f715279fc131ed4facf6a517b84d23dca145fcc0e09c5e0f90eb534e1680f" "ff02e8e37c9cfd192d6a0cb29054777f5254c17b1bf42023ba52b65e4307b76a" default)))
  '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
  '(highlight-symbol-colors
    (--map
@@ -230,6 +232,7 @@ before layers configuration."
  '(hl-fg-colors
    (quote
     ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
+ '(hl-sexp-background-color "#efebe9")
  '(magit-diff-use-overlays nil)
  '(magit-log-arguments (quote ("--graph" "--color" "--decorate")))
  '(nrepl-message-colors
@@ -237,7 +240,7 @@ before layers configuration."
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (auto-dictionary goto-gem powerline rake pcre2el alert log4e gntp markdown-mode json-snatcher json-reformat js2-mode parent-mode projectile request haml-mode gitignore-mode gh marshal logito pcache ht flycheck flx smartparens iedit anzu web-completion-data dash-functional tern pos-tip company inflections multiple-cursors eval-sexp-fu highlight spinner queue pkg-info clojure-mode epl inf-ruby yasnippet packed auctex anaconda-mode pythonic f dash s helm avy helm-core async auto-complete popup package-build bind-key bind-map evil paradox orgit magit-gitflow magit-gh-pulls helm-flx github-clone evil-magit magit magit-popup git-commit with-editor company-quickhelp clj-refactor hydra edn paredit peg yaml-mode xterm-color xkcd ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe use-package toc-org tagedit sql-indent spacemacs-theme spaceline smooth-scrolling smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters quelpa pyvenv python pytest pyenv-mode py-yapf projectile-rails popwin pip-requirements persp-mode page-break-lines org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc macrostep lorem-ipsum linum-relative leuven-theme less-css-mode json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gist gh-md ggtags flycheck-pos-tip flx-ido fill-column-indicator feature-mode fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eshell-prompt-extras esh-help emmet-mode elisp-slime-nav disaster define-word cython-mode company-web company-tern company-statistics company-c-headers company-auctex company-anaconda coffee-mode cmake-mode clean-aindent-mode clang-format cider-eval-sexp-fu cider chruby bundler buffer-move bracketed-paste base16-theme auto-yasnippet auto-highlight-symbol auto-compile ansible-doc ansible aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (origami general anzu yapfify uuidgen py-isort pug-mode org-projectile org-download livid-mode skewer-mode simple-httpd live-py-mode link-hint jinja2-mode github-search git-commit with-editor flyspell-correct-helm flyspell-correct eyebrowse evil-visual-mark-mode evil-unimpaired evil-ediff eshell-z dumb-jump column-enforce-mode clojure-snippets helm-gitignore request zenburn-theme yaml-mode xterm-color xkcd ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe use-package toc-org tagedit sql-indent spacemacs-theme spaceline solarized-theme smooth-scrolling smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-yapf projectile-rails popwin pip-requirements persp-mode paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file neotree multi-term move-text monokai-theme mmm-mode markdown-toc magit-gitflow magit-gh-pulls macrostep lorem-ipsum linum-relative leuven-theme less-css-mode json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-flyspell helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag goto-gem google-translate golden-ratio gnuplot gitignore-mode github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gist gh-md ggtags flycheck-pos-tip flx-ido fill-column-indicator feature-mode fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dockerfile-mode disaster define-word cython-mode company-web company-tern company-statistics company-quickhelp company-c-headers company-auctex company-anaconda coffee-mode cmake-mode clojure-cheatsheet clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu chruby bundler buffer-move bracketed-paste base16-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk ansible-doc ansible aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(paradox-github-token t)
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
@@ -245,6 +248,14 @@ before layers configuration."
  '(safe-local-variable-values
    (quote
     ((eval let
+           ((root-dir
+             (locate-dominating-file buffer-file-name ".dir-locals.el")))
+           (zezin-set-posts-info
+            (concat root-dir "org")
+            (concat root-dir "_posts")
+            root-dir))
+     (eval load-file "../posts-config.el")
+     (eval let
            ((root-dir
              (locate-dominating-file buffer-file-name ".dir-locals.el")))
            (setq org-publish-project-alist
