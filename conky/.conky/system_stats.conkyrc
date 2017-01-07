@@ -91,6 +91,9 @@ use_spacer none
 short_units yes
 
 TEXT
+${color}${alignc}${font GE Inspira:pixelsize=80}${time %H:%M}${font}
+${voffset 20}${alignc}${color2}${font GE Inspira:pixelsize=26}${time %d}${font}${color}${voffset -8}${font GE Inspira:pixelsize=15} ${time %B} ${time %Y}${font}${font}${voffset 10}
+
 ${color2}SYSTEM ${hr 2} 
 ${color}${voffset 5}${alignc -8}Asus K45VM-VX105H
 ${voffset 5}Uptime: ${alignr}${uptime}${offset 10}
