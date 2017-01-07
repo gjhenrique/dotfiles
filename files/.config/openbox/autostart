@@ -2,6 +2,5 @@
 
 (sleep 1 && /opt/bin/conky_setup) &
 synapse -s &
-(sleep 3 && mpd && mpc pause) &
 
 hsetroot -solid "#000009"
