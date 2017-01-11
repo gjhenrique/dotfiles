@@ -186,6 +186,11 @@
         <execute>gnome-terminal</execute>
       </action>
     </keybind>
+    <keybind key="W-m">
+      <action name="Execute">
+        <execute>xscreensaver-command -lock</execute>
+      </action>
+    </keybind>
     <keybind key="W-Up">
       <action name="Maximize"/>
     </keybind>
@@ -199,12 +204,12 @@
     </keybind>
     <keybind key="W-u">
       <action name="Execute">
-        <command>/opt/scripts/pulseaudio-volume plus</command>
+        <command>/opt/bin/pulseaudio-volume plus</command>
       </action>
     </keybind>
     <keybind key="W-i">
       <action name="Execute">
-        <command>/opt/scripts/pulseaudio-volume minus</command>
+        <command>/opt/bin/pulseaudio-volume minus</command>
       </action>
     </keybind>
     <keybind key="W-v">
@@ -239,7 +244,7 @@
     </keybind>
     <keybind key="W-o">
       <action name="Execute">
-        <command>/opt/scripts/trackpad toggle</command>
+        <command>/opt/bin/trackpad toggle</command>
       </action>
     </keybind>
     <!-- Keybindings for desktop switching -->
