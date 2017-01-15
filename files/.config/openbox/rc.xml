@@ -234,7 +234,7 @@
     </keybind>
     <keybind key="W-t">
       <action name="Execute">
-        <command>thunar</command>
+        <command>pcmanfm</command>
       </action>
     </keybind>
     <keybind key="Print">
