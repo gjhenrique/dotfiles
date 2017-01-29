@@ -1,6 +1,5 @@
-(sleep 2 && xcompmgr) &
-
 (sleep 1 && /opt/bin/conky_setup) &
-albert &
+(sleep 2 && albert) &
+(sleep 3 && /usr/bin/mopidy) &
 
 hsetroot -solid "#000009"
