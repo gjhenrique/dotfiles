@@ -9,17 +9,3 @@ else
 fi
 
 stow conky -t ~
-
-# Instalar spacemacs OK
-# Instalar oh-my-zshrc OK
-# /home/guilherme/.vimperatorrc/colors - repositorio git OK
-
-# Script para criar playlist do mpd
-
-# Instalar rbenv OK
-# Intalar pyenv OK
-# Instalar nvm OK
-
-# Tema do GTK
-
-# No script de nova máquina, colocar a mudanca de shell para zsh. Copiar do oh-my-zsh

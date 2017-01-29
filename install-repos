@@ -3,8 +3,8 @@
 if [ -d ~/.emacs.d ]; then
     echo "~/.emacs.d already exists" 1>&2
 else
-    echo "Installing spacemacs"
-    git clone --recursive https://github.com/syl20bnr/spacemacs.git ~/.emacs.d
+    echo "Installing emacs development environment"
+    git clone --recursive git@gitlab.com:gjhenrique/zezin.emacs.git ~/.emacs.d
 fi
 
 if [ -d ~/.oh-my-zsh ]; then
@@ -13,14 +13,6 @@ else
     echo "Installing oh-my-zsh"
     git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
     . ~/.zshrc
-fi
-
-if [ -d ~/.vimperator/colors ]; then
-    echo "vimperator-colors is already installed"
-else
-    echo "Installing vimperator-colors"
-    git clone https://github.com/vimpr/vimperator-colors.git ~/.vimperator/colors
-    git -C "$HOME/.vimperator/colors" apply "$PWD/patches/darkness-theme.patch"
 fi
 
 if [ -e ~/.git-prompt.sh ]; then

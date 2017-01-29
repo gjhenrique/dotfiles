@@ -1,2 +1,0 @@
-java -jar /home/guilherme/Projects/playlist-creator/target/scala-2.10/playlist-creator-assembly-0.1.jar $1
-

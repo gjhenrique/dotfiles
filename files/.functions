@@ -1,11 +1,5 @@
 function gi() { curl https://www.gitignore.io/api/$@ ;}
 
-function mako_system_cm() {
-    adb reboot-booloader
-    sudo fastboot flash system $HOME/Projects/CM/out/target/product/mako/system.img
-    sudo fastboot reboot
-}
-
 function gofwd() {
   git checkout `git rev-list --topo-order HEAD..master | tail -1`
 }

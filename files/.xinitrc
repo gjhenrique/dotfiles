@@ -21,7 +21,6 @@ xrandr-settings &
 (sleep 1 && set-keyboard) &
 
 session=${2:-openbox}
-echo $session >> /tmp/xlog
 
 case $session in
     openbox           ) exec openbox-session;;
