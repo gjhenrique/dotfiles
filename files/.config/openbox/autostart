@@ -1,6 +1,6 @@
 (sleep 2 && xcompmgr) &
 
 (sleep 1 && /opt/bin/conky_setup) &
-synapse -s &
+albert &
 
 hsetroot -solid "#000009"
