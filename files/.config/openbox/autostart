@@ -1,5 +1,6 @@
 (sleep 1 && /opt/bin/conky_setup) &
 (sleep 2 && albert) &
 (sleep 3 && /usr/bin/mopidy) &
+(sleep 4 && xscreensaver -nosplash) &
 
 hsetroot -solid "#000009"
