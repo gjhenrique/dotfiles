@@ -15,7 +15,8 @@ update_interval 4
 # Set to zero to run forever.
 total_run_times 0
 
-own_window yes
+own_window false
+background true
 own_window_transparent yes
 #own_window_type override
 own_window_type desktop

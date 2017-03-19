@@ -26,6 +26,7 @@ case $session in
     openbox           ) exec openbox-session;;
     virtualbox        ) exec virtualbox;;
     xbmc              ) exec xbmc;;
+    i3                ) exec i3;;
     *                 ) exec $2;;
 esac
 
