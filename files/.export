@@ -18,8 +18,9 @@ export ACTIVATOR_HOME="/opt/activator"
 export SBT_HOME="/opt/sbt"
 export AVR_HOME="/usr/share/arduino/hardware/tools/avr"
 export NDK_HOME="/opt/android-ndk"
+export FIREFOX_HOME="/opt/firefox"
 
 export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
-export PATH="$NDK_HOME:$MAVEN_HOME/bin:$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$SCALA_HOME/bin:$SCRIPTS_HOME:$GRADLE_HOME/bin:$VAGRANT_HOME/bin:$ANT_HOME/bin:$ACTIVATOR_HOME:$SBT_HOME/bin:$AVR_HOME/bin:$PATH"
+export PATH="$FIREFOX_HOME:$NDK_HOME:$MAVEN_HOME/bin:$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$SCALA_HOME/bin:$SCRIPTS_HOME:$GRADLE_HOME/bin:$VAGRANT_HOME/bin:$ANT_HOME/bin:$ACTIVATOR_HOME:$SBT_HOME/bin:$AVR_HOME/bin:$PATH"
 
 export EDITOR='vim'
