@@ -37,6 +37,12 @@
 				<execute>yakuake</execute>
 			</action>
 		</item>
+		<item label="Xterm">
+			<action name="Execute">
+				<execute>xterm</execute>
+			</action>
+		</item>
+
 		<item label="Gnome Terminal">
 			<action name="Execute">
 				<command>gnome-terminal</command>
