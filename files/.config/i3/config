@@ -9,6 +9,8 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# DD514C
+
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -74,11 +76,8 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
 bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+z focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -104,12 +103,16 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+bindsym $mod+n move workspace to output left
+bindsym Print exec scrot -u -e 'mv $f ~/Pictures/Screenshots'
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -152,7 +155,7 @@ mode "launcher" {
 bindsym $mod+y mode "launcher"
 
 # shortcut
-bindsym $mod+m exec xscreensaver
+bindsym $mod+m exec xscreensaver-command -lock
 
 # startup applications
 exec xscreensaver -nosplash
