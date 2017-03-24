@@ -9,6 +9,14 @@ else
     echo "rbenv install -l to install new versions"
 fi
 
+if [ -d ~/.nvm ]; then
+    echo "nvm is already installed"
+else
+    echo "Installing nvm"
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.4/install.sh | bash
+    echo "nvm ls-remote to install new versions"
+fi
+
 if [ -d ~/.asdf ]; then
     echo "asdf is already installed"
 else
