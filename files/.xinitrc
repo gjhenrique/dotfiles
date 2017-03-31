@@ -20,7 +20,7 @@ xrdb ~/.Xresources &
 xrandr-settings &
 (sleep 1 && set-keyboard) &
 
-session=${2:-openbox}
+session=${2:-i3}
 
 case $session in
     openbox           ) exec openbox-session;;

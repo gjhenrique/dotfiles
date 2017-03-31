@@ -6,13 +6,8 @@
 	trustctime = false
 [color]
 	ui = true
-[merge]
-	tool = gvimdiff
 [grep]
 	extendRegexp = true
 	lineNumber = true
-[mergetool "tool"]
-	trustExitCode = false
-	cmd = gvimdiff
 [push]
 	default = matching
