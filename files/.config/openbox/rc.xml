@@ -239,7 +239,7 @@
     </keybind>
     <keybind key="Print">
       <action name="Execute">
-        <command>scrot -u -e  'mv $f ~/Pictures/Screenshots'</command>
+        <command>scrot -u -e  'mv $f ~/Pictures/Screenshots/'</command>
       </action>
     </keybind>
     <keybind key="W-o">
