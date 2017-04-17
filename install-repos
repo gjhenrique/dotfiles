@@ -28,3 +28,6 @@ else
     echo "Installing tmux-themepack"
     git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
 fi
+
+systemctl --user enable emacs
+systemctl --user start emacs
