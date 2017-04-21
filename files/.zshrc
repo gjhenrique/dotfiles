@@ -10,5 +10,4 @@ source $HOME/.zsh_keybindings
 source $HOME/.git-prompt.sh
 source $HOME/.functions
 source $HOME/.aliases
-source $HOME/.export
 source $HOME/.langs
