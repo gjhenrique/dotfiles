@@ -11,3 +11,10 @@ source $HOME/.git-prompt.sh
 source $HOME/.functions
 source $HOME/.aliases
 source $HOME/.langs
+
+WORK_FILE=$HOME/Dropbox/Vida/work.sh
+if [ -f $WORK_FILE ];
+then
+    source $WORK_FILE
+fi
+

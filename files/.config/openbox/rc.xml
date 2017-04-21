@@ -178,7 +178,7 @@
     <!-- Custom keybinds -->
     <keybind key="W-f">
       <action name="Execute">
-        <execute>firefox</execute>
+        <execute>firefox-developer</execute>
       </action>
     </keybind>
     <keybind key="C-A-t">
@@ -855,6 +855,12 @@
       <focus>yes</focus>
       <decor>no</decor>
     </application>
+    <application title="Terminal">
+      <desktop>1</desktop>
+      <maximized>yes</maximized>
+      <focus>yes</focus>
+      <decor>no</decor>
+    </application>
     <application name="gnome-terminal-server">
       <maximized>yes</maximized>
       <focus>yes</focus>
@@ -866,7 +872,7 @@
         <monitor>2</monitor>
       </position>
     </application>
-    <application class="Firefox*">
+    <application title="Firefox*">
       <position force="no">
         <x>0</x>
         <y>0</y>
@@ -883,6 +889,12 @@
       <decor>no</decor>
     </application>
     <application title="Android Studio*">
+      <desktop>1</desktop>
+      <maximized>yes</maximized>
+      <focus>yes</focus>
+      <decor>no</decor>
+    </application>
+    <application title="*Chromium">
       <desktop>1</desktop>
       <maximized>yes</maximized>
       <focus>yes</focus>

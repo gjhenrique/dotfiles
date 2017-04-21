@@ -15,7 +15,7 @@ done
 
 # Notebook from work.
 # Complete keyboard
-if [ $(hostname) = 'dell-locaweb' ];
+if [ $(hostname) = 'pc_locaweb' ];
 then
     ACTIVATE_ALTWIN=1
 fi
