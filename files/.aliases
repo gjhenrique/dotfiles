@@ -12,5 +12,4 @@ alias sv="sudo gvim"
 alias ranger="TERM=xterm-256color ranger"
 alias nw="nmcli dev wifi"
 
-alias oldvim=/bin/vim
-alias vim="emacsclient -ct"
+alias em="emacsclient -ct"
