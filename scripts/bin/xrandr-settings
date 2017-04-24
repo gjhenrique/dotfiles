@@ -3,9 +3,11 @@
 VGA_MONITOR=$(xrandr | grep -w 'connected' | sed -n '3p' | cut -f 1 -d ' ')
 HDMI_MONITOR=$(xrandr | grep -w 'connected' | sed -n '2p' | cut -f 1 -d ' ')
 
-if [ $(hostname) = 'dell-locaweb' ];
+if [ $(hostname) = 'pc_locaweb' ];
 then
-    xrandr --output VGA1 --auto --primary --left-of LVDS1
+    xrandr --output DVI-1 --auto
+    xrandr --output DVI-0 --auto --primary --left-of DVI-1
+    xrandr --output DVI-1 --rotate left
     exit 0
 fi
 
