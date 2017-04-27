@@ -50,6 +50,9 @@ nmap <M-w> :bp <BAR> bd #<CR>
 :set guioptions-=r  "remove right-hand scroll bar
 :set guioptions-=L  "remove left-hand scroll bar
 
+noremap <Leader>y "+y
+noremap <Leader>p "+p
+
 if filereadable('.vimrc.local')
     source .vimrc.local
 endif
