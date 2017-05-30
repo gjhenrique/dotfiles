@@ -163,6 +163,5 @@ bindsym $mod+m exec xscreensaver-command -lock
 exec xscreensaver -nosplash
 exec albert
 exec /opt/bin/conky_setup
-exec redshift
 
 assign [class="conky"] 9
