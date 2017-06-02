@@ -9,7 +9,11 @@ playlists_dir = ~/Music/Playlists
 [mpd]
 hostname = ::
 
-[spotify]
+[spotify_tunigo]
 enabled = true
-username = <username>
-password = <password>
+
+[spotify]
+# Visit https://www.mopidy.com/authenticate/#spotify here to get the id and secret
+client_id = <client_id>
+client_secret = <client_secret>
+enabled = true
