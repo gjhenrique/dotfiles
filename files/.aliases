@@ -1,6 +1,6 @@
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias zshconfig="vim ~/.zshrc"
-alias zshsource="source ~/.zshrc"
+alias zshsource="source ~/.zprofile && source ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias vimsource="source ~/.vimrc"
 
