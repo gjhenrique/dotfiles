@@ -12,3 +12,5 @@
 	lineNumber = true
 [push]
 	default = matching
+[http "https://gopkg.in"]
+	followRedirects = true
