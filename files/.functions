@@ -24,3 +24,5 @@ fi
 if [[ "$SSH_AGENT_PID" == "" ]]; then
     eval "$(<~/.ssh-agent-thing)" > /dev/null
 fi
+
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
