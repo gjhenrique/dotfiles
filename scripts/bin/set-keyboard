@@ -26,4 +26,6 @@ else
     setxkbmap -option 'compose:menu,caps:swapescape,altwin:left_meta_win'
 fi
 
+setxkbmap -option 'terminate:ctrl_alt_bksp'
+
 (sleep 1 && setxkbmap br)
