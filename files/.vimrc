@@ -14,6 +14,9 @@ set hidden
 
 set splitright
 
+set clipboard=unnamed
+set clipboard=unnamedplus
+
 let mapleader=","
 map <M-1> :NERDTreeToggle<CR>
 cnoremap sudow w !sudo tee % >/dev/null
