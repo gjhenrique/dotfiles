@@ -30,4 +30,3 @@ case $session in
     i3 ) exec i3;;
     * ) exec $2;;
 esac
-
