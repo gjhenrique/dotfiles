@@ -29,5 +29,10 @@ else
     git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
 fi
 
-systemctl --user enable emacs
-systemctl --user start emacs
+if [ -e ~/.fzf ]; then
+    echo "fzf is already installed"
+else
+    echo "Installing fzf"
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install --no-update-rc --no-bash --no-zsh --no-fish
+fi

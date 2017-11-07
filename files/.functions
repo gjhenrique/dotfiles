@@ -26,3 +26,5 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
 fi
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
