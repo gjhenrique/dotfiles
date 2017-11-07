@@ -2,4 +2,6 @@
 .tern-port
 
 # Ruby
-vendor/ruby/
+/vendor/ruby/
+
+/vendor/bundler
