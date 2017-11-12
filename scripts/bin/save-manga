@@ -1,0 +1,2 @@
+find . -name '*.webp' | xargs -i dwebp '{}' -o '{}.png'
+rar a $(printf '%s\n' "${PWD##*/}").cbr '*.png'
