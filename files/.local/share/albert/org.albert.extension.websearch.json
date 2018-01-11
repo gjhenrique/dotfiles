@@ -1,0 +1,37 @@
+[
+  {
+    "enabled": true,
+    "iconPath": ":google",
+    "name": "Google",
+    "trigger": "gg ",
+    "url": "https://www.google.com/search?q=%s"
+  },
+  {
+    "enabled": true,
+    "iconPath": ":wikipedia",
+    "name": "Google",
+    "trigger": "wiki ",
+    "url": "https://en.wikipedia.org/w/index.php?search=%s"
+  },
+  {
+    "enabled": true,
+    "iconPath": ":youtube",
+    "name": "Youtube",
+    "trigger": "yt ",
+    "url": "https://www.youtube.com/results?search_query=%s"
+  },
+  {
+    "enabled": true,
+    "iconPath": ":github",
+    "name": "GitHub",
+    "trigger": "gh ",
+    "url": "https://github.com/search?utf8=✓&q=%s"
+  },
+  {
+    "enabled": true,
+    "iconPath": "/home/guilherme/.cache/albert/imdb-0.png",
+    "name": "imdb",
+    "trigger": "im",
+    "url": "http://www.imdb.com/find?ref_=nv_sr_fn&q=%s&s=all"
+  }
+]
