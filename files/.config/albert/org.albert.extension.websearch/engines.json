@@ -1,0 +1,56 @@
+[
+  {
+    "iconPath": ":google",
+    "name": "Google",
+    "trigger": "gg ",
+    "url": "https://www.google.com/search?q=%s"
+  },
+  {
+    "iconPath": ":youtube",
+    "name": "Youtube",
+    "trigger": "yt ",
+    "url": "https://www.youtube.com/results?search_query=%s"
+  },
+  {
+    "iconPath": ":amazon",
+    "name": "Amazon",
+    "trigger": "ama ",
+    "url": "http://www.amazon.com/s/?field-keywords=%s"
+  },
+  {
+    "iconPath": ":aur",
+    "name": "AUR",
+    "trigger": "aur ",
+    "url": "https://aur.archlinux.org/packages/?O=0&K=%s"
+  },
+  {
+    "iconPath": ":arch",
+    "name": "Arch Linux Packages",
+    "trigger": "arch ",
+    "url": "https://www.archlinux.org/packages/?sort=&q=%s&maintainer=&flagged="
+  },
+  {
+    "iconPath": ":github",
+    "name": "GitHub",
+    "trigger": "gh ",
+    "url": "https://github.com/search?utf8=✓&q=%s"
+  },
+  {
+    "iconPath": ":wikipedia",
+    "name": "Wikipedia",
+    "trigger": "wiki ",
+    "url": "https://en.wikipedia.org/w/index.php?search=%s"
+  },
+  {
+    "iconPath": ":wolfram",
+    "name": "Wolfram Alpha",
+    "trigger": "=",
+    "url": "https://www.wolframalpha.com/input/?i=%s"
+  },
+  {
+    "iconPath": ":duckduckgo",
+    "name": "DuckDuckGo",
+    "trigger": "dd ",
+    "url": "https://duckduckgo.com/?q=%s"
+  }
+]
