@@ -58,5 +58,17 @@
         "name": "Ruby Gems",
         "trigger": "ruby ",
         "url": "https://rubygems.org/search?utf8=%E2%9C%93&query=%s"
+    },
+    {
+        "iconPath": "<trigger>",
+        "name": "Gitlab - Iaas",
+        "trigger": "iaas ",
+        "url": "https://code.locaweb.com.br/search?utf8=%E2%9C%93&search=%s&group_id=3&project_id=&repository_ref="
+    },
+    {
+        "iconPath": "<trigger>",
+        "name": "Cegonha",
+        "trigger": "cg ",
+        "url": "http://cegonha.locaweb.com.br/search/show?utf8=%E2%9C%93&search_text=%s"
     }
 ]
