@@ -88,5 +88,11 @@
         "name": "My Gitlab",
         "trigger": "gl ",
         "url": "https://gitlab.com/?utf8=%E2%9C%93&name=%s&sort=latest_activity_desc"
+    },
+    {
+        "iconPath": "<trigger>",
+        "name": "My Github",
+        "trigger": "mgh",
+        "url": "https://github.com/gjhenrique?utf8=%E2%9C%93&tab=repositories&q=%s&type=&language="
     }
 ]
