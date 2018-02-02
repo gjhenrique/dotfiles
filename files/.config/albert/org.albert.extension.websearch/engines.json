@@ -94,5 +94,11 @@
         "name": "My Github",
         "trigger": "mgh",
         "url": "https://github.com/gjhenrique?utf8=%E2%9C%93&tab=repositories&q=%s&type=&language="
+    },
+    {
+        "iconPath": "<trigger>",
+        "name": "Query npm packages",
+        "trigger": "npm ",
+        "url": "https://www.npmjs.com/search?q=%s"
     }
 ]

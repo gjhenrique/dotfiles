@@ -92,6 +92,8 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+# Conky
+bindsym $mod+q workspace 11
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -163,6 +165,7 @@ bindsym $mod+m exec xscreensaver-command -lock
 exec xscreensaver -nosplash
 exec albert
 exec /opt/bin/conky_setup
+exec redshift
 
 assign [title="Emacs - Primary"] 1
 assign [title="Emacs - Secondary"] 2
@@ -171,7 +174,7 @@ assign [title="Emacs - Git"] 7
 assign [title="Emacs - Compilation"] 8
 assign [class="Firefox"] 3
 assign [class="Gnome-terminal"] 4
-assign [class="conky"] 9
+assign [class="conky"] 11
 
 assign [title="Postman"] 5
 assign [class="okular"] 5

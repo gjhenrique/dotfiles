@@ -1,5 +1,6 @@
 # JS
 .tern-port
+.my-env
 
 # Ruby
 /vendor/ruby/
