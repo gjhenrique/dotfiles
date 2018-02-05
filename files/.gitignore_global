@@ -2,6 +2,8 @@
 .tern-port
 .my-env
 
+backport_ar.rb
+
 # Ruby
 /vendor/ruby/
 
