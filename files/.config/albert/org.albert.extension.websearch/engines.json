@@ -106,5 +106,11 @@
         "name": "Query melpa libraries",
         "trigger": "ml ",
         "url": "https://melpa.org/#/?q=%s"
+    },
+    {
+        "iconPath": "<trigger>",
+        "name": "Can i Use",
+        "trigger": "can ",
+        "url": "https://caniuse.com/#search=calc"
     }
 ]
