@@ -140,6 +140,10 @@ mode "volume" {
   bindsym n exec mpc next
   bindsym m exec mpc prev
 
+  bindsym o exec sp play
+  bindsym j exec sp next
+  bindsym h exec sp prev
+
   bindsym Return mode "default"
   bindsym Escape mode "default"
   bindsym q mode "default"
@@ -175,6 +179,8 @@ assign [title="Emacs - Compilation"] 8
 assign [class="Firefox"] 3
 assign [class="Gnome-terminal"] 4
 assign [class="conky"] 11
+assign [title="Developer Tools.*"] 10
+
 
 assign [title="Postman"] 5
 assign [class="okular"] 5
