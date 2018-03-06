@@ -1,5 +1,6 @@
 # JS
 .tern-port
+tern-project
 .my-env
 
 backport_ar.rb
