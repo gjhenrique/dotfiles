@@ -1,6 +1,6 @@
 # JS
 .tern-port
-tern-project
+.tern-project
 .my-env
 
 backport_ar.rb
@@ -8,4 +8,7 @@ backport_ar.rb
 # Ruby
 /vendor/ruby/
 
+/vendor/bundle
 /vendor/bundler
+
+jsconfig.json

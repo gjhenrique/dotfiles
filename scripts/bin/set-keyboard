@@ -2,7 +2,8 @@
 
 #045e:0745 Microsoft Keyboard (Home)
 #1a2c:0c21 Teclado de Londrina
-declare -a devices=("045e:0745" "1a2c:0c21")
+#declare -a devices=("045e:0745" "1a2c:0c21")
+declare -a devices=("1a2c:0c21")
 
 ACTIVATE_ALTWIN=0
 
