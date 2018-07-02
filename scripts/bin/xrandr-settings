@@ -8,5 +8,5 @@ then
     xrandr --output LVDS1 --off
     xrandr --output VGA1 --auto
     xrandr --output HDMI1 --auto
-    xrandr --output HDMI1 --auto --primary --right-of VGA1
+    xrandr --output HDMI1 --auto --primary --righ-of VGA1
 fi

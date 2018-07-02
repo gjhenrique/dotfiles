@@ -4,7 +4,7 @@ if [ -d ~/.emacs.d ]; then
     echo "~/.emacs.d already exists" 1>&2
 else
     echo "Installing emacs development environment"
-    git clone --recursive git@gitlab.com:gjhenrique/zezin.emacs.git ~/.emacs.d
+    git clone --recursive git@github.com:gjhenrique/zezin.emacs.git ~/.emacs.d
 fi
 
 if [ -d ~/.oh-my-zsh ]; then
