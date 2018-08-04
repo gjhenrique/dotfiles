@@ -1,6 +1,9 @@
 #!/bin/bash
 
 mkdir -p $HOME/.config/albert
+mkdir -p $HOME/.local/share/applications
+mkdir -p $HOME/.config/systemd/user
+mkdir -p $HOME/.bundle
 
 stow files -t ~
 
