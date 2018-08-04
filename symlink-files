@@ -3,6 +3,9 @@
 mkdir -p $HOME/.config/albert
 mkdir -p $HOME/.local/share/applications
 mkdir -p $HOME/.config/systemd/user
+mkdir -p $HOME/.config/albert
+mkdir -p $HOME/.config/i3
+mkdir -p $HOME/.config/mopidy
 mkdir -p $HOME/.bundle
 
 stow files -t ~
