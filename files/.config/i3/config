@@ -171,7 +171,7 @@ bindsym $mod+m exec xscreensaver-command -lock
 exec xscreensaver -nosplash
 exec albert
 exec /opt/bin/conky_setup
-exec redshift
+exec redshift -l 23:51
 
 assign [title="Emacs - Primary"] 1
 assign [title="Emacs - Secondary"] 2
