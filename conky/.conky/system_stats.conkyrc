@@ -99,7 +99,7 @@ ${color2}SYSTEM ${hr 2}
 ${color}${voffset 5}${alignc -8}Asus K45VM-VX105H
 ${voffset 5}Uptime: ${alignr}${uptime}${offset 10}
 ${voffset 5}Kernel: ${alignr}${kernel}
-${voffset 5}Home: ${fs_used /home} / ${fs_size /home} ${alignr} ${fs_used_perc /home}%
+${voffset 5}Home: ${fs_used /home/guilherme/external} / ${fs_size /home/guilherme/external} ${alignr} ${fs_used_perc /home/guilherme/external}%
 ${voffset 5}Root: ${fs_used /} / ${fs_size /} ${alignr} ${fs_used_perc /}%
 ${voffset 5}Battery: ${battery_percent BAT1}% ${alignr} ${battery_time BAT1}
 ${voffset 5}Load Average: ${alignr} ${exec uptime | awk -F'[a-z]:' '{ print $2}'}

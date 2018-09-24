@@ -112,5 +112,11 @@
         "name": "Can i Use",
         "trigger": "can ",
         "url": "https://caniuse.com/#search=%s"
+    },
+    {
+      "iconPath": "<trigger>",
+      "name": "Clark Jira",
+      "trigger": "jira ",
+      "url": "https://clarkteam.atlassian.net/projects/JCLARK/issues/%s"
     }
 ]
