@@ -1,32 +1,8 @@
 #! /bin/bash
 
-#045e:0745 Microsoft Keyboard (Home)
-#1a2c:0c21 Teclado de Londrina
-#declare -a devices=("045e:0745" "1a2c:0c21")
-declare -a devices=("1a2c:0c21")
+setxkbmap br -option 'compose:menu,caps:swapescape,altwin:left_meta_win,terminate:ctrl_alt_bksp'
 
-ACTIVATE_ALTWIN=0
-
-for i in ${!devices[@]};
-do
-    if (( $(lsusb | grep ${devices[$i]} | wc -l) >= 1)); then
-        (( ACTIVATE_ALTWIN++ ))
-    fi
-done
-
-# Notebook from work.
-# Complete keyboard
-if [ $(hostname) = 'pc_locaweb' ];
-then
-    ACTIVATE_ALTWIN=1
-fi
-
-if (( $ACTIVATE_ALTWIN >= 1 )); then
-    setxkbmap -option 'compose:menu,caps:swapescape,altwin:left_meta_win,altwin:meta_alt'
-else
-    setxkbmap -option 'compose:menu,caps:swapescape,altwin:left_meta_win'
-fi
-
-setxkbmap -option 'terminate:ctrl_alt_bksp'
-
-(sleep 1 && setxkbmap br)
+# Got the keys with xmodmap -pke command
+xmodmap -e 'keycode  32 = o O o O odiaeresis Odiaeresis oslash'
+xmodmap -e 'keycode  30 = u U u U udiaeresis Udiaeresis downarrow'
+xmodmap -e 'keycode  38 = a A a A adiaeresis Adiaeresis ae'
