@@ -12,3 +12,6 @@ backport_ar.rb
 /vendor/bundler
 
 jsconfig.json
+
+# ag-specific
+.ignore

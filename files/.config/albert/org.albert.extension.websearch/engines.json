@@ -125,5 +125,4 @@
     "trigger": "cb ",
     "url": "https://github.com/ClarkSource/application/pulls?utf8=%E2%9C%93&q=head%3A%s+"
   }
-
 ]
