@@ -124,5 +124,11 @@
     "name": "Clark Github Branch",
     "trigger": "cb ",
     "url": "https://github.com/ClarkSource/application/pulls?utf8=%E2%9C%93&q=head%3A%s+"
+  },
+  {
+    "iconPath": "<trigger>",
+    "name": "Clark Confluence",
+    "trigger": "cw ",
+    "url": "https://clarkteam.atlassian.net/wiki/dosearchsite.action?cql=siteSearch+~+%22%s%22&queryString=%s+"
   }
 ]
