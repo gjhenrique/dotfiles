@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Switch Theme
+Comment=Switch theme between dark and light
+Exec=/opt/bin/switch_theme
+Icon=redshift-status-on
+Type=Application
+Terminal=false
+Categories=Development;TextEditor;
+StartupWMClass=Emacs
+Keywords=Text;Editor;
