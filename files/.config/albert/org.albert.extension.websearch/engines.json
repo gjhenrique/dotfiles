@@ -130,5 +130,11 @@
     "name": "Clark Confluence",
     "trigger": "cw ",
     "url": "https://clarkteam.atlassian.net/wiki/dosearchsite.action?cql=siteSearch+~+%22%s%22&queryString=%s+"
+  },
+  {
+    "iconPath": "<trigger>",
+    "name": "Insiders poc",
+    "trigger": "ins ",
+    "url": "https://poc-test.insiders.cloud/smartfix/Clients/Verifier/#/Verifier/%s"
   }
 ]
