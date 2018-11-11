@@ -13,4 +13,7 @@ alias ranger="TERM=xterm-256color ranger"
 alias nw="nmcli dev wifi"
 alias mp="nohup /usr/bin/python2 /usr/bin/mopidy --config /home/guilherme/.config/mopidy/mopidy.conf > /dev/null 2>&1 &"
 
+alias be="bundle exec "
+alias bs="bundle exec spring"
+
 alias em="emacsclient -ct"
