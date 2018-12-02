@@ -3,7 +3,7 @@ source $HOME/.git-prompt.sh
 source $HOME/.functions
 source $HOME/.aliases
 
-WORK_FILE=$HOME/Dropbox/Vida/work.sh
+WORK_FILE=$HOME/Life/work.sh
 
 setopt hist_ignore_all_dups
 

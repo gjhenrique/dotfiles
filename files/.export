@@ -29,3 +29,8 @@ export PATH="$YARN_HOME/bin:$GOBIN:$FIREFOX_HOME:$NDK_HOME:$MAVEN_HOME/bin:$JAVA
 export EDITOR='vim'
 export HISTSIZE=999999999
 export SAVEHIST=$HISTSIZE
+
+export PGDATABASE=postgres
+
+export PAGER=less
+export LESS="-iMSx4 -FX"

@@ -4,7 +4,10 @@ setxkbmap br -option 'compose:menu,caps:swapescape,altwin:left_meta_win,terminat
 
 # Got the keys with xmodmap -pke command
 xmodmap -e 'clear Lock'
-xmodmap -e "keycode  9 = apostrophe NoSymbol apostrophe NoSymbol"
-xmodmap -e 'keycode  32 = o O o O odiaeresis Odiaeresis oslash'
-xmodmap -e 'keycode  30 = u U u U udiaeresis Udiaeresis downarrow'
-xmodmap -e 'keycode  38 = a A a A adiaeresis Adiaeresis ae'
+xmodmap -e "keycode 9 = apostrophe NoSymbol apostrophe NoSymbol"
+xmodmap -e 'keycode 32 = o O o O odiaeresis Odiaeresis oslash'
+xmodmap -e 'keycode 30 = u U u U udiaeresis Udiaeresis downarrow'
+xmodmap -e 'keycode 38 = a A a A adiaeresis Adiaeresis ae'
+xmodmap -e 'keycode 40 = d D d D bar backslash eth ETH d D eth ETH'
+xmodmap -e 'keycode 52 = z Z z Z bar backslash'
+
