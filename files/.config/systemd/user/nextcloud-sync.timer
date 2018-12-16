@@ -1,0 +1,10 @@
+[Unit]
+Description=Sync nextcloud folder
+
+[Timer]
+OnUnitActiveSec=15m
+OnUnitInactiveSec=2h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
