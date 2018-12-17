@@ -12,3 +12,4 @@ fi
 # ------------
 source "$HOME/.fzf/shell/key-bindings.zsh"
 
+export FZF_DEFAULT_COMMAND='ag -l -g ""'
