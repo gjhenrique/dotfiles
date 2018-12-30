@@ -3,7 +3,7 @@ Description=Sync nextcloud folder
 
 [Timer]
 OnStartupSec=10m
-OnUnitActiveSec=15m
+OnUnitActiveSec=2h
 OnUnitInactiveSec=2h
 Persistent=true
 
