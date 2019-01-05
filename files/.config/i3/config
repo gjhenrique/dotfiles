@@ -151,27 +151,27 @@ mode "volume" {
   bindsym q mode "default"
 }
 
-bindsym $mod+u mode "volume"
+ bindsym $mod+u mode "volume"
 
-mode "launcher" {
-  bindsym f exec firefox
-  bindsym p exec pcmanfm
+mode "bright" {
+  bindsym u exec /usr/bin/xbacklight -inc 5
+  bindsym i exec /usr/bin/xbacklight -dec 5
+  bindsym v exec /usr/bin/xbacklight -set 5
+  bindsym x exec /usr/bin/xbacklight -set 100
 
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
   bindsym q mode "default"
 }
 
-bindsym $mod+y mode "launcher"
+bindsym $mod+y mode "bright"
 
 # shortcut
 bindsym $mod+m exec xscreensaver-command -lock
 
 # startup applications
-exec xscreensaver -nosplash
-exec albert
-exec /opt/bin/conky_setup
 exec redshift
+exec albert
+exec xscreensaver -nosplash
+exec /opt/bin/conky_setup
 
 assign [title="Emacs - Primary"] 1
 assign [title="Emacs - Secondary"] 2
@@ -182,7 +182,6 @@ assign [class="Firefox"] 3
 assign [class="Gnome-terminal"] 4
 assign [class="conky"] 11
 assign [title="Developer Tools.*"] 10
-
 
 assign [title="Postman"] 5
 assign [class="okular"] 5
