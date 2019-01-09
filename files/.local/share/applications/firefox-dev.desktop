@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=Firefox Developer
+GenericName=Web Browser
+Comment=Access the Internet
+Exec=/opt/firefox/firefox
+StartupNotify=true
+Terminal=false
+Icon=/opt/firefox/browser/chrome/icons/default/default16.png
+Type=Application
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
+Actions=new-window;new-private-window;

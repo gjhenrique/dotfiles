@@ -96,7 +96,6 @@ bindsym $mod+0 workspace 10
 bindsym $mod+q workspace 11
 
 bindsym $mod+Shift+s sticky toggle
-bindsym $mod+Shift+v fullscreen disable; floating enable; resize set 500 250; sticky enable; move window to position 3350 835
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
