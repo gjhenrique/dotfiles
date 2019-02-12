@@ -14,3 +14,5 @@
 	default = matching
 [http "https://gopkg.in"]
 	followRedirects = true
+[github]
+	user = gjhenrique@gmail.com
