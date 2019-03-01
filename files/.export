@@ -13,7 +13,7 @@ else
 fi
 
 export YARN_HOME="/$HOME/.yarn"
-export GOPATH="$HOME/Projects/go"
+export GOPATH="$HOME/Projects/golang"
 export GOBIN=$GOPATH/bin
 export GRADLE_HOME="/opt/gradle"
 export VAGRANT_HOME="/opt/vagrant"
