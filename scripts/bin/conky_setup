@@ -1,3 +1,0 @@
-#! /bin/sh
-killall conky
-conky -c ~/.conky/system_stats.conkyrc >/dev/null 2>/dev/null &

@@ -1,6 +1,6 @@
 export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
 export LESS=' -R'
-export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export MAVEN_HOME="/opt/maven/"
 export ANT_HOME="/opt/ant"
 export ANDROID_HOME="/opt/sdk-android" 
@@ -24,10 +24,22 @@ export NDK_HOME="/opt/android-ndk"
 export FIREFOX_HOME="/opt/firefox"
 
 export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
-export PATH="$YARN_HOME/bin:$HOME/.config/yarn/global/node_modules/.bin:$GOBIN:$FIREFOX_HOME:$NDK_HOME:$MAVEN_HOME/bin:$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$SCALA_HOME/bin:$SCRIPTS_HOME:$GRADLE_HOME/bin:$VAGRANT_HOME/bin:$ANT_HOME/bin:$ACTIVATOR_HOME:$SBT_HOME/bin:$AVR_HOME/bin:$PATH"
+export PATH="$YARN_HOME/bin:$HOME/.config/yarn/global/node_modules/.bin:$GOBIN:$FIREFOX_HOME:$NDK_HOME:$MAVEN_HOME/bin:$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$SCALA_HOME/bin:$SCRIPTS_HOME:$GRADLE_HOME/bin:$VAGRANT_HOME/bin:$ANT_HOME/bin:$ACTIVATOR_HOME:$SBT_HOME/bin:$AVR_HOME/bin:$MAVEN_HOME/bin:$PATH"
 
 export EDITOR='vim'
 export HISTSIZE=999999999
 export SAVEHIST=$HISTSIZE
 
 export PGDATABASE=postgres
+
+WORK_FILE=$HOME/Life/work.sh
+if [ -f $WORK_FILE ];
+then
+    source $WORK_FILE
+fi
+
+PC_SETTINGS_FILE=$HOME/.settings.sh
+if [ -f $PC_SETTINGS_FILE ];
+then
+    source $PC_SETTINGS_FILE
+fi

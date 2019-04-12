@@ -17,3 +17,4 @@ alias be="bundle exec "
 alias bs="bundle exec spring"
 
 alias em="emacsclient -ct"
+alias k="kubectl"

@@ -163,14 +163,13 @@ mode "bright" {
   bindsym q mode "default"
 }
 
+no_focus [class="."]
+
 # shortcut
 bindsym $mod+m exec xscreensaver-command -lock
 
 # startup applications
-exec redshift
-exec albert
-exec xscreensaver -nosplash
-exec /opt/bin/conky_setup
+exec /opt/bin/init_apps
 
 assign [title="Emacs - Primary"] 1
 assign [title="Emacs - Secondary"] 2

@@ -1,0 +1,14 @@
+#! /bin/sh
+
+killall redshift
+killall conky
+killall albert
+
+if [ "$MEDIA_CENTER" != true ]; then
+    redshift >/dev/null 2>/dev/null &
+    xscreensaver -nosplash >/dev/null 2>/dev/null &
+fi
+
+albert >/dev/null 2>/dev/null &
+
+conky -c ~/.conky/system_stats.conkyrc >/dev/null 2>/dev/null &
