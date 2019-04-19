@@ -163,8 +163,6 @@ mode "bright" {
   bindsym q mode "default"
 }
 
-no_focus [class="."]
-
 # shortcut
 bindsym $mod+m exec xscreensaver-command -lock
 
