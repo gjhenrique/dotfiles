@@ -142,5 +142,11 @@
     "trigger": "jenkins ",
     "name": "Jenkins search",
     "iconPath": "<trigger>"
+  },
+  {
+    "url": "https://github.com/search?q=org%3AClarkSource+%s&unscoped_q=%s&type=Code",
+    "trigger": "clark ",
+    "name": "Clark Search",
+    "iconPath": "<trigger>"
   }
 ]
