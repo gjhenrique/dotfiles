@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Refresh Albert
+Comment=Refresh albert
+Exec=/opt/bin/refresh-albert
+Icon=albert
+Type=Application
+Terminal=false

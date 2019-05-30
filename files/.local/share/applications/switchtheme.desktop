@@ -6,5 +6,4 @@ Icon=redshift-status-on
 Type=Application
 Terminal=false
 Categories=Development;TextEditor;
-StartupWMClass=Emacs
 Keywords=Text;Editor;
