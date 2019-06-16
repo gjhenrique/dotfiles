@@ -36,5 +36,3 @@ else
     ~/.asdf/bin/asdf plugin-add lua https://github.com/Stratus3D/asdf-lua.git
     ~/.asdf/bin/asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 fi
-
-

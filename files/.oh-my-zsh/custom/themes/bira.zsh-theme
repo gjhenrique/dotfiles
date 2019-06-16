@@ -9,6 +9,7 @@ local user_host='%{$terminfo[bold]$fg_bold[yellow]%}%n%{$reset_color%} at %{$ter
 local current_dir='%{$terminfo[bold]$fg_bold[magenta]%} %~%{$reset_color%}'
 local git_branch='%{$fg_bold[cyan]%}$(__git_ps1)%{$reset_color%}'
 local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}%? ➜ %s)%{$reset_color%}"
+local kube='%{$terminfo[bold]$(kube_ps1)'
 
-PROMPT="${user_host} in${current_dir} ${git_branch}
+PROMPT="${user_host} in${current_dir} ${git_branch} ${kube}
 ${ret_status}"
