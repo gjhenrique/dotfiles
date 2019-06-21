@@ -36,6 +36,12 @@ export PGDATABASE=postgres
 export KUBE_PS1_SYMBOL_ENABLE=false
 export KUBE_PS1_ENABLED=off
 
+# AWS PS1
+unset RPROMPT
+# prefix and suffix Controlled by theme
+export ZSH_THEME_AWS_PREFIX=""
+export ZSH_THEME_AWS_SUFFIX=""
+
 WORK_FILE=$HOME/Life/work.sh
 if [ -f $WORK_FILE ];
 then

@@ -10,7 +10,7 @@ if [[ $TERM == "dumb" ]]; then	# in emacs
 else
     ZSH=$HOME/.oh-my-zsh
     ZSH_THEME="bira"
-    plugins=(git gem history-substring-search systemd)
+    plugins=(git gem history-substring-search systemd aws)
     source $ZSH/oh-my-zsh.sh
 fi
 
