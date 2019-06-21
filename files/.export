@@ -33,6 +33,7 @@ export SAVEHIST=$HISTSIZE
 export PGDATABASE=postgres
 
 # KUBE_PS1 is disabled by default. call kubeon to enable it
+export KUBE_PS1_SYMBOL_ENABLE=false
 export KUBE_PS1_ENABLED=off
 
 WORK_FILE=$HOME/Life/work.sh
