@@ -9,8 +9,6 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS=1
 
-# Remove RPROMPT created by aws plugin
-unset RPROMPT
 # prefix and suffix Controlled by theme
 ZSH_THEME_AWS_PREFIX=""
 ZSH_THEME_AWS_SUFFIX=""

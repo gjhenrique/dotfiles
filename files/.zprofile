@@ -1,3 +1,4 @@
+
 if [[ $TERM == "dumb" ]]; then	# in emacs
     PS1='%(?..[%?])%!:%~%# '
     # for tramp to not hang, need the following. cf:
@@ -11,6 +12,7 @@ else
     ZSH=$HOME/.oh-my-zsh
     ZSH_THEME="bira"
     plugins=(git gem history-substring-search systemd aws)
+    export SHOW_AWS_PROMPT=false
     source $ZSH/oh-my-zsh.sh
 fi
 
