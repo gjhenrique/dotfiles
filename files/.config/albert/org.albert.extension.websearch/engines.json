@@ -114,7 +114,7 @@
     "iconPath": "<trigger>"
   },
   {
-    "url": "https://clarkteam.atlassian.net/browse/%s",
+    "url": "https://clarkteam.atlassian.net/browse/%s?oldIssueView=true",
     "trigger": "cj ",
     "name": "Clark Jira",
     "iconPath": "<trigger>"
