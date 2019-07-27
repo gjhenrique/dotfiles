@@ -1,4 +1,4 @@
-sudo pacman -Syu tar curl wget emacs dunst jq meld openssl-1.0 pulseaudio redshift strace scrot tree ttf-dejavu unp unzip xclip rofi noto-fonts-emoji
+sudo pacman -Syu tar curl wget emacs dunst jq meld openssl-1.0 pulseaudio redshift strace scrot tree ttf-dejavu unp unzip xclip rofi noto-fonts-emoji mopidy mpc ncmpcpp
 
 # offlineimap
 # notmuch

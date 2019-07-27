@@ -2,18 +2,19 @@
 config_file = ~/.config/mopidy/logging.conf
 debug_file = ~/.config/mopidy/debug.log
 
-[m3u]
+[local]
 enabled = true
-playlists_dir = ~/Music/Playlists
+media_dir = ~/Documents/Music
+library = json
 
 [mpd]
 hostname = ::
 
 [spotify_tunigo]
-enabled = true
+enabled = false
 
 [spotify]
 # Visit https://www.mopidy.com/authenticate/#spotify here to get the id and secret
 client_id = <client_id>
 client_secret = <client_secret>
-enabled = true
+enabled = false

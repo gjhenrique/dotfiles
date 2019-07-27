@@ -152,7 +152,7 @@ mode "volume" {
   bindsym q mode "default"
 }
 
- bindsym $mod+u mode "volume"
+bindsym $mod+u mode "volume"
 
 mode "bright" {
   bindsym u exec /usr/bin/xbacklight -inc 5
