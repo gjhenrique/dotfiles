@@ -106,29 +106,10 @@ ${voffset 5}Load Average: ${alignr} ${exec uptime | awk -F'[a-z]:' '{ print $2}'
 
 
 ${color2}MEMORY ${hr 2}
-${voffset 5}${color}${outlinecolor black}${color1}${memgraph FFFF00 FF0000}${outlinecolor}${color}
+${outlinecolor}${color}
 ${voffset 5}RAM: $memperc% ${alignr} $mem / $cached / $memmax 
 ${font DejaVu Sans:size=7}${voffset 5} ${top_mem name 1} ${alignr}${top_mem mem_res 1}    
 ${voffset 2} ${top_mem name 2} ${alignr}${top_mem mem_res 2}    
 ${voffset 2} ${top_mem name 3} ${alignr}${top_mem mem_res 3}   
 ${voffset 2} ${top_mem name 4} ${alignr}${top_mem mem_res 4}   
 ${voffset 2} ${top_mem name 5} ${alignr}${top_mem mem_res 5}   ${font}
-
-${color2}NETWORK ${hr 2}
-${if_existing /sys/class/net/enp4s0/operstate}
-${voffset 5}Down: ${downspeed enp4s0} ${alignr}Up: ${upspeed enp4s0}
-${downspeedgraph enp4s0 30,120 FFFF00 FF0000} ${alignr}${upspeedgraph enp4s0 30,120 FFFF00 FF0000}$color
-Total: ${totaldown enp4s0} ${alignr}Total: ${totalup enp4s0}
-${endif}
-${if_existing /sys/class/net/enp2s0/operstate}
-${voffset 5}Down: ${downspeed enp2s0} ${alignr}Up: ${upspeed enp2s0}
-${downspeedgraph enp2s0 30,120 FFFF00 FF0000} ${alignr}${upspeedgraph enp2s0 30,120 FFFF00 FF0000}$color
-Total: ${totaldown enp2s0} ${alignr}Total: ${totalup enp2s0}
-${endif}
-
-${color2}NOW PLAYING ${hr 2}
-${voffset 5}${color}${alignc}${mpd_artist} - "${mpd_title}"
-${voffset 5}${alignc}${mpd_album}
-${voffset 5}${alignc}${mpd_bar 3,150}
-${voffset 5}${alignc}${mpd_elapsed}/${mpd_length}
-
