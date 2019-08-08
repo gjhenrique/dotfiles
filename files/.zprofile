@@ -18,3 +18,5 @@ fi
 
 source $HOME/.export
 source $HOME/.langs
+
+export PATH="$HOME/.cargo/bin:$PATH"

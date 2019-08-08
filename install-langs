@@ -17,16 +17,6 @@ else
     echo "nvm ls-remote to install new versions"
 fi
 
-if [ -d ~/.pyenv ]; then
-    echo "pyenv is already installed"
-else
-    echo "Installing pyenv"
-    git clone https://github.com/yyuu/pyenv.git ~/.pyenv
-    git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
-    git clone git://github.com/concordusapps/pyenv-implict.git ~/.pyenv/plugins/pyenv-implict
-    echo "pyenv install -l to install new versions"
-fi
-
 if [ -d ~/.asdf ]; then
     echo "asdf is already installed"
 else
@@ -36,3 +26,5 @@ else
     ~/.asdf/bin/asdf plugin-add lua https://github.com/Stratus3D/asdf-lua.git
     ~/.asdf/bin/asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 fi
+
+# https://rustup.rs/
