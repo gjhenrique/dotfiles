@@ -9,6 +9,7 @@ backport_ar.rb
 /vendor/ruby/
 
 /vendor/bundle
+/vendor/bundle_alpine
 /vendor/bundler
 
 jsconfig.json

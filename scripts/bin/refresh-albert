@@ -1,10 +1,12 @@
 #!/bin/bash
 
+FF_DIR="$HOME/.cache/albert/org.albert.extension.firefoxbookmarks"
+
 for db in $(find ~/.mozilla/firefox -name places.sqlite)
 do
     folder=$(dirname $db)
-    cp $folder/places.sqlite $folder/places_albert.sqlite
-    cp $folder/places.sqlite-wal $folder/places_albert.sqlite-wal
+    cp $folder/places.sqlite $FF_DIR/places_albert.sqlite
+    cp $folder/places.sqlite-wal $FF_DIR/places_albert.sqlite-wal
 done
 
 killall albert || true
