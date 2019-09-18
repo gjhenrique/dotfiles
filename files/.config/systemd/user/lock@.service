@@ -1,3 +1,5 @@
+# WARNING!!!
+# This file should be on /usr/lib/system instead
 [Unit]
 Description=User resume actions
 Before=sleep.target
