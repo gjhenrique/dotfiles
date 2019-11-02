@@ -6,7 +6,7 @@
 	trustctime = false
 	excludesfile = ~/.gitignore_global
 [color]
-	ui = true
+		ui = true
 [grep]
 	extendRegexp = true
 	lineNumber = true
