@@ -2,3 +2,4 @@
 BUNDLE_PATH: "vendor/bundle"
 BUNDLE_CONSOLE: "pry"
 BUNDLE_GIT__ALLOW_INSECURE: "true"
+BUNDLE_JOBS: "4"
