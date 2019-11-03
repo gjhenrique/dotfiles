@@ -1,18 +1,27 @@
 [user]
 	email = gjhenrique@gmail.com
 	name = Guilherme Henrique
+
 [core]
 	editor = vim
 	trustctime = false
 	excludesfile = ~/.gitignore_global
+
 [color]
-		ui = true
+	ui = true
+
 [grep]
 	extendRegexp = true
 	lineNumber = true
+
 [push]
 	default = matching
+
 [http "https://gopkg.in"]
 	followRedirects = true
+
 [github]
 	user = gjhenrique@gmail.com
+
+[includeIf "gitdir:~/Projects/xing/"]
+    path = .xing.gitconfig
