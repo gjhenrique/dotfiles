@@ -28,6 +28,10 @@ export CARGO_HOME="/$HOME/.cargo"
 export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/local/sbin"
 export PATH="$PIP_HOME:$CARGO_HOME/bin:$YARN_HOME/bin:$HOME/.config/yarn/global/node_modules/.bin:$GOBIN:$FIREFOX_HOME:$NDK_HOME:$MAVEN_HOME/bin:$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$SCALA_HOME/bin:$SCRIPTS_HOME:$GRADLE_HOME/bin:$VAGRANT_HOME/bin:$ANT_HOME/bin:$ACTIVATOR_HOME:$SBT_HOME/bin:$AVR_HOME/bin:$MAVEN_HOME/bin:$PATH"
 
+if [ "$(uname 2> /dev/null)" == "Darwin" ]; then
+    export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
+fi
+
 export EDITOR='vim'
 export HISTSIZE=999999999
 export SAVEHIST=$HISTSIZE
