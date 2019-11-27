@@ -169,11 +169,11 @@ bindsym $mod+m exec xscreensaver-command -lock
 # startup applications
 exec /opt/bin/init_apps
 
-assign [title="Emacs - Primary"] 1
-assign [title="Emacs - Secondary"] 2
-assign [title="Emacs - Notes"] 6
-assign [title="Emacs - Git"] 7
-assign [title="Emacs - Compilation"] 8
+assign [title="EmacsPrimary"] 1
+assign [title="EmacsSecondary"] 2
+assign [title="EmacsNotes"] 6
+assign [title="EmacsGit"] 7
+assign [title="EmacsCompilation"] 8
 assign [class="Firefox"] 3
 assign [class="Gnome-terminal"] 4
 assign [class="conky"] 11

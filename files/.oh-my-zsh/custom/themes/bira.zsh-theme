@@ -2,7 +2,7 @@
 
 # KUBE_PS1 is disabled by default. call kubeon to enable it
 KUBE_PS1_SYMBOL_ENABLE=false
-KUBE_PS1_ENABLED=off
+KUBE_PS1_ENABLED=on
 
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
