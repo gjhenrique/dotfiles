@@ -1,11 +1,3 @@
 #! /bin/bash
 
-setxkbmap br -option 'compose:menu,caps:swapescape,altwin:left_meta_win,terminate:ctrl_alt_bksp'
-
-# Got the keys with xmodmap -pke command
-xmodmap -e 'clear Lock'
-xmodmap -e "keycode 9 = apostrophe quotedbl apostrophe NoSymbol"
-xmodmap -e 'keycode 32 = o O o O odiaeresis Odiaeresis oslash'
-xmodmap -e 'keycode 30 = u U u U udiaeresis Udiaeresis downarrow'
-xmodmap -e 'keycode 38 = a A a A adiaeresis Adiaeresis ae'
-xmodmap -e 'keycode 52 = z Z z Z backslash bar'
+setxkbmap us altgr-intl -option 'compose:menu,caps:swapescape,altwin:left_meta_win,terminate:ctrl_alt_bksp'
