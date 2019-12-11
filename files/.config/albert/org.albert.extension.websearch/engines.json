@@ -1,147 +1,99 @@
 [
   {
-    "url": "https://www.google.com/search?q=%s",
-    "trigger": "gg ",
+    "iconPath": ":google",
     "name": "Google",
-    "iconPath": ":google"
+    "trigger": "gg ",
+    "url": "https://www.google.com/search?q=%s"
   },
   {
-    "url": "https://www.youtube.com/results?search_query=%s",
-    "trigger": "yt ",
+    "iconPath": ":youtube",
     "name": "Youtube",
-    "iconPath": ":youtube"
+    "trigger": "yt ",
+    "url": "https://www.youtube.com/results?search_query=%s"
   },
   {
-    "url": "http://www.amazon.com/s/?field-keywords=%s",
-    "trigger": "ama ",
+    "iconPath": ":amazon",
     "name": "Amazon",
-    "iconPath": ":amazon"
+    "trigger": "ama ",
+    "url": "http://www.amazon.com/s/?field-keywords=%s"
   },
   {
-    "url": "https://aur.archlinux.org/packages/?O=0&K=%s",
-    "trigger": "aur ",
+    "iconPath": ":aur",
     "name": "AUR",
-    "iconPath": ":aur"
+    "trigger": "aur ",
+    "url": "https://aur.archlinux.org/packages/?O=0&K=%s"
   },
   {
-    "url": "https://www.archlinux.org/packages/?sort=&q=%s&maintainer=&flagged=",
-    "trigger": "arch ",
+    "iconPath": ":arch",
     "name": "Arch Linux Packages",
-    "iconPath": ":arch"
+    "trigger": "arch ",
+    "url": "https://www.archlinux.org/packages/?sort=&q=%s&maintainer=&flagged="
   },
   {
-    "url": "https://github.com/search?utf8=✓&q=%s",
-    "trigger": "gh ",
+    "iconPath": ":github",
     "name": "GitHub",
-    "iconPath": ":github"
+    "trigger": "gh ",
+    "url": "https://github.com/search?utf8=✓&q=%s"
   },
   {
-    "url": "https://en.wikipedia.org/w/index.php?search=%s",
-    "trigger": "wiki ",
+    "iconPath": ":wikipedia",
     "name": "Wikipedia",
-    "iconPath": ":wikipedia"
+    "trigger": "wiki ",
+    "url": "https://en.wikipedia.org/w/index.php?search=%s"
   },
   {
-    "url": "https://www.wolframalpha.com/input/?i=%s",
-    "trigger": "=",
+    "iconPath": ":wolfram",
     "name": "Wolfram Alpha",
-    "iconPath": ":wolfram"
+    "trigger": "=",
+    "url": "https://www.wolframalpha.com/input/?i=%s"
   },
   {
-    "url": "https://duckduckgo.com/?q=%s",
-    "trigger": "dd ",
+    "iconPath": ":duckduckgo",
     "name": "DuckDuckGo",
-    "iconPath": ":duckduckgo"
+    "trigger": "dd ",
+    "url": "https://duckduckgo.com/?q=%s"
   },
   {
-    "url": "https://rubygems.org/search?utf8=%E2%9C%93&query=%s",
-    "trigger": "ruby ",
+    "iconPath": "<trigger>",
     "name": "Ruby Gems",
-    "iconPath": "<trigger>"
+    "trigger": "ruby ",
+    "url": "https://rubygems.org/search?utf8=%E2%9C%93&query=%s"
   },
   {
-    "url": "https://code.locaweb.com.br/search?utf8=%E2%9C%93&search=%s&group_id=3&project_id=&repository_ref=",
-    "trigger": "iaas ",
-    "name": "Gitlab - Iaas",
-    "iconPath": "<trigger>"
-  },
-  {
-    "url": "https://code.locaweb.com.br/search?utf8=%E2%9C%93&search=%s&group_id=25&project_id=&repository_ref=",
-    "trigger": "paas ",
-    "name": "Gitlab - Paas",
-    "iconPath": "<trigger>"
-  },
-  {
-    "url": "https://code.locaweb.com.br/search?utf8=%E2%9C%93&search=%s&group_id=43&project_id=&repository_ref=",
-    "trigger": "ea ",
-    "name": "Gitlab - Enterprise Applications",
-    "iconPath": "<trigger>"
-  },
-  {
-    "url": "http://cegonha.locaweb.com.br/search/show?utf8=%E2%9C%93&search_text=%s",
-    "trigger": "cg ",
-    "name": "Cegonha",
-    "iconPath": "<trigger>"
-  },
-  {
-    "url": "https://gitlab.com/?utf8=%E2%9C%93&name=%s&sort=latest_activity_desc",
-    "trigger": "gl ",
+    "iconPath": "<trigger>",
     "name": "My Gitlab",
-    "iconPath": "<trigger>"
+    "trigger": "gl ",
+    "url": "https://gitlab.com/?utf8=%E2%9C%93&name=%s&sort=latest_activity_desc"
   },
   {
-    "url": "https://github.com/gjhenrique?utf8=%E2%9C%93&tab=repositories&q=%s&type=&language=",
-    "trigger": "mgh",
+    "iconPath": "<trigger>",
     "name": "My Github",
-    "iconPath": "<trigger>"
+    "trigger": "mgh",
+    "url": "https://github.com/gjhenrique?utf8=%E2%9C%93&tab=repositories&q=%s&type=&language="
   },
   {
-    "url": "https://www.npmjs.com/search?q=%s",
-    "trigger": "npm ",
+    "iconPath": "<trigger>",
     "name": "Query npm packages",
-    "iconPath": "<trigger>"
+    "trigger": "npm ",
+    "url": "https://www.npmjs.com/search?q=%s"
   },
   {
-    "url": "https://melpa.org/#/?q=%s",
-    "trigger": "ml ",
+    "iconPath": "<trigger>",
     "name": "Query melpa libraries",
-    "iconPath": "<trigger>"
+    "trigger": "ml ",
+    "url": "https://melpa.org/#/?q=%s"
   },
   {
-    "url": "https://caniuse.com/#search=%s",
-    "trigger": "can ",
+    "iconPath": "<trigger>",
     "name": "Can i Use",
-    "iconPath": "<trigger>"
+    "trigger": "can ",
+    "url": "https://caniuse.com/#search=%s"
   },
   {
-    "url": "https://clarkteam.atlassian.net/browse/%s?oldIssueView=true",
-    "trigger": "cj ",
-    "name": "Clark Jira",
-    "iconPath": "<trigger>"
-  },
-  {
-    "url": "https://github.com/ClarkSource/application/pulls?utf8=%E2%9C%93&q=head%3A%s+",
-    "trigger": "cb ",
-    "name": "Clark Github Branch",
-    "iconPath": "<trigger>"
-  },
-  {
-    "url": "https://clarkteam.atlassian.net/wiki/dosearchsite.action?cql=siteSearch+~+%22%s%22&queryString=%s+",
-    "trigger": "cw ",
-    "name": "Clark Confluence",
-    "iconPath": "<trigger>"
-  },
-  {
-    "url": "https://poc-test.insiders.cloud/smartfix/Clients/Verifier/#/Verifier/%s",
-    "trigger": "ins ",
-    "name": "Insiders poc",
-    "iconPath": "<trigger>"
-  },
-  {
-    "url": "https://github.com/search?q=org%3Ajenkinsci+%s&unscoped_q=%s&type=Code",
-    "trigger": "jenkins ",
+    "iconPath": "<trigger>",
     "name": "Jenkins search",
-    "iconPath": "<trigger>"
+    "trigger": "jenkins ",
+    "url": "https://github.com/search?q=org%3Ajenkinsci+%s&unscoped_q=%s&type=Code"
   },
   {
     "url": "https://github.com/search?q=org%3AClarkSource+%s&unscoped_q=%s&type=Code",
