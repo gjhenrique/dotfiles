@@ -134,6 +134,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+bindsym $mod+p exec sp play
 
 mode "volume" {
   bindsym u exec /opt/bin/pulseaudio-volume plus
