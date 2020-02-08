@@ -134,26 +134,15 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym $mod+p exec sp play
 
-mode "volume" {
-  bindsym u exec /opt/bin/pulseaudio-volume plus
-  bindsym i exec /opt/bin/pulseaudio-volume minus
-  bindsym v exec "amixer sset Master,0 toggle"
-  bindsym p exec mpc toggle
-  bindsym n exec mpc next
-  bindsym m exec mpc prev
-
-  bindsym o exec sp play
-  bindsym j exec sp next
-  bindsym h exec sp prev
-
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-  bindsym q mode "default"
-}
-
-bindsym $mod+u mode "volume"
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec /opt/bin/pulseaudio-volume plus
+bindsym XF86AudioLowerVolume exec /opt/bin/pulseaudio-volume minus
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioPlay exec sp play
+bindsym XF86AudioPause exec sp play
+bindsym XF86AudioNext exec sp next
+bindsym XF86AudioPrev exec sp prev
 
 mode "bright" {
   bindsym u exec /usr/bin/xbacklight -inc 5
