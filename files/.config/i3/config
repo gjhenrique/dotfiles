@@ -62,8 +62,6 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
-# Conky
-bindsym $mod+q workspace 11
 
 bindsym $mod+Shift+s sticky toggle
 
@@ -134,7 +132,6 @@ assign [title="EmacsGit"] 7
 assign [title="EmacsCompilation"] 8
 assign [class="Firefox"] 3
 assign [class="Gnome-terminal"] 4
-assign [class="conky"] 11
 assign [title="Developer Tools.*"] 10
 
 assign [title="Postman"] 5
