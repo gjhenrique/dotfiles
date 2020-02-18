@@ -71,6 +71,7 @@ module-margin-right = 1
 
 font-0 = "Fantasque Sans Mono:pixelsize=12;2"
 font-1 = "Material Icons:size=13;4"
+font-2 = "Weather Icons:size=12;1"
 
 ;==========================================================
 
@@ -88,7 +89,7 @@ scroll-down = i3wm-wsprev
 
 modules-left = spotify
 modules-center = xwindow
-modules-right = pkg volume network date powermenu
+modules-right = openweathermap-forecast vpn-openvpn-status volume network date powermenu
  
 ;== Modules ========================================================
 
@@ -195,6 +196,22 @@ animation-charging-3 = ""
 animation-charging-4 = ""
 
 animation-charging-framerate = 750
+
+[module/openweathermap-forecast]
+type = custom/script
+exec = /usr/share/polybar/scripts/openweathermap-forecast.sh
+interval = 600
+label-font = 1
+
+[module/vpn-openvpn-status]
+type = custom/script
+exec = /usr/share/polybar/scripts/vpn-nordvpn-status.sh
+interval = 5
+
+[module/vpn-nordvpn-status]
+type = custom/script
+exec = /usr/share/polybar/scripts/vpn-nordvpn-status.sh
+interval = 5
 
 [module/volume]
 type = internal/alsa
