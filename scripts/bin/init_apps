@@ -1,7 +1,6 @@
 #! /bin/sh
 
 killall redshift
-killall conky
 killall albert
 
 if [ "$MEDIA_CENTER" != true ]; then
@@ -11,4 +10,4 @@ fi
 
 albert >/dev/null 2>/dev/null &
 
-conky -c ~/.conky/system_stats.conkyrc >/dev/null 2>/dev/null &
+sh launch_polybar.sh

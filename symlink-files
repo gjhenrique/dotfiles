@@ -10,10 +10,4 @@ mkdir -p $HOME/.bundle
 
 stow files -t ~
 
-if [ "$1" = "home" ]; then
-     stow scripts -t ~
-else
-    sudo stow scripts -t /opt
-fi
-
-stow conky -t ~
+sudo stow scripts -t /opt
