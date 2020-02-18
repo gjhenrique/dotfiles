@@ -1,138 +1,240 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   Modified By Aditya Shakya.
+;
+;==========================================================
+
+[color]
+
+trans = #00000000
+white = #FFFFFF
+black = #000000
+
+bg = #1F1F1F
+fg = #FFFFFF
+fg-alt = #A9ABB0
+
+acolor = #8e24aa
+curgent = #e53935
+coccupied = #1e88e5
+
+## Material Colors
+
+red = #e53935
+pink = #d81b60
+purple = #8e24aa
+deep-purple = #5e35b1
+indigo = #3949ab
+blue = #1e88e5
+light-blue = #039be5
+cyan = #00acc1
+teal = #00897b
+green = #43a047
+light-green = #7cb342
+lime = #c0ca33
+yellow = #fdd835
+amber = #ffb300
+orange = #fb8c00
+deep-orange = #f4511e
+brown = #6d4c41
+grey = #757575
+blue-gray = #546e7a
+
+;==========================================================
+
 [bar/top]
-width = 100%
-height = 35 
-offset-x = 0
-offset-y = -1 
-;bottom = true
+height = 40
+offset-x = 5%
+offset-y = 2%
+fixed-center = false
+line-size = 2
 
-background = #5a000000
-foreground = #eee
+background = ${color.bg}
+foreground = ${color.fg}
 
-underline-size = 2
-underline-color = #eee
+border-size = 3
+border-color = ${color.bg}
 
-spacing = 1
-padding-left = 0
-padding-right = 0
-module-margin-left = 0 
-module-margin-right = 0
+module-margin-left = 1
+module-margin-right = 1
 
-font-0 = Noto Sans:pixelsize=14;0
-font-1 = Font Awesome 5 Free Regular:size=12;-2
-font-2 = Siji:pixelsize=12;1
+;==========================================================
 
-modules-left = spotify 
-modules-center = xwindow
-modules-right = volume date powermenu
+font-0 = "Fantasque Sans Mono:pixelsize=12;2"
+font-1 = "Material Icons:size=13;4"
+
+;==========================================================
+
+cursor-click = pointer
+cursor-scroll = ns-resize
 
 ;tray-position = right
-;tray-padding = 2
-;tray-background = #66333333
+;tray-padding = 0
+;tray-maxsize = 16
 
-wm-restack = bspwm
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
 
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
+;== Module Location ========================================================
+
+modules-left = spotify
+modules-center = xwindow
+modules-right = pkg volume network date powermenu
+ 
+;== Modules ========================================================
+
+[module/spotify]
+label-padding = 4
+type = custom/script
+interval = 1
+format = <label>
+exec = python /usr/share/polybar/scripts/spotify_status.py -f '{artist}: {song}'
+format-underline = ${color.acolor}
 
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:120:...%
 label-padding = 4
 
-[module/spotify]
-label-padding = 4
+[module/arch]
+type = custom/text
+content = 
+;alt-icon = 
+content-padding = 2
+content-background = ${color.acolor}
+content-foreground = ${color.fg}
+click-left = rmenu_g
+click-middle = rfull
+click-right = rmenu_wi_g
+
+[module/term]
+type = custom/text
+content = 
+content-foreground = ${color.fg-alt}
+click-left = termite &
+click-middle = gnome-terminal &
+click-right = xfce4-terminal &
+
+[module/files]
+type = custom/text
+content = 
+content-padding = 1
+content-foreground = ${color.fg-alt}
+click-left = thunar &
+click-right = ranger &
+
+[module/browser]
+type = custom/text
+content = 
+content-padding = 1
+content-foreground = ${color.fg-alt}
+click-left = chromium &
+click-right = firefox &
+
+[module/settings]
+type = custom/text
+content = 
+content-padding = 1
+content-foreground = ${color.fg-alt}
+click-left = xfce4-settings &
+click-right = lxappearance &
+
+;==========================================================
+
+[module/mpd]
+type = internal/mpd
+;format-online = <toggle> <label-song> 
+format-online =  <label-song> 
+
+icon-play = 
+icon-pause = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+;==========================================================
+
+[module/battery]
+type = internal/battery
+full-at = 99
+time-format = %H:%M
+battery = BAT1
+adapter = AC
+format-charging = <animation-charging> <label-charging>
+;label-charging = %percentage%% (%time%)
+label-charging = %percentage%%
+format-discharging = <ramp-capacity> <label-discharging>
+;label-discharging = %percentage%% (%time%)
+label-discharging = %percentage%%
+format-full = <label-full>
+
+format-full-prefix = " "
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+ramp-capacity-0-foreground = ${color.red}
+ramp-capacity-foreground   = ${color.fg}
+bar-capacity-width = 10
+
+animation-charging-0 = ""
+animation-charging-1 = ""
+animation-charging-2 = ""
+animation-charging-3 = ""
+animation-charging-4 = ""
+
+animation-charging-framerate = 750
+
+[module/volume]
+type = internal/alsa
+;speaker-mixer = Speaker
+;headphone-mixer = Headphone
+;headphone-id = 16
+;mapped = true
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+format-muted-prefix = " "
+label-muted = MUTE
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+ramp-volume-5 = 
+ramp-volume-6 = 
+
+[module/network]
 type = custom/script
-interval = 1
-# format-prefix = " "
-format = <label>
-exec = python /usr/share/polybar/scripts/spotify_status.py -f '{artist}: {song}'
-format-underline = #1db954
+exec = check-network
+click-left = networkmanager_dmenu &
+click-right = networkmanager_dmenu &
+tail = true
 
 [module/date]
 type = internal/date
-
-; Seconds to sleep between updates
-interval = 1.0
-
-; See "man date" for details on how to format the date string
-; NOTE: if you want to use syntax tags here you need to use %%{...}
-date = %a %b %d, 
-
-; Optional time format
-time = %H:%M
-
-; if `date-alt` or `time-alt` is defined, clicking
-; the module will toggle between formats
-date-alt = %A, %d %B %Y
-time-alt = %H:%M:%S
-
-label = %date% %time%
-format =    <label>
-;format-background = #ddffffff
-format-background = #88000000
-;format-foreground = #333
-format-padding = 3
-
-[module/padding]
-type = custom/text
-content = 	 
-content-foreground = #00000000
-content-background = #55000000
-
-[module/backlight]
-type = internal/backlight
-
-card = intel_backlight
-enable-scroll = true
-
-format = <ramp> <label>
-label = %percentage%
-
-ramp-0 = 🌕
-ramp-1 = 🌔
-ramp-2 = 🌓
-ramp-3 = 🌒
-ramp-4 = 🌑
-
-[module/volume]
-type = internal/volume
-
-format-volume = <ramp-volume>  <label-volume>
-format-muted = <label-muted>
-label-volume = %percentage%
-label-muted =   muted
-label-muted-foreground = #aaa
-format-volume-padding = 3
-format-muted-padding = 3
-
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
-ramp-headphones-0 = 
+interval = 30
+label =  %time%
+time =  %H:%M  %Y-%m-%d
 
 [module/powermenu]
-type = custom/menu
+type = custom/text
+content = 
+content-padding = 2
+content-background = ${color.acolor}
+content-foreground = ${color.fg}
+click-left = pmenu_g
+click-right = pmenu_g
 
-label-open =   
-;label-open-background = #dd0000
-;label-open-foreground = #fff
-label-close = cancel
-;label-close-background = #dd0000
-;label-close-foreground = #fff
-label-open-padding = 4 
-label-close-padding = 3 
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-menu-0-0-padding = 3
-menu-0-1-padding = 3
-
-menu-1-0 = reboot?  
-menu-1-0-exec = sudo reboot
-menu-1-0-padding = 3
-
-menu-2-0 = power off?  
-menu-2-0-exec = sudo poweroff
-menu-2-0-padding = 3
+;== EOF ========================================================
