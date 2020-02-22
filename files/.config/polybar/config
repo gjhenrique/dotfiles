@@ -89,7 +89,7 @@ scroll-down = i3wm-wsprev
 
 modules-left = spotify
 modules-center = xwindow
-modules-right = openweathermap-forecast vpn-openvpn-status volume network date powermenu
+modules-right = openweathermap-forecast vpn-nordvpn-status volume network date powermenu
  
 ;== Modules ========================================================
 
@@ -151,19 +151,6 @@ click-right = lxappearance &
 
 ;==========================================================
 
-[module/mpd]
-type = internal/mpd
-;format-online = <toggle> <label-song> 
-format-online =  <label-song> 
-
-icon-play = 
-icon-pause = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
-
-;==========================================================
-
 [module/battery]
 type = internal/battery
 full-at = 99
@@ -205,7 +192,7 @@ label-font = 1
 
 [module/vpn-openvpn-status]
 type = custom/script
-exec = /usr/share/polybar/scripts/vpn-nordvpn-status.sh
+exec = /usr/share/polybar/scripts/vpn-openvpn-status.sh
 interval = 5
 
 [module/vpn-nordvpn-status]
