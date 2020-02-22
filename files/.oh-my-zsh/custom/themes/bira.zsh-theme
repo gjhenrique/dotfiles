@@ -1,7 +1,5 @@
-# ZSH Theme - Preview: http://gyazo.com/8becc8a7ed5ab54a0262a470555c3eed.png
-
-# KUBE_PS1 is disabled by default. call kubeon to enable it
 KUBE_PS1_SYMBOL_ENABLE=false
+# kubeon to enable it if disabled
 KUBE_PS1_ENABLED=on
 
 GIT_PS1_SHOWDIRTYSTATE=1
@@ -22,3 +20,4 @@ local aws='%{$terminfo[bold]%}$(aws_prompt_info)%{$reset_color%}'
 
 PROMPT="${user_host} in${current_dir} ${git_branch} ${kube} ${aws}
 ${ret_status}"
+
