@@ -3,6 +3,14 @@
 VGA_MONITOR=$(xrandr | grep -w 'connected' | sed -n '3p' | cut -f 1 -d ' ')
 HDMI_MONITOR=$(xrandr | grep -w 'connected' | sed -n '2p' | cut -f 1 -d ' ')
 
+
+if [ $(hostname) = 'henrique' ];
+then
+    xrandr --output DP-3 --pos 0x0 --rotate left --left-of HDMI-1 --auto --scale 1.5x1.5
+    xrandr --output HDMI-1 --pos 1620x0 --primary
+fi
+
+
 if [ $(hostname) = 'henrique2' ];
 then
     xrandr --output LVDS1 --off
