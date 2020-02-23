@@ -78,7 +78,10 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 bindsym $mod+n move workspace to output left
-bindsym Print exec scrot -u -e 'mv $f ~/Pictures/Screenshots/'
+
+bindsym $mod+Ctrl+4 exec "maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png"
+bindsym $mod+Ctrl+3 exec "maim -i $(xdotool getactivewindow) ~/Pictures/Screenshots/$(date +%F-%T)"
+bindsym Print exec "maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i"
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
