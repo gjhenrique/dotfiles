@@ -1,0 +1,16 @@
+#!/bin/sh
+
+TORRENT=$(xclip -o -sel clip)
+
+TYPE=$1
+
+if [[ "$TYPE" == "movie" ]]; then
+    LOCATION="$HOME/Videos/Transmission/Movies/"
+elif [[ $TYPE == "tv" ]]; then
+    LOCATION="$HOME/Videos/Transmission/TV Shows/"
+else
+    echo "Use movie or tv in the first argument"
+    exit 1
+fi
+
+transmission-remote --download-dir="$LOCATION" --add $TORRENT

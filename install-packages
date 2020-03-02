@@ -1,4 +1,7 @@
-sudo pacman -Syu tar curl wget emacs dunst jq meld openssl-1.0 pulseaudio redshift strace scrot tree ttf-dejavu unp unzip xclip rofi noto-fonts-emoji mopidy mpc ncmpcpp
+sudo pacman -Syu pass the_silver_searcher syncthing pavucontrol pulseaudio-alsa tar curl wget emacs dunst jq meld openssl-1.0 pulseaudio redshift strace scrot tree ttf-dejavu unp unzip xclip rofi noto-fonts-emoji mopidy mpc ncmpcpp redshift htop
+
+sudo pacman -S ttf-croscore adobe-source-code-pro-fonts ttf-fantasque-sans-mono ttf-dejavu ttf-liberation noto-fonts
+yay ttf-material-icons-git ttf-weather-icons
 
 # offlineimap
 # notmuch
@@ -10,4 +13,5 @@ makepkg -si
 popd
 rm -rf yay
 
-# yay bitwarden-cli emoji buku buku_run-git menu-calc
+# yay nordvpn bitwarden-cli emoji buku buku_run-git menu-calc
+# yay polybar polybar-scripts polybar-spotify-git
