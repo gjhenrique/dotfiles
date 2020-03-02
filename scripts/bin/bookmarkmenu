@@ -1,0 +1,59 @@
+#!/usr/bin/env sh
+
+# Interactively select (in skim) an url from Firefox/Chrome/Chromium history to
+# open in your browser (depends on $BROWSER). Should work on Linux and MacOS.
+#
+# requires: sqlite3
+
+ROFI_CMD='rofi -dmenu -markup-rows -multi-select -i'
+SEP=${1:-'{{::}}'}
+
+_do_rofi() {
+  urls=$(awk -F "$SEP" '{printf "<b>%s</b>: <i>%s</i>\n", $1, $2}' | $ROFI_CMD | sed -e 's#&amp;#&#g' -e 's#&lt;#<#g' -e 's#&gt;#>#g')
+  IFS=$'\n'
+  for url in $urls; do
+    url=${url%</i>*}
+    url=${url##*<i>}
+    echo $url
+  done | xargs -r $BROWSER
+}
+
+case ${BROWSER:-firefox} in
+  firefox)
+    # TODO: Adjust this
+    for dir in /home/guilherme/.mozilla/firefox/u1aq2h11.dev-edition-default; do
+      if [[ -d "$dir" ]]; then
+          echo $dir
+        # The db can be locked from time to time. This is inefficient, but
+        # places.sqlite is usually under 30mb so this should be instant, and
+        # /tmp is cleared at boot so...
+        # if ! find /tmp/rofi-bookmarkmenu -mmin +60 2>&1 >/dev/null; then
+          cp "$dir/places.sqlite" "/tmp/places.sqlite"
+          # sqlite3 -separator $SEP "/tmp/places.sqlite" \
+          #   "SELECT DISTINCT title, url FROM moz_places \
+          #   WHERE title IS NOT NULL \
+          #   ORDER BY last_visit_date DESC" >/tmp/rofi-bookmarkmenu
+          sqlite3 -separator $SEP "/tmp/places.sqlite" \
+            "SELECT DISTINCT mb.title, DISTINCT mp.url FROM moz_bookmarks mb \
+            INNER JOIN moz_places mp ON mp.id = mb.fk \
+            WHERE mb.type = 1 AND mb.title IS NOT NULL \
+            ORDER BY mp.frecency DESC \
+            LIMIT 200" >>/tmp/rofi-bookmarkmenu
+        # fi
+        cat /tmp/rofi-bookmarkmenu | sed -e 's#&#&amp;#g' -e 's#<#&lt;#g' -e 's#>#&gt;#g' | _do_rofi
+        break
+      fi
+    done
+    ;;
+  qutebrowser)
+    {
+      sed -e 's/ /{{::}}/' urls | awk -F'{{::}}' '{printf "%s{{::}}%s\n", $2, $1}'
+      # sqlite3 -separator $SEP "$XDG_DATA_HOME/qutebrowser/history.sqlite" \
+      #   "SELECT title, url FROM History \
+      #   WHERE title != '' \
+      #   GROUP BY url \
+      #   ORDER BY atime DESC"
+    } | _do_rofi
+    ;;
+  *) rofi -e "No known browser" ;;
+esac
