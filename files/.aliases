@@ -18,3 +18,5 @@ alias bs="bundle exec spring"
 
 alias em="emacsclient -ct"
 alias k="kubectl"
+
+alias kgpl='kubectl get pods '

@@ -90,18 +90,6 @@
     "url": "https://caniuse.com/#search=%s"
   },
   {
-    "iconPath": "<trigger>",
-    "name": "Jenkins search",
-    "trigger": "jenkins ",
-    "url": "https://github.com/search?q=org%3Ajenkinsci+%s&unscoped_q=%s&type=Code"
-  },
-  {
-    "url": "https://github.com/search?q=org%3AClarkSource+%s&unscoped_q=%s&type=Code",
-    "trigger": "clark ",
-    "name": "Clark Search",
-    "iconPath": "<trigger>"
-  },
-  {
     "url": "https://www.google.com/search?q=%s&tbm=isch&sout=1#spf=1578102449996",
     "trigger": "gi ",
     "name": "Google image search",
@@ -111,6 +99,42 @@
     "url": "https://www.duden.de/suchen/dudenonline/%s",
     "trigger": "du ",
     "name": "Duden",
+    "iconPath": "<trigger>"
+  },
+  {
+    "url": "https://jira.xing.hh/browse/%s",
+    "trigger": "ju ",
+    "name": "Jira - Xing",
+    "iconPath": "<trigger>"
+  },
+  {
+    "url": "https://jira.xing.hh/browse/%s",
+    "trigger": "ju ",
+    "name": "Jira - Xing",
+    "iconPath": "<trigger>"
+  },
+  {
+    "url": "https://source.xing.com/search?q=%s&type=Code",
+    "trigger": "xc ",
+    "name": "Github code",
+    "iconPath": "<trigger>"
+  },
+  {
+    "url": "https://source.xing.com/search?q=%s",
+    "trigger": "xs ",
+    "name": "Github - Xing",
+    "iconPath": "<trigger>"
+  },
+  {
+    "url": "https://source.xing.com/search?q=%s",
+    "trigger": "xs ",
+    "name": "Github - Xing",
+    "iconPath": "<trigger>"
+  },
+  {
+    "url": "https://source.xing.com/search?q=%s+org%3Autec&type=Code",
+    "trigger": "xu ",
+    "name": "Github - Xing",
     "iconPath": "<trigger>"
   }
 ]
