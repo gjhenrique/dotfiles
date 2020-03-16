@@ -1,0 +1,26 @@
+#!/usr/bin/env sh
+
+SEP='   ----   '
+
+if [ -z $@ ]; then
+	for dir in ~/.mozilla/firefox/*.dev-edition-default; do
+		if [[ -d "$dir" ]]; then
+			cp "$dir/places.sqlite" "/tmp/places.sqlite"
+
+		        sqlite3 -separator "$SEP" "/tmp/places.sqlite" <<- EOF
+		        WITH RECURSIVE parents(id) AS (
+		        	SELECT id FROM moz_bookmarks where type = 2 AND title = 'Work'
+		        	UNION ALL
+		        	SELECT mb.id FROM moz_bookmarks mb INNER JOIN parents ON mb.parent = parents.id
+			)
+		        SELECT DISTINCT mb.title, mp.url FROM moz_bookmarks mb
+		        	INNER JOIN moz_places mp ON mp.id = mb.fk
+		        	INNER JOIN parents ON mb.id = parents.id
+		        	WHERE mb.type = 1 AND mb.title IS NOT NULL
+		        	ORDER BY mp.frecency DESC
+			EOF
+		fi
+	done
+else
+	firefox $(awk -F "$SEP" '{print $2}' <<<$1)
+fi

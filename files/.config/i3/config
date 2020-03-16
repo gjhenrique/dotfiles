@@ -13,8 +13,8 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec albert toggle
+bindsym $mod+d exec "rofi -combi-modi 'drun,firefox:rofi_bookmark,search:rofi_search' -show combi -modi combi"
+bindsym $mod+f exec "rofi -show search -modi 'search:/opt/bin/rofi_search'"
 
 # change focus
 bindsym $mod+j focus down
@@ -35,7 +35,7 @@ bindsym $mod+s split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+t fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+x layout stacking
