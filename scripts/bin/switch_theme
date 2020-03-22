@@ -1,23 +1,13 @@
 #!/bin/sh
 
-BG_LIGHT_THEME="'rgb(238,238,236)'"
-FG_LIGHT_THEME="'rgb(46,52,54)'"
-BG_DARK_THEME="'rgb(46,52,54)'"
-FG_DARK_THEME="'rgb(211,215,207)'"
+# install with yarn global add alacritty-theme-switch
+CURRENT_COLOR=$(emacsclient -e 'zezin-theme-variation' | tr -d '"')
 
-THEME=$(dconf read /org/gnome/terminal/legacy/profiles:/default | tr -d "'")
-
-BGCOLOR_VARIABLE="/org/gnome/terminal/legacy/profiles:/:${THEME}/background-color"
-FGCOLOR_VARIABLE="/org/gnome/terminal/legacy/profiles:/:${THEME}/foreground-color"
-CURRENT_COLOR=$(dconf read $BGCOLOR_VARIABLE )
-
-if [ $CURRENT_COLOR == $BG_DARK_THEME ]; then
-    dconf write $BGCOLOR_VARIABLE $BG_LIGHT_THEME
-    dconf write $FGCOLOR_VARIABLE $FG_LIGHT_THEME
-    emacsclient -e '(zezin-load-light-theme)' & > /dev/null
-elif [ $CURRENT_COLOR == $BG_LIGHT_THEME ]; then
-    dconf write $BGCOLOR_VARIABLE $BG_DARK_THEME
-    dconf write $FGCOLOR_VARIABLE $FG_DARK_THEME
-    emacsclient -e '(zezin-load-dark-theme)' & > /dev/null
+if [ $CURRENT_COLOR = "dark" ]; then
+    emacsclient -e '(zezin-load-light-theme)' > /dev/null
+    alacritty-theme-switch -s light.yml
+elif [ "$CURRENT_COLOR" == "light" ]; then
+    emacsclient -e '(zezin-load-dark-theme)' > /dev/null
+    alacritty-theme-switch -s dark.yml
 fi
 
