@@ -79,8 +79,13 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 bindsym $mod+n move workspace to output left
 
-bindsym $mod+Ctrl+4 exec "maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png"
+# Save file in Screenshots folder
 bindsym $mod+Ctrl+3 exec "maim -i $(xdotool getactivewindow) ~/Pictures/Screenshots/$(date +%F-%T)"
+# Current window in clipboard
+bindsym $mod+Ctrl+4 exec "maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png"
+# All windows in clipboard
+bindsym $mod+Ctrl+5 exec "maim | xclip -selection clipboard -t image/png"
+# Select area and put to clipboard
 bindsym Print exec "maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i"
 
 # reload the configuration file
