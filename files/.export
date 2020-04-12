@@ -12,6 +12,7 @@ else
     export SCRIPTS_HOME="~/bin"
 fi
 
+export MAKE_FLAGS="-j$(nproc --all)"
 export PIP_MAC_HOME="$HOME/Library/Python/3.7/bin"
 export PIP_HOME="/$HOME/.local/bin"
 export YARN_HOME="/$HOME/.yarn"
