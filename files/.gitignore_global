@@ -23,3 +23,5 @@ GRTAGS
 
 .projectile
 .idea/
+
+.dir-locals.el
