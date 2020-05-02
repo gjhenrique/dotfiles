@@ -11,3 +11,5 @@ fi
 albert >/dev/null 2>/dev/null &
 
 sh launch_polybar.sh
+
+/usr/bin/amixer -c 1 sset "Auto-Mute Mode" Disabled &

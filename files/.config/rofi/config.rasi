@@ -6,7 +6,6 @@ configuration {
   sidebar-mode: false;
   combi-hide-mode-prefix: true;
   display-drun: "";
-  display-firfox: "";
   theme: "DarkBlue";
   monitor: "primary";
 }
