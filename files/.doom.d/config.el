@@ -170,6 +170,7 @@
             (swiper res))))
 
 (map!
+ "M-o" #'er/expand-region
  :v "M-c" #'evil-multiedit-toggle-marker-here
  :leader
  "jf" #'counsel-find-file
@@ -193,8 +194,6 @@
  "jb" #'swiper-region-or-symbol
  "jh" #'evil-window-delete
  "g," #'dumb-jump-go)
-
-(bind-keys ("M-o" . er/expand-region))
 
 (use-package! tldr
   :commands tldr)
