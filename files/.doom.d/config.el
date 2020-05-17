@@ -56,11 +56,6 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
-(defun split-window-right-and-focus ()
-  (interactive)
-  (split-window-right)
-  (windmove-right))
-
 ;; https://stackoverflow.com/questions/2416655/file-path-to-clipboard-in-emacs
 (defun zezin-copy-file-name-to-clipboard ()
   "Copy the current buffer file name to the clipboard."
@@ -84,6 +79,11 @@
     (if (file-exists-p filename)
         (ffap filename)
       (message "File %s not exists" filename))))
+
+(defun split-window-below-and-focus ()
+  (interactive)
+  (split-window-below)
+  (windmove-down))
 
 (defun split-window-right-and-focus ()
   (interactive)
@@ -187,6 +187,7 @@
  "jz" #'zezin-go-to-file-in-clipboard
  "ju" #'browse-url-at-point
  "jo" #'split-window-right-and-focus
+ "jz" #'split-window-below-and-focus
  "jr" #'counsel-projectile-rg
  "je" #'counsel-rg-region-or-symbol-projectile
  "jx" #'counsel-rg-read-lib
@@ -195,6 +196,7 @@
  "g," #'dumb-jump-go)
 
 (setq zezin-theme-variation "dark")
+
 (defun zezin-load-light-theme ()
   (interactive)
   (load-theme 'doom-solarized-light)
