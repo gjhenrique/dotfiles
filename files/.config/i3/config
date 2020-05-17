@@ -145,6 +145,7 @@ assign [title="Developer Tools.*"] 10
 assign [title="Postman"] 5
 assign [class="okular"] 5
 assign [class="Pcmanfm"] 5
+assign [title=".*Doom Emacs"] 5
 
 for_window [class="^.*"] border pixel 1
 for_window [class="^.*"] focus

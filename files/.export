@@ -1,6 +1,6 @@
 export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
 export LESS=' -R'
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+export JAVA_HOME=/usr/lib/jvm/default
 export MAVEN_HOME="/opt/maven/"
 export ANT_HOME="/opt/ant"
 export ANDROID_HOME="/opt/sdk-android" 

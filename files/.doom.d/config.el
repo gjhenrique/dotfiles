@@ -19,7 +19,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Source Code Pro" :size 22))
+(setq doom-font (font-spec :family "Source Code Pro" :size 23))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -36,7 +36,8 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type nil)
+(setq display-line-numbers-type nil
+      x-alt-keysym 'meta)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -130,6 +131,10 @@
           (let ((res (zezin-region-or-symbol initial-text)))
             (counsel-rg res dir "--hidden")))
 
+        (defun counsel-rg-use-package ()
+          (interactive)
+          (counsel-rg-directory doom-emacs-dir "(use-package "))
+
         (defun counsel-rg-region-or-symbol-projectile ()
           (interactive)
           (counsel-rg-directory (projectile-project-root)))
@@ -165,6 +170,7 @@
             (swiper res))))
 
 (map!
+ :v "M-c" #'evil-multiedit-toggle-marker-here
  :leader
  "jf" #'counsel-find-file
  "jd" #'counsel-projectile-find-file
@@ -185,9 +191,10 @@
  "je" #'counsel-rg-region-or-symbol-projectile
  "jx" #'counsel-rg-read-lib
  "jb" #'swiper-region-or-symbol
- "jt" #'evil-window-delete
+ "jh" #'evil-window-delete
  "g," #'dumb-jump-go)
 
+(bind-keys ("M-o" . er/expand-region))
 
 (use-package! tldr
   :commands tldr)
