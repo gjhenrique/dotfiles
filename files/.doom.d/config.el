@@ -24,8 +24,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-;; (setq doom-theme 'doom-city-lights)
-(setq doom-theme 'doom-solarized-light)
+(setq doom-theme 'doom-city-lights)
 
 (after! magit
   (setq magit-display-buffer-function #'magit-display-buffer-traditional))
@@ -194,6 +193,20 @@
  "jb" #'swiper-region-or-symbol
  "jh" #'evil-window-delete
  "g," #'dumb-jump-go)
+
+(setq zezin-theme-variation "dark")
+(defun zezin-load-light-theme ()
+  (interactive)
+  (load-theme 'doom-solarized-light)
+  (doom/reload-theme)
+  (setq zezin-theme-variation "light"))
+
+(defun zezin-load-dark-theme ()
+  (interactive)
+  (load-theme 'doom-city-lights)
+  (doom/reload-theme)
+  (setq zezin-theme-variation "dark"))
+
 
 (use-package! tldr
   :commands tldr)
