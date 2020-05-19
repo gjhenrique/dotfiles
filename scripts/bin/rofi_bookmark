@@ -12,7 +12,7 @@ if [ -z $@ ]; then
 		        	SELECT id FROM moz_bookmarks where type = 2 AND title = 'Work'
 		        	UNION ALL
 		        	SELECT mb.id FROM moz_bookmarks mb INNER JOIN parents ON mb.parent = parents.id
-			)
+			    )
 		        SELECT DISTINCT mb.title, mp.url FROM moz_bookmarks mb
 		        	INNER JOIN moz_places mp ON mp.id = mb.fk
 		        	INNER JOIN parents ON mb.id = parents.id
@@ -22,5 +22,5 @@ if [ -z $@ ]; then
 		fi
 	done
 else
-	firefox $(awk -F "$SEP" '{print $2}' <<<$1)
+	firefox "$(awk -F "$SEP" '{print $2}' <<<$1)"
 fi

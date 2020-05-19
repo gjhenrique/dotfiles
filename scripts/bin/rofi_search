@@ -8,7 +8,7 @@ else
     TRIGGER=$(cut -d ' ' -f1 <<<$1)
 
     URL=$(jq -r "to_entries[]|select(.value.trigger==\"${TRIGGER}\")|[.value.url][0]" < $CONFIG_FILE)
-    NEW_URL=$(sed "s/%s/$TEXT/g" <<<$URL)
+    NEW_URL=$(sed "s~%s~$TEXT~g" <<<$URL)
 
     firefox "$NEW_URL"
 fi
