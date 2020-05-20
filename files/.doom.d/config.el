@@ -56,6 +56,9 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
+(after! ivy
+  (setq ivy-use-virtual-buffers t))
+
 ;; https://stackoverflow.com/questions/2416655/file-path-to-clipboard-in-emacs
 (defun zezin-copy-file-name-to-clipboard ()
   "Copy the current buffer file name to the clipboard."
@@ -162,6 +165,13 @@
           (let ((folder (file-name-directory (read-file-name "ag in directory: "))))
             (counsel-rg-directory folder))))
 
+(after! rainbow-delimiters
+  (add-hook! 'prog-mode-hook
+             #'rainbow-delimiters-mode))
+
+(after! smartparens
+  (show-smartparens-global-mode +1))
+
 (after! swiper
         (cl-defun swiper-region-or-symbol (&optional initial-text)
           (interactive)
@@ -193,6 +203,8 @@
  "jx" #'counsel-rg-read-lib
  "jb" #'swiper-region-or-symbol
  "jh" #'evil-window-delete
+ "jc" #'counsel-rg-read-dir
+ "jv" #'google-translate-smooth-translate
  "g," #'dumb-jump-go)
 
 (setq zezin-theme-variation "dark")
@@ -209,17 +221,26 @@
   (doom/reload-theme)
   (setq zezin-theme-variation "dark"))
 
+(add-hook! '(js2-mode-hook typescript-mode)
+  (if (locate-dominating-file default-directory ".prettierrc")
+    (format-all-mode +1)))
 
 (use-package! tldr
   :commands tldr)
 
 (use-package! google-translate
   :commands google-translate-smooth-translate
+  :init
+  (setq google-translate-translation-directions-alist '(("de" . "en") ("en" . "pt") ("pt" . "en") ("en" . "de"))
+        google-translate-show-phonetic t
+        google-translate-pop-up-buffer-set-focus t)
   :config
-  (progn
-    (setq google-translate-translation-directions-alist '(("de" . "en") ("en" . "pt") ("pt" . "en") ("en" . "de"))
-          google-translate-show-phonetic t
-          google-translate-pop-up-buffer-set-focus t)
-    (require 'google-translate-smooth-ui)))
+  (require 'google-translate-smooth-ui))
+
+(load! "./purpose.el")
+
+(defvar zezin-work-script (expand-file-name "Life/work.el" (substitute-in-file-name "$HOME")))
+(when (file-exists-p zezin-work-script)
+  (load! zezin-work-script))
 
 (load! "./purpose.el")

@@ -24,4 +24,4 @@
 	user = gjhenrique@gmail.com
 
 [includeIf "gitdir:~/Projects/xing/"]
-    path = .xing.gitconfig
+	path = .xing.gitconfig
