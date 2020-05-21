@@ -114,7 +114,7 @@ label-font = 1
 
 [module/vpn-openvpn-status]
 type = custom/script
-exec = /opt/bin/vpn-openvpn-status.sh
+exec = pb_openvpn_status
 interval = 5
 
 [module/vpn-nordvpn-status]
@@ -142,11 +142,11 @@ ramp-volume-5 = 
 ramp-volume-6 = 
 
 click-middle = pavucontrol &
-click-right = choose-pulse-port
+click-right = pb_choose_pulse_port
 
 [module/network]
 type = custom/script
-exec = check-network
+exec = pb_check_network
 tail = true
 
 [module/date]
@@ -161,7 +161,7 @@ content = 
 content-padding = 2
 content-background = ${color.acolor}
 content-foreground = ${color.fg}
-click-left = pmenu_g
-click-right = pmenu_g
+click-left = pb_power_menu
+click-right = pb_power_menu
 
 ;== EOF ========================================================

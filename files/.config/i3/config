@@ -110,8 +110,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec /opt/bin/pulseaudio-volume plus
-bindsym XF86AudioLowerVolume exec /opt/bin/pulseaudio-volume minus
+bindsym XF86AudioRaiseVolume exec /opt/bin/set_pulseaudio_volume plus
+bindsym XF86AudioLowerVolume exec /opt/bin/set_pulseaudio_volume minus
 bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle # mute sound
 bindsym XF86AudioPlay exec sp play
 bindsym XF86AudioPause exec sp play
