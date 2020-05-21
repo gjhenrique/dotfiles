@@ -172,4 +172,7 @@
 
        :config
        ;;literate
-       (default +bindings +smartparens))
+       (default +bindings +smartparens)
+
+       :custom
+       purpose)

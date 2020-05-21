@@ -109,7 +109,7 @@
                          (+ (-elem-index lib-identifier directories) 2)
                          directories)))))
 
-(defvar zezin-lib-directories '("gems" "elpa" "node_modules"))
+(defvar zezin-lib-directories '("gems" "elpa" "node_modules" "repos"))
 
 (defun zezin-find-lib-folder (folder)
   (cl-some
@@ -117,53 +117,52 @@
    zezin-lib-directories))
 
 (after! counsel
-        (defun counsel-fzf-read-dir ()
-          (interactive)
-          (let ((folder (file-name-directory (read-file-name "fzf in directory: "))))
-            (counsel-fzf nil folder)))
+  (defun counsel-fzf-read-dir ()
+    (interactive)
+    (let ((folder (file-name-directory (read-file-name "fzf in directory: "))))
+      (counsel-fzf nil folder)))
 
-        (defun zezin-counsel-fzf-dir ()
-          (or
-           (zezin-find-lib-folder default-directory)
-           default-directory))
+  (defun zezin-counsel-fzf-dir ()
+    (or
+     (zezin-find-lib-folder default-directory)
+     default-directory))
 
+  (cl-defun counsel-rg-directory (dir &optional initial-text)
+    (interactive)
+    (let ((res (zezin-region-or-symbol initial-text)))
+      (counsel-rg res dir "--hidden")))
 
-        (cl-defun counsel-rg-directory (dir &optional initial-text)
-          (interactive)
-          (let ((res (zezin-region-or-symbol initial-text)))
-            (counsel-rg res dir "--hidden")))
+  (defun counsel-rg-use-package ()
+    (interactive)
+    (counsel-rg-directory doom-emacs-dir "(use-package "))
 
-        (defun counsel-rg-use-package ()
-          (interactive)
-          (counsel-rg-directory doom-emacs-dir "(use-package "))
+  (defun counsel-rg-region-or-symbol-projectile ()
+    (interactive)
+    (counsel-rg-directory (projectile-project-root)))
 
-        (defun counsel-rg-region-or-symbol-projectile ()
-          (interactive)
-          (counsel-rg-directory (projectile-project-root)))
+  (defun counsel-rg-region-or-symbol-current-dir ()
+    (interactive)
+    (counsel-rg-directory default-directory))
 
-        (defun counsel-rg-region-or-symbol-current-dir ()
-          (interactive)
-          (counsel-rg-directory default-directory))
+  (defun counsel-rg-read-dir ()
+    (interactive)
+    (let ((folder (file-name-directory (read-file-name "ag in directory: "))))
+      (counsel-rg nil folder)))
 
-        (defun counsel-rg-read-dir ()
-          (interactive)
-          (let ((folder (file-name-directory (read-file-name "ag in directory: "))))
-            (counsel-rg nil folder)))
+  (defun counsel-rg-read-lib ()
+    ;; (interactive)
+    (let ((folder (zezin-find-lib-folder default-directory)))
+      (counsel-rg-directory folder)))
 
-        (defun counsel-rg-read-lib ()
-          ;; (interactive)
-          (let ((folder (zezin-find-lib-folder default-directory)))
-            (counsel-rg-directory folder)))
+  (defun counsel-rg-read-gem (gem-name)
+    (interactive (list (completing-read "Bundled gem: " (bundle-list-gems-cached))))
+    (let ((gem-location (bundle-gem-location gem-name)))
+      (counsel-rg-directory gem-location)))
 
-        (defun counsel-rg-read-gem (gem-name)
-          (interactive (list (completing-read "Bundled gem: " (bundle-list-gems-cached))))
-          (let ((gem-location (bundle-gem-location gem-name)))
-            (counsel-rg-directory gem-location)))
-
-        (defun counsel-rg-region-or-symbol-read-dir ()
-          (interactive)
-          (let ((folder (file-name-directory (read-file-name "ag in directory: "))))
-            (counsel-rg-directory folder))))
+  (defun counsel-rg-region-or-symbol-read-dir ()
+    (interactive)
+    (let ((folder (file-name-directory (read-file-name "ag in directory: "))))
+      (counsel-rg-directory folder))))
 
 (after! rainbow-delimiters
   (add-hook! 'prog-mode-hook
@@ -173,10 +172,10 @@
   (show-smartparens-global-mode +1))
 
 (after! swiper
-        (cl-defun swiper-region-or-symbol (&optional initial-text)
-          (interactive)
-          (let ((res (zezin-region-or-symbol initial-text)))
-            (swiper res))))
+  (cl-defun swiper-region-or-symbol (&optional initial-text)
+    (interactive)
+    (let ((res (zezin-region-or-symbol initial-text)))
+      (swiper res))))
 
 (map!
  "M-o" #'er/expand-region
@@ -203,7 +202,7 @@
  "jx" #'counsel-rg-read-lib
  "jb" #'swiper-region-or-symbol
  "jh" #'evil-window-delete
- "jc" #'counsel-rg-read-dir
+ "jc" #'counsel-rg-region-or-symbol-read-dir
  "jv" #'google-translate-smooth-translate
  "g," #'dumb-jump-go)
 
@@ -223,10 +222,12 @@
 
 (add-hook! '(js2-mode-hook typescript-mode)
   (if (locate-dominating-file default-directory ".prettierrc")
-    (format-all-mode +1)))
+      (format-all-mode +1)))
 
 (use-package! tldr
-  :commands tldr)
+  :commands tldr
+  :init
+  (setq tldr-directory-path (concat doom-cache-dir "tldr/")))
 
 (use-package! google-translate
   :commands google-translate-smooth-translate
@@ -237,10 +238,6 @@
   :config
   (require 'google-translate-smooth-ui))
 
-(load! "./purpose.el")
-
 (defvar zezin-work-script (expand-file-name "Life/work.el" (substitute-in-file-name "$HOME")))
 (when (file-exists-p zezin-work-script)
   (load! zezin-work-script))
-
-(load! "./purpose.el")

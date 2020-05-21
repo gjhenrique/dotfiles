@@ -19,10 +19,7 @@
   (add-to-list 'purpose-user-mode-purposes '(js2-mode . javascript))
   (add-to-list 'purpose-user-mode-purposes '(js-mode . javascript))
   (add-to-list 'purpose-user-mode-purposes '(rjsx-mode . javascript))
-  (add-to-list 'purpose-user-regexp-purposes '("^\\magit" . magit))
-
-  ;; TODO: This is ugly
-  (add-to-list 'purpose-user-mode-purposes '(yaml-mode . ruby)))
+  (add-to-list 'purpose-user-regexp-purposes '("^\\magit" . magit)))
 
 (defun zezin-disable-purpose-with-dired ()
   (defalias 'dired-find-file-without-purpose
@@ -111,7 +108,11 @@
     (zezin-add-reusable-buffers "\\magit*")
     (zezin-add-purposes)
     (zezin-disable-purpose-with-dired)
-    (purpose-compile-user-configuration)))
+    (purpose-compile-user-configuration)
+
+    (add-to-list 'global-mode-string
+                 '(:eval (propertize (purpose--modeline-string) 'face '(inherit (all-the-icons-yellow bold))))
+                 'append)))
 
 (provide 'purpose)
 ;;; purpose.el ends here
