@@ -175,4 +175,5 @@
        (default +bindings +smartparens)
 
        :custom
-       purpose)
+       purpose
+       kubernetes)
