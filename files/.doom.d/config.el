@@ -181,30 +181,31 @@
  "M-o" #'er/expand-region
  :v "M-c" #'evil-multiedit-toggle-marker-here
  :leader
- "jf" #'counsel-find-file
- "jd" #'counsel-projectile-find-file
- "jk" #'kill-this-buffer
- "jp" #'counsel-projectile-switch-project
- "jc" #'counsel-fzf
- "jx" #'counsel-fzf-read-dir
- "jg" #'counsel-projectile-switch-to-buffer
- "ja" #'projectile-compile-project
- "jm" #'mode-line-other-buffer
- "jj" #'ivy-switch-buffer
- "js" #'evilnc-comment-or-uncomment-lines
- "jl" #'evil-avy-goto-line
- "jz" #'zezin-go-to-file-in-clipboard
- "ju" #'browse-url-at-point
- "jo" #'split-window-right-and-focus
- "jz" #'split-window-below-and-focus
- "jr" #'counsel-projectile-rg
- "je" #'counsel-rg-region-or-symbol-projectile
- "jx" #'counsel-rg-read-lib
- "jb" #'swiper-region-or-symbol
- "jh" #'evil-window-delete
- "jc" #'counsel-rg-region-or-symbol-read-dir
- "jv" #'google-translate-smooth-translate
- "g," #'dumb-jump-go)
+ "g," #'dumb-jump-go
+ (:prefix-map ("j" . "Personal")
+  "f" #'counsel-find-file
+  "d" #'counsel-projectile-find-file
+  "k" #'kill-this-buffer
+  "p" #'counsel-projectile-switch-project
+  "c" #'counsel-fzf
+  "x" #'counsel-fzf-read-dir
+  "g" #'counsel-projectile-switch-to-buffer
+  "a" #'projectile-compile-project
+  "m" #'mode-line-other-buffer
+  "j" #'ivy-switch-buffer
+  "s" #'evilnc-comment-or-uncomment-lines
+  "l" #'evil-avy-goto-line
+  "z" #'zezin-go-to-file-in-clipboard
+  "u" #'browse-url-at-point
+  "o" #'split-window-right-and-focus
+  "z" #'split-window-below-and-focus
+  "r" #'counsel-projectile-rg
+  "e" #'counsel-rg-region-or-symbol-projectile
+  "x" #'counsel-rg-read-lib
+  "b" #'swiper-region-or-symbol
+  "h" #'evil-window-delete
+  "c" #'counsel-rg-region-or-symbol-read-dir
+  "v" #'google-translate-smooth-translate))
 
 (setq zezin-theme-variation "dark")
 
