@@ -207,6 +207,8 @@
   "c" #'counsel-rg-region-or-symbol-read-dir
   "v" #'google-translate-smooth-translate))
 
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
+
 (setq zezin-theme-variation "dark")
 
 (defun zezin-load-light-theme ()
@@ -224,6 +226,14 @@
 (add-hook! '(js2-mode-hook typescript-mode)
   (if (locate-dominating-file default-directory ".prettierrc")
       (format-all-mode +1)))
+
+(add-hook! 'ruby-mode-hook
+  (setq-local flycheck-command-wrapper-function
+        (lambda (command) (append '("bundle" "exec") command))))
+
+;; (after! format-all
+;; (set-popup-rule! "^\\*format-all-errors\\*" :vslot -2 :size 0.3  :autosave t :quit t :ttl nil)
+;; )
 
 (use-package! tldr
   :commands tldr

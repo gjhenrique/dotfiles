@@ -147,6 +147,12 @@ assign [class="okular"] 5
 assign [class="Pcmanfm"] 5
 assign [title=".*Doom Emacs"] 5
 
+for_window [title="^Picture-in-Picture$"] \
+           focus; \
+           floating enable; \
+           sticky enable; \
+           resize set width 600 height 340; \
+           move position 1020 1300;
 for_window [class="^.*"] border pixel 1
 for_window [class="^.*"] focus
 new_window none

@@ -20,7 +20,8 @@
 
        :completion
        company           ; the ultimate code completion backend
-       ivy               ; a search engine for love and life
+       (ivy               ; a search engine for love and life
+        +icons)
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -35,7 +36,7 @@
        nav-flash         ; blink cursor line after big motions
        ;;neotree           ; a project drawer, like NERDTree for vim
        ophints           ; highlight the region an operation acts on
-       ;; (popup +defaults)   ; tame sudden yet inevitable temporary windows
+       ;; popup             ; tame sudden yet inevitable temporary windows
        ;;pretty-code       ; ligatures or substitute text with pretty symbols
        ;;tabs              ; an tab bar for Emacs
        ;;treemacs          ; a project drawer, like neotree but cooler
