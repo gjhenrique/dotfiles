@@ -105,11 +105,8 @@
 
   (cl-defun counsel-rg-directory (dir &optional initial-text)
     (interactive)
-    (let ((res (doom-thing-at-point-or-region initial-text)))
-      (let ((default-directory dir))
-        (+ivy/project-search-from-cwd nil initial-text))))
-
-      ;; (counsel-rg res dir "--hidden")))
+    (let ((default-directory dir))
+      (+default/search-project-for-symbol-at-point "(use-package ")))
 
   (defun counsel-rg-use-package ()
     (interactive)
@@ -155,7 +152,7 @@
   ;; "g" #'counsel-projectile-switch-to-buffer ;; retire. SPC j j does the trick
   ;; "a" #'projectile-compile-project ;; SPC p c - projectile-compile-project
   ;; "m" #'mode-line-other-buffer ;; SPC b l - switch-to-last-buffer
-  ;; "j" #'ivy-switch-buffer ;; SPC b b ivy-switch-buffer
+  ;; "j" #'ivy-switch-buffer ;; SPC b b|SPC , ivy-switch-buffer
   ;; "r" #'counsel-projectile-rg ;; SPC s p +default/search-project
   ;; "c" #'counsel-fzf ;; SPC f F +default/find-file-under-here
   ;; "u" #'browse-url-at-point ;; gf +lookup/file
