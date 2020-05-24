@@ -59,17 +59,6 @@
 (after! ivy
   (setq ivy-use-virtual-buffers t))
 
-;; https://stackoverflow.com/questions/2416655/file-path-to-clipboard-in-emacs
-(defun zezin-copy-file-name-to-clipboard ()
-  "Copy the current buffer file name to the clipboard."
-  (interactive)
-  (let ((filename (if (equal major-mode 'dired-mode)
-                      default-directory
-                    (buffer-file-name))))
-    (when filename
-      (kill-new filename)
-      (message "Copied buffer file name '%s' to the clipboard." filename))))
-
 (defun zezin-clipboard/get ()
   (with-temp-buffer
     (clipboard-yank)
@@ -93,14 +82,6 @@
   (split-window-right)
   (windmove-right))
 
-(cl-defun zezin-region-or-symbol (&optional initial-text)
-  (or initial-text
-      (if (region-active-p)
-          (buffer-substring-no-properties
-           (region-beginning) (region-end))
-        (thing-at-point 'symbol))))
-
-
 (defun zezin-find-root-lib (folder lib-identifier)
   "Cut the folder of the last"
   (let ((directories (f-split folder)))
@@ -117,41 +98,26 @@
    zezin-lib-directories))
 
 (after! counsel
-  (defun counsel-fzf-read-dir ()
+  (defun counsel-find-read-dir ()
     (interactive)
     (let ((folder (file-name-directory (read-file-name "fzf in directory: "))))
-      (counsel-fzf nil folder)))
-
-  (defun zezin-counsel-fzf-dir ()
-    (or
-     (zezin-find-lib-folder default-directory)
-     default-directory))
+      (doom-project-find-file folder)))
 
   (cl-defun counsel-rg-directory (dir &optional initial-text)
     (interactive)
-    (let ((res (zezin-region-or-symbol initial-text)))
-      (counsel-rg res dir "--hidden")))
+    (let ((res (doom-thing-at-point-or-region initial-text)))
+      (let ((default-directory dir))
+        (+ivy/project-search-from-cwd nil initial-text))))
+
+      ;; (counsel-rg res dir "--hidden")))
 
   (defun counsel-rg-use-package ()
     (interactive)
     (counsel-rg-directory doom-emacs-dir "(use-package "))
 
-  (defun counsel-rg-region-or-symbol-projectile ()
-    (interactive)
-    (counsel-rg-directory (projectile-project-root)))
-
-  (defun counsel-rg-region-or-symbol-current-dir ()
-    (interactive)
-    (counsel-rg-directory default-directory))
-
-  (defun counsel-rg-read-dir ()
-    (interactive)
-    (let ((folder (file-name-directory (read-file-name "ag in directory: "))))
-      (counsel-rg nil folder)))
-
   (defun counsel-rg-read-lib ()
-    ;; (interactive)
-    (let ((folder (zezin-find-lib-folder default-directory)))
+    (interactive)
+    (let ((folder (or (zezin-find-lib-folder default-directory) projectile-project-root)))
       (counsel-rg-directory folder)))
 
   (defun counsel-rg-read-gem (gem-name)
@@ -171,11 +137,10 @@
 (after! smartparens
   (show-smartparens-global-mode +1))
 
-(after! swiper
-  (cl-defun swiper-region-or-symbol (&optional initial-text)
-    (interactive)
-    (let ((res (zezin-region-or-symbol initial-text)))
-      (swiper res))))
+(after! counsel
+  (setq counsel-rg-base-command
+        ;; Include hidden files in search
+        "rg -M 240 --hidden -g '!.git' --with-filename --no-heading --line-number --color never %s"))
 
 (map!
  "M-o" #'er/expand-region
@@ -183,28 +148,32 @@
  :leader
  "g," #'dumb-jump-go
  (:prefix-map ("j" . "Personal")
-  "f" #'counsel-find-file
-  "d" #'counsel-projectile-find-file
-  "k" #'kill-this-buffer
-  "p" #'counsel-projectile-switch-project
-  "c" #'counsel-fzf
-  "x" #'counsel-fzf-read-dir
-  "g" #'counsel-projectile-switch-to-buffer
-  "a" #'projectile-compile-project
-  "m" #'mode-line-other-buffer
-  "j" #'ivy-switch-buffer
+  ;; "f" #'counsel-find-file ;; SPC f f - counsel-find-file
+  ;; "d" #'counsel-projectile-find-file ;; SPC p f - +ivy/projectile-find-file
+  ;; "k" #'kill-this-buffer ;; SPC b d - kill-current-buffer
+  ;; "p" #'counsel-projectile-switch-project ;; SPC p p - counsel-projectile-switch-project
+  ;; "g" #'counsel-projectile-switch-to-buffer ;; retire. SPC j j does the trick
+  ;; "a" #'projectile-compile-project ;; SPC p c - projectile-compile-project
+  ;; "m" #'mode-line-other-buffer ;; SPC b l - switch-to-last-buffer
+  ;; "j" #'ivy-switch-buffer ;; SPC b b ivy-switch-buffer
+  ;; "r" #'counsel-projectile-rg ;; SPC s p +default/search-project
+  ;; "c" #'counsel-fzf ;; SPC f F +default/find-file-under-here
+  ;; "u" #'browse-url-at-point ;; gf +lookup/file
+  ;; "e" #'counsel-rg-region-or-symbol-projectile ;; SPC * +default/search-project-for-symbol-at-point
+  ;; "h" #'evil-window-delete ;; C-w d
+
+  "b" #'swiper-thing-at-point
   "s" #'evilnc-comment-or-uncomment-lines
   "l" #'evil-avy-goto-line
+
   "z" #'zezin-go-to-file-in-clipboard
-  "u" #'browse-url-at-point
   "o" #'split-window-right-and-focus
   "z" #'split-window-below-and-focus
-  "r" #'counsel-projectile-rg
-  "e" #'counsel-rg-region-or-symbol-projectile
-  "x" #'counsel-rg-read-lib
-  "b" #'swiper-region-or-symbol
-  "h" #'evil-window-delete
+
+  "n" #'counsel-find-read-dir
   "c" #'counsel-rg-region-or-symbol-read-dir
+  "x" #'counsel-rg-read-lib
+
   "v" #'google-translate-smooth-translate))
 
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
@@ -230,10 +199,6 @@
 (add-hook! 'ruby-mode-hook
   (setq-local flycheck-command-wrapper-function
         (lambda (command) (append '("bundle" "exec") command))))
-
-;; (after! format-all
-;; (set-popup-rule! "^\\*format-all-errors\\*" :vslot -2 :size 0.3  :autosave t :quit t :ttl nil)
-;; )
 
 (use-package! tldr
   :commands tldr

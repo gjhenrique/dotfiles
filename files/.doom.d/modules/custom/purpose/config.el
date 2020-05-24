@@ -111,7 +111,7 @@
     (purpose-compile-user-configuration)
 
     (add-to-list 'global-mode-string
-                 '(:eval (propertize (purpose--modeline-string) 'face '(inherit (all-the-icons-yellow bold))))
+                 '(:eval (propertize (purpose--modeline-string) 'face '(:inherit (all-the-icons-yellow bold))))
                  'append)))
 
 (provide 'purpose)
