@@ -64,14 +64,10 @@
                  (string= (cdr (assoc 'title frame-config)) frame-title))
                zezin-frames))))
 
-(setq zezin-is-work-computer nil)
 (setq zezin-work-file "$HOME/Life/xing.org")
 (setq zezin-sideprojects-file "$HOME/Life/SideProjects.org")
 
-(defun zezin-find-note-file ()
-  (if zezin-is-work-computer
-      zezin-work-file
-    zezin-sideprojects-file))
+(defun zezin-find-note-file () zezin-work-file)
 
 (defun zezin-start-notes-frame (frame)
   (find-file (substitute-in-file-name (zezin-find-note-file)))

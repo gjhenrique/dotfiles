@@ -105,8 +105,8 @@
 
   (cl-defun counsel-rg-directory (dir &optional initial-text)
     (interactive)
-    (let ((default-directory dir))
-      (+default/search-project-for-symbol-at-point "(use-package ")))
+    (let ((text (or initial-text (doom-thing-at-point-or-region) "")))
+          (counsel-rg text dir "--hidden")))
 
   (defun counsel-rg-use-package ()
     (interactive)
@@ -124,7 +124,7 @@
 
   (defun counsel-rg-region-or-symbol-read-dir ()
     (interactive)
-    (let ((folder (file-name-directory (read-file-name "ag in directory: "))))
+    (let ((folder (file-name-directory (read-file-name "rg in directory: "))))
       (counsel-rg-directory folder))))
 
 (after! rainbow-delimiters
@@ -189,7 +189,7 @@
   (doom/reload-theme)
   (setq zezin-theme-variation "dark"))
 
-(add-hook! '(js2-mode-hook typescript-mode)
+(add-hook! '(js2-mode-hook typescript-mode-hook)
   (if (locate-dominating-file default-directory ".prettierrc")
       (format-all-mode +1)))
 
