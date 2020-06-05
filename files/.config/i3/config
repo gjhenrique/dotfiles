@@ -95,6 +95,9 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# Select area and put to clipboard
+bindsym $mod+Shift+w exec "xdotool key --window $(xdotool search --name 'Picture-in-Picture') 'space'"
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
   bindsym j resize grow height 10 px or 10 ppt

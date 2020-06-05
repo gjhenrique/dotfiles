@@ -18,7 +18,7 @@ xset -dpms &
 xrdb ~/.Xresources &
 
 xrandr_settings &
-(sleep 1 && set-keyboard) &
+(sleep 1 && set_keyboard) &
 
 session=${2:-i3}
 

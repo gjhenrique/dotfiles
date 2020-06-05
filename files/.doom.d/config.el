@@ -31,7 +31,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/Life/org/")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -170,8 +170,11 @@
   "n" #'counsel-find-read-dir
   "c" #'counsel-rg-region-or-symbol-read-dir
   "x" #'counsel-rg-read-lib
-
   "v" #'google-translate-smooth-translate))
+
+;; Disable q key for compilation-mode because it brings some problems with purpose workflow
+(map! :map compilation-mode-map
+      :nv "q" #'evil-record-macro)
 
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 
