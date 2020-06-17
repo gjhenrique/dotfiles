@@ -100,7 +100,7 @@
 (after! counsel
   (defun counsel-find-read-dir ()
     (interactive)
-    (let ((folder (file-name-directory (read-file-name "fzf in directory: "))))
+    (let ((folder (file-name-directory (read-file-name "Choose directory: "))))
       (doom-project-find-file folder)))
 
   (cl-defun counsel-rg-directory (dir &optional initial-text)
