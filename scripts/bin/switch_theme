@@ -1,5 +1,17 @@
 #!/bin/sh
 
+if [ -z "$1" ]; then
+    ON=$1
+    if [ $ON = 'on' ];then
+        emacsclient -e '(zezin-load-light-theme)' > /dev/null
+        alacritty-theme-switch -s light.yml
+    elif [ $ON = 'off' ]; then
+        emacsclient -e '(zezin-load-dark-theme)' > /dev/null
+        alacritty-theme-switch -s dark.yml
+    fi
+    exit 0
+fi
+
 # install with yarn global add alacritty-theme-switch
 CURRENT_COLOR=$(emacsclient -e 'zezin-theme-variation' | tr -d '"')
 
@@ -10,4 +22,3 @@ elif [ "$CURRENT_COLOR" == "light" ]; then
     emacsclient -e '(zezin-load-dark-theme)' > /dev/null
     alacritty-theme-switch -s dark.yml
 fi
-

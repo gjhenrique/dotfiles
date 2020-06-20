@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Theme - Turn off lights
+Comment=Switch theme to off
+Exec=/opt/bin/switch_theme off
+Icon=redshift-status-off
+Type=Application
+Terminal=false
+Categories=Development;TextEditor;
+Keywords=Text;Editor;

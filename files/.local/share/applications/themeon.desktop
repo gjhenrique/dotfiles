@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Switch Theme
-Comment=Switch theme between dark and light
-Exec=/opt/bin/switch_theme
+Name=Theme - Turn on the lights
+Comment=Switch theme to on
+Exec=/opt/bin/switch_theme on
 Icon=redshift-status-on
 Type=Application
 Terminal=false
