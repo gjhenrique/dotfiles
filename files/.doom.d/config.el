@@ -178,19 +178,15 @@
 
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 
-(setq zezin-theme-variation "dark")
-
 (defun zezin-load-light-theme ()
   (interactive)
   (load-theme 'doom-solarized-light)
-  (doom/reload-theme)
-  (setq zezin-theme-variation "light"))
+  (doom/reload-theme))
 
 (defun zezin-load-dark-theme ()
   (interactive)
   (load-theme 'doom-city-lights)
-  (doom/reload-theme)
-  (setq zezin-theme-variation "dark"))
+  (doom/reload-theme))
 
 (add-hook! '(js2-mode-hook typescript-mode-hook)
   (if (locate-dominating-file default-directory ".prettierrc")
