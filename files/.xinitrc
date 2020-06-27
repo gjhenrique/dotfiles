@@ -16,9 +16,9 @@ xset -dpms &
 #xset s noblank &
 
 xrdb ~/.Xresources &
-
 xrandr_settings &
 (sleep 1 && set_keyboard) &
+(sleep 2 && xmodmap ~/.Xmodmap) &
 
 session=${2:-i3}
 
