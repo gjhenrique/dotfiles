@@ -19,4 +19,7 @@ alias bs="bundle exec spring"
 alias em="emacsclient -ct"
 alias k="kubectl"
 
+alias myipdetails="curl ipinfo.io"
+alias myip="curl -s ipinfo.io | jq '.ip'"
+
 alias kgpl='kubectl get pods '

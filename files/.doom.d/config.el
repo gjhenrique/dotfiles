@@ -196,6 +196,9 @@
   (setq-local flycheck-command-wrapper-function
         (lambda (command) (append '("bundle" "exec") command))))
 
+(use-package! ov
+  :defer t)
+
 (use-package! tldr
   :commands tldr
   :init
@@ -213,13 +216,14 @@
 (defvar zezin-work-script (expand-file-name "Life/work.el" (substitute-in-file-name "$HOME")))
 (when (file-exists-p zezin-work-script)
   (load! zezin-work-script))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
-   ["#181E24" "#D95468" "#8BD49C" "#EBBF83" "#5EC4FF" "#E27E8D" "#70E1E8" "#A0B3C5"])
+   ["#FFFBEA" "#D95468" "#8BD49C" "#EBBF83" "#5EC4FF" "#E27E8D" "#70E1E8" "#A0B3C5"])
  '(custom-safe-themes
    (quote
     ("0cb1b0ea66b145ad9b9e34c850ea8e842c4c4c83abe04e37455a1ef4cc5b8791" "d71aabbbd692b54b6263bfe016607f93553ea214bc1435d17de98894a5c3a086" default)))
@@ -231,6 +235,7 @@
  '(pdf-view-midnight-colors (cons "#A0B3C5" "#1D252C"))
  '(rustic-ansi-faces
    ["#1D252C" "#D95468" "#8BD49C" "#EBBF83" "#5EC4FF" "#E27E8D" "#70E1E8" "#A0B3C5"])
+ '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(vc-annotate-background "#1D252C")
  '(vc-annotate-color-map
    (list
