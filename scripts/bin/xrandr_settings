@@ -6,6 +6,6 @@ HDMI_MONITOR=$(xrandr | grep -w 'connected' | sed -n '2p' | cut -f 1 -d ' ')
 
 if [ $(hostname) = 'henrique' ];
 then
-    xrandr --output DisplayPort-1 --pos 0x0 --rotate left --left-of DisplayPort-1 --auto --scale 1.5x1.5 --output HDMI-A-0 --pos 1620x0 --auto --primary
+    xrandr --output DisplayPort-1 --pos 0x0 --rotate left --left-of DisplayPort-1 --auto --scale 1.5x1.5 --output DisplayPort-2 --pos 1620x0 --auto --primary
     #xrandr --output HDMI-A-0 --pos 0x0 --rotate left --left-of DisplayPort-1 --auto --scale 1.5x1.5 --output DisplayPort-1 --pos 1680x0 --auto --primary
 fi
