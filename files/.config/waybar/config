@@ -1,0 +1,63 @@
+{
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 35, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    // Choose the order of the modules
+    "output": "DP-3",
+    "modules-left": ["sway/workspaces", "custom/media"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["custom/vpn", "custom/weather", "pulseaudio", "clock"],
+    // Modules configuration
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        // "format": "{name}: {icon}",
+    },
+    "sway/window": {
+        "all-outputs": true
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%Y-%m-%d %H:%M}"
+    },
+    "pulseaudio": {
+        "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/media": {
+        "format": "{icon} {}",
+        "max-length": 40,
+        "format-icons": {
+            "default": ""
+        },
+        "escape": true,
+        "exec": "/opt/bin/bar_spotify 2> /dev/null",
+        "interval": 5
+    },
+    "custom/weather": {
+      "exec": "curl 'https://wttr.in/Hamburg?format=1'",
+      "interval": 3600
+    },
+    "custom/vpn": {
+      "exec": "/opt/bin/bar_openvpn_status",
+      "interval": 5,
+      "return-type": "json"
+    },
+}

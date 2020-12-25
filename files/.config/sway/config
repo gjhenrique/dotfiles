@@ -21,19 +21,18 @@ set $term alacritty
 # on the original workspace that the command was run on.
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
+focus_on_window_activation focus
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-
-output DP-1 {
-    resolution 1920x1080 transform 270 scale 1 position 0,0
-}
-
-output DP-2 {
-  resolution 3840x2160 scale 1 position 1080,0
-}
 #
+output DP-2 res 1920x1080 pos 0 0 transform 270
+output DP-2 scale 0.66
+output DP-3 pos 1640 0 res 3840x2160
+output DP-3 scale 1
+
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -69,7 +68,9 @@ output DP-2 {
 # Read `man 5 sway-input` for more information about this section.
 
 input type:keyboard {
-  xkb_options caps:swapescape
+    xkb_layout "us"
+    xkb_variant "altgr-intl"
+    xkb_options "caps:swapescape,altwin:left_meta_win,terminate:ctrl_alt_bksp"
 }
 
 ### Key bindings
@@ -101,6 +102,15 @@ input type:keyboard {
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 #
+    ## Save file in Screenshots folder
+    bindsym $mod+Ctrl+3 exec 'grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" $HOME/Pictures/Screenshots/$(date +%F-%T)'
+    # Current window in clipboard
+    bindsym $mod+Ctrl+4 exec 'grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | wl-copy'
+    # All windows in clipboard
+    bindsym $mod+Ctrl+5 exec 'grim - | wl-copy'
+    # Select area and put to clipboard
+    bindsym Print exec 'grim -g "$(slurp)" - | wl-copy'
+
 # Moving around:
 #
     # Move your focus around
@@ -226,6 +236,10 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+bar {
+    swaybar_command waybar
+}
+
 assign [title="EmacsPrimary"] 1
 assign [title="EmacsSecondary"] 2
 assign [title="EmacsNotes"] 6
@@ -238,5 +252,11 @@ assign [title="Developer Tools.*"] 10
 assign [title="Postman"] 5
 assign [class="okular"] 5
 assign [class="Pcmanfm"] 5
+
+for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] focus
+default_border pixel 1
+
+exec mako
 
 include /etc/sway/config.d/*

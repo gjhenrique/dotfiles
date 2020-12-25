@@ -19,7 +19,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Source Code Pro" :size 23))
+
+(setq doom-font (font-spec :family "Source Code Pro" :size 24))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -196,26 +197,37 @@
   (setq-local flycheck-command-wrapper-function
         (lambda (command) (append '("bundle" "exec") command))))
 
-(use-package! ov
-  :defer t)
-
 (use-package! tldr
   :commands tldr
   :init
   (setq tldr-directory-path (concat doom-cache-dir "tldr/")))
 
-(use-package! google-translate
-  :commands google-translate-smooth-translate
-  :init
-  (setq google-translate-translation-directions-alist '(("de" . "en") ("en" . "pt") ("pt" . "en") ("en" . "de"))
-        google-translate-show-phonetic t
-        google-translate-pop-up-buffer-set-focus t)
-  :config
-  (require 'google-translate-smooth-ui))
-
 (defvar zezin-work-script (expand-file-name "Life/work.el" (substitute-in-file-name "$HOME")))
 (when (file-exists-p zezin-work-script)
   (load! zezin-work-script))
+
+(defun zezin-update-frame-font-size (displays)
+  (-map (lambda (display)
+          (let ((res (nth 2 (alist-get 'geometry display)))
+                (frames (alist-get 'frames display)))
+            (when frames
+              (if (= res 1080)
+                  (set-frame-font (font-spec :family "Source Code Pro" :size 16)  nil frames)
+                (set-frame-font (font-spec :family "Source Code Pro" :size 24) nil frames)))))
+        displays))
+
+(defun zezin-refresh-frame-font ()
+    (unless (equal zezin-display (display-monitor-attributes-list))
+      (message "Updating frames font-size")
+      (setq zezin-display (display-monitor-attributes-list))
+      (zezin-update-frame-font-size zezin-display)))
+
+(after! dash
+  ;; Disable for now
+  ;; (when (equal (system-name) "henrique")
+  (when nil
+    (setq zezin-display (display-monitor-attributes-list))
+    (run-at-time 2 2 #'zezin-refresh-frame-font)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

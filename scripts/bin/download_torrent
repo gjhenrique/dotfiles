@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TORRENT=$(xclip -o -sel clip)
+TORRENT=$(wl-paste)
 
 TYPE=$1
 

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+STATUS=$(nordvpn status | grep Status | tr -d ' ' | cut -d ':' -f2)
+
+if [ "$STATUS" = "Connected" ]; then
+    echo "{\"text\": \"nordvpn: $(nordvpn status | grep City | cut -d ':' -f2)\", \"class\": \"nordvpn\"}"
+    exit
+fi
+
+RESPONSE=$((pgrep -a openvpn$ | head -n 1 | awk '{print $NF }' | cut -d '.' -f 1 && echo down) | head -n 1)
+
+if [ "$RESPONSE" == "2" ]; then
+    echo "{\"text\": \"Xing: Up\", \"class\": \"openvpn\"}"
+elif [ "$RESPONSE" != "--management-query-passwords" ]; then
+    echo "{\"text\": \"VPN: ${RESPONSE}\", \"class\": \"novpn\"}"
+fi

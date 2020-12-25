@@ -7,5 +7,5 @@ configuration {
   combi-hide-mode-prefix: true;
   display-drun: "";
   theme: "DarkBlue";
-  monitor: "primary";
+  monitor: "1";
 }

@@ -1,6 +1,4 @@
 ! Render setting for cairo -> pango -> gtk
-Xft.dpi:        146
-#Xft.dpi:        96
 Xft.antialias:  true
 Xft.rgba:       rgb
 Emacs*toolBar: 0
