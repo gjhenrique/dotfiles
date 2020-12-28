@@ -8,8 +8,6 @@ if [ "$MEDIA_CENTER" != true ]; then
     xscreensaver -nosplash >/dev/null 2>/dev/null &
 fi
 
-albert >/dev/null 2>/dev/null &
-
 sh launch_polybar
 
 /usr/bin/amixer -c 1 sset "Auto-Mute Mode" Disabled &
