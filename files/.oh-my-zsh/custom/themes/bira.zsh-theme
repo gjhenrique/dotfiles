@@ -20,4 +20,3 @@ local aws='%{$terminfo[bold]%}$(aws_prompt_info)%{$reset_color%}'
 
 PROMPT="${user_host} in${current_dir} ${git_branch} ${kube} ${aws}
 ${ret_status}"
-
