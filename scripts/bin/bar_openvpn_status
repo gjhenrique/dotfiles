@@ -7,10 +7,16 @@ if [ "$STATUS" = "Connected" ]; then
     exit
 fi
 
+IPSEC_RESPONSE=$(pgrep -a pppd$)
+if [ -n "$IPSEC_RESPONSE" ]; then
+    echo "{\"text\": \"Xing: Up\", \"class\": \"openvpn\"}"
+    exit
+fi
+
 RESPONSE=$((pgrep -a openvpn$ | head -n 1 | awk '{print $NF }' | cut -d '.' -f 1 && echo down) | head -n 1)
 
-if [ "$RESPONSE" == "2" ]; then
-    echo "{\"text\": \"Xing: Up\", \"class\": \"openvpn\"}"
+if [ "$RESPONSE" == "--management-up-down" ]; then
+    echo "{\"text\": \"NordVPN: Up\", \"class\": \"nordvpn\"}"
 elif [ "$RESPONSE" != "--management-query-passwords" ]; then
     echo "{\"text\": \"VPN: ${RESPONSE}\", \"class\": \"novpn\"}"
 fi

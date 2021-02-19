@@ -1,0 +1,16 @@
+# https://gist.github.com/Nervengift/844a597104631c36513c
+
+sink=$(
+    ponymix -t sink list |
+        awk '/^sink/ {s=$1" "$2;getline;gsub(/^ +/,"",$0);print s" "$0}' |
+        grep -E 'Bose|Jabra|Stars' |
+        grep -v Simult |
+        rofi -dmenu -p 'pulseaudio sink:' -location 3 -selected-row 2 -lines 3 -width 20 |
+        grep -Po '[0-9]+(?=:)'
+    )
+
+ponymix set-default -d $sink &&
+for input in $(ponymix list -t sink-input|grep -Po '[0-9]+(?=:)');do
+	echo "$input -> $sink"
+	ponymix -t sink-input -d $input move $sink
+done

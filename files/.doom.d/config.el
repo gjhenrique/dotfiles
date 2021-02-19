@@ -197,6 +197,9 @@
   (setq-local flycheck-command-wrapper-function
         (lambda (command) (append '("bundle" "exec") command))))
 
+(use-package! nginx-mode
+  :mode ("nginx\\.conf\\'" "/docker-nginx/.*\\.tmpl\\'"))
+
 (use-package! tldr
   :commands tldr
   :init

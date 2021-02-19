@@ -58,6 +58,8 @@ offset-y = 2%
 fixed-center = false
 line-size = 2
 
+monitor = ${env:MONITOR:}
+
 background = ${color.bg}
 foreground = ${color.fg}
 
@@ -89,7 +91,7 @@ scroll-down = i3wm-wsprev
 
 modules-left = spotify
 modules-center = xwindow
-modules-right = vpn-openvpn-status openweathermap-forecast vpn-nordvpn-status volume network date powermenu
+modules-right = openweathermap-forecast volume network date powermenu
  
 ;== Modules ========================================================
 
@@ -111,11 +113,6 @@ type = custom/script
 exec = /usr/share/polybar/scripts/openweathermap-forecast.sh
 interval = 600
 label-font = 1
-
-[module/vpn-openvpn-status]
-type = custom/script
-exec = pb_openvpn_status
-interval = 5
 
 [module/vpn-nordvpn-status]
 type = custom/script

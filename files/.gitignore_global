@@ -25,3 +25,5 @@ GRTAGS
 .idea/
 
 .dir-locals.el
+
+.ccls-cache

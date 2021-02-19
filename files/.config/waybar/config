@@ -7,7 +7,7 @@
     "output": "DP-2",
     "modules-left": ["sway/workspaces", "custom/media"],
     "modules-center": ["sway/window"],
-    "modules-right": ["custom/vpn", "custom/weather", "pulseaudio", "clock"],
+    "modules-right": ["idle_inhibitor", "custom/vpn", "custom/weather", "pulseaudio", "clock"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
@@ -21,6 +21,13 @@
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%Y-%m-%d %H:%M}"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
     },
     "pulseaudio": {
         "scroll-step": 1, // %, can be a float
@@ -40,7 +47,8 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+        "on-click-middle": "rofi_sink",
     },
     "custom/media": {
         "format": "{icon} {}",
