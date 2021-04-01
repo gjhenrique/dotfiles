@@ -47,8 +47,8 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol",
-        "on-click-middle": "rofi_sink",
+        "on-click": "rofi_sink",
+        "on-click-middle": "pavucontrol",
     },
     "custom/media": {
         "format": "{icon} {}",

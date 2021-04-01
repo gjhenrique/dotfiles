@@ -146,9 +146,8 @@ assign [title="EmacsSecondary"] 2
 assign [title="EmacsNotes"] 6
 assign [title="EmacsGit"] 7
 assign [title="EmacsCompilation"] 8
-assign [class="Firefox"] 3
-assign [class="Gnome-terminal"] 4
-assign [title="Developer Tools.*"] 10
+assign [app_id="firefox"] 3
+assign [app_id="Alacritty"] 4
 
 assign [title="Postman"] 5
 assign [class="okular"] 5

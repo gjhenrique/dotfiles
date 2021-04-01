@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Theme - Turn off lights
+Name=Theme - Turn off the lights
 Comment=Switch theme to off
 Exec=/opt/bin/switch_theme off
 Icon=redshift-status-off

@@ -197,6 +197,9 @@
   (setq-local flycheck-command-wrapper-function
         (lambda (command) (append '("bundle" "exec") command))))
 
+(use-package! meson-mode
+  :mode (("/meson\\.build\\'" . meson-mode)))
+
 (use-package! nginx-mode
   :mode ("nginx\\.conf\\'" "/docker-nginx/.*\\.tmpl\\'"))
 
