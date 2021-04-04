@@ -161,9 +161,9 @@ input type:keyboard {
     # Custom bindings
     bindsym $mod+n move workspace to output left
 
-    bindsym XF86AudioRaiseVolume exec /opt/bin/set_pulseaudio_volume plus
-    bindsym XF86AudioLowerVolume exec /opt/bin/set_pulseaudio_volume minus
-    bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle # mute sound
+    bindsym XF86AudioRaiseVolume exec /opt/bin/set_volume plus
+    bindsym XF86AudioLowerVolume exec /opt/bin/set_volume minus
+    bindsym XF86AudioMute exec /opt/bin/set_volume mute
     bindsym XF86AudioPlay exec sp play
     bindsym XF86AudioPause exec sp play
     bindsym XF86AudioNext exec sp next
