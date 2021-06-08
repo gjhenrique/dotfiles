@@ -3,7 +3,7 @@ Version=1.0
 Name=Firefox Developer
 GenericName=Web Browser
 Comment=Access the Internet
-Exec=env GDK_DPI_SCALE=1.5 /opt/firefox/firefox
+Exec=env GDK_DPI_SCALE=1.7 /opt/firefox/firefox
 StartupNotify=true
 Terminal=false
 Icon=/opt/firefox/browser/chrome/icons/default/default64.png

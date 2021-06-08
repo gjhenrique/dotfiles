@@ -182,12 +182,14 @@
 (defun zezin-load-light-theme ()
   (interactive)
   (load-theme 'doom-solarized-light)
-  (doom/reload-theme))
+  (doom/reload-theme)
+  (zezin-update-frame-font-size zezin-display))
 
 (defun zezin-load-dark-theme ()
   (interactive)
   (load-theme 'doom-city-lights)
-  (doom/reload-theme))
+  (doom/reload-theme)
+  (zezin-update-frame-font-size zezin-display))
 
 (add-hook! '(js2-mode-hook typescript-mode-hook)
   (if (locate-dominating-file default-directory ".prettierrc")
@@ -203,6 +205,9 @@
 (use-package! nginx-mode
   :mode ("nginx\\.conf\\'" "/docker-nginx/.*\\.tmpl\\'"))
 
+(use-package strace-mode
+  :mode "\\.strace\\'")
+
 (use-package! tldr
   :commands tldr
   :init
@@ -214,12 +219,11 @@
 
 (defun zezin-update-frame-font-size (displays)
   (-map (lambda (display)
-          (let ((res (nth 2 (alist-get 'geometry display)))
-                (frames (alist-get 'frames display)))
-            (when frames
-              (if (= res 1080)
-                  (set-frame-font (font-spec :family "Source Code Pro" :size 16)  nil frames)
-                (set-frame-font (font-spec :family "Source Code Pro" :size 24) nil frames)))))
+          (let ((res (nth 0 (alist-get 'workarea display)))
+                (zezin-frames (alist-get 'frames display)))
+            (if (eq res 0)
+                (set-frame-font (font-spec :family "Source Code Pro" :size 28)  nil zezin-frames)
+              (set-frame-font (font-spec :family "Source Code Pro" :size 24)  nil zezin-frames))))
         displays))
 
 (defun zezin-refresh-frame-font ()
@@ -229,9 +233,8 @@
       (zezin-update-frame-font-size zezin-display)))
 
 (after! dash
-  ;; Disable for now
-  ;; (when (equal (system-name) "henrique")
-  (when nil
+  (when (equal (system-name) "henrique")
+  ;; (when nil
     (setq zezin-display (display-monitor-attributes-list))
     (run-at-time 2 2 #'zezin-refresh-frame-font)))
 

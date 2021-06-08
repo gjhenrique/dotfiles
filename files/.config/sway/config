@@ -28,9 +28,9 @@ focus_on_window_activation focus
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
-output DP-3 res 1920x1080 pos 0 0 transform 270
-output DP-3 scale 0.66
-output DP-2 pos 1640 0 res 3840x2160
+output DP-3 res 3840x2160 pos 0 0 transform 270
+output DP-3 scale 1
+output DP-2 pos 2160 900 res 3840x2160
 output DP-2 scale 1
 
 # Example configuration:
@@ -256,5 +256,6 @@ for_window [class="^.*"] focus
 default_border pixel 1
 
 exec mako
+exec /usr/lib/geoclue-2.0/demos/agent
 
 include /etc/sway/config.d/*

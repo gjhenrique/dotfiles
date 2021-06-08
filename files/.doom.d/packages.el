@@ -16,6 +16,7 @@
 (package! tldr)
 (package! nginx-mode)
 (package! meson-mode)
+(package! strace-mode)
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
                                         ;(package! some-package)

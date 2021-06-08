@@ -3,9 +3,9 @@
 sink=$(
     ponymix -t sink list |
         awk '/^sink/ {s=$1" "$2;getline;gsub(/^ +/,"",$0);print s" "$0}' |
-        grep -E 'Bose|Jabra|Stars' |
+        grep -E 'Sonne|Jabra|Stars' |
         grep -v Simult |
-        rofi -dmenu -p 'pulseaudio sink:' -location 3 -selected-row 2 -lines 3 -width 20 |
+        rofi -dmenu -p 'pulseaudio sink:' -location 5 -selected-row 2 -lines 3 -width 40 |
         grep -Po '[0-9]+(?=:)'
     )
 
