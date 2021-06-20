@@ -18,15 +18,10 @@ import time
 BLUR_PATH = '~/Projects/python/Linux-Fake-Background-Webcam'
 WIDTH = 640
 HEIGHT = 480
-fake_cam = pyfakewebcam.FakeWebcam('/dev/video2', WIDTH, HEIGHT)
-
-frame = np.zeros((HEIGHT, WIDTH, 3), dtype=np.uint8)
-frame[:, :, :3] = 255
-
 COMMAND = 'swaymsg -t get_tree  | jq ".. | .name? // empty" | grep -E "Zoom Meeting|Slack call"'
 
 def check_if_in_meeting():
-    code = subprocess.run(COMMAND, shell=True, check=True).returncode
+    code = subprocess.run(COMMAND, shell=True, check=False).returncode
     return not bool(code)
 
 
@@ -35,10 +30,14 @@ def blur_process():
     return processes[0] if len(processes) > 0 else None
 
 
+# Change workdir to blur script
 os.chdir(os.path.expanduser(BLUR_PATH))
 cwd = os.getcwd()
-print(cwd)
 
+fake_cam = pyfakewebcam.FakeWebcam('/dev/video2', WIDTH, HEIGHT)
+
+frame = np.zeros((HEIGHT, WIDTH, 3), dtype=np.uint8)
+frame[:, :, :3] = 255
 while True:
     in_meeting = check_if_in_meeting()
     process = blur_process()
