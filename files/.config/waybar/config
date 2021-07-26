@@ -4,7 +4,7 @@
     "height": 35, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     // Choose the order of the modules
-    "output": "DP-3",
+    "output": "DP-4",
     "modules-left": ["sway/workspaces", "custom/media"],
     "modules-center": ["sway/window"],
     "modules-right": ["idle_inhibitor", "custom/vpn", "custom/weather", "pulseaudio", "clock"],

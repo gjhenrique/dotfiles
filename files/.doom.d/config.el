@@ -233,8 +233,8 @@
       (zezin-update-frame-font-size zezin-display)))
 
 (after! dash
-  (when (equal (system-name) "henrique")
-  ;; (when nil
+  ;; (when (equal (system-name) "henrique")
+  (when nil
     (setq zezin-display (display-monitor-attributes-list))
     (run-at-time 2 2 #'zezin-refresh-frame-font)))
 
