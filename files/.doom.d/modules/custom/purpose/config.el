@@ -7,7 +7,7 @@
         ((title . "EmacsGit") (start-fn . zezin-start-magit-frame))
         ((title . "EmacsCompilation") (start-fn . zezin-start-compilation-frame))))
 
-(setq zezin-work-file "$HOME/Life/xing.org")
+(setq zezin-work-file "$HOME/Life/SideProjects.org")
 (setq zezin-sideprojects-file "$HOME/Life/SideProjects.org")
 
 (defun zezin-add-purposes ()
@@ -63,9 +63,6 @@
                (lambda (frame-config)
                  (string= (cdr (assoc 'title frame-config)) frame-title))
                zezin-frames))))
-
-(setq zezin-work-file "$HOME/Life/xing.org")
-(setq zezin-sideprojects-file "$HOME/Life/SideProjects.org")
 
 (defun zezin-find-note-file () zezin-work-file)
 
