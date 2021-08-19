@@ -24,6 +24,7 @@ else
     ZSH_THEME="bira"
     plugins=(git gem history-substring-search systemd aws autojump kubectl)
     export SHOW_AWS_PROMPT=false
+    export DISABLE_AUTO_UPDATE="true"
     source $ZSH/oh-my-zsh.sh
 fi
 
