@@ -141,19 +141,6 @@ bindsym $mod+m exec xscreensaver-command -lock
 # startup applications
 exec /opt/bin/init_apps
 
-assign [title="EmacsPrimary"] 1
-assign [title="EmacsSecondary"] 2
-assign [title="EmacsNotes"] 6
-assign [title="EmacsGit"] 7
-assign [title="EmacsCompilation"] 8
-assign [app_id="firefox"] 3
-assign [app_id="Alacritty"] 4
-
-assign [title="Postman"] 5
-assign [class="okular"] 5
-assign [class="Pcmanfm"] 5
-assign [title=".*Doom Emacs"] 5
-
 for_window [title="^Picture-in-Picture$"] \
            focus; \
            floating enable; \
