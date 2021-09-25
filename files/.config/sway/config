@@ -31,6 +31,8 @@ focus_on_window_activation focus
 # output DP-4 res 2560 1440 pos 0 0 transform 90
 output DP-4 res 2560 1440 pos 0 0 transform 270
 output DP-4 scale 0.8
+output DP-5 res 2560 1440 pos 0 0 transform 270
+output DP-5 scale 0.8
 output DP-2 pos 1800 800 res 3840x2160
 output DP-2 scale 1
 output HDMI-A-1 pos 5640 600 res 1920x1080 transform 270
@@ -243,16 +245,13 @@ bar {
 
 assign [title="EmacsPrimary"] 1
 assign [title="EmacsSecondary"] 2
+assign [class="Firefox"] 3
+assign [title="Alacritty"] 4
+assign [title="EmacsTertiary"] 5
 assign [title="EmacsNotes"] 6
 assign [title="EmacsGit"] 7
 assign [title="EmacsCompilation"] 8
-assign [class="Firefox"] 3
-assign [class="Gnome-terminal"] 4
-assign [title="Developer Tools.*"] 10
-
-assign [title="Postman"] 5
-assign [class="okular"] 5
-assign [class="Pcmanfm"] 5
+assign [class="okular"] 9
 
 for_window [class="^.*"] border pixel 1
 for_window [class="^.*"] focus

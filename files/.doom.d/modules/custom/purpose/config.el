@@ -1,11 +1,19 @@
 ;;; ~/.doom.d/purpose.el -*- lexical-binding: t; -*-
 
-(setq zezin-frames
-      '(((title . "EmacsPrimary"))
-        ((title . "EmacsSecondary"))
-        ((title . "EmacsNotes") (start-fn . zezin-start-notes-frame))
-        ((title . "EmacsGit") (start-fn . zezin-start-magit-frame))
-        ((title . "EmacsCompilation") (start-fn . zezin-start-compilation-frame))))
+(defun zezin-get-frames ()
+  (let* ((initial-frames
+         '(((title . "EmacsPrimary"))
+           ((title . "EmacsNotes") (start-fn . zezin-start-notes-frame))
+           ((title . "EmacsGit") (start-fn . zezin-start-magit-frame))
+           ((title . "EmacsCompilation") (start-fn . zezin-start-compilation-frame)))))
+    (when (= (length (display-monitor-attributes-list)) 2)
+      (push '((title . "EmacsSecondary")) initial-frames))
+
+    (when (= (length (display-monitor-attributes-list)) 3)
+      (push '((title . "EmacsSecondary")) initial-frames )
+      (push '((title . "EmacsTertiary")) initial-frames))
+
+    initial-frames))
 
 (setq zezin-work-file "$HOME/Life/SideProjects.org")
 (setq zezin-sideprojects-file "$HOME/Life/SideProjects.org")
@@ -55,14 +63,14 @@
 
 (defun zezin-start-frames ()
   (interactive)
-  (-each zezin-frames 'zezin-make-new-frame))
+  (-each (zezin-get-frames) 'zezin-make-new-frame))
 
 (defun zezin-find-start-fn (frame-title)
   (cdr (assoc 'start-fn
               (-first
                (lambda (frame-config)
                  (string= (cdr (assoc 'title frame-config)) frame-title))
-               zezin-frames))))
+               (zezin-get-frames)))))
 
 (defun zezin-find-note-file () zezin-work-file)
 
