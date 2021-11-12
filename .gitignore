@@ -2,3 +2,5 @@ files/.config/mopidy/mopidy.conf
 scripts/bin/nextcloud.pass
 
 .htoprc
+
+files/.doom.d/custom.el

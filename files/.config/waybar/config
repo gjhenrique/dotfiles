@@ -60,10 +60,6 @@
         "exec": "/opt/bin/bar_spotify 2> /dev/null",
         "interval": 5
     },
-    "custom/weather": {
-      "exec": "curl 'https://wttr.in/Hamburg?format=1'",
-      "interval": 3600
-    },
     "custom/vpn": {
       "exec": "/opt/bin/bar_openvpn_status",
       "interval": 5,

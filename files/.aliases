@@ -23,3 +23,6 @@ alias myipdetails="curl ipinfo.io"
 alias myip="curl -s ipinfo.io | jq '.ip'"
 
 alias kgpl='kubectl get pods '
+
+alias zoom="QT_QPA_PLATFORM=xcb zoom"
+alias wireshark="QT_SCALE_FACTOR=1.5 wireshark"
