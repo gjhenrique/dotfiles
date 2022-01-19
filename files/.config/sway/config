@@ -74,6 +74,7 @@ input type:keyboard {
     xkb_layout "us"
     xkb_variant "altgr-intl"
     xkb_options "caps:swapescape,altwin:left_meta_win,terminate:ctrl_alt_bksp"
+    #xkb_options "altwin:left_meta_win,terminate:ctrl_alt_bksp"
 }
 
 ### Key bindings
@@ -151,6 +152,7 @@ input type:keyboard {
     bindsym $mod+8 workspace 8
     bindsym $mod+9 workspace 9
     bindsym $mod+0 workspace 10
+    bindsym $mod+o workspace 11
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace 1
     bindsym $mod+Shift+2 move container to workspace 2
@@ -162,6 +164,7 @@ input type:keyboard {
     bindsym $mod+Shift+8 move container to workspace 8
     bindsym $mod+Shift+9 move container to workspace 9
     bindsym $mod+Shift+0 move container to workspace 10
+    bindsym $mod+Shift+o move container to workspace 11
 
     # Custom bindings
     bindsym $mod+n move workspace to output left
@@ -238,6 +241,7 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+bindsym $mod+z exec "emacsclient --eval '(zezin-emacs-everywhere)'"
 
 bar {
     swaybar_command waybar
@@ -252,6 +256,8 @@ assign [title="EmacsNotes"] 6
 assign [title="EmacsGit"] 7
 assign [title="EmacsCompilation"] 8
 assign [class="okular"] 9
+
+for_window [title="Emacs Everywhere.*"] floating enable
 
 for_window [class="^.*"] border pixel 1
 for_window [class="^.*"] focus

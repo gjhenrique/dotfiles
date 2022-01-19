@@ -17,6 +17,10 @@
 (package! nginx-mode)
 (package! meson-mode)
 (package! strace-mode)
+(package! lsp-grammarly)
+(package! keytar)
+(package! sway)
+(package! know-your-http-well)
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
                                         ;(package! some-package)

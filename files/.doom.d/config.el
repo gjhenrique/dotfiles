@@ -195,6 +195,9 @@
   (if (locate-dominating-file default-directory ".prettierrc")
       (format-all-mode +1)))
 
+(add-hook! '(go-mode-hook)
+  (format-all-mode +1))
+
 (add-hook! 'ruby-mode-hook
   (setq-local flycheck-command-wrapper-function
         (lambda (command) (append '("bundle" "exec") command))))
@@ -205,13 +208,30 @@
 (use-package! nginx-mode
   :mode ("nginx\\.conf\\'" "/docker-nginx/.*\\.tmpl\\'"))
 
-(use-package strace-mode
+(use-package! strace-mode
   :mode "\\.strace\\'")
+
+(use-package! know-your-http-well
+  :commands (http-status-code http-header))
 
 (use-package! tldr
   :commands tldr
   :init
   (setq tldr-directory-path (concat doom-cache-dir "tldr/")))
+
+(use-package! keytar)
+(after! lsp
+  (use-package! lsp-grammarly
+    :config
+    (add-to-list 'lsp-language-id-configuration '(emacs-everywhere-mode . "grammarly"))))
+
+(defun zezin-emacs-everywhere ()
+  (interactive)
+  (let* ((run-path (format "/run/user/%s" (user-real-uid)))
+         (sway-file (car (directory-files "/run/user/1000" t "sway-ipc"))))
+         (unless (eq (getenv "SWAYSOCK") sway-file)
+           (setenv "SWAYSOCK" sway-file)))
+  (emacs-everywhere))
 
 (defvar zezin-work-script (expand-file-name "Life/work.el" (substitute-in-file-name "$HOME")))
 (when (file-exists-p zezin-work-script)
@@ -231,6 +251,34 @@
       (message "Updating frames font-size")
       (setq zezin-display (display-monitor-attributes-list))
       (zezin-update-frame-font-size zezin-display)))
+
+(after! emacs-everywhere
+  (defun zezin-jira-page-p ()
+    (let ((title (emacs-everywhere-app-title emacs-everywhere-current-app)))
+      (string-match-p title "JIRA")))
+
+  (defun zezin-convert-from-jira ()
+    (when (zezin-jira-page-p)
+      (shell-command-on-region (point-min) (point-max)
+                               "pandoc -f jira -t org" nil t)))
+
+  (defun zezin-convert-to-jira ()
+    (when (zezin-jira-page-p)
+      (shell-command-on-region (point-min) (point-max)
+                               "pandoc -f jira -t org" nil t)))
+
+  (add-hook 'emacs-everywhere-init-hooks 'zezin-convert-from-jira t)
+  (add-hook 'emacs-everywhere-final-hooks 'zezin-convert-to-jira)
+
+  (defun zezin-activate-grammarly ()
+    (interactive)
+    (require 'lsp-grammarly)
+    (lsp))
+
+  (setq emacs-everywhere-frame-parameters
+        `((name . "emacs-everywhere")
+          (width . 120)
+          (height . 25))))
 
 (after! dash
   ;; (when (equal (system-name) "henrique")
