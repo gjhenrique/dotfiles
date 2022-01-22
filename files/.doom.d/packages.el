@@ -20,6 +20,8 @@
 (package! lsp-grammarly)
 (package! keytar)
 (package! sway)
+(package! emacs-everywhere
+  :recipe (:host github :repo "gjhenrique/emacs-everywhere" :branch "sway"))
 (package! know-your-http-well)
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
