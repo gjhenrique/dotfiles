@@ -1,5 +1,0 @@
-(sleep 1 && xscreensaver -nosplash) &
-(sleep 2 && albert) &
-(sleep 3 && /usr/bin/mopidy) &
-
-hsetroot -solid "#000009"

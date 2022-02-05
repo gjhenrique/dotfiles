@@ -1,29 +1,12 @@
 #!/bin/bash
 
-if [ -d ~/.rbenv ]; then
-    echo "rbenv is already installed"
-else
-    echo "Installing rbenv"
-    git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-    git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-    echo "rbenv install -l to install new versions"
-fi
-
-if [ -d ~/.nvm ]; then
-    echo "nvm is already installed"
-else
-    echo "Installing nvm"
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.4/install.sh | bash
-    echo "nvm ls-remote to install new versions"
-fi
-
 if [ -d ~/.asdf ]; then
     echo "asdf is already installed"
 else
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.2.1
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf
     ~/.asdf/bin/asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
     ~/.asdf/bin/asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
     ~/.asdf/bin/asdf plugin-add lua https://github.com/Stratus3D/asdf-lua.git
+    ~/.asdf/bin/asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+    ~/.asdf/bin/asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 fi
-
-# https://rustup.rs/

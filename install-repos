@@ -1,18 +1,21 @@
 #! /bin/bash
 
+mkdir -p ~/Projects/elisp
+if [ -f ~/.emacs ]; then
+    echo "~/.emacs already exists" 1>&2
+else
+    echo "Installing chemacs"
+    git clone https://github.com/plexus/chemacs.git ~/Projects/elisp/chemacs
+    bash ~/Projects/elisp/chemacs/install.sh
+fi
+
 if [ -d ~/.emacs.d ]; then
     echo "~/.emacs.d already exists" 1>&2
 else
-    echo "Installing emacs development environment"
-    git clone --recursive git@github.com:gjhenrique/zezin.emacs.git ~/.emacs.d
-fi
-
-if [ -d ~/.oh-my-zsh ]; then
-    echo "oh-my-zsh is already installed"
-else
-    echo "Installing oh-my-zsh"
-    git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-    . ~/.zshrc
+    echo "Installing doom emacs"
+    mkdir -p ~/Projects/elisp
+    git clone https://github.com/hlissner/doom-emacs ~/Projects/elisp
+    ~/.emacs.d/bin/doom install
 fi
 
 if [ -e ~/.tmux-themepack ]; then
@@ -29,9 +32,3 @@ else
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install --no-update-rc --no-bash --no-zsh --no-fish
 fi
-
-echo "Installing git-prompt"
-curl -o ~/.git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
-
-echo "Installing kube-ps1"
-curl -o ~/.kube-ps1.sh https://raw.githubusercontent.com/jonmosco/kube-ps1/master/kube-ps1.sh
