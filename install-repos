@@ -13,7 +13,7 @@ if [ -d ~/Projects/elisp/doom-emacs ]; then
     echo "~/.emacs.d already exists" 1>&2
 else
     echo "Installing doom emacs"
-    git clone https://github.com/hlissner/doom-emacs ~/Projects/elisp
+    git clone https://github.com/hlissner/doom-emacs ~/Projects/elisp/doom-emacs
     ~/Projects/elisp/doom-emacs/bin/doom install
 fi
 
