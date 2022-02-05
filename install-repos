@@ -9,13 +9,12 @@ else
     bash ~/Projects/elisp/chemacs/install.sh
 fi
 
-if [ -d ~/.emacs.d ]; then
+if [ -d ~/Projects/elisp/doom-emacs ]; then
     echo "~/.emacs.d already exists" 1>&2
 else
     echo "Installing doom emacs"
-    mkdir -p ~/Projects/elisp
     git clone https://github.com/hlissner/doom-emacs ~/Projects/elisp
-    ~/.emacs.d/bin/doom install
+    ~/Projects/elisp/doom-emacs/bin/doom install
 fi
 
 if [ -e ~/.tmux-themepack ]; then
