@@ -3,7 +3,7 @@
 SEP='   ----   '
 
 if [ -z $@ ]; then
-	for dir in ~/.mozilla/firefox/*.dev-edition-default/; do
+	for dir in ~/.mozilla/firefox/*.dev-edition-default*/; do
 		if [[ -d "$dir" ]]; then
 			cp "$dir/places.sqlite" "/tmp/places.sqlite"
 

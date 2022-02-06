@@ -1,5 +1,5 @@
 configuration {
-  font: "Source Code Pro 26";
+  font: "Source Code Pro 12";
   show-icons: true;
   terminal: "alacrity";
   drun-match-fields: "name,generic,exec,categories";
