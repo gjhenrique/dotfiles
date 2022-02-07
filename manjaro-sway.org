@@ -1,19 +1,18 @@
 #+TITLE:
 
 * install-repos
-
-- [ ] Remove zezin.emacs
-- [ ] Install doom.emacs with git
-- [ ] Remove oh-my-zsh
-- [ ] Continue with tmux-themepack
-- [ ] Continue with fzf
-- [ ] Remove git-prompt
-- [ ] Continue with kube-ps1
+- [x] Remove zezin.emacs
+- [x] Install doom.emacs with git
+- [x] Remove oh-my-zsh
+- [x] Continue with tmux-themepack
+- [x] Continue with fzf
+- [x] Remove git-prompt
+- [x] Continue with kube-ps1
 
 * install-langs
-- [ ] asdf replacement for everything
-- [ ] remove rbenv
-- [ ] remove nvm
+- [x] asdf replacement for everything
+- [x] remove rbenv
+- [x] remove nvm
 
 * install-packages
 - [x] adobe-source-code-pro-fonts
@@ -39,8 +38,9 @@ Remove functions
 Only continue with tmux and fzf
 Check what to remove in .aliases
 
+- [x] why mako is not working
+- [x] review fzf
+- [x] profile not being read
+
 - [ ] Additions to waybar (vpn, kubectx)
-- [ ] why mako is not working
-- [ ] review fzf
-- [ ] profile not being read
 - [ ] change foot font
