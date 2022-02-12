@@ -16,7 +16,7 @@ export KAFKA_HOME=/usr/share/kafka
 export FIREFOX_HOME="/opt/firefox"
 export ANDROID_HOME="/opt/sdk-android"
 
-export PATH="$KAFKA_HOME/bin:$PIP_HOME:$CARGO_HOME/bin:$YARN_HOME/bin:$HOME/.config/yarn/global/node_modules/.bin:$GOBIN:$FIREFOX_HOME:$MAVEN_HOME/bin:$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$SCRIPTS_HOME:$PATH"
+export PATH="$FIREFOX_HOME:$KAFKA_HOME/bin:$PIP_HOME:$CARGO_HOME/bin:$YARN_HOME/bin:$HOME/.config/yarn/global/node_modules/.bin:$GOBIN:$FIREFOX_HOME:$MAVEN_HOME/bin:$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$SCRIPTS_HOME:$PATH"
 
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
