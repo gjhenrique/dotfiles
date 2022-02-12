@@ -15,6 +15,7 @@ else
     echo "Installing doom emacs"
     git clone https://github.com/hlissner/doom-emacs ~/Projects/elisp/doom-emacs
     ~/Projects/elisp/doom-emacs/bin/doom install
+    ~/Projects/elisp/doom-emacs/bin/doom sync
 fi
 
 if [ -e ~/.tmux-themepack ]; then
