@@ -1,26 +1,3 @@
-sudo pacman -Syu pass libnotify the_silver_searcher syncthing pavucontrol pulseaudio-alsa tar curl wget emacs dunst jq meld openssl-1.0 pulseaudio redshift strace scrot tree ttf-dejavu unp unzip xclip rofi noto-fonts-emoji mopidy mpc ncmpcpp redshift htop zsh-history-substring-search
+sudo pacman -S base-devel tmux stow unp the_silver_searcher
 
-sudo pacman -S ttf-croscore adobe-source-code-pro-fonts ttf-fantasque-sans-mono ttf-dejavu ttf-liberation noto-fonts
-yay ttf-material-icons-git ttf-weather-icons
-
-sudo pacman -Syu base-devel alacritty stow tmux openssh jq tar curl wget emacs dunst jq meld openssl-1.0 pulseaudio redshift strace scrot tree ttf-dejavu unp unzip xclip rofi noto-fonts-emoji mopidy mpc ncmpcpp
-
-# offlineimap
-# notmuch
-
-wget https://aur.archlinux.org/cgit/aur.git/snapshot/yay.tar.gz
-tar -xzvf yay.tar.gz
-pushd yay
-makepkg -si
-popd
-rm -rf yay
-
-# yay nordvpn bitwarden-cli emoji buku buku_run-git menu-calc
-# yay polybar polybar-scripts polybar-spotify-git
-# yay polybar autojump bitwarden-cli emoji buku buku_run-git menu-calc
-
-# useradd -m -G wheel -s /bin/zsh guilherme
-
-# ssh-keygen -t rsa -b 4096
-
-# xorg-server xorg-apps xf86-amd
+yay autojump
