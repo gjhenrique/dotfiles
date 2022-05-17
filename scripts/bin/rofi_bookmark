@@ -22,5 +22,5 @@ if [ -z $@ ]; then
 		fi
 	done
 else
-	firefox "$(awk -F "$SEP" '{print $2}' <<<$1)"
+	firefox --new-tab "$(awk -F "$SEP" '{print $2}' <<<$1)"
 fi

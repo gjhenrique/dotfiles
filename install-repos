@@ -35,3 +35,6 @@ else
     echo "Installing tmux-themepack"
     git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
 fi
+
+# Use --new-tab as the default browser
+xdg-settings set default-web-browser firefox-dev.desktop
