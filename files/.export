@@ -4,6 +4,7 @@ else
     export SCRIPTS_HOME="~/bin"
 fi
 
+export DOCKER_BUILDKIT=1
 export JAVA_HOME=/usr/lib/jvm/default
 export MAVEN_HOME="/opt/maven/"
 export MAKE_FLAGS="-j$(nproc --all)"
