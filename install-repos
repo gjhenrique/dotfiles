@@ -11,22 +11,13 @@ else
     ~/.asdf/bin/asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 fi
 
-mkdir -p ~/Projects/elisp
-if [ -f ~/.emacs ]; then
-    echo "~/.emacs already exists" 1>&2
-else
-    echo "Installing chemacs"
-    git clone https://github.com/plexus/chemacs.git ~/Projects/elisp/chemacs
-    sh ~/Projects/elisp/chemacs/install.sh
-fi
-
-if [ -d ~/Projects/elisp/doom-emacs ]; then
+if [ -d ~/.emacs.d ]; then
     echo "~/.emacs.d already exists" 1>&2
 else
     echo "Installing doom emacs"
-    git clone https://github.com/hlissner/doom-emacs ~/Projects/elisp/doom-emacs
-    ~/Projects/elisp/doom-emacs/bin/doom install
-    ~/Projects/elisp/doom-emacs/bin/doom sync
+    git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
+    ~/.emacs.d/bin/doom install
+    ~/.emacs.d/bin/doom sync
 fi
 
 if [ -e ~/.tmux-themepack ]; then
