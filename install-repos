@@ -9,6 +9,7 @@ else
     ~/.asdf/bin/asdf plugin-add lua https://github.com/Stratus3D/asdf-lua.git
     ~/.asdf/bin/asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
     ~/.asdf/bin/asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+    ~/.asdf/bin/asdf plugin-add terraform https://github.com/asdf-community/asdf-hashicorp.git
 fi
 
 if [ -d ~/.emacs.d ]; then

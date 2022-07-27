@@ -15,8 +15,8 @@
 
     initial-frames))
 
-(setq zezin-work-file "$HOME/Life/banapane.org")
-(setq zezin-sideprojects-file "$HOME/Life/banapane.org")
+(setq zezin-work-file "$HOME/Life/SideProjects.org")
+(setq zezin-sideprojects-file "$HOME/Life/SideProjects.org")
 
 (defun zezin-add-purposes ()
   (add-to-list 'purpose-user-mode-purposes '(ruby-mode . ruby))
