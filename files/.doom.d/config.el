@@ -191,7 +191,7 @@
   (doom/reload-theme)
   (zezin-update-frame-font-size zezin-display))
 
-(add-hook! '(js2-mode-hook typescript-mode-hook)
+(add-hook! '(js2-mode-hook typescript-mode-hook typescript-tsx-mode-hook)
   (if (locate-dominating-file default-directory ".prettierrc")
       (format-all-mode +1)))
 
@@ -251,6 +251,10 @@
       (message "Updating frames font-size")
       (setq zezin-display (display-monitor-attributes-list))
       (zezin-update-frame-font-size zezin-display)))
+
+(setq-hook! 'typescript-mode-hook +format-with-lsp nil)
+(setq-hook! 'js2-mode-hook +format-with-lsp nil)
+(setq-hook! 'typescript-tsx-mode-hook +format-with-lsp nil)
 
 (after! emacs-everywhere
   (defun zezin-jira-page-p ()

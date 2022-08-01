@@ -29,3 +29,6 @@ GRTAGS
 .ccls-cache
 compile_commands.json
 .cache
+
+# lsp-mode
+.log
