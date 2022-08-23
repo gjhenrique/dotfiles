@@ -177,8 +177,6 @@
 (map! :map compilation-mode-map
       :nv "q" #'evil-record-macro)
 
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
-
 (defun zezin-load-light-theme ()
   (interactive)
   (load-theme 'doom-solarized-light)

@@ -2,8 +2,8 @@
 
 if [ $1 = 'on' ];then
     emacsclient -e '(zezin-load-light-theme)' > /dev/null
-    alacritty-theme-switch -s light.yml
+    pkill -USR2 zsh
 elif [ $1 = 'off' ]; then
     emacsclient -e '(zezin-load-dark-theme)' > /dev/null
-    alacritty-theme-switch -s dark.yml
+    pkill -USR1 zsh
 fi

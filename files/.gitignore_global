@@ -32,3 +32,5 @@ compile_commands.json
 
 # lsp-mode
 .log
+
+.tool-versions

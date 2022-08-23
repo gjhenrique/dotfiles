@@ -28,5 +28,12 @@ else
     git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
 fi
 
+if [ -e ~/.theme.sh ]; then
+    echo "tmux-themepack is already installed"
+else
+    echo "Installing tmux-themepack"
+    git clone https://github.com/lemnos/theme.sh.git ~/.theme.sh
+fi
+
 # Use --new-tab as the default browser
 xdg-settings set default-web-browser firefox-dev.desktop
