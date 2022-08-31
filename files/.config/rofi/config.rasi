@@ -6,6 +6,7 @@ configuration {
   sidebar-mode: false;
   combi-hide-mode-prefix: true;
   display-drun: "";
-  theme: "DarkBlue";
   monitor: "1";
 }
+
+@theme "DarkBlue"
