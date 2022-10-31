@@ -1,4 +1,0 @@
-#! /bin/bash
-
-setxkbmap us altgr-intl -option 'caps:swapescape,altwin:left_meta_win,terminate:ctrl_alt_bksp'
-xmodmap ~/.Xmodmap

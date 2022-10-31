@@ -9,7 +9,7 @@ if [ -z $@ ]; then
 
 			sqlite3 -separator "$SEP" "/tmp/places.sqlite" <<-EOF
 				WITH RECURSIVE parents(id) AS (
-				 SELECT id FROM moz_bookmarks where (type = 2 AND title = 'Work') OR (type = 2 AND title = 'Alemanha')
+				 SELECT id FROM moz_bookmarks where (type = 2 AND title = 'Work') OR (type = 2 AND title = 'SP')
 				 UNION ALL
 				 SELECT mb.id FROM moz_bookmarks mb INNER JOIN parents ON mb.parent = parents.id
 				)

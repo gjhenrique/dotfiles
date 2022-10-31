@@ -1,8 +1,0 @@
-#!/bin/bash
-
-output=$(pactl list | grep 'Active Port.*output.*' | grep -v hdmi | cut -d ' ' -f 3)
-if [ "$output" == 'analog-output-lineout' ]; then
-    pactl set-sink-port 1 analog-output-headphones 
-else
-    pactl set-sink-port 1 analog-output-lineout
-fi
