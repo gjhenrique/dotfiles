@@ -17,12 +17,15 @@
 (package! nginx-mode)
 (package! meson-mode)
 (package! strace-mode)
-(package! lsp-grammarly)
 (package! keytar)
 (package! sway)
-(package! emacs-everywhere
-  :recipe (:host github :repo "gjhenrique/emacs-everywhere" :branch "sway"))
+(package! emacs-everywhere :pin "e1b701894196b0e0aaf18ab88c778877ec87d0c9")
+;; (package! emacs-everywhere
+;;   :recipe (:host github :repo "gjhenrique/emacs-everywhere" :branch "sway"))
 (package! know-your-http-well)
+
+; Fix issue with webrick dependency
+(package! robe :pin "993ae13791ba882076b644b0c8054b6e89e22dad11207bd549a5a78e3a4d70265c3715990dcdab71")
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
                                         ;(package! some-package)

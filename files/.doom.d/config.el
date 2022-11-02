@@ -220,12 +220,6 @@
   :init
   (setq tldr-directory-path (concat doom-cache-dir "tldr/")))
 
-(use-package! keytar)
-(after! lsp
-  (use-package! lsp-grammarly
-    :config
-    (add-to-list 'lsp-language-id-configuration '(emacs-everywhere-mode . "grammarly"))))
-
 (defun zezin-emacs-everywhere ()
   (interactive)
   (let* ((run-path (format "/run/user/%s" (user-real-uid)))
@@ -274,11 +268,6 @@
 
   (add-hook 'emacs-everywhere-init-hooks 'zezin-convert-from-jira t)
   (add-hook 'emacs-everywhere-final-hooks 'zezin-convert-to-jira)
-
-  (defun zezin-activate-grammarly ()
-    (interactive)
-    (require 'lsp-grammarly)
-    (lsp))
 
   (setq emacs-everywhere-frame-parameters
         `((name . "emacs-everywhere")
