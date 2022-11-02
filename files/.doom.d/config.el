@@ -196,6 +196,9 @@
 (add-hook! '(go-mode-hook)
   (format-all-mode +1))
 
+(add-hook! '(terraform-mode-hook)
+  (format-all-mode +1))
+
 (add-hook! 'ruby-mode-hook
   (setq-local flycheck-command-wrapper-function
         (lambda (command) (append '("bundle" "exec") command))))
