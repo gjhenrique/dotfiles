@@ -25,7 +25,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-city-lights)
+(setq doom-theme 'doom-one)
 
 (after! magit
   (setq magit-display-buffer-function #'magit-display-buffer-traditional))
@@ -185,7 +185,7 @@
 
 (defun zezin-load-dark-theme ()
   (interactive)
-  (load-theme 'doom-city-lights)
+  (load-theme 'doom-one)
   (doom/reload-theme)
   (zezin-update-frame-font-size zezin-display))
 
