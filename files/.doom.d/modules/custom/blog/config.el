@@ -1,26 +1,21 @@
 ;; Blogging
+
+(defvar zezin-blog-path (substitute-in-file-name "$HOME/Projects/mine/blog/"))
+
 (with-eval-after-load 'org
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((dot . t)))
-  ;; Fix invalid face hl-line error
-  (require 'hl-line)
-  (set-face-background 'hl-line "gray97")
-  (defun my-org-confirm-babel-evaluate (lang body)
-    (not (string= lang "dot")))
-  (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
-  (setq org-export-with-sub-superscripts nil)
-  (setq org-html-htmlize-output-type 'css))
+  (load-file (concat zezin-blog-path "posts-config.el"))
 
-(defun zezin-org-publish-all ()
-  (interactive)
-  (save-excursion
-    (org-publish-all)))
+  ;; Hugo directories
+  (zezin-set-posts-info (concat zezin-blog-path "org")
+                        (concat zezin-blog-path "content/posts")
+                        (concat zezin-blog-path "static"))
 
-(defun zezin-org-publish-current-file ()
-  (interactive)
-  (save-excursion
-    (org-publish-current-file)))
+  (setq org-html-htmlize-output-type 'css)
 
-(provide 'zezin-blogging)
-;;; zezin-blogging ends here
+  (defun zezin-rewrite-link (orig-fun &rest args )
+    "Replaces org-html-link images with absolue URLs"
+    (let ((res (apply orig-fun args)))
+      (if (and (stringp res) (string-match-p "<img src=" res))
+          (replace-regexp-in-string "./res" "/res" res)
+        res)))
+  (advice-add #'org-html-link :around #'zezin-rewrite-link))

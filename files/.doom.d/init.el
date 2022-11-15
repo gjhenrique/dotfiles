@@ -180,4 +180,5 @@
 
        :custom
        purpose
+       blog
        kubernetes)
