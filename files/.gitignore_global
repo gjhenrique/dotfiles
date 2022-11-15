@@ -1,36 +1,11 @@
-# JS
-.tern-port
-.tern-project
-.my-env
-
-backport_ar.rb
-
-# Ruby
-/vendor/ruby/
-
 /vendor/bundle
-/vendor/bundle_alpine
-/vendor/bundler
-
-jsconfig.json
 
 # ag-specific
 .ignore
 
-GPATH
-GTAGS
-GRTAGS
-
 .projectile
-.idea/
-
 .dir-locals.el
-
-.ccls-cache
-compile_commands.json
-.cache
 
 # lsp-mode
 .log
-
 .tool-versions
