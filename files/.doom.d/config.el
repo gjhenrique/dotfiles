@@ -180,14 +180,12 @@
 (defun zezin-load-light-theme ()
   (interactive)
   (load-theme 'doom-solarized-light)
-  (doom/reload-theme)
-  (zezin-update-frame-font-size zezin-display))
+  (doom/reload-theme))
 
 (defun zezin-load-dark-theme ()
   (interactive)
   (load-theme 'doom-one)
-  (doom/reload-theme)
-  (zezin-update-frame-font-size zezin-display))
+  (doom/reload-theme))
 
 (add-hook! '(js2-mode-hook typescript-mode-hook typescript-tsx-mode-hook)
   (if (locate-dominating-file default-directory ".prettierrc")
@@ -241,12 +239,6 @@
               (set-frame-font (font-spec :family "Source Code Pro" :size 24)  nil zezin-frames))))
         displays))
 
-(defun zezin-refresh-frame-font ()
-    (unless (equal zezin-display (display-monitor-attributes-list))
-      (message "Updating frames font-size")
-      (setq zezin-display (display-monitor-attributes-list))
-      (zezin-update-frame-font-size zezin-display)))
-
 (setq-hook! 'typescript-mode-hook +format-with-lsp nil)
 (setq-hook! 'js2-mode-hook +format-with-lsp nil)
 (setq-hook! 'typescript-tsx-mode-hook +format-with-lsp nil)
@@ -273,9 +265,3 @@
         `((name . "emacs-everywhere")
           (width . 120)
           (height . 25))))
-
-(after! dash
-  ;; (when (equal (system-name) "henrique")
-  (when nil
-    (setq zezin-display (display-monitor-attributes-list))
-    (run-at-time 2 2 #'zezin-refresh-frame-font)))
