@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 SEP='   ----   '
 
@@ -6,6 +6,7 @@ if [ -z $@ ]; then
 	for dir in ~/.mozilla/firefox/*.dev-edition-default*/; do
 		if [[ -d "$dir" ]]; then
 			cp "$dir/places.sqlite" "/tmp/places.sqlite"
+            cp "$dir/places.sqlite-wal" "/tmp/places.sqlite-wal" | true
 
 			sqlite3 -separator "$SEP" "/tmp/places.sqlite" <<-EOF
 				WITH RECURSIVE parents(id) AS (

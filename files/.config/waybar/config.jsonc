@@ -4,7 +4,7 @@
     ],
     "modules-right": [
         // informational
-        "sway/language",
+        // "sway/language",
         "custom/github",
         "custom/clipboard",
         "custom/zeit",

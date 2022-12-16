@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+#
+require 'json'
+
+CONFIG=JSON.parse(File.read("#{Dir.home}/.config/rofi/engine.json"), symbolize_names: true)
+
+def generate_output
+    CONFIG
+        .sort_by { |c| c[:trigger] }
+        .map { |c| "#{c[:trigger]} #{c[:name]}" }
+        .join("\n")
+end
+
+if ARGV.length > 0
+    input = ARGV[0]
+    mode = CONFIG.find { |c| input.start_with? c[:trigger] }
+    File.write("/tmp/search.log", "#{mode} #{input}")
+    exit 1 if mode.nil?
+
+    input = input.gsub("#{mode[:trigger]} ", "")
+    url = mode[:url].gsub("#{mode[:trigger]} ", "").gsub("%s", input)
+
+    `firefox --new-tab "#{url}"`
+else
+    puts generate_output
+end

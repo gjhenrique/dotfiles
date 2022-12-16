@@ -1,7 +1,7 @@
 configuration {
   font: "Source Code Pro 12";
   show-icons: true;
-  terminal: "alacrity";
+  terminal: "footclient";
   drun-match-fields: "name,generic,exec,categories";
   sidebar-mode: false;
   combi-hide-mode-prefix: true;
