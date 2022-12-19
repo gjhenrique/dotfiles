@@ -24,7 +24,7 @@ else
   ff_dir = Dir["#{Dir.home}/.mozilla/firefox/*.dev-edition-default-*"][0]
   FileUtils.cp("#{ff_dir}/places.sqlite", "/tmp/places.sqlite")
   begin
-  FileUtils.cp("#{ff_dir}/places.sqlite-wal", "/tmp/places.sqlite-wal")
+    FileUtils.cp("#{ff_dir}/places.sqlite-wal", "/tmp/places.sqlite-wal")
   rescue
   end
 
