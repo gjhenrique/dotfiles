@@ -1,5 +1,5 @@
 [user]
-	email = gjhenrique@gmail.com
+	email = me@gjhenrique.com
 	name = Guilherme Henrique
 
 [core]
@@ -21,7 +21,7 @@
 	followRedirects = true
 
 [github]
-	user = gjhenrique@gmail.com
+	user = me@gjhenrique.com
 
 [includeIf "gitdir:~/Projects/xing/"]
 	path = .xing.gitconfig
