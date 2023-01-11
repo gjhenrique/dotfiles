@@ -1,0 +1,10 @@
+output DP-4 res 2560 1440 pos 0 0 transform 90
+output DP-4 scale 1.2
+output DP-5 res 2580 1440 pos 0 0 transform 90
+output DP-5 scale 1.2
+output DP-6 res 2580 1440 pos 0 0 transform 90
+output DP-6 scale 1.2
+output DP-2 pos 1220 600 res 3840x2160
+output DP-2 scale 1.7
+output HDMI-A-1 pos 3490 500 res 1920x1080 transform 270
+output HDMI-A-1 scale 1
