@@ -1,11 +1,7 @@
 #!/bin/bash
 
 mkdir -p $HOME/.local/share/applications
-mkdir -p $HOME/.config/systemd/user
-mkdir -p $HOME/.config/albert
 mkdir -p $HOME/.config/sway
-mkdir -p $HOME/.config/alacritty
-mkdir -p $HOME/.config/mopidy
 mkdir -p $HOME/.bundle
 
 stow files -t ~

@@ -35,5 +35,3 @@ else
     git clone https://github.com/lemnos/theme.sh.git ~/.theme.sh
 fi
 
-# Use --new-tab as the default browser
-xdg-settings set default-web-browser firefox-dev.desktop

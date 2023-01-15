@@ -1,9 +1,0 @@
-[Unit]
-Description=Blur webcam as soon as there is a new meeting
-
-[Service]
-Type=service
-ExecStart=/opt/bin/blur_webcam
-
-[Install]
-WantedBy=default.target
