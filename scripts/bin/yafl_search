@@ -2,19 +2,28 @@
 #
 require 'json'
 
-CONFIG=JSON.parse(File.read("#{Dir.home}/.config/rofi/engine.json"), symbolize_names: true)
+def parse_json(filename)
+    JSON.parse(File.read("#{Dir.home}/#{filename}"), symbolize_names: true)
+end
+
+def config
+    parse_json(".config/yafl/search.json").tap do |config|
+        begin
+          config.push(*parse_json("Life/xing/search.json"))
+        rescue
+        end
+    end
+end
 
 def generate_output
-    CONFIG
-        .sort_by { |c| c[:trigger] }
-        .map { |c| "#{c[:trigger]} #{c[:name]}" }
-        .join("\n")
+    config.sort_by { |c| c[:trigger] }
+          .map { |c| "#{c[:trigger]} #{c[:name]}" }
+          .join("\n")
 end
 
 if ARGV.length > 0
     input = ARGV[0]
-    mode = CONFIG.find { |c| input.start_with? c[:trigger] }
-    File.write("/tmp/search.log", "#{mode} #{input}")
+    mode = config.find { |c| input.start_with? c[:trigger] }
     exit 1 if mode.nil?
 
     input = input.gsub("#{mode[:trigger]} ", "")

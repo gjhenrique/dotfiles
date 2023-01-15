@@ -84,34 +84,9 @@
     "trigger": "du",
     "name": "Duden"
   },
-    {
+  {
     "url": "https://www.duden.de/rechtschreibung/%s",
     "trigger": "dw",
     "name": "Duden"
-  },
-  {
-    "url": "https://jira.xing.hh/browse/%s",
-    "trigger": "ju",
-    "name": "Jira - Xing"
-  },
-  {
-    "url": "https://source.xing.com/search?q=%s&type=Code",
-    "trigger": "xc",
-    "name": "Github code"
-  },
-  {
-    "url": "https://source.xing.com/search?q=%s",
-    "trigger": "xs",
-    "name": "Github - Xing"
-  },
-  {
-    "url": "https://source.xing.com/search?q=%s+org%3Autec&type=Code",
-    "trigger": "xu",
-    "name": "Github - utec"
-  },
-  {
-    "url": "https://confluence.xing.hh/dosearchsite.action?cql=siteSearch+~+%22%s%22&queryString=%s",
-    "trigger": "xf",
-    "name": "Confluence - Xing"
   }
 ]
