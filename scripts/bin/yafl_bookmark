@@ -30,6 +30,6 @@ else
 
   db = SQLite3::Database.new "/tmp/places.sqlite"
   db.execute QUERY do |row|
-    puts "#{row[0]}\\x31#{row[1]}"
+    puts "#{row[0]}\x1f#{row[1]}"
   end
 end
