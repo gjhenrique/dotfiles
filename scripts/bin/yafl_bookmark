@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
-require 'sqlite3'
-require 'fileutils'
+require "sqlite3"
+require "fileutils"
 
 QUERY=<<SQL
   WITH RECURSIVE parents(id) AS (
@@ -16,8 +16,7 @@ QUERY=<<SQL
    ORDER BY mp.frecency DESC
 SQL
 
-
-if ARGV.length > 0
+if ARGV.length.positive?
   puts ARGV[0]
   `firefox --new-tab "#{ARGV[0]}"`
 else

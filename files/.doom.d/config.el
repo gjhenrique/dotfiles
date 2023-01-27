@@ -198,8 +198,8 @@
   (format-all-mode +1))
 
 (add-hook! 'ruby-mode-hook
-  (setq-local flycheck-command-wrapper-function
-        (lambda (command) (append '("bundle" "exec") command))))
+  (setq flycheck-command-wrapper-function
+        (lambda (command) command)))
 
 (use-package! meson-mode
   :mode (("/meson\\.build\\'" . meson-mode)))
