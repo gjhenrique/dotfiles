@@ -1,0 +1,14 @@
+[modes.bookmark]
+exec = "yafl_bookmark"
+prefix = "f"
+name = "Search with bookmark"
+
+[modes.search]
+exec = "yafl_search"
+prefix = "s"
+call_without_match=true
+
+[modes.emoji]
+exec = "yafl_moji"
+prefix = "e"
+history = true
