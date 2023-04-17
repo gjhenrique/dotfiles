@@ -1,12 +1,1 @@
-configuration {
-  font: "Source Code Pro 12";
-  show-icons: true;
-  terminal: "footclient";
-  drun-match-fields: "name,generic,exec,categories";
-  sidebar-mode: false;
-  combi-hide-mode-prefix: true;
-  display-drun: "";
-  monitor: "1";
-}
-
-@theme "DarkBlue"
+* {lightbg: #141a1b; background: #141a1b; lightfg: #16a085; foreground: #eeeeee;}

@@ -17,3 +17,4 @@ alias kgpl="kubectl get pods"
 
 alias zoom="QT_QPA_PLATFORM=xcb zoom"
 alias wireshark="QT_SCALE_FACTOR=1.5 wireshark"
+alias virsh="virsh -c qemu:///system"
