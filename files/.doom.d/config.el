@@ -25,7 +25,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-gruvbox)
 
 (after! magit
   (setq magit-display-buffer-function #'magit-display-buffer-traditional))
@@ -184,7 +184,7 @@
 
 (defun zezin-load-dark-theme ()
   (interactive)
-  (load-theme 'doom-one)
+  (load-theme 'doom-gruvbox)
   (doom/reload-theme))
 
 (add-hook! '(js2-mode-hook typescript-mode-hook typescript-tsx-mode-hook)
