@@ -3,14 +3,14 @@
 (defun zezin-get-frames ()
   (let* ((initial-frames
          '(((title . "EmacsPrimary"))
-           ((title . "EmacsNotes") (start-fn . zezin-start-notes-frame))
+           ;; ((title . "EmacsNotes") (start-fn . zezin-start-notes-frame))
            ((title . "EmacsGit") (start-fn . zezin-start-magit-frame))
            ((title . "EmacsCompilation") (start-fn . zezin-start-compilation-frame)))))
     (when (= (length (display-monitor-attributes-list)) 2)
       (push '((title . "EmacsSecondary")) initial-frames))
 
-    (when (= (length (display-monitor-attributes-list)) 3)
-      (push '((title . "EmacsSecondary")) initial-frames )
+    (when (>= (length (display-monitor-attributes-list)) 3)
+      (push '((title . "EmacsSecondary")) initial-frames)
       (push '((title . "EmacsTertiary")) initial-frames))
 
     initial-frames))
