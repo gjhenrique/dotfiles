@@ -23,5 +23,5 @@
 [github]
 	user = me@gjhenrique.com
 
-[includeIf "gitdir:~/Projects/xing/"]
-	path = .xing.gitconfig
+[includeIf "gitdir:~/Projects/prezi/"]
+	path = .prezi.gitconfig
