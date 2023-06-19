@@ -56,4 +56,3 @@ export ZEIT_DB=~/.config/zeit.db
 
 export LC_MEASUREMENT="pt_BR.UTF-8"
 export LC_ALL="en_US.UTF-8"
-export WLR_NO_HARDWARE_CURSORS=1
