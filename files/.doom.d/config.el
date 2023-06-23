@@ -91,42 +91,21 @@
                          (+ (-elem-index lib-identifier directories) 2)
                          directories)))))
 
-(defvar zezin-lib-directories '("gems" "elpa" "node_modules" "repos"))
-
-(defun zezin-find-lib-folder (folder)
-  (cl-some
-   (lambda (lib) (zezin-find-root-lib folder lib))
-   zezin-lib-directories))
-
 (after! counsel
   (defun counsel-find-read-dir ()
     (interactive)
     (let ((folder (file-name-directory (read-file-name "Choose directory: "))))
       (doom-project-find-file folder)))
 
-  (cl-defun counsel-rg-directory (dir &optional initial-text)
+  (cl-defun counsel-ag-directory (dir &optional initial-text)
     (interactive)
     (let ((text (or initial-text (doom-thing-at-point-or-region) "")))
-          (counsel-rg text dir "--hidden")))
+          (counsel-ag text dir "--hidden")))
 
-  (defun counsel-rg-use-package ()
-    (interactive)
-    (counsel-rg-directory doom-emacs-dir "(use-package "))
-
-  (defun counsel-rg-read-lib ()
-    (interactive)
-    (let ((folder (or (zezin-find-lib-folder default-directory) projectile-project-root)))
-      (counsel-rg-directory folder)))
-
-  (defun counsel-rg-read-gem (gem-name)
-    (interactive (list (completing-read "Bundled gem: " (bundle-list-gems-cached))))
-    (let ((gem-location (bundle-gem-location gem-name)))
-      (counsel-rg-directory gem-location)))
-
-  (defun counsel-rg-region-or-symbol-read-dir ()
+  (defun counsel-ag-region-or-symbol-read-dir ()
     (interactive)
     (let ((folder (file-name-directory (read-file-name "rg in directory: "))))
-      (counsel-rg-directory folder))))
+      (counsel-ag-directory folder))) )
 
 (after! rainbow-delimiters
   (add-hook! 'prog-mode-hook
@@ -146,20 +125,6 @@
  :leader
  "g," #'dumb-jump-go
  (:prefix-map ("j" . "Personal")
-  ;; "f" #'counsel-find-file ;; SPC f f - counsel-find-file
-  ;; "d" #'counsel-projectile-find-file ;; SPC p f - +ivy/projectile-find-file
-  ;; "k" #'kill-this-buffer ;; SPC b d - kill-current-buffer
-  ;; "p" #'counsel-projectile-switch-project ;; SPC p p - counsel-projectile-switch-project
-  ;; "g" #'counsel-projectile-switch-to-buffer ;; retire. SPC j j does the trick
-  ;; "a" #'projectile-compile-project ;; SPC p c - projectile-compile-project
-  ;; "m" #'mode-line-other-buffer ;; SPC b l - switch-to-last-buffer
-  ;; "j" #'ivy-switch-buffer ;; SPC b b|SPC , ivy-switch-buffer
-  ;; "r" #'counsel-projectile-rg ;; SPC s p +default/search-project
-  ;; "c" #'counsel-fzf ;; SPC f F +default/find-file-under-here
-  ;; "u" #'browse-url-at-point ;; gf +lookup/file
-  ;; "e" #'counsel-rg-region-or-symbol-projectile ;; SPC * +default/search-project-for-symbol-at-point
-  ;; "h" #'evil-window-delete ;; C-w d
-
   "b" #'swiper-thing-at-point
   "s" #'evilnc-comment-or-uncomment-lines
   "l" #'evil-avy-goto-line
@@ -169,9 +134,7 @@
   "z" #'split-window-below-and-focus
 
   "n" #'counsel-find-read-dir
-  "c" #'counsel-rg-region-or-symbol-read-dir
-  "x" #'counsel-rg-read-lib
-  "v" #'google-translate-smooth-translate))
+  "c" #'counsel-ag-region-or-symbol-read-dir))
 
 ;; Disable q key for compilation-mode because it brings some problems with purpose workflow
 (map! :map compilation-mode-map
