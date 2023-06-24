@@ -3,7 +3,7 @@
 (defun zezin-get-frames ()
   (let* ((initial-frames
          '(((title . "EmacsPrimary"))
-           ;; ((title . "EmacsNotes") (start-fn . zezin-start-notes-frame))
+           ((title . "EmacsNotes") (start-fn . zezin-start-notes-frame))
            ((title . "EmacsGit") (start-fn . zezin-start-magit-frame))
            ((title . "EmacsCompilation") (start-fn . zezin-start-compilation-frame)))))
     (when (= (length (display-monitor-attributes-list)) 2)
@@ -15,8 +15,7 @@
 
     initial-frames))
 
-(setq zezin-work-file "$HOME/Life/SideProjects.org")
-(setq zezin-sideprojects-file "$HOME/Life/SideProjects.org")
+(setq zezin-work-file "$HOME/Life/prezi.org")
 
 (defun zezin-add-purposes ()
   (add-to-list 'purpose-user-mode-purposes '(ruby-mode . ruby))
@@ -72,10 +71,8 @@
                  (string= (cdr (assoc 'title frame-config)) frame-title))
                (zezin-get-frames)))))
 
-(defun zezin-find-note-file () zezin-work-file)
-
 (defun zezin-start-notes-frame (frame)
-  (find-file (substitute-in-file-name (zezin-find-note-file)))
+  (find-file (substitute-in-file-name zezin-work-file))
   (purpose-toggle-window-buffer-dedicated))
 
 (defun zezin-start-magit-frame (frame)
