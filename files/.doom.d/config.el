@@ -119,6 +119,9 @@
         ;; Include hidden files in search
         "rg -M 240 --hidden -g '!.git' --with-filename --no-heading --line-number --color never %s"))
 
+(after! groovy-mode
+  (add-to-list 'auto-mode-alist '("Jenkinsfile.*\\'" . groovy-mode)))
+
 (map!
  "M-o" #'er/expand-region
  :v "M-c" #'evil-multiedit-toggle-marker-here
