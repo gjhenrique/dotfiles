@@ -16,8 +16,9 @@ export GOPATH="$HOME/Projects/golang"
 export GOBIN=$GOPATH/bin
 export KAFKA_HOME=/usr/share/kafka
 export ANDROID_HOME="/opt/sdk-android"
+export ASDF_SHIM="$HOME/.asdf/shims"
 
-export PATH="$KAFKA_HOME/bin:$PIP_HOME:$CARGO_HOME/bin:$YARN_HOME/bin:$HOME/.config/yarn/global/node_modules/.bin:$GOBIN:$FIREFOX_HOME:$MAVEN_HOME/bin:$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANT_HOME/bin:$ANDROID_HOME/platform-tools:$SCRIPTS_HOME:$PATH"
+export PATH="$ASDF_SHIM:$KAFKA_HOME/bin:$PIP_HOME:$CARGO_HOME/bin:$YARN_HOME/bin:$HOME/.config/yarn/global/node_modules/.bin:$GOBIN:$FIREFOX_HOME:$MAVEN_HOME/bin:$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANT_HOME/bin:$ANDROID_HOME/platform-tools:$SCRIPTS_HOME:$PATH"
 
 export FIREFOX_HOME="/opt/firefox"
 # Check if firefox is installed
