@@ -1,0 +1,6 @@
+straight/
+!straight/versions/default.el
+
+recentf
+tree-sitter
+flycheck_init.el
