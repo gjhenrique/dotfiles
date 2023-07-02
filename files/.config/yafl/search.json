@@ -5,16 +5,6 @@
     "url": "https://www.google.com/search?q=%s"
   },
   {
-    "name": "Youtube",
-    "trigger": "yt",
-    "url": "https://www.youtube.com/results?search_query=%s"
-  },
-  {
-    "name": "Amazon",
-    "trigger": "ama",
-    "url": "http://www.amazon.com/s/?field-keywords=%s"
-  },
-  {
     "name": "AUR",
     "trigger": "aur",
     "url": "https://aur.archlinux.org/packages/?O=0&K=%s"
@@ -30,34 +20,9 @@
     "url": "https://github.com/search?utf8=✓&q=%s"
   },
   {
-    "name": "Wikipedia",
-    "trigger": "wiki",
-    "url": "https://en.wikipedia.org/w/index.php?search=%s"
-  },
-  {
-    "name": "Wolfram Alpha",
-    "trigger": "=",
-    "url": "https://www.wolframalpha.com/input/?i=%s"
-  },
-  {
-    "name": "DuckDuckGo",
-    "trigger": "dd",
-    "url": "https://duckduckgo.com/?q=%s"
-  },
-  {
     "name": "Ruby Gems",
     "trigger": "ruby",
     "url": "https://rubygems.org/search?utf8=%E2%9C%93&query=%s"
-  },
-  {
-    "name": "My Gitlab",
-    "trigger": "gl",
-    "url": "https://gitlab.com/?utf8=%E2%9C%93&name=%s&sort=latest_activity_desc"
-  },
-  {
-    "name": "My Github",
-    "trigger": "mgh",
-    "url": "https://github.com/gjhenrique?utf8=%E2%9C%93&tab=repositories&q=%s&type=&language="
   },
   {
     "name": "Query npm packages",
@@ -70,23 +35,18 @@
     "url": "https://melpa.org/#/?q=%s"
   },
   {
-    "name": "Can i Use",
-    "trigger": "can",
-    "url": "https://caniuse.com/#search=%s"
+    "url": "https://plugins.jenkins.io/ui/search/?query=%s",
+    "trigger": "jp",
+    "name": "Jenkins Plugins"
   },
   {
-    "url": "https://www.google.com/search?q=%s&tbm=isch&sout=1#spf=1578102449996",
-    "trigger": "gi",
-    "name": "Google image search"
+    "url": "https://github.com/search?q=org%3Ajenkinsci%20%s&type=code",
+    "trigger": "gj",
+    "name": "Github code search - Jenkins"
   },
   {
-    "url": "https://www.duden.de/suchen/dudenonline/%s",
-    "trigger": "du",
-    "name": "Duden"
-  },
-  {
-    "url": "https://www.duden.de/rechtschreibung/%s",
-    "trigger": "dw",
-    "name": "Duden"
+     "url": "https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:search=%s",
+    "trigger": "ae",
+    "name": "AWS - Search EC2 instances"
   }
 ]
