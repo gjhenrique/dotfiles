@@ -18,7 +18,7 @@ SQL
 
 if ARGV.length.positive?
   puts ARGV[0]
-  `firefox --new-tab "#{ARGV[0]}"`
+  `flatpak run org.mozilla.firefox --new-tab "#{ARGV[0]}"`
 else
   ff_dir = Dir["#{Dir.home}/.mozilla/firefox/*.dev-edition-default*"][0]
   FileUtils.cp("#{ff_dir}/places.sqlite", "/tmp/places.sqlite")

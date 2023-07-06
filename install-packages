@@ -1,3 +1,9 @@
-sudo pacman -S vim fzf ripgrep base-devel tmux stow unp the_silver_searcher direnv atuin bitwarden-desktop adobe-source-code-pro-fonts
+sudo pacman -S vim fzf ripgrep base-devel tmux stow unp the_silver_searcher direnv atuin bitwarden-desktop adobe-source-code-pro-fonts flatpak
 
 yay autojump-rs
+
+flatpak install org.mozilla.firefox
+flatpak install us.zoom.Zoom
+flatpak install com.spotify.Client
+flatpak install com.slack.Slack
+flatpak install com.bitwarden.desktop
