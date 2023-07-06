@@ -1,11 +1,11 @@
-/vendor/bundle
-
 # ag-specific
 .ignore
 
-.projectile
 .dir-locals.el
 
 # lsp-mode
 .log
 .tool-versions
+
+# direnv stuff
+.envrc
