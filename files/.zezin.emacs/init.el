@@ -87,12 +87,12 @@
 (with-eval-after-load 'eglot
   (push '(python-ts-mode "pylsp" "--verbose" "--log-file=/tmp/server.log") eglot-server-programs))
 
-(defun zezin-split-window-below-and-focus ()
+(defun +split-window-below-and-focus ()
   (interactive)
   (split-window-below)
   (windmove-down))
 
-(defun zezin-split-window-right-and-focus ()
+(defun +split-window-right-and-focus ()
   (interactive)
   (split-window-right)
   (windmove-right))
@@ -149,7 +149,7 @@
 
 (defun +counsel-rg-project ()
   (interactive)
-  (let ((dir (or (cdr (cdr (project-current))) default-directory)))
+  (let ((dir (or (car (last (project-current))) default-directory)))
     (message dir)
     (+counsel-rg-directory dir)))
 
@@ -162,8 +162,8 @@
 
     (evil-define-key 'normal 'global (kbd "<leader>ww") 'evil-window-next)
     (evil-define-key 'normal 'global (kbd "<leader>wd") 'evil-window-delete)
-    (evil-define-key 'normal 'global (kbd "<leader>jo") 'zezin-split-window-below-and-focus)
-    (evil-define-key 'normal 'global (kbd "<leader>js") 'zezin-split-window-right-and-focus)
+    (evil-define-key 'normal 'global (kbd "<leader>jo") '+split-window-below-and-focus)
+    (evil-define-key 'normal 'global (kbd "<leader>js") '+split-window-right-and-focus)
 
     (evil-define-key 'normal 'global (kbd "<leader>gg") 'magit-status)
     (evil-define-key 'normal 'global (kbd "<leader>gt") 'git-timemachine)
@@ -174,12 +174,19 @@
     (evil-define-key 'normal 'global (kbd "<leader>js") 'evilnc-comment-or-uncomment-lines)
     (evil-define-key 'normal 'global (kbd "<leader>g,") 'dumb-jump-go)
 
+    (evil-define-key 'normal 'global (kbd "<leader>SPC") 'project-find-file)
     (evil-define-key 'normal 'global (kbd "<leader>*") '+counsel-rg-project)
+    (evil-define-key 'normal 'global (kbd "<leader>si") 'counsel-imenu)
+
+    ;; buffer
+    (evil-define-key 'normal 'global (kbd "<leader>bk") 'kill-current-buffer)
+    (evil-define-key 'normal 'global (kbd "<leader>bl") 'evil-switch-to-windows-last-buffer)
     ))
 
 ;; magit
 ;;
 
-(find-file "/home/guilherme/Projects/python/Flexget/flexget/api/core/authentication.py")
+;; (find-file "/home/guilherme/Projects/python/Flexget/flexget/api/core/authentication.py")
+(find-file "/home/guilherme/Projects/mine/dotfiles/files/.zezin.emacs/init.el")
 (provide 'init)
 ;;; init.el ends here
