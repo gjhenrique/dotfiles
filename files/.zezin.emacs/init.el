@@ -31,11 +31,11 @@
 (scroll-bar-mode -1)
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; Evil
-(straight-use-package 'evil)
-(straight-use-package 'evil-nerd-commenter)
-(straight-use-package 'evil-collection)
+(use-package straight
+  :custom
+  (straight-use-package-by-default t))
 
+;; Evil
 (use-package evil
   :init
   (progn
@@ -52,14 +52,10 @@
 (use-package evil-collection
   :after evil
   :config
-  (setq evil-collection-mode-list '(magit dired))
+  (setq evil-collection-mode-list '(magit dired ivy comint))
   (evil-collection-init))
 
 ;; ivy/counsel/swiper
-(straight-use-package 'ivy)
-(straight-use-package 'ivy-rich)
-(straight-use-package 'counsel)
-
 (use-package ivy
   :init
   (setq ivy-use-virtual-buffers t
@@ -67,25 +63,49 @@
   :config
   (ivy-mode 1))
 
-(use-package counsel)
+(use-package counsel
+  :config
+  (cl-defun +region-or-symbol (&optional initial-text)
+    (or initial-text
+        (if (region-active-p)
+            (buffer-substring-no-properties
+             (region-beginning) (region-end))
+          (thing-at-point 'symbol))))
+
+  (defun +counsel-find-read-dir ()
+    (interactive)
+    (let ((dir (file-name-directory (read-file-name "Choose directory: "))))
+      (counsel-fzf nil dir)))
+
+  (defun +counsel-rg-directory (dir &optional initial-text)
+    (interactive)
+    (let ((text (or initial-text (+region-or-symbol) "")))
+      (counsel-rg text dir)))
+
+  (defun +counsel-rg-read-dir ()
+    (interactive)
+    (let ((dir (file-name-directory (read-file-name "rg in directory: "))))
+      (+counsel-rg-directory dir)))
+
+  (defun +counsel-rg-project ()
+    (interactive)
+    (let* ((pr (project-current))
+           (dir (if pr (project-root pr) default-directory)))
+      (message dir)
+      (+counsel-rg-directory dir))))
 
 (use-package ivy-rich
-  ;; :defer 10
   :after (ivy counsel)
   :config
   (ivy-rich-mode))
 
 
-(straight-use-package 'envrc)
 (use-package envrc
   :config
   (envrc-global-mode +1))
 
-;; python
+;; langs
 (push '(python-mode . python-ts-mode) major-mode-remap-alist)
-
-(with-eval-after-load 'eglot
-  (push '(python-ts-mode "pylsp" "--verbose" "--log-file=/tmp/server.log") eglot-server-programs))
 
 (defun +split-window-below-and-focus ()
   (interactive)
@@ -99,11 +119,6 @@
 
 ;; git
 ;;
-(straight-use-package 'magit)
-(straight-use-package 'git-timemachine)
-(straight-use-package 'browse-at-remote)
-(straight-use-package 'git-gutter)
-
 (use-package magit
   :commands magit-file-delete)
 
@@ -117,53 +132,36 @@
   :hook ((prog-mode . git-gutter-mode)
          (text-mode . git-gutter-mode)))
 
-;; code editing
-(straight-use-package 'dumb-jump)
+;; IDE
 (use-package dumb-jump
   :commands dumb-jump-go
   :config
   (setq dumb-jump-selector 'ivy
         dumb-jump-aggressive nil))
 
-(cl-defun +region-or-symbol (&optional initial-text)
-  (or initial-text
-      (if (region-active-p)
-          (buffer-substring-no-properties
-           (region-beginning) (region-end))
-        (thing-at-point 'symbol))))
+;; TODO: Put this inside counsel
 
-(defun +counsel-find-read-dir ()
-  (interactive)
-  (let ((dir (file-name-directory (read-file-name "Choose directory: "))))
-    (counsel-fzf nil dir)))
 
-(defun +counsel-rg-directory (dir &optional initial-text)
-  (interactive)
-  (let ((text (or initial-text (+region-or-symbol) "")))
-    (counsel-rg text dir)))
-
-(defun +counsel-rg-region-or-symbol-read-dir ()
-  (interactive)
-  (let ((dir (file-name-directory (read-file-name "rg in directory: "))))
-    (+counsel-rg-directory dir)))
-
-(defun +counsel-rg-project ()
-  (interactive)
-  (let ((dir (or (car (last (project-current))) default-directory)))
-    (message dir)
-    (+counsel-rg-directory dir)))
+;;editor
+(use-package recentf
+  :hook ((prog-mode . recentf-mode)
+         (text-mode . recentf-mode))
+  :config
+  (setq recentf-max-saved-items 200)
+  (run-at-time nil 600 'recentf-save-list))
 
 ;; keybindings
 (with-eval-after-load 'evil
   (progn
-    (evil-set-leader 'normal (kbd "SPC"))
+    (evil-set-leader '(visual normal) (kbd "SPC"))
 
     (evil-define-key 'normal 'global (kbd "<leader>.") 'find-file)
+    (evil-define-key 'normal 'global (kbd "<leader>,") 'ivy-switch-buffer)
 
     (evil-define-key 'normal 'global (kbd "<leader>ww") 'evil-window-next)
     (evil-define-key 'normal 'global (kbd "<leader>wd") 'evil-window-delete)
-    (evil-define-key 'normal 'global (kbd "<leader>jo") '+split-window-below-and-focus)
-    (evil-define-key 'normal 'global (kbd "<leader>js") '+split-window-right-and-focus)
+    (evil-define-key 'normal 'global (kbd "<leader>jo") '+split-window-right-and-focus)
+    (evil-define-key 'normal 'global (kbd "<leader>jz") '+split-window-below-and-focus)
 
     (evil-define-key 'normal 'global (kbd "<leader>gg") 'magit-status)
     (evil-define-key 'normal 'global (kbd "<leader>gt") 'git-timemachine)
@@ -174,19 +172,56 @@
     (evil-define-key 'normal 'global (kbd "<leader>js") 'evilnc-comment-or-uncomment-lines)
     (evil-define-key 'normal 'global (kbd "<leader>g,") 'dumb-jump-go)
 
+    (evil-define-key 'normal 'global (kbd "<leader>pp") 'project-switch-project)
     (evil-define-key 'normal 'global (kbd "<leader>SPC") 'project-find-file)
     (evil-define-key 'normal 'global (kbd "<leader>*") '+counsel-rg-project)
     (evil-define-key 'normal 'global (kbd "<leader>si") 'counsel-imenu)
+    (evil-define-key 'normal 'global (kbd "<leader>sb") 'counsel-grep-or-swiper)
+    (evil-define-key 'normal 'global (kbd "<leader>jb") 'swiper-thing-at-point)
+    (evil-define-key 'normal 'global (kbd "<leader>jc") '+counsel-rg-read-dir)
 
     ;; buffer
     (evil-define-key 'normal 'global (kbd "<leader>bk") 'kill-current-buffer)
-    (evil-define-key 'normal 'global (kbd "<leader>bl") 'evil-switch-to-windows-last-buffer)
-    ))
+    (evil-define-key 'normal 'global (kbd "<leader>bl") 'evil-switch-to-windows-last-buffer)))
 
-;; magit
-;;
+(use-package project
+  :straight nil
+  :init
+  (setq +projects-directory '("~/Projects"))
+  :config
+  (message "Config")
+
+  (defun +remember-project ()
+    (when (project-current)
+      (unless
+          (member (project-root (project-current))
+                  (project-known-project-roots))
+        (project-remember-project (project-current)))))
+
+  ;; Remember project when visiting a file
+  (add-hook 'find-file-hook '+remember-project)
+
+  (progn
+    (defun +remember-projects-inside (directory)
+      "Remember all projects inside directory with depth 2."
+      (dolist (file (directory-files directory t))
+        (when (and (file-directory-p file)
+                   (not (string-prefix-p "." (file-name-nondirectory file))))
+          (dolist (subfile (directory-files file t))
+            (when (and (file-directory-p subfile)
+                       (not (string-prefix-p "." (file-name-nondirectory subfile))))
+              (project-remember-projects-under subfile))))))
+
+    (defun +remember-my-projects ()
+      (interactive)
+      (dolist (project-dir +projects-directory)
+        (+remember-projects-inside project-dir))))
+
+  :commands (project-switch-project project-current))
 
 ;; (find-file "/home/guilherme/Projects/python/Flexget/flexget/api/core/authentication.py")
 (find-file "/home/guilherme/Projects/mine/dotfiles/files/.zezin.emacs/init.el")
+
 (provide 'init)
 ;;; init.el ends here
+

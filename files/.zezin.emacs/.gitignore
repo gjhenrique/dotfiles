@@ -6,3 +6,5 @@ recentf
 tree-sitter
 flycheck_init.el
 projects
+history
+eshell/

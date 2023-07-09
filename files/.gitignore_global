@@ -1,6 +1,3 @@
-# ag-specific
-.ignore
-
 .dir-locals.el
 
 # lsp-mode
@@ -9,3 +6,7 @@
 
 # direnv stuff
 .envrc
+
+# emacs
+*~
+\#*\#
