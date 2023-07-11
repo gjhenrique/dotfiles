@@ -45,6 +45,24 @@
   :config
   (evil-mode 1))
 
+(defun +copy-path-clipboard ()
+  "Copy the current directory into the kill ring."
+  (interactive)
+  (kill-new (buffer-file-name)))
+
+(defun +clipboard-get ()
+  (with-temp-buffer
+    (clipboard-yank)
+    (buffer-substring-no-properties (point-min) (point-max))))
+
+(defun +go-to-path-clipboard ()
+  "Go to file in the clipboard"
+  (interactive)
+  (let ((filename (string-trim (+clipboard-get))))
+    (if (file-exists-p filename)
+        (ffap filename)
+      (message "File %s not exists" filename))))
+
 
 (use-package evil-nerd-commenter
   :commands (evilnc-comment-or-uncomment-lines evilnc-comment-or-uncomment-paragraphs))
@@ -105,7 +123,19 @@
   (envrc-global-mode +1))
 
 ;; langs
+(use-package tree-sitter-langs)
+
 (push '(python-mode . python-ts-mode) major-mode-remap-alist)
+(push '(yaml-mode . yaml-ts-mode) major-mode-remap-alist)
+
+(use-package yaml-mode)
+
+(use-package yaml-ts-mode
+  :straight nil
+  :mode (("\\.yaml\\'" . yaml-ts-mode)))
+
+;; install pyls
+;; install yaml-language-server
 
 (defun +split-window-below-and-focus ()
   (interactive)
@@ -125,8 +155,11 @@
 (use-package git-timemachine
   :commands git-timemachine)
 
-(use-package git-timemachine
-  :commands browse-at-remote)
+(use-package browse-at-remote
+  :commands browse-at-remote
+  :config
+  (add-to-list 'browse-at-remote-remote-type-regexps
+               '(:host "^gitlab\\.freedesktop\\.org" :type "gitlab")))
 
 (use-package git-gutter
   :hook ((prog-mode . git-gutter-mode)
@@ -138,8 +171,6 @@
   :config
   (setq dumb-jump-selector 'ivy
         dumb-jump-aggressive nil))
-
-;; TODO: Put this inside counsel
 
 
 ;;editor
@@ -219,8 +250,21 @@
 
   :commands (project-switch-project project-current))
 
+(use-package tldr
+  :commands tldr)
+
+(use-package know-your-http-well
+  :commands (http-status-code http-header))
+
+
+(defvar +modules-dir (expand-file-name "modules/" user-emacs-directory))
+(add-to-list 'load-path +modules-dir)
+(require '+purpose)
+
 ;; (find-file "/home/guilherme/Projects/python/Flexget/flexget/api/core/authentication.py")
-(find-file "/home/guilherme/Projects/mine/dotfiles/files/.zezin.emacs/init.el")
+;; (find-file "/home/guilherme/Projects/mine/dotfiles/files/.zezin.emacs/init.el")
+(find-file "/home/guilherme/Projects/jenkins/helm-charts/charts/jenkins/templates/jenkins-controller-statefulset.yaml")
+
 
 (provide 'init)
 ;;; init.el ends here
