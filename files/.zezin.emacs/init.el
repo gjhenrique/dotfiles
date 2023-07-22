@@ -70,7 +70,7 @@
 (use-package evil-collection
   :after evil
   :config
-  (setq evil-collection-mode-list '(magit dired ivy comint))
+  (setq evil-collection-mode-list '(magit dired ivy comint corfu))
   (evil-collection-init))
 
 ;; ivy/counsel/swiper
@@ -122,17 +122,79 @@
   :config
   (envrc-global-mode +1))
 
-;; langs
-(use-package tree-sitter-langs)
+(use-package corfu
+  :hook (prog-mode . global-corfu-mode)
+  :custom
+  (corfu-auto t)
+  :config
+  (remove-hook 'completion-at-point-functions #'tags-completion-at-point-function))
 
-(push '(python-mode . python-ts-mode) major-mode-remap-alist)
-(push '(yaml-mode . yaml-ts-mode) major-mode-remap-alist)
+(use-package cape
+  :after corfu
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file))
 
-(use-package yaml-mode)
+(use-package savehist
+  :init
+  (savehist-mode t))
 
-(use-package yaml-ts-mode
+(use-package treesit
   :straight nil
-  :mode (("\\.yaml\\'" . yaml-ts-mode)))
+  :init
+  (setq treesit-language-source-alist
+        '((bash "https://github.com/tree-sitter/tree-sitter-bash")
+          (hcl "https://github.com/MichaHoffmann/tree-sitter-hcl")
+          (go "https://github.com/tree-sitter/tree-sitter-go")
+          (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
+          (json "https://github.com/tree-sitter/tree-sitter-json")
+          (make "https://github.com/alemuller/tree-sitter-make")
+          (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+          (python "https://github.com/tree-sitter/tree-sitter-python")
+          (toml "https://github.com/tree-sitter/tree-sitter-toml")))
+
+  (setq major-mode-remap-alist
+      '((bash-mode . bash-ts-mode)
+        (go-mode . go-ts-mode)
+        (python-mode . python-ts-mode)))
+  :config
+  (defun +install-all-tree-sitter-languages ()
+    (interactive)
+    (mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist))))
+
+
+(use-package go-ts-mode
+  :straight nil
+  :mode ("\\.go\\'")
+  :hook (terraform-mode . terraform-format-on-save-mode)
+  :config
+  (reformatter-define terraform-format
+                      :program "terraform" :args '("fmt" "-")))
+
+(use-package yaml-mode
+  :mode ("\\.\\(yaml\\|yml\\)\\'"))
+
+(use-package markdown-mode
+  :mode ("/README\\(?:\\.md\\)?\\'" . gfm-mode)
+  :init
+  (setq markdown-open-command "xdg-open"))
+
+(use-package terraform-mode
+  :mode (("\\.tf\\(vars\\)?\\'" . terraform-mode))
+  :hook (terraform-mode . terraform-format-on-save-mode)
+  :config
+  (reformatter-define terraform-format
+                      :program "terraform" :args '("fmt" "-")))
+
+(use-package reformatter
+  :defer t)
+
+(use-package groovy-mode
+  :mode ("\\.groovy\\'")
+  :hook (groovy-mode . jenkinsfile-mode))
+
+(use-package jenkinsfile-mode
+  :mode ("Jenkinsfile*\\'" . jenkinsfile-mode))
 
 ;; install pyls
 ;; install yaml-language-server
@@ -210,6 +272,9 @@
     (evil-define-key 'normal 'global (kbd "<leader>sb") 'counsel-grep-or-swiper)
     (evil-define-key 'normal 'global (kbd "<leader>jb") 'swiper-thing-at-point)
     (evil-define-key 'normal 'global (kbd "<leader>jc") '+counsel-rg-read-dir)
+    (evil-define-key 'normal 'global (kbd "<leader>jn") '+counsel-find-read-dir)
+
+    (evil-define-key 'normal 'global (kbd "gf") 'browse-url)
 
     ;; buffer
     (evil-define-key 'normal 'global (kbd "<leader>bk") 'kill-current-buffer)
@@ -261,10 +326,32 @@
 (add-to-list 'load-path +modules-dir)
 (require '+purpose)
 
+;;
+;; themes
+
+(use-package doom-themes
+  :defer t)
+
+(setq +dark-theme 'doom-gruvbox)
+(setq +light-theme 'doom-solarized-light)
+
+(load-theme +dark-theme)
+
+(defun zezin-load-light-theme ()
+  (interactive)
+  (load-theme +light-theme))
+
+(defun zezin-load-dark-theme ()
+  (interactive)
+  (load-theme +dark-theme))
+
+;; (find-file "/home/guilherme/Projects/golang/delve/_fixtures/teststepprog.go")
 ;; (find-file "/home/guilherme/Projects/python/Flexget/flexget/api/core/authentication.py")
 ;; (find-file "/home/guilherme/Projects/mine/dotfiles/files/.zezin.emacs/init.el")
-(find-file "/home/guilherme/Projects/jenkins/helm-charts/charts/jenkins/templates/jenkins-controller-statefulset.yaml")
-
+;; (find-file "/home/guilherme/Projects/jenkins/helm-charts/charts/jenkins/templates/jenkins-controller-statefulset.yaml")
+;; (find-file "/home/guilherme/Projects/terraform/eks-workshop-v2/terraform/main.tf")
+;; (find-file "/home/guilherme/Projects/terraform/eks-workshop-v2/README.md")
+;; (find-file "/home/guilherme/Projects/jenkins/pipeline-library/vars/buildPlugin.groovy")
 
 (provide 'init)
 ;;; init.el ends here
