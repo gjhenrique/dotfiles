@@ -87,10 +87,10 @@
 (add-hook 'after-make-frame-functions
           (lambda (frame)
             (let* ((title (zezin-frame-title frame))
-                   (start-fn (zezin-find-start-fn title)))
-              (when start-fn
-                (select-frame frame)
-                (funcall start-fn frame)))))
+             (start-fn (zezin-find-start-fn title)))
+             (when start-fn
+              (select-frame frame)
+              (funcall start-fn frame)))))
 
 (use-package window-purpose
   :config

@@ -35,6 +35,8 @@
   :custom
   (straight-use-package-by-default t))
 
+(use-package dash)
+
 ;; Evil
 (use-package evil
   :init
@@ -44,6 +46,9 @@
     (setq evil-want-C-i-jump nil))
   :config
   (evil-mode 1))
+
+(use-package expand-region
+  :commands er/expand-region)
 
 (defun +copy-path-clipboard ()
   "Copy the current directory into the kill ring."
@@ -77,7 +82,8 @@
 (use-package ivy
   :init
   (setq ivy-use-virtual-buffers t
-        ivy-height 20)
+        ivy-height 20
+        ivy-virtual-abbreviate 'full)
   :config
   (ivy-mode 1))
 
@@ -214,13 +220,13 @@
 ;; git
 ;;
 (use-package magit
-  :commands magit-file-delete)
+  :commands magit-file-delete magit-status-mode)
 
 (use-package git-timemachine
   :commands git-timemachine)
 
 (use-package browse-at-remote
-  :commands browse-at-remote
+  :commands (browse-at-remote)
   :config
   (add-to-list 'browse-at-remote-remote-type-regexps
                '(:host "^gitlab\\.freedesktop\\.org" :type "gitlab")))
@@ -278,6 +284,7 @@
     (evil-define-key 'normal 'global (kbd "<leader>jl") 'evil-avy-goto-line)
 
     (evil-define-key 'normal 'global (kbd "gf") 'browse-url)
+    (evil-define-key 'normal 'global (kbd "M-o") 'er/expand-region)
 
     ;; buffer
     (evil-define-key 'normal 'global (kbd "<leader>bk") 'kill-current-buffer)
@@ -285,10 +292,26 @@
 
 (use-package project
   :straight nil
+  :commands (browse-at-remote)
   :init
   (setq +projects-directory '("~/Projects"))
+
+  :custom
+  (project-switch-commands
+   '((project-dired "Dired" ?d)
+     (project-find-file "File" ?f)
+     (magit-project-status "Git" ?g)
+     (+counsel-rg-project "Search" ?s)
+     (+project-browse-at-remote "Remote" ?r)))
   :config
-  (message "Config")
+
+  (defun +project-browse-at-remote ()
+    (interactive)
+    (with-temp-buffer
+      (setq default-directory (project-root (project-current)))
+      ;; hack to make browse-at-remote open current directory
+      (magit-status-mode)
+      (browse-at-remote)))
 
   (defun +remember-project ()
     (when (project-current)
@@ -338,15 +361,15 @@
 (setq +dark-theme 'doom-gruvbox)
 (setq +light-theme 'doom-solarized-light)
 
-(load-theme +dark-theme)
+(load-theme +dark-theme t)
 
 (defun zezin-load-light-theme ()
   (interactive)
-  (load-theme +light-theme))
+  (load-theme +light-theme t))
 
 (defun zezin-load-dark-theme ()
   (interactive)
-  (load-theme +dark-theme))
+  (load-theme +dark-theme t))
 
 ;; (find-file "/home/guilherme/Projects/golang/delve/_fixtures/teststepprog.go")
 ;; (find-file "/home/guilherme/Projects/python/Flexget/flexget/api/core/authentication.py")
