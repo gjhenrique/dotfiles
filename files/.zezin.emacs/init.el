@@ -117,6 +117,8 @@
   :config
   (ivy-rich-mode))
 
+(use-package avy
+  :commands avy-goto-line)
 
 (use-package envrc
   :config
@@ -273,6 +275,7 @@
     (evil-define-key 'normal 'global (kbd "<leader>jb") 'swiper-thing-at-point)
     (evil-define-key 'normal 'global (kbd "<leader>jc") '+counsel-rg-read-dir)
     (evil-define-key 'normal 'global (kbd "<leader>jn") '+counsel-find-read-dir)
+    (evil-define-key 'normal 'global (kbd "<leader>jl") 'evil-avy-goto-line)
 
     (evil-define-key 'normal 'global (kbd "gf") 'browse-url)
 
