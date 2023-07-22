@@ -371,14 +371,6 @@
   (interactive)
   (load-theme +dark-theme t))
 
-;; (find-file "/home/guilherme/Projects/golang/delve/_fixtures/teststepprog.go")
-;; (find-file "/home/guilherme/Projects/python/Flexget/flexget/api/core/authentication.py")
-;; (find-file "/home/guilherme/Projects/mine/dotfiles/files/.zezin.emacs/init.el")
-;; (find-file "/home/guilherme/Projects/jenkins/helm-charts/charts/jenkins/templates/jenkins-controller-statefulset.yaml")
-;; (find-file "/home/guilherme/Projects/terraform/eks-workshop-v2/terraform/main.tf")
-;; (find-file "/home/guilherme/Projects/terraform/eks-workshop-v2/README.md")
-;; (find-file "/home/guilherme/Projects/jenkins/pipeline-library/vars/buildPlugin.groovy")
-
 (provide 'init)
 ;;; init.el ends here
 
