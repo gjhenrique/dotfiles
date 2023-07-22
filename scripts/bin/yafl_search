@@ -26,7 +26,7 @@ if ARGV.length.positive?
   input = input.gsub("#{mode[:trigger]} ", "")
   url = mode[:url].gsub("#{mode[:trigger]} ", "").gsub("%s", input)
 
-  `flatpak run org.mozilla.firefox --new-tab "#{url}"`
+  `xdg-open "#{url}"`
 else
   puts generate_output
 end
