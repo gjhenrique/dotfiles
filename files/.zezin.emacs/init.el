@@ -159,12 +159,14 @@
           (make "https://github.com/alemuller/tree-sitter-make")
           (markdown "https://github.com/ikatyang/tree-sitter-markdown")
           (python "https://github.com/tree-sitter/tree-sitter-python")
+          (ruby "https://github.com/tree-sitter/tree-sitter-ruby")
           (toml "https://github.com/tree-sitter/tree-sitter-toml")))
 
   (setq major-mode-remap-alist
       '((bash-mode . bash-ts-mode)
         (go-mode . go-ts-mode)
-        (python-mode . python-ts-mode)))
+        (python-mode . python-ts-mode)
+        (ruby-mode . ruby-ts-mode)))
   :config
   (defun +install-all-tree-sitter-languages ()
     (interactive)

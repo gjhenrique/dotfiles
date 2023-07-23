@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require "json"
+require "cgi"
 
 def parse_json(filename)
   JSON.parse(File.read("#{Dir.home}/#{filename}"), symbolize_names: true)
@@ -23,7 +24,7 @@ if ARGV.length.positive?
   mode = config.find { |c| input.start_with? c[:trigger] }
   exit 1 if mode.nil?
 
-  input = input.gsub("#{mode[:trigger]} ", "")
+  input = CGI.escape(input.gsub("#{mode[:trigger]} ", ""))
   url = mode[:url].gsub("#{mode[:trigger]} ", "").gsub("%s", input)
 
   `xdg-open "#{url}"`
