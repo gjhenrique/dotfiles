@@ -2,6 +2,7 @@ transient/
 straight/
 !straight/versions/default.el
 
+tramp
 recentf
 tree-sitter
 flycheck_init.el

@@ -72,6 +72,10 @@
 (use-package evil-nerd-commenter
   :commands (evilnc-comment-or-uncomment-lines evilnc-comment-or-uncomment-paragraphs))
 
+(use-package evil-multiedit
+  :commands (evil-multiedit-match-symbol-and-next evil-multiedit-match-symbol-and-next)
+  :after evil)
+
 (use-package evil-collection
   :after evil
   :config
@@ -101,10 +105,10 @@
     (let ((dir (file-name-directory (read-file-name "Choose directory: "))))
       (counsel-fzf nil dir)))
 
-  (defun +counsel-rg-directory (dir &optional initial-text)
+  (defun +counsel-rg-directory (dir &optional extra-args)
     (interactive)
-    (let ((text (or initial-text (+region-or-symbol) "")))
-      (counsel-rg text dir)))
+    (let ((text (or (+region-or-symbol) "")))
+      (counsel-rg text dir extra-args)))
 
   (defun +counsel-rg-read-dir ()
     (interactive)
@@ -115,8 +119,21 @@
     (interactive)
     (let* ((pr (project-current))
            (dir (if pr (project-root pr) default-directory)))
-      (message dir)
-      (+counsel-rg-directory dir))))
+      (+counsel-rg-directory dir)))
+
+  (defun +counsel-rg-project-without-test ()
+    (interactive)
+    (let* ((pr (project-current))
+           (dir (if pr (project-root pr) default-directory))
+           (extra-args "!g test"))
+      (+counsel-rg-directory dir extra-args)))
+
+  (defun +counsel-rg-project-with-args ()
+    (interactive)
+    (let* ((pr (project-current))
+           (dir (if pr (project-root pr) default-directory))
+           (extra-args (read-string "Args for rg: ")))
+      (+counsel-rg-directory dir extra-args))))
 
 (use-package ivy-rich
   :after (ivy counsel)
@@ -152,6 +169,7 @@
   :init
   (setq treesit-language-source-alist
         '((bash "https://github.com/tree-sitter/tree-sitter-bash")
+          (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile")
           (hcl "https://github.com/MichaHoffmann/tree-sitter-hcl")
           (go "https://github.com/tree-sitter/tree-sitter-go")
           (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
@@ -166,6 +184,8 @@
       '((bash-mode . bash-ts-mode)
         (go-mode . go-ts-mode)
         (python-mode . python-ts-mode)
+	(json-mode . json-ts-mode)
+        (dockerfile-mode . dockerfile-ts-mode)
         (ruby-mode . ruby-ts-mode)))
   :config
   (defun +install-all-tree-sitter-languages ()
@@ -278,6 +298,7 @@
     (evil-define-key 'normal 'global (kbd "<leader>pp") 'project-switch-project)
     (evil-define-key 'normal 'global (kbd "<leader>SPC") 'project-find-file)
     (evil-define-key 'normal 'global (kbd "<leader>*") '+counsel-rg-project)
+    (evil-define-key 'normal 'global (kbd "<leader>ja") '+counsel-rg-project-with-args)
     (evil-define-key 'normal 'global (kbd "<leader>si") 'counsel-imenu)
     (evil-define-key 'normal 'global (kbd "<leader>sb") 'counsel-grep-or-swiper)
     (evil-define-key 'normal 'global (kbd "<leader>jb") 'swiper-thing-at-point)
@@ -287,6 +308,10 @@
 
     (evil-define-key 'normal 'global (kbd "gf") 'browse-url)
     (evil-define-key 'normal 'global (kbd "M-o") 'er/expand-region)
+    (evil-define-key 'normal 'global (kbd "M-d") 'evil-multiedit-match-symbol-and-next)
+    (evil-define-key 'normal 'global (kbd "M-D") 'evil-multiedit-match-symbol-and-prev)
+    (evil-define-key 'visual 'global (kbd "M-d") 'evil-multiedit-match-symbol-and-next)
+    (evil-define-key 'visual 'global (kbd "M-D") 'evil-multiedit-match-symbol-and-prev)
 
     ;; buffer
     (evil-define-key 'normal 'global (kbd "<leader>bk") 'kill-current-buffer)
@@ -346,9 +371,17 @@
 (use-package tldr
   :commands tldr)
 
+(use-package json-mode
+  :commands json-mode-beautify)
+
 (use-package know-your-http-well
   :commands (http-status-code http-header))
 
+(use-package org
+  :mode (("\\.org\\'" . org-mode))
+  :straight nil
+  :custom
+  (org-startup-truncated nil))
 
 (defvar +modules-dir (expand-file-name "modules/" user-emacs-directory))
 (add-to-list 'load-path +modules-dir)
