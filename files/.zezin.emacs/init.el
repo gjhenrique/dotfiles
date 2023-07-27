@@ -91,6 +91,9 @@
   :config
   (ivy-mode 1))
 
+(use-package undo-fu
+  :defer 5)
+
 (use-package counsel
   :config
   (cl-defun +region-or-symbol (&optional initial-text)
@@ -185,13 +188,15 @@
         (go-mode . go-ts-mode)
         (python-mode . python-ts-mode)
 	(json-mode . json-ts-mode)
-        (dockerfile-mode . dockerfile-ts-mode)
         (ruby-mode . ruby-ts-mode)))
   :config
   (defun +install-all-tree-sitter-languages ()
     (interactive)
     (mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist))))
 
+
+(use-package dockerfile-mode
+  :mode (("\\Dockerfile.*\\'" . dockerfile-mode)))
 
 (use-package go-ts-mode
   :straight nil
@@ -306,6 +311,9 @@
     (evil-define-key 'normal 'global (kbd "<leader>jn") '+counsel-find-read-dir)
     (evil-define-key 'normal 'global (kbd "<leader>jl") 'evil-avy-goto-line)
 
+    (evil-define-key 'normal 'global (kbd "u") 'undo-fu-only-undo)
+    (evil-define-key 'normal 'global (kbd "M-_") 'undo-fu-only-redo)
+
     (evil-define-key 'normal 'global (kbd "gf") 'browse-url)
     (evil-define-key 'normal 'global (kbd "M-o") 'er/expand-region)
     (evil-define-key 'normal 'global (kbd "M-d") 'evil-multiedit-match-symbol-and-next)
@@ -382,6 +390,11 @@
   :straight nil
   :custom
   (org-startup-truncated nil))
+
+(use-package yasnippet
+  :commands (yas-expand yas-minor-mode)
+  :hook ((prog-mode . yas-minor-mode)
+         (org-mode . yas-minor-mode)))
 
 (defvar +modules-dir (expand-file-name "modules/" user-emacs-directory))
 (add-to-list 'load-path +modules-dir)
