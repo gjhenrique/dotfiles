@@ -1,4 +1,3 @@
-
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -138,6 +137,10 @@
            (extra-args (read-string "Args for rg: ")))
       (+counsel-rg-directory dir extra-args))))
 
+(use-package amx
+  ;; setup done by counsel
+  :defer t)
+
 (use-package ivy-rich
   :after (ivy counsel)
   :config
@@ -164,6 +167,7 @@
   (add-to-list 'completion-at-point-functions #'cape-file))
 
 (use-package savehist
+  :straight nil
   :init
   (savehist-mode t))
 
@@ -331,6 +335,8 @@
     ;; buffer
     (evil-define-key 'normal 'global (kbd "<leader>bk") 'kill-current-buffer)
     (evil-define-key 'normal 'global (kbd "<leader>bl") 'evil-switch-to-windows-last-buffer)))
+
+(bind-keys ("M-x" . counsel-M-x))
 
 (use-package project
   :straight nil
