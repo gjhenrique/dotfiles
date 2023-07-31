@@ -394,7 +394,13 @@
 (use-package yasnippet
   :commands (yas-expand yas-minor-mode)
   :hook ((prog-mode . yas-minor-mode)
-         (org-mode . yas-minor-mode)))
+         (org-mode . yas-minor-mode))
+  :config
+  (let ((custom-snippets-dir (format "%s%s" (expand-file-name user-emacs-directory) "snippets/custom")))
+    (add-to-list 'yas-snippet-dirs custom-snippets-dir)))
+
+(use-package yasnippet-snippets
+  :after yasnippet)
 
 (defvar +modules-dir (expand-file-name "modules/" user-emacs-directory))
 (add-to-list 'load-path +modules-dir)

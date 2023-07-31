@@ -48,5 +48,10 @@
      "url": "https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:search=%s",
     "trigger": "ae",
     "name": "AWS - Search EC2 instances"
+  },
+  {
+     "url": "https://pypi.org/search/?q=%s",
+    "trigger": "py",
+    "name": "Pypi - Python"
   }
 ]
