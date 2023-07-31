@@ -262,6 +262,13 @@
   :hook ((prog-mode . git-gutter-mode)
          (text-mode . git-gutter-mode)))
 
+(use-package git-modes
+  :defer t)
+
+(use-package gitignore-mode
+  :straight nil
+  :mode ("/.dockerignore\\'"))
+
 ;; IDE
 (use-package dumb-jump
   :commands dumb-jump-go
