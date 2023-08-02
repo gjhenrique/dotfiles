@@ -20,3 +20,13 @@ Contains some additional configuration to [manjaro-sway] and setup for [Doom Ema
 
 [manjaro-sway]: https://github.com/manjaro-sway/manjaro-sway
 [doom-emacs]: https://github.com/doomemacs/doomemacs
+
+## Steps
+
+1. Install repos
+1. Install packages
+1. Symlink files
+1. Sync firefox
+1. Sync syncthing
+1. Install emacs from syncthing folder
+1. sync atuin

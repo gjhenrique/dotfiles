@@ -30,6 +30,10 @@
 (scroll-bar-mode -1)
 (fset 'yes-or-no-p 'y-or-n-p)
 
+; emacs - font
+(set-frame-font (format "JetbrainsMono Nerd Font %s" 11))
+(set-frame-font (format "Source Code Pro %s" 11))
+
 (use-package straight
   :custom
   (straight-use-package-by-default t))
