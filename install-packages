@@ -1,4 +1,4 @@
-sudo pacman -S vim fzf ripgrep base-devel tmux stow unp the_silver_searcher direnv atuin bitwarden-desktop adobe-source-code-pro-fonts flatpak
+sudo pacman -S vim fzf ripgrep base-devel tmux stow unp the_silver_searcher direnv atuin  adobe-source-code-pro-fonts flatpak
 
 yay autojump-rs
 
