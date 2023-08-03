@@ -1,7 +1,7 @@
 profile {
     output 'Dell Inc. DELL U2715H GH85D71G1R9S'  mode 2560x1440 position 0,0 transform 270 scale 1.4
     output 'LG Electronics LG HDR 4K 0x00007673' mode 3840x2160 position 1120,450 scale 2
-    output eDP-1 enable position 4000,0 scale 2
+    output eDP-1 enable position 4000,0 scale 3
 }
 
 profile {

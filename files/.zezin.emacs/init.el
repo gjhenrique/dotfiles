@@ -30,10 +30,6 @@
 (scroll-bar-mode -1)
 (fset 'yes-or-no-p 'y-or-n-p)
 
-; emacs - font
-(set-frame-font (format "JetbrainsMono Nerd Font %s" 11))
-(set-frame-font (format "Source Code Pro %s" 11))
-
 (use-package straight
   :custom
   (straight-use-package-by-default t))
@@ -441,6 +437,16 @@
 (defun zezin-load-dark-theme ()
   (interactive)
   (load-theme +dark-theme t))
+
+(setq +font "Source Code Pro") ;; Could be JetbrainsMono Nerd Font also
+(setq +font-size 10)
+
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (select-frame frame)
+		(set-frame-font (format "%s %s" +font +font-size))))
+  (set-frame-font (format "%s %s" +font +font-size)))
 
 (provide 'init)
 ;;; init.el ends here
