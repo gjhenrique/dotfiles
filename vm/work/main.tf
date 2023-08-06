@@ -10,7 +10,7 @@ module "work" {
     memory   = 16384
     cloudinit_config = templatefile("${path.module}/cloud_init.cfg", {
       hostname   = "work"
-      public_key = "/home/guilherme/.ssh/id_ed25519.pub"
+      public_key = file("/home/guilherme/.ssh/id_ed25519.pub")
       nix_file   = file("${path.module}/home.nix")
     })
     shared_folders = [{
