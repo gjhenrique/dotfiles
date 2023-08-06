@@ -24,6 +24,13 @@
 
 (setq frame-title-format "%b")
 
+(setq create-lockfiles nil
+      make-backup-files nil
+      auto-save-default t
+      auto-save-include-big-deletions t
+      auto-save-list-file-prefix (concat user-emacs-directory "autosave/")
+      tramp-auto-save-directory  (concat user-emacs-directory "tramp-autosave/"))
+
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (tooltip-mode -1)
