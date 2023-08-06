@@ -199,6 +199,9 @@
     (mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist))))
 
 
+(use-package nix-mode
+  :mode "\\.nix\\'")
+
 (use-package dockerfile-mode
   :mode (("\\Dockerfile.*\\'" . dockerfile-mode)))
 
