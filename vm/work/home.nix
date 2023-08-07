@@ -22,6 +22,7 @@
   home.packages = with pkgs; [
     awscli2
     kubie
+    kubectl
     _1password
 
     # # Adds the 'hello' command to your environment. It prints a friendly
