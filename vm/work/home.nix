@@ -15,11 +15,14 @@
   # release notes.
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
+  nixpkgs.config.allowUnfree = true;
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
     awscli2
     kubie
+    _1password
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -83,8 +86,16 @@
       golang = "1.20";
       java = "11";
       gradle = "8.2";
-      ruby = "2.3";
+      python = "3.7";
+      ruby = "3.2";
       terraform = "1.5.4";
     };
   };
+
+  programs.zsh.oh-my-zsh.enable = true;
+  programs.zsh.oh-my-zsh.plugins = ["git" "systemd" "autojump" "aws" "kubectl"];
+
+  programs.zsh.initExtra = ''
+    if [ -e /home/henrique/.nix-profile/etc/profile.d/nix.sh ]; then . /home/henrique/.nix-profile/etc/profile.d/nix.sh; fi
+  '';
 }
