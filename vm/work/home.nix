@@ -24,6 +24,8 @@
     kubie
     kubectl
     _1password
+    ripgrep
+    bat
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -68,35 +70,50 @@
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
+    PATH = "$HOME/.local/bin:$PATH";
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      pg = "ping google.com";
+      images = "kubectl get pods --all-namespaces -o jsonpath=\"{.items[*].spec.containers[*].image}\" |tr -s '[[:space:]]' '\n' |sort |uniq -c";
+    };
+    oh-my-zsh = {
+      enable = true;
+      plugins = ["git" "systemd" "autojump" "aws" "kubectl"];
+    };
+  };
+
   programs.starship.enable = true;
   programs.k9s.enable = true;
   programs.atuin.enable = true;
   programs.autojump.enable = true;
 
-  programs.rtx.enable = true;
-  programs.rtx.settings = {
-    tools = {
-      node = "16";
-      golang = "1.20";
-      java = "11";
-      gradle = "8.2";
-      python = "3.7";
-      ruby = "3.2";
-      terraform = "1.5.4";
+  programs.rtx = {
+    enable = true;
+    settings = {
+      tools = {
+        node = "16";
+        golang = "1.20";
+        java = "11";
+        gradle = "8.2";
+        python = "3.7";
+        ruby = "3.2";
+        terraform = "1.5.4";
+      };
     };
   };
-
-  programs.zsh.oh-my-zsh.enable = true;
-  programs.zsh.oh-my-zsh.plugins = ["git" "systemd" "autojump" "aws" "kubectl"];
 
   programs.zsh.initExtra = ''
     if [ -e /home/henrique/.nix-profile/etc/profile.d/nix.sh ]; then . /home/henrique/.nix-profile/etc/profile.d/nix.sh; fi
   '';
+
+  imports = [
+    (import ./work.nix { inherit pkgs config; })
+  ];
 }

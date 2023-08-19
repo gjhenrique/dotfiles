@@ -188,6 +188,7 @@
           (go "https://github.com/tree-sitter/tree-sitter-go")
           (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
           (json "https://github.com/tree-sitter/tree-sitter-json")
+          (kotlin "https://github.com/fwcd/tree-sitter-kotlin")
           (make "https://github.com/alemuller/tree-sitter-make")
           (markdown "https://github.com/ikatyang/tree-sitter-markdown")
           (python "https://github.com/tree-sitter/tree-sitter-python")
@@ -206,6 +207,9 @@
     (mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist))))
 
 
+(use-package kotlin-ts-mode
+  :mode (("\\.kt\\'" . kotlin-ts-mode)))
+
 (use-package nix-mode
   :mode "\\.nix\\'")
 
@@ -221,7 +225,7 @@
                       :program "terraform" :args '("fmt" "-")))
 
 (use-package yaml-mode
-  :mode ("\\.\\(yaml\\|yml\\)\\'"))
+  :mode ("\\.\\(yaml\\|yml\\|yml.j2\\|yaml.j2\\)\\'"))
 
 (use-package markdown-mode
   :mode ("/README\\(?:\\.md\\)?\\'" . gfm-mode)
@@ -243,7 +247,7 @@
   :hook (groovy-mode . jenkinsfile-mode))
 
 (use-package jenkinsfile-mode
-  :mode ("Jenkinsfile*\\'" . jenkinsfile-mode))
+  :mode (("Jenkinsfile\\'" . jenkinsfile-mode) ("Jenkinsfile.*\\'" . jenkinsfile-mode)))
 
 ;; install pyls
 ;; install yaml-language-server
