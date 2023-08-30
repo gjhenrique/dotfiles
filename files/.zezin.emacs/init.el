@@ -37,6 +37,12 @@
 (scroll-bar-mode -1)
 (fset 'yes-or-no-p 'y-or-n-p)
 
+(use-package tramp
+  :defer
+  :straight nil
+  :config
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
+
 (use-package straight
   :custom
   (straight-use-package-by-default t))
@@ -193,12 +199,15 @@
           (markdown "https://github.com/ikatyang/tree-sitter-markdown")
           (python "https://github.com/tree-sitter/tree-sitter-python")
           (ruby "https://github.com/tree-sitter/tree-sitter-ruby")
-          (toml "https://github.com/tree-sitter/tree-sitter-toml")))
+          (toml "https://github.com/tree-sitter/tree-sitter-toml")
+	  (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src"))
+	  (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src"))))
 
   (setq major-mode-remap-alist
       '((bash-mode . bash-ts-mode)
         (go-mode . go-ts-mode)
         (python-mode . python-ts-mode)
+	(typescript-mode . typescript-ts-mode)
 	(json-mode . json-ts-mode)
         (ruby-mode . ruby-ts-mode)))
   :config
@@ -210,6 +219,10 @@
 (use-package kotlin-ts-mode
   :mode (("\\.kt\\'" . kotlin-ts-mode)))
 
+(use-package typescript-ts-mode
+  :straight nil
+  :mode "\\.ts\\'")
+
 (use-package nix-mode
   :mode "\\.nix\\'")
 
@@ -218,11 +231,7 @@
 
 (use-package go-ts-mode
   :straight nil
-  :mode ("\\.go\\'")
-  :hook (terraform-mode . terraform-format-on-save-mode)
-  :config
-  (reformatter-define terraform-format
-                      :program "terraform" :args '("fmt" "-")))
+  :mode ("\\.go\\'"))
 
 (use-package yaml-mode
   :mode ("\\.\\(yaml\\|yml\\|yml.j2\\|yaml.j2\\)\\'"))
