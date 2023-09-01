@@ -59,3 +59,4 @@ export LC_MEASUREMENT="pt_BR.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
 export WLR_DRM_NO_MODIFIERS=1
+export RIPGREP_CONIFI_PATH=~/.rgconfig

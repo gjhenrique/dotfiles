@@ -120,15 +120,22 @@
     (let ((dir (file-name-directory (read-file-name "Choose directory: "))))
       (counsel-fzf nil dir)))
 
-  (defun +counsel-rg-directory (dir &optional extra-args)
+  (defun +counsel-rg-directory (dir &optional extra-args text)
     (interactive)
-    (let ((text (or (+region-or-symbol) "")))
+    (let ((text (or text (+region-or-symbol) "")))
       (counsel-rg text dir extra-args)))
 
   (defun +counsel-rg-read-dir ()
     (interactive)
     (let ((dir (file-name-directory (read-file-name "rg in directory: "))))
       (+counsel-rg-directory dir)))
+
+(defun +counsel-rg-initial-project ()
+    (interactive)
+    (let* ((pr (project-current))
+           (dir (if pr (project-root pr) default-directory)))
+      ;; send empty input when switching to a project
+      (+counsel-rg-directory dir "" "")))
 
   (defun +counsel-rg-project ()
     (interactive)
@@ -372,7 +379,7 @@
    '((project-dired "Dired" ?d)
      (project-find-file "File" ?f)
      (magit-project-status "Git" ?g)
-     (+counsel-rg-project "Search" ?s)
+     (+counsel-rg-initial-project "Search" ?s)
      (+project-browse-at-remote "Remote" ?r)))
   :config
 
