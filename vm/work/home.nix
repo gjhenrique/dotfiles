@@ -20,12 +20,16 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    _1password
     awscli2
+    bat
+    fzf
+    gh
+    jq
     kubie
     kubectl
-    _1password
+    neovim
     ripgrep
-    bat
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -86,12 +90,20 @@
     oh-my-zsh = {
       enable = true;
       plugins = ["git" "systemd" "autojump" "aws" "kubectl"];
-    };
+   };
   };
 
   programs.starship.enable = true;
   programs.k9s.enable = true;
-  programs.atuin.enable = true;
+  programs.atuin = {
+    enable = true;
+    settings = {
+      inline_height = 30;
+      style = "compact";
+      search_mode = "fulltext";
+      history_filter = ["^export"];
+    };
+  };
   programs.autojump.enable = true;
 
   programs.rtx = {
