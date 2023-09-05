@@ -37,17 +37,17 @@ else
     ~/.emacs.d/bin/doom sync
 fi
 
-if [ -e ~/.tmux-themepack ]; then
-    echo "tmux-themepack is already installed"
+
+if [ -e ~/.tmux/plugins/tpm ]; then
+    echo "tpm is already installed"
 else
-    echo "Installing tmux-themepack"
-    git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
+    echo "Installing tpm. Type with alt+I to install plugins"
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
 if [ -e ~/.theme.sh ]; then
-    echo "tmux-themepack is already installed"
+    echo "theme.sh is already installed"
 else
-    echo "Installing tmux-themepack"
+    echo "Installing theme.sh"
     git clone https://github.com/lemnos/theme.sh.git ~/.theme.sh
 fi
-

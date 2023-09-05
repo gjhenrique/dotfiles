@@ -4,9 +4,9 @@
       (bootstrap-version 6))
   (unless (file-exists-p bootstrap-file)
     (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
+	(url-retrieve-synchronously
+	 "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+	 'silent 'inhibit-cookies)
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
@@ -24,16 +24,18 @@
 
 (setq frame-title-format "%b")
 
+;; Backup handling
 (setq create-lockfiles nil
       make-backup-files nil
       auto-save-default t
       auto-save-include-big-deletions t
       auto-save-list-file-prefix (concat user-emacs-directory "autosave/")
-      tramp-auto-save-directory  (concat user-emacs-directory "tramp-autosave/"))
+      tramp-auto-save-directory  (concat user-emacs-directory "tramp-autosave/")
+      auto-save-file-name-transforms `((".*" ,(concat user-emacs-directory "autosave/") t)))
 
-(tool-bar-mode -1)
 (menu-bar-mode -1)
 (tooltip-mode -1)
+(tool-bar-mode -1)
 (scroll-bar-mode -1)
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -77,7 +79,7 @@
   (interactive)
   (let ((filename (string-trim (+clipboard-get))))
     (if (file-exists-p filename)
-        (ffap filename)
+	(ffap filename)
       (message "File %s not exists" filename))))
 
 
@@ -98,8 +100,8 @@
 (use-package ivy
   :init
   (setq ivy-use-virtual-buffers t
-        ivy-height 20
-        ivy-virtual-abbreviate 'full)
+	ivy-height 20
+	ivy-virtual-abbreviate 'full)
   :config
   (ivy-mode 1))
 
@@ -110,10 +112,10 @@
   :config
   (cl-defun +region-or-symbol (&optional initial-text)
     (or initial-text
-        (if (region-active-p)
-            (buffer-substring-no-properties
-             (region-beginning) (region-end))
-          (thing-at-point 'symbol))))
+	(if (region-active-p)
+	    (buffer-substring-no-properties
+	     (region-beginning) (region-end))
+	  (thing-at-point 'symbol))))
 
   (defun +counsel-find-read-dir ()
     (interactive)
@@ -133,28 +135,28 @@
 (defun +counsel-rg-initial-project ()
     (interactive)
     (let* ((pr (project-current))
-           (dir (if pr (project-root pr) default-directory)))
+	   (dir (if pr (project-root pr) default-directory)))
       ;; send empty input when switching to a project
       (+counsel-rg-directory dir "" "")))
 
   (defun +counsel-rg-project ()
     (interactive)
     (let* ((pr (project-current))
-           (dir (if pr (project-root pr) default-directory)))
+	   (dir (if pr (project-root pr) default-directory)))
       (+counsel-rg-directory dir)))
 
   (defun +counsel-rg-project-without-test ()
     (interactive)
     (let* ((pr (project-current))
-           (dir (if pr (project-root pr) default-directory))
-           (extra-args "!g test"))
+	   (dir (if pr (project-root pr) default-directory))
+	   (extra-args "!g test"))
       (+counsel-rg-directory dir extra-args)))
 
   (defun +counsel-rg-project-with-args ()
     (interactive)
     (let* ((pr (project-current))
-           (dir (if pr (project-root pr) default-directory))
-           (extra-args (read-string "Args for rg: ")))
+	   (dir (if pr (project-root pr) default-directory))
+	   (extra-args (read-string "Args for rg: ")))
       (+counsel-rg-directory dir extra-args))))
 
 (use-package amx
@@ -195,28 +197,28 @@
   :straight nil
   :init
   (setq treesit-language-source-alist
-        '((bash "https://github.com/tree-sitter/tree-sitter-bash")
-          (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile")
-          (hcl "https://github.com/MichaHoffmann/tree-sitter-hcl")
-          (go "https://github.com/tree-sitter/tree-sitter-go")
-          (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
-          (json "https://github.com/tree-sitter/tree-sitter-json")
-          (kotlin "https://github.com/fwcd/tree-sitter-kotlin")
-          (make "https://github.com/alemuller/tree-sitter-make")
-          (markdown "https://github.com/ikatyang/tree-sitter-markdown")
-          (python "https://github.com/tree-sitter/tree-sitter-python")
-          (ruby "https://github.com/tree-sitter/tree-sitter-ruby")
-          (toml "https://github.com/tree-sitter/tree-sitter-toml")
+	'((bash "https://github.com/tree-sitter/tree-sitter-bash")
+	  (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile")
+	  (hcl "https://github.com/MichaHoffmann/tree-sitter-hcl")
+	  (go "https://github.com/tree-sitter/tree-sitter-go")
+	  (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
+	  (json "https://github.com/tree-sitter/tree-sitter-json")
+	  (kotlin "https://github.com/fwcd/tree-sitter-kotlin")
+	  (make "https://github.com/alemuller/tree-sitter-make")
+	  (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+	  (python "https://github.com/tree-sitter/tree-sitter-python")
+	  (ruby "https://github.com/tree-sitter/tree-sitter-ruby")
+	  (toml "https://github.com/tree-sitter/tree-sitter-toml")
 	  (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src"))
 	  (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src"))))
 
   (setq major-mode-remap-alist
       '((bash-mode . bash-ts-mode)
-        (go-mode . go-ts-mode)
-        (python-mode . python-ts-mode)
+	(go-mode . go-ts-mode)
+	(python-mode . python-ts-mode)
 	(typescript-mode . typescript-ts-mode)
 	(json-mode . json-ts-mode)
-        (ruby-mode . ruby-ts-mode)))
+	(ruby-mode . ruby-ts-mode)))
   :config
   (defun +install-all-tree-sitter-languages ()
     (interactive)
@@ -224,7 +226,8 @@
 
 
 (use-package kotlin-ts-mode
-  :mode (("\\.kt\\'" . kotlin-ts-mode)))
+  :mode (("\\.kt\\'" . kotlin-ts-mode)
+	 ("\\.gradle.kts\\'" . kotlin-ts-mode)))
 
 (use-package typescript-ts-mode
   :straight nil
@@ -253,7 +256,7 @@
   :hook (terraform-mode . terraform-format-on-save-mode)
   :config
   (reformatter-define terraform-format
-                      :program "terraform" :args '("fmt" "-")))
+		      :program "terraform" :args '("fmt" "-")))
 
 (use-package reformatter
   :defer t)
@@ -290,11 +293,11 @@
   :commands (browse-at-remote)
   :config
   (add-to-list 'browse-at-remote-remote-type-regexps
-               '(:host "^gitlab\\.freedesktop\\.org" :type "gitlab")))
+	       '(:host "^gitlab\\.freedesktop\\.org" :type "gitlab")))
 
 (use-package git-gutter
   :hook ((prog-mode . git-gutter-mode)
-         (text-mode . git-gutter-mode)))
+	 (text-mode . git-gutter-mode)))
 
 (use-package git-modes
   :defer t)
@@ -308,13 +311,13 @@
   :commands dumb-jump-go
   :config
   (setq dumb-jump-selector 'ivy
-        dumb-jump-aggressive nil))
+	dumb-jump-aggressive nil))
 
 
 ;;editor
 (use-package recentf
   :hook ((prog-mode . recentf-mode)
-         (text-mode . recentf-mode))
+	 (text-mode . recentf-mode))
   :config
   (setq recentf-max-saved-items 200)
   (run-at-time nil 600 'recentf-save-list))
@@ -394,9 +397,9 @@
   (defun +remember-project ()
     (when (project-current)
       (unless
-          (member (project-root (project-current))
-                  (project-known-project-roots))
-        (project-remember-project (project-current)))))
+	  (member (project-root (project-current))
+		  (project-known-project-roots))
+	(project-remember-project (project-current)))))
 
   ;; Remember project when visiting a file
   (add-hook 'find-file-hook '+remember-project)
@@ -405,17 +408,17 @@
     (defun +remember-projects-inside (directory)
       "Remember all projects inside directory with depth 2."
       (dolist (file (directory-files directory t))
-        (when (and (file-directory-p file)
-                   (not (string-prefix-p "." (file-name-nondirectory file))))
-          (dolist (subfile (directory-files file t))
-            (when (and (file-directory-p subfile)
-                       (not (string-prefix-p "." (file-name-nondirectory subfile))))
-              (project-remember-projects-under subfile))))))
+	(when (and (file-directory-p file)
+		   (not (string-prefix-p "." (file-name-nondirectory file))))
+	  (dolist (subfile (directory-files file t))
+	    (when (and (file-directory-p subfile)
+		       (not (string-prefix-p "." (file-name-nondirectory subfile))))
+	      (project-remember-projects-under subfile))))))
 
     (defun +remember-my-projects ()
       (interactive)
       (dolist (project-dir +projects-directory)
-        (+remember-projects-inside project-dir))))
+	(+remember-projects-inside project-dir))))
 
   :commands (project-switch-project project-current))
 
@@ -432,12 +435,13 @@
   :mode (("\\.org\\'" . org-mode))
   :straight nil
   :custom
-  (org-startup-truncated nil))
+  (org-startup-truncated nil)
+  (org-startup-folded t))
 
 (use-package yasnippet
   :commands (yas-expand yas-minor-mode)
   :hook ((prog-mode . yas-minor-mode)
-         (org-mode . yas-minor-mode))
+	 (org-mode . yas-minor-mode))
   :config
   (let ((custom-snippets-dir (format "%s%s" (expand-file-name user-emacs-directory) "snippets/custom")))
     (add-to-list 'yas-snippet-dirs custom-snippets-dir)))
@@ -473,11 +477,10 @@
 
 (if (daemonp)
     (add-hook 'after-make-frame-functions
-              (lambda (frame)
-                (select-frame frame)
+	      (lambda (frame)
+		(select-frame frame)
 		(set-frame-font (format "%s %s" +font +font-size))))
   (set-frame-font (format "%s %s" +font +font-size)))
 
 (provide 'init)
 ;;; init.el ends here
-

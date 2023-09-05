@@ -83,6 +83,7 @@
 
   programs.zsh = {
     enable = true;
+    enableAutosuggestions = true;
     shellAliases = {
       pg = "ping google.com";
       images = "kubectl get pods --all-namespaces -o jsonpath=\"{.items[*].spec.containers[*].image}\" |tr -s '[[:space:]]' '\n' |sort |uniq -c";
