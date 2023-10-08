@@ -1,5 +1,7 @@
 .dir-locals.el
 
+virtualenv
+
 # lsp-mode
 .log
 .tool-versions

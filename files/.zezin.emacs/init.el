@@ -202,6 +202,8 @@
 	  (hcl "https://github.com/MichaHoffmann/tree-sitter-hcl")
 	  (go "https://github.com/tree-sitter/tree-sitter-go")
 	  (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
+	  (go-template "https://github.com/ngalaiko/tree-sitter-go-template")
+	  (java "https://github.com/tree-sitter/tree-sitter-java")
 	  (json "https://github.com/tree-sitter/tree-sitter-json")
 	  (kotlin "https://github.com/fwcd/tree-sitter-kotlin")
 	  (make "https://github.com/alemuller/tree-sitter-make")
