@@ -440,6 +440,9 @@
   (org-startup-truncated nil)
   (org-startup-folded t))
 
+(use-package writeroom-mode
+  :defer t)
+
 (use-package yasnippet
   :commands (yas-expand yas-minor-mode)
   :hook ((prog-mode . yas-minor-mode)
