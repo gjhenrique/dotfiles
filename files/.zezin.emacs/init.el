@@ -243,7 +243,13 @@
 
 (use-package go-ts-mode
   :straight nil
-  :mode ("\\.go\\'"))
+  :mode ("\\.go\\'")
+  :hook ((go-ts-mode . gofmt-on-save-mode)
+	 (go-ts-mode . goimports-on-save-mode))
+  :config
+  (reformatter-define gofmt :program "gofmt")
+  (reformatter-define goimports :program "goimports"))
+
 
 (use-package yaml-mode
   :mode ("\\.\\(yaml\\|yml\\|yml.j2\\|yaml.j2\\)\\'"))
@@ -255,10 +261,7 @@
 
 (use-package terraform-mode
   :mode (("\\.tf\\(vars\\)?\\'" . terraform-mode))
-  :hook (terraform-mode . terraform-format-on-save-mode)
-  :config
-  (reformatter-define terraform-format
-		      :program "terraform" :args '("fmt" "-")))
+  :hook (terraform-mode . terraform-format-on-save-mode))
 
 (use-package reformatter
   :defer t)
