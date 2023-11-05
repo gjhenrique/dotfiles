@@ -247,9 +247,19 @@
   :hook ((go-ts-mode . gofmt-on-save-mode)
 	 (go-ts-mode . goimports-on-save-mode))
   :config
+  (defun +go-test-add-test-hook ()
+    (interactive)
+    (if (string-match "_test\.go$" buffer-file-name)
+	(add-hook 'after-save-hook #'go-test-current-test 0 t)
+      (add-hook 'after-save-hook #'+go-test-current-file 0 t)))
+
+  ;; Don't open the test file in the code
+  (defun +go-test-current-file ()
+    (save-window-excursion
+      (go-test-current-file)))
+
   (reformatter-define gofmt :program "gofmt")
   (reformatter-define goimports :program "goimports"))
-
 
 (use-package gotest
   :commands go-test-current-test go-test-current-file go-test-current-test)
