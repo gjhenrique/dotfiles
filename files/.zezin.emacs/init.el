@@ -251,6 +251,9 @@
   (reformatter-define goimports :program "goimports"))
 
 
+(use-package gotest
+  :commands go-test-current-test go-test-current-file go-test-current-test)
+
 (use-package yaml-mode
   :mode ("\\.\\(yaml\\|yml\\|yml.j2\\|yaml.j2\\)\\'"))
 
@@ -369,6 +372,10 @@
     (evil-define-key 'normal 'global (kbd "M-D") 'evil-multiedit-match-symbol-and-prev)
     (evil-define-key 'visual 'global (kbd "M-d") 'evil-multiedit-match-symbol-and-next)
     (evil-define-key 'visual 'global (kbd "M-D") 'evil-multiedit-match-symbol-and-prev)
+
+    (evil-define-key 'normal 'go-ts-mode-map (kbd "<leader>tf") 'go-test-current-file)
+    (evil-define-key 'normal 'go-ts-mode-map (kbd "<leader>tc") 'go-test-current-test)
+    (evil-define-key 'normal 'go-ts-mode-map (kbd "<leader>tp") 'go-test-current-project)
 
     ;; buffer
     (evil-define-key 'normal 'global (kbd "<leader>bk") 'kill-current-buffer)

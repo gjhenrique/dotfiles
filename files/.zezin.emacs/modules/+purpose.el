@@ -2,10 +2,10 @@
 
 (defun zezin-get-frames ()
   (let* ((initial-frames
-         '(((title . "EmacsPrimary"))
-           ((title . "EmacsNotes") (start-fn . zezin-start-notes-frame))
-           ((title . "EmacsGit") (start-fn . zezin-start-magit-frame))
-           ((title . "EmacsCompilation") (start-fn . zezin-start-compilation-frame)))))
+	 '(((title . "EmacsPrimary"))
+	   ((title . "EmacsNotes") (start-fn . zezin-start-notes-frame))
+	   ((title . "EmacsGit") (start-fn . zezin-start-magit-frame))
+	   ((title . "EmacsCompilation") (start-fn . zezin-start-compilation-frame)))))
     (when (= (length (display-monitor-attributes-list)) 2)
       (push '((title . "EmacsSecondary")) initial-frames))
 
@@ -26,6 +26,7 @@
   (add-to-list 'purpose-user-mode-purposes '(js2-mode . javascript))
   (add-to-list 'purpose-user-mode-purposes '(js-mode . javascript))
   (add-to-list 'purpose-user-mode-purposes '(rjsx-mode . javascript))
+  (add-to-list 'purpose-user-mode-purposes '(go-test-mode . search))
   (add-to-list 'purpose-user-regexp-purposes '("^\\magit" . magit)))
 
 (defun zezin-disable-purpose-with-dired ()
@@ -37,13 +38,13 @@
 
 (defun zezin-add-reusable-buffers (buffer-regex)
   (add-to-list 'display-buffer-alist
-               `(,buffer-regex
-                 nil
-                 (reusable-frames . t))))
+	       `(,buffer-regex
+		 nil
+		 (reusable-frames . t))))
 
 (defun zezin-dedicate-purpose-window ()
   (let ((title (substring-no-properties
-                (cdr (assoc 'title (frame-parameters))))))
+		(cdr (assoc 'title (frame-parameters))))))
     (purpose-set-window-purpose 'magit)))
 
 (defun zezin-frame-title (frame)
@@ -51,9 +52,9 @@
 
 (defun zezin-frame-exists? (title)
   (member title
-          (-map
-           (lambda (frame) (zezin-frame-title frame))
-           (frame-list))))
+	  (-map
+	   (lambda (frame) (zezin-frame-title frame))
+	   (frame-list))))
 
 (defun zezin-make-new-frame (frame-config)
   (let ((title (assoc 'title frame-config)))
@@ -66,10 +67,10 @@
 
 (defun zezin-find-start-fn (frame-title)
   (cdr (assoc 'start-fn
-              (-first
-               (lambda (frame-config)
-                 (string= (cdr (assoc 'title frame-config)) frame-title))
-               (zezin-get-frames)))))
+	      (-first
+	       (lambda (frame-config)
+		 (string= (cdr (assoc 'title frame-config)) frame-title))
+	       (zezin-get-frames)))))
 
 (defun zezin-start-notes-frame (frame)
   (find-file (substitute-in-file-name zezin-work-file))
@@ -85,12 +86,12 @@
   (purpose-toggle-window-purpose-dedicated))
 
 (add-hook 'after-make-frame-functions
-          (lambda (frame)
-            (let* ((title (zezin-frame-title frame))
-             (start-fn (zezin-find-start-fn title)))
-             (when start-fn
-              (select-frame frame)
-              (funcall start-fn frame)))))
+	  (lambda (frame)
+	    (let* ((title (zezin-frame-title frame))
+	     (start-fn (zezin-find-start-fn title)))
+	     (when start-fn
+	      (select-frame frame)
+	      (funcall start-fn frame)))))
 
 (use-package window-purpose
   :config
@@ -98,6 +99,13 @@
     (purpose-mode)
     (purpose-x-kill-setup)
 
+    (add-to-list 'purpose-special-action-sequences
+	     '(popup-frame
+	       purpose-display-reuse-window-buffer
+	       purpose-display-reuse-window-purpose
+	       purpose-display-pop-up-frame))
+
+    (zezin-add-reusable-buffers "\\*Go Test\\*")
     (zezin-add-reusable-buffers "\\**compilation\\*")
     (zezin-add-reusable-buffers "\\magit*")
     (zezin-add-purposes)
