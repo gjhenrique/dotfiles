@@ -1,6 +1,2 @@
-output=2
-anchor=bottom-right
-font=monospace 20
-background-color=#FFFFFF
-text-color=#000000
-default-timeout=5000
+[mode=do-not-disturb]
+invisible=1

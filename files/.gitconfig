@@ -24,7 +24,7 @@
 	user = me@gjhenrique.com
 
 [includeIf "gitdir:~/Projects/prezi/"]
-	path = .prezi.gitconfig
+	path = /home/guilherme/.prezi.gitconfig
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential

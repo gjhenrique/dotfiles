@@ -247,6 +247,10 @@
   :hook ((go-ts-mode . gofmt-on-save-mode)
 	 (go-ts-mode . goimports-on-save-mode))
   :config
+  (setq ff-other-file-alist
+                   '(("_test\\.go$" (".go"))
+                     ("\\.go$" ("_test.go"))))
+
   (defun +go-test-add-test-hook ()
     (interactive)
     (if (string-match "_test\.go$" buffer-file-name)
@@ -255,8 +259,9 @@
 
   ;; Don't open the test file in the code
   (defun +go-test-current-file ()
+    (interactive)
     (save-window-excursion
-      (go-test-current-file)))
+	(go-test-current-file)))
 
   (reformatter-define gofmt :program "gofmt")
   (reformatter-define goimports :program "goimports"))
@@ -283,11 +288,15 @@
   :mode ("\\.groovy\\'")
   :hook (groovy-mode . jenkinsfile-mode))
 
+(use-package cue-mode
+  :commands (cue-mode)
+  :mode "\\.cue$"
+  :hook ((cue-mode . cuefmt-on-save-mode))
+  :config
+  (reformatter-define cuefmt :program "cue" :args '("fmt" "-" "-s")))
+
 (use-package jenkinsfile-mode
   :mode (("Jenkinsfile\\'" . jenkinsfile-mode) ("Jenkinsfile.*\\'" . jenkinsfile-mode)))
-
-;; install pyls
-;; install yaml-language-server
 
 (defun +split-window-below-and-focus ()
   (interactive)
@@ -383,7 +392,7 @@
     (evil-define-key 'visual 'global (kbd "M-d") 'evil-multiedit-match-symbol-and-next)
     (evil-define-key 'visual 'global (kbd "M-D") 'evil-multiedit-match-symbol-and-prev)
 
-    (evil-define-key 'normal 'go-ts-mode-map (kbd "<leader>tf") 'go-test-current-file)
+    (evil-define-key 'normal 'go-ts-mode-map (kbd "<leader>tf") '+go-test-current-file)
     (evil-define-key 'normal 'go-ts-mode-map (kbd "<leader>tc") 'go-test-current-test)
     (evil-define-key 'normal 'go-ts-mode-map (kbd "<leader>tp") 'go-test-current-project)
 
