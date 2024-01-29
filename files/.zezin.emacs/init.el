@@ -284,6 +284,9 @@
 (use-package reformatter
   :defer t)
 
+(use-package scala-mode
+  :mode ("\\.scala\\'"))
+
 (use-package groovy-mode
   :mode ("\\.groovy\\'")
   :hook (groovy-mode . jenkinsfile-mode))
