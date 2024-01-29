@@ -469,6 +469,9 @@
   (org-startup-truncated nil)
   (org-startup-folded t))
 
+(use-package org-present
+  :commands (org-present org-present-quit))
+
 (use-package writeroom-mode
   :defer t)
 
@@ -486,6 +489,7 @@
 (defvar +modules-dir (expand-file-name "modules/" user-emacs-directory))
 (add-to-list 'load-path +modules-dir)
 (require '+purpose)
+(require '+presentation)
 
 ;;
 ;; themes
