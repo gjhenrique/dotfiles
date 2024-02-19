@@ -7,8 +7,3 @@ name = "Search with bookmark"
 exec = "yafl_search"
 prefix = "s"
 call_without_match=true
-
-[modes.emoji]
-exec = "yafl_moji"
-prefix = "e"
-history = true

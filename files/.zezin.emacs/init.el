@@ -217,6 +217,7 @@
   (setq major-mode-remap-alist
       '((bash-mode . bash-ts-mode)
 	(go-mode . go-ts-mode)
+	(kotlin-mode . kotlin-ts-mode)
 	(python-mode . python-ts-mode)
 	(typescript-mode . typescript-ts-mode)
 	(json-mode . json-ts-mode)
@@ -375,6 +376,7 @@
     (evil-define-key 'normal 'global (kbd "<leader>g,") 'dumb-jump-go)
 
     (evil-define-key 'normal 'global (kbd "<leader>pp") 'project-switch-project)
+    (evil-define-key 'normal 'global (kbd "<leader>pc") 'project-compile)
     (evil-define-key 'normal 'global (kbd "<leader>SPC") 'project-find-file)
     (evil-define-key 'normal 'global (kbd "<leader>*") '+counsel-rg-project)
     (evil-define-key 'normal 'global (kbd "<leader>ja") '+counsel-rg-project-with-args)

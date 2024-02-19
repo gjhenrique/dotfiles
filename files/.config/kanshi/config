@@ -19,3 +19,7 @@ profile "non-docked" {
     output eDP-1 enable scale 2
 }
 
+profile "docked3" {
+    output 'BNQ BenQ EW3270U G9K02925019' enable mode 3840x2160 position 0,0 scale 2
+    output eDP-1 enable position 1930,0 scale 2
+}
