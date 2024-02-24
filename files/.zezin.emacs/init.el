@@ -230,7 +230,13 @@
 
 (use-package kotlin-ts-mode
   :mode (("\\.kt\\'" . kotlin-ts-mode)
-	 ("\\.gradle.kts\\'" . kotlin-ts-mode)))
+	 ("\\.gradle.kts\\'" . kotlin-ts-mode))
+  :hook ((kotlin-ts-mode . kotlin-format-on-save-mode))
+  :config
+  (reformatter-define
+    kotlin-format
+    :program "ktlint"
+    :args '("-F" "--stdin" "--log-level=error")))
 
 (use-package typescript-ts-mode
   :straight nil
