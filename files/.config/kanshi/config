@@ -1,6 +1,6 @@
 profile "docked" {
     output 'Dell Inc. DELL U2715H GH85D71G1R9S' enable mode 2560x1440 position 0,0 transform 270 scale 1.4
-    output 'LG Electronics LG HDR 4K 0x00007673' enable mode 3840x2160 position 1040,450 scale 2
+    output 'LG Electronics LG HDR 4K 0x00067273' enable mode 3840x2160 position 1040,450 scale 2
     output 'Dell Inc. DELL S2319HS 95FVKS2' enable mode 1920x1080 position 2970,0 transform 90 scale 1.2
     # output 'Dell Inc. DELL S2319HS 95FVKS2' disable
     #output eDP-1 enable position 4000,0 scale 2
@@ -9,7 +9,7 @@ profile "docked" {
 
 profile "docked2" {
     # output 'Dell Inc. DELL U2715H GH85D71G1R9S' enable mode 2560x1440 position 0,0 transform 270 scale 1.4
-    output 'LG Electronics LG HDR 4K 0x00007673' enable mode 3840x2160 position 1040,450 scale 2
+    output 'LG Electronics LG HDR 4K 0x00067273' enable mode 3840x2160 position 1040,450 scale 2
     output 'Dell Inc. DELL S2319HS 95FVKS2' enable mode 1920x1080 position 2970,0 transform 90 scale 1.2
     # output eDP-1 enable position 4000,0 scale 3
     output eDP-1 disable

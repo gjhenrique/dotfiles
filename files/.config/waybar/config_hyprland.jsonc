@@ -1,0 +1,61 @@
+{
+    "position": "top", 
+    "height": 30, 
+
+    // Choose the order of the modules
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["cpu", "memory", "pulseaudio", "battery"],
+
+    // Modules configuration
+     "hyprland/workspaces": {
+         "disable-scroll": true,
+     },
+
+    "clock": {
+        "format": "󰸗 {:%d.%m - %H:%M}",
+    	"interval": 1,
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>",
+	"on-click": "hyprctl dispatch exec xdg-open https://calendar.google.com"
+    },
+    
+    "cpu": {
+        "format": "{usage}% ",
+        "interval": 1
+    },
+    
+    "memory": {
+        "format": "{percentage}% 󰍛",
+        "interval": 1
+    },
+    
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": "ﱝ {icon} {format_source}",
+        "format-muted": "ﱝ",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰂅",
+        "format-icons": ["󰁹", "󰂂", "󰂁", "󰂀", "󰁿", "󰁾", "󰁽", "󰁼", "󰁻", "󰁺"],
+        "tooltip-format": "{time}"
+    },
+}

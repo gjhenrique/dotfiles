@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+if ARGV.length.positive?
+  input = ARGV[0]
+  if input.end_with? "on"
+    `/opt/bin/switch_theme on`
+  elsif input.end_with? "off"
+    `/opt/bin/switch_theme off`
+  end
+else
+  puts "Turn theme on\nTurn theme off"
+end
