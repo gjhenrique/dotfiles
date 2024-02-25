@@ -4,3 +4,6 @@ scripts/bin/nextcloud.pass
 .htoprc
 
 files/.doom.d/custom.el
+
+# nix dir
+result
