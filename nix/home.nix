@@ -33,18 +33,18 @@ in {
     theme-sh
   ];
 
+  # WTF is this?
+  # TODO: Make this use home.file and point to the correct symlink
+  # Flakes doesn't work with mkOutOfStoreSymlink
+  home.activation.linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
+    ln -s ~/Projects/mine/dotfiles/nix/zezin.emacs ~/.emacs.d
+  '';
+
   home.file = {
     "switch_theme" = {
       source = ./scripts/switch_theme;
       target = ".local/bin/switch_theme";
     };
-
-    ".emacs.d2" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/guilherme/Projects/mine/dotfiles/nix/zezin.emacs";
-      recursive = true;
-      target = ".emacs.d2";
-    };
-    # ".emacs.d2".source = config.lib.file.mkOutOfStoreSymlink ../files/.zezin.emacs;
 
     "yafl_ext" = {
       source = ./scripts/yafl_ext;
