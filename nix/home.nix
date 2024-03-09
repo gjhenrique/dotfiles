@@ -1,85 +1,142 @@
-{ config, pkgs, ... }:
-
-{
-  # Home Manager needs a bit of information about you and the paths it should
- # manage.
+{ config, pkgs, ... }: let
+  tpm = pkgs.tmuxPlugins.mkTmuxPlugin {
+    pluginName = "tpm";
+    version = "2023-08-04";
+    src = pkgs.fetchFromGitHub {
+      owner = "tmux-plugins";
+      repo = "tpm";
+      rev = "99469c4a9b1ccf77fade25842dc7bafbc8ce9946";
+      sha256 = "sha256-hW8mfwB8F9ZkTQ72WQp/1fy8KL1IIYMZBtZYIwZdMQc=";
+    };
+  };
+in {
   home.username = "guilherme";
   home.homeDirectory = "/home/guilherme";
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   nixpkgs.config.allowUnfree = true;
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
   home.packages = with pkgs; [
     _1password
     awscli2
     bat
-    fzf
+    devbox
     gh
     jq
     kubie
     kubectl
+    kubectx
+    foot
     neovim
     ripgrep
-
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
+    theme-sh
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
+    "switch_theme" = {
+      source = ./scripts/switch_theme;
+      target = ".local/bin/switch_theme";
+    };
 
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
+    ".emacs.d2" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/guilherme/Projects/mine/dotfiles/nix/zezin.emacs";
+      recursive = true;
+      target = ".emacs.d2";
+    };
+    # ".emacs.d2".source = config.lib.file.mkOutOfStoreSymlink ../files/.zezin.emacs;
+
+    "yafl_ext" = {
+      source = ./scripts/yafl_ext;
+      target = ".local/bin/yafl_ext";
+    };
+
+    "rgconfig" = {
+      target = ".rgconfig";
+      text = ''
+        --hidden
+        --glob=!.git/*
+      '';
+    };
+
+    "gitignore_global" = {
+      text = ''
+        .dir-locals.el
+
+        virtualenv
+
+        # lsp-mode
+        .log
+        .tool-versions
+
+        # direnv stuff
+        .envrc
+
+        # emacs
+        *~
+        \#*\#
+      '';
+      target = ".config/git/gitignore";
+    };
   };
 
-  # You can also manage environment variables but you will have to manually
-  # source
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/henrique/etc/profile.d/hm-session-vars.sh
-  #
-  # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
     EDITOR = "emacsclient";
     PATH = "$HOME/.local/bin:$PATH";
+    DNS_RESOLVER = "systemd-resolved";
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.git = {
+    enable = true;
+    userName = "gjhenrique";
+    userEmail = "me@gjhenrique.com";
+
+    extraConfig = {
+      core = {
+        editor = "emacsclient";
+        excludesfile = "~/.config/git/gitignore";
+      };
+    };
+  };
+
+  programs.gh = {
+    enable = true;
+    settings = {
+      editor = "emacsclient";
+    };
+  };
+
+  programs.tmux = {
+    enable = true;
+    sensibleOnTop = false;
+    extraConfig = builtins.readFile ./tmux.conf;
+
+    plugins = with pkgs; [
+      # TODO: Fix this
+      # {
+      #   plugin = tpm;
+      # }
+    ];
+  };
+
+  programs.foot = {
+    enable = true;
+    server.enable = true;
+
+    settings = {
+      main = {
+        font= "JetBrainsMono NF:size=8";
+      };
+    };
+  };
 
   programs.zsh = {
     enable = true;
@@ -87,6 +144,9 @@
     shellAliases = {
       pg = "ping google.com";
       images = "kubectl get pods --all-namespaces -o jsonpath=\"{.items[*].spec.containers[*].image}\" |tr -s '[[:space:]]' '\n' |sort |uniq -c";
+      pods-image = "kubectl get pods -o wide --sort-by=.spec.nodeName";
+      xc="wl-copy";
+      xco="wl-paste";
     };
     oh-my-zsh = {
       enable = true;
@@ -107,26 +167,59 @@
   };
   programs.autojump.enable = true;
 
-  # programs.rtx = {
-  #   enable = true;
-  #   settings = {
-  #     tools = {
-  #       node = "16";
-  #       golang = "1.20";
-  #       java = "11";
-  #       gradle = "8.2";
-  #       python = "3.7";
-  #       ruby = "3.2";
-  #       terraform = "1.5.4";
-  #     };
-  #   };
-  # };
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.mise = {
+    enable = true;
+    enableZshIntegration = true;
+    globalConfig = {
+      tools = {
+        node = "16";
+        golang = "1.20";
+        java = "11";
+        gradle = "8.2";
+        python = "3.10";
+        ruby = "3.2";
+        terraform = "1.5.4";
+      };
+    };
+  };
 
   programs.zsh.initExtra = ''
-    if [ -e /home/henrique/.nix-profile/etc/profile.d/nix.sh ]; then . /home/henrique/.nix-profile/etc/profile.d/nix.sh; fi
+if [ -e /etc/profile.d/nix-daemon.sh  ]; then . /etc/profile.d/nix-daemon.sh; fi
+
+if [ "$TERM" != "linux" ] && [ "$TERM" != "dumb" ]
+then
+  # Start shell with tmux
+  # If not running interactively, do not do anything
+  [[ $- != *i* ]] && return
+  [[ -z "$TMUX" ]] && TERM=xterm-256color exec tmux -2
+fi
+
+DARK_THEME=dracula
+LIGHT_THEME=fruit-soda
+
+CURRENT_THEME=$(grep -q light $XDG_RUNTIME_DIR/theme 2>/dev/null && echo $LIGHT_THEME || echo $DARK_THEME)
+
+[[ $- == *i* ]] && TMUX= theme.sh $CURRENT_THEME
+
+# Based on https://codeberg.org/dnkl/foot/wiki#dynamic-color-changes
+TRAPUSR1() {
+  TMUX= theme.sh $DARK_THEME
+}
+
+TRAPUSR2() {
+  TMUX= theme.sh $LIGHT_THEME
+}
   '';
 
-  # imports = [
-  #   (import ./work.nix { inherit pkgs config; })
-  # ];
+  # TODO: Don't import file if it doesn't exist
+  imports = [
+    # Needs --impure. How to keep outside of repo, but pure?
+    /home/guilherme/Life/work/work.nix
+    # (import ./work.nix { inherit pkgs config; })
+  ];
 }

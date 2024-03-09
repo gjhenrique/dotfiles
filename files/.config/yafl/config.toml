@@ -1,25 +1,24 @@
 [modes.bookmark_open]
-exec = "yafl_bookmark_open"
+exec = "yafl_ext bookmark_open"
 prefix = "f"
 name = "Search Firefox bookmark and open to clipboard"
 
-
 [modes.bookmark_copy]
-exec = "yafl_bookmark_copy"
+exec = "yafl_ext bookmark_copy"
 prefix = "y"
 name = "Search Firefox bookmark and copy to clipboard"
 
 [modes.theme]
-exec = "yafl_theme"
+exec = "yafl_ext theme"
 prefix = "t"
 name = "Turn theme on and off"
 
 [modes.sunset]
-exec = "yafl_sunset"
+exec = "yafl_ext sunset"
 prefix = "n"
 name = "Turns on/off wlsunset"
 
 [modes.search]
-exec = "yafl_search"
+exec = "yafl_ext search"
 prefix = "s"
 call_without_match=true

@@ -255,8 +255,8 @@
 	 (go-ts-mode . goimports-on-save-mode))
   :config
   (setq ff-other-file-alist
-                   '(("_test\\.go$" (".go"))
-                     ("\\.go$" ("_test.go"))))
+		   '(("_test\\.go$" (".go"))
+		     ("\\.go$" ("_test.go"))))
 
   (defun +go-test-add-test-hook ()
     (interactive)
@@ -508,8 +508,8 @@
 (use-package doom-themes
   :defer t)
 
-(setq +dark-theme 'doom-gruvbox)
-(setq +light-theme 'doom-solarized-light)
+(setq +dark-theme 'doom-tomorrow-night)
+(setq +light-theme 'doom-ayu-light)
 
 (load-theme +dark-theme t)
 

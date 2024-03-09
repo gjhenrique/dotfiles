@@ -30,3 +30,8 @@ Contains some additional configuration to [manjaro-sway] and setup for [Doom Ema
 1. Sync syncthing
 1. Install emacs from syncthing folder
 1. sync atuin
+
+
+## New steps
+1. `alt-A=I` to install tmux plugins with tpm
+1. `mise intsall`

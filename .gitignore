@@ -7,3 +7,5 @@ files/.doom.d/custom.el
 
 # nix dir
 result
+
+work.nix
