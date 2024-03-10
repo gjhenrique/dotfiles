@@ -1,0 +1,7 @@
+{
+  "shell":{
+    "scripts": {
+      "nix": "nix run  -- home-manager switch -b backup --flake \".#guilherme\" --impure",
+    }
+  }
+}

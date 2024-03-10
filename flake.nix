@@ -21,6 +21,5 @@
         modules = [ ./home.nix ];
       };
     };
-
   };
 }
