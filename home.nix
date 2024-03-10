@@ -28,7 +28,7 @@
   # WTF is this?
   # TODO: Make this use home.file and point to the correct symlink
   # Flakes doesn't work with mkOutOfStoreSymlink
-  home.activation.linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
+  home.activation.linkMyFiles = config.lib.dag.entryAfter [ "writeBoundary" ] ''
     ln -sf ${config.home.homeDirectory}/Projects/mine/dotfiles/zezin.emacs/ ${config.home.homeDirectory}/.emacs.d
   '';
 
@@ -121,9 +121,9 @@
     settings = [{
       position = "top";
       height = 30;
-      modules-left = ["hyprland/workspaces"];
-      modules-center = ["clock"];
-      modules-right = ["cpu" "memory" "pulseaudio" "battery"];
+      modules-left = [ "hyprland/workspaces" ];
+      modules-center = [ "clock" ];
+      modules-right = [ "cpu" "memory" "pulseaudio" "battery" ];
 
       "hyprland/workspace" = {
         "disable-scroll" = true;
@@ -160,7 +160,7 @@
           phone = "";
           portable = "";
           car = "";
-          default = ["" "" ""];
+          default = [ "" "" "" ];
         };
         on-click = "pavucontrol";
       };
@@ -172,14 +172,14 @@
         };
         format = "{capacity}% {icon}";
         format-charging = "{capacity}% 󰂅";
-        format-icons = ["󰁹" "󰂂" "󰂁" "󰂀" "󰁿" "󰁾" "󰁽" "󰁼" "󰁻" "󰁺"];
+        format-icons = [ "󰁹" "󰂂" "󰂁" "󰂀" "󰁿" "󰁾" "󰁽" "󰁼" "󰁻" "󰁺" ];
         tooltip-format = "{time}";
       };
     }];
   };
 
   xdg.enable = true;
-  xdg.dataFile."applications/emacs-setup.desktop".text = pkgs.lib.generators.toINI {} {
+  xdg.dataFile."applications/emacs-setup.desktop".text = pkgs.lib.generators.toINI { } {
     "Desktop Entry" = {
       Name = "Emacs Setup";
       GenericName = "Text Editor";
@@ -195,7 +195,7 @@
     };
   };
 
-  xdg.dataFile."applications/slack-wayland.desktop".text = pkgs.lib.generators.toINI {} {
+  xdg.dataFile."applications/slack-wayland.desktop".text = pkgs.lib.generators.toINI { } {
     "Desktop Entry" = {
       Name = "Slack (Wayland)";
       StartupWMClass = "Slack";
@@ -295,7 +295,7 @@
 
     settings = {
       main = {
-        font= "JetBrainsMono NF:size=8";
+        font = "JetBrainsMono NF:size=8";
       };
     };
   };
@@ -307,13 +307,13 @@
       pg = "ping google.com";
       images = "kubectl get pods --all-namespaces -o jsonpath=\"{.items[*].spec.containers[*].image}\" |tr -s '[[:space:]]' '\n' |sort |uniq -c";
       pods-image = "kubectl get pods -o wide --sort-by=.spec.nodeName";
-      xc="wl-copy";
-      xco="wl-paste";
+      xc = "wl-copy";
+      xco = "wl-paste";
     };
     oh-my-zsh = {
       enable = true;
-      plugins = ["git" "systemd" "autojump" "aws" "kubectl"];
-   };
+      plugins = [ "git" "systemd" "autojump" "aws" "kubectl" ];
+    };
   };
 
   programs.starship.enable = true;
@@ -324,7 +324,7 @@
       inline_height = 30;
       style = "compact";
       search_mode = "fulltext";
-      history_filter = ["^export"];
+      history_filter = [ "^export" ];
     };
   };
   programs.autojump.enable = true;
@@ -351,31 +351,31 @@
   };
 
   programs.zsh.initExtra = ''
-if [ -e /etc/profile.d/nix-daemon.sh  ]; then . /etc/profile.d/nix-daemon.sh; fi
+    if [ -e /etc/profile.d/nix-daemon.sh  ]; then . /etc/profile.d/nix-daemon.sh; fi
 
-if [ "$TERM" != "linux" ] && [ "$TERM" != "dumb" ]
-then
-  # Start shell with tmux
-  # If not running interactively, do not do anything
-  [[ $- != *i* ]] && return
-  [[ -z "$TMUX" ]] && TERM=xterm-256color exec tmux -2
-fi
+    if [ "$TERM" != "linux" ] && [ "$TERM" != "dumb" ]
+    then
+      # Start shell with tmux
+      # If not running interactively, do not do anything
+      [[ $- != *i* ]] && return
+      [[ -z "$TMUX" ]] && TERM=xterm-256color exec tmux -2
+    fi
 
-DARK_THEME=dracula
-LIGHT_THEME=fruit-soda
+    DARK_THEME=dracula
+    LIGHT_THEME=fruit-soda
 
-CURRENT_THEME=$(grep -q light $XDG_RUNTIME_DIR/theme 2>/dev/null && echo $LIGHT_THEME || echo $DARK_THEME)
+    CURRENT_THEME=$(grep -q light $XDG_RUNTIME_DIR/theme 2>/dev/null && echo $LIGHT_THEME || echo $DARK_THEME)
 
-[[ $- == *i* ]] && TMUX= theme.sh $CURRENT_THEME
+    [[ $- == *i* ]] && TMUX= theme.sh $CURRENT_THEME
 
-# Based on https://codeberg.org/dnkl/foot/wiki#dynamic-color-changes
-TRAPUSR1() {
-  TMUX= theme.sh $DARK_THEME
-}
+    # Based on https://codeberg.org/dnkl/foot/wiki#dynamic-color-changes
+    TRAPUSR1() {
+      TMUX= theme.sh $DARK_THEME
+    }
 
-TRAPUSR2() {
-  TMUX= theme.sh $LIGHT_THEME
-}
+    TRAPUSR2() {
+      TMUX= theme.sh $LIGHT_THEME
+    }
   '';
 
   wayland.windowManager.hyprland = {
