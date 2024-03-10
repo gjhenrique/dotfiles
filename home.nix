@@ -117,7 +117,7 @@
     enable = true;
     systemd.enable = true;
 
-    style = builtins.readFile ./waybar-style.css;
+    style = builtins.readFile ./files/waybar-style.css;
     settings = [{
       position = "top";
       height = 30;
@@ -210,8 +210,8 @@
     };
   };
 
-  xdg.configFile."yafl/config.toml".text = builtins.readFile ./yafl-config.toml;
-  xdg.configFile."yafl/search.json".text = builtins.readFile ./yafl-search.json;
+  xdg.configFile."yafl/config.toml".text = builtins.readFile ./files/yafl-config.toml;
+  xdg.configFile."yafl/search.json".text = builtins.readFile ./files/yafl-search.json;
 
   # Scripts
   home.file = {
@@ -286,7 +286,7 @@
   programs.tmux = {
     enable = true;
     sensibleOnTop = false;
-    extraConfig = builtins.readFile ./tmux.conf;
+    extraConfig = builtins.readFile ./files/tmux.conf;
   };
 
   programs.foot = {
