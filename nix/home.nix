@@ -1,21 +1,12 @@
-{ config, pkgs, ... }: let
-  tpm = pkgs.tmuxPlugins.mkTmuxPlugin {
-    pluginName = "tpm";
-    version = "2023-08-04";
-    src = pkgs.fetchFromGitHub {
-      owner = "tmux-plugins";
-      repo = "tpm";
-      rev = "99469c4a9b1ccf77fade25842dc7bafbc8ce9946";
-      sha256 = "sha256-hW8mfwB8F9ZkTQ72WQp/1fy8KL1IIYMZBtZYIwZdMQc=";
-    };
-  };
-in {
+{ config, pkgs, ... }: {
   home.username = "guilherme";
   home.homeDirectory = "/home/guilherme";
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   nixpkgs.config.allowUnfree = true;
+
+  programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
     _1password
@@ -40,7 +31,6 @@ in {
   home.activation.linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
     ln -sf ${config.home.homeDirectory}/Projects/mine/dotfiles/nix/zezin.emacs/ ${config.home.homeDirectory}/.emacs.d
   '';
-
 
   services.mako = {
     enable = true;
@@ -223,6 +213,7 @@ in {
   xdg.configFile."yafl/config.toml".text = builtins.readFile ./yafl-config.toml;
   xdg.configFile."yafl/search.json".text = builtins.readFile ./yafl-search.json;
 
+  # Scripts
   home.file = {
     "switch_theme" = {
       source = ./scripts/switch_theme;
@@ -233,26 +224,6 @@ in {
       source = ./scripts/yafl_ext;
       target = ".local/bin/yafl_ext";
     };
-
-    "gitignore_global" = {
-      text = ''
-        .dir-locals.el
-
-        virtualenv
-
-        # lsp-mode
-        .log
-        .tool-versions
-
-        # direnv stuff
-        .envrc
-
-        # emacs
-        *~
-        \#*\#
-      '';
-      target = ".config/git/gitignore";
-    };
   };
 
   home.sessionVariables = {
@@ -260,9 +231,6 @@ in {
     PATH = "$HOME/.local/bin:$PATH";
     DNS_RESOLVER = "systemd-resolved";
   };
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 
   programs.fzf = {
     enable = true;
@@ -281,6 +249,22 @@ in {
       };
     };
   };
+  xdg.configFile."git/gitignore".text = ''
+    .dir-locals.el
+
+    virtualenv
+
+    # lsp-mode
+    .log
+    .tool-versions
+
+    # direnv stuff
+    .envrc
+
+    # emacs
+    *~
+    \#*\#
+  '';
 
   programs.gh = {
     enable = true;
@@ -289,17 +273,20 @@ in {
     };
   };
 
+  home.file."tpm" = {
+    source = pkgs.fetchFromGitHub {
+      owner = "tmux-plugins";
+      repo = "tpm";
+      rev = "99469c4a9b1ccf77fade25842dc7bafbc8ce9946";
+      hash = "sha256-hW8mfwB8F9ZkTQ72WQp/1fy8KL1IIYMZBtZYIwZdMQc=";
+    };
+    target = ".tmux/plugins/tpm";
+  };
+
   programs.tmux = {
     enable = true;
     sensibleOnTop = false;
     extraConfig = builtins.readFile ./tmux.conf;
-
-    plugins = with pkgs; [
-      # TODO: Fix this
-      # {
-      #   plugin = tpm;
-      # }
-    ];
   };
 
   programs.foot = {
