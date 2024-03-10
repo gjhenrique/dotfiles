@@ -378,6 +378,12 @@ TRAPUSR2() {
 }
   '';
 
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    extraConfig = builtins.readFile ./hyprland.conf;
+  };
+
   # TODO: Don't import file if it doesn't exist
   imports = [
     # Needs --impure. How to keep outside of repo, but pure?
