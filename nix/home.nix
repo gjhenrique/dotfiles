@@ -31,6 +31,7 @@ in {
     neovim
     ripgrep
     theme-sh
+    (pkgs.callPackage ./yafl.nix { })
   ];
 
   # WTF is this?
