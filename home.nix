@@ -29,7 +29,7 @@
   # TODO: Make this use home.file and point to the correct symlink
   # Flakes doesn't work with mkOutOfStoreSymlink
   home.activation.linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
-    ln -sf ${config.home.homeDirectory}/Projects/mine/dotfiles/nix/zezin.emacs/ ${config.home.homeDirectory}/.emacs.d
+    ln -sf ${config.home.homeDirectory}/Projects/mine/dotfiles/zezin.emacs/ ${config.home.homeDirectory}/.emacs.d
   '';
 
   services.mako = {
@@ -216,12 +216,12 @@
   # Scripts
   home.file = {
     "switch_theme" = {
-      source = ./scripts/switch_theme;
+      source = ./files/switch_theme;
       target = ".local/bin/switch_theme";
     };
 
     "yafl_ext" = {
-      source = ./scripts/yafl_ext;
+      source = ./files/yafl_ext;
       target = ".local/bin/yafl_ext";
     };
   };
@@ -380,7 +380,7 @@ TRAPUSR2() {
 
   wayland.windowManager.hyprland = {
     enable = true;
-    extraConfig = builtins.readFile ./hyprland.conf;
+    extraConfig = builtins.readFile ./files/hyprland.conf;
   };
 
   # TODO: Don't import file if it doesn't exist

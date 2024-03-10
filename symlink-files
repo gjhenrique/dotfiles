@@ -1,9 +1,0 @@
-#!/bin/bash
-
-mkdir -p $HOME/.local/share/applications
-mkdir -p $HOME/.config/sway
-mkdir -p $HOME/.bundle
-
-stow files -t ~
-
-sudo stow scripts -t /opt
