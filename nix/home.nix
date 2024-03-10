@@ -37,8 +37,190 @@ in {
   # TODO: Make this use home.file and point to the correct symlink
   # Flakes doesn't work with mkOutOfStoreSymlink
   home.activation.linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
-    ln -s ~/Projects/mine/dotfiles/nix/zezin.emacs ~/.emacs.d
+    ln -sf ${config.home.homeDirectory}/Projects/mine/dotfiles/nix/zezin.emacs/ ${config.home.homeDirectory}/.emacs.d
   '';
+
+
+  services.mako = {
+    enable = true;
+
+    defaultTimeout = 5000;
+    width = 300;
+    height = 200;
+    padding = "20";
+    margin = "20";
+    font = "JetBrainsMono NF 14";
+    backgroundColor = "#24273a";
+    borderColor = "#8aadf4";
+    textColor = "#cad3f5";
+
+    extraConfig = ''
+      [urgency=high]
+      border-color=#f5a97f
+
+      [mode=do-not-disturb]
+      invisible=1
+    '';
+  };
+
+  services.kanshi = {
+    enable = true;
+    systemdTarget = "graphical-session.target";
+
+    profiles = {
+      docked = {
+        outputs = [
+          {
+            criteria = "Dell Inc. DELL U2715H GH85D71G1R9S";
+            scale = 1.4;
+            transform = "270";
+            position = "0,0";
+            mode = "2560x1440";
+          }
+          {
+            criteria = "LG Electronics LG HDR 4K 0x00007673";
+            scale = 2.0;
+            position = "1040,450";
+            mode = "3840x2160";
+          }
+          {
+            criteria = "Dell Inc. DELL S2319HS 95FVKS2";
+            transform = "90";
+            scale = 1.2;
+            position = "2970,0";
+            mode = "1920x1080";
+          }
+          {
+            criteria = "eDP-1";
+            status = "disable";
+          }
+        ];
+      };
+      undocked = {
+        outputs = [
+          {
+            criteria = "eDP-1";
+            scale = 2.0;
+          }
+        ];
+      };
+      docked_room = {
+        outputs = [
+          {
+            criteria = "BNQ BenQ EW3270U G9K02925019";
+            mode = "3840x2160";
+            position = "0,0";
+            scale = 2.0;
+          }
+          {
+            criteria = "eDP-1";
+            position = "1930,0";
+            scale = 2.0;
+          }
+        ];
+      };
+    };
+  };
+
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
+
+    style = builtins.readFile ./waybar-style.css;
+    settings = [{
+      position = "top";
+      height = 30;
+      modules-left = ["hyprland/workspaces"];
+      modules-center = ["clock"];
+      modules-right = ["cpu" "memory" "pulseaudio" "battery"];
+
+      "hyprland/workspace" = {
+        "disable-scroll" = true;
+      };
+
+      clock = {
+        format = "󰸗 {:%d.%m - %H:%M}";
+        interval = 1;
+        tooltip-format = "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>";
+        on-click = "hyprctl dispatch exec xdg-open https://calendar.google.com";
+      };
+
+      cpu = {
+        format = "{usage}% ";
+        interval = 1;
+      };
+
+      memory = {
+        format = "{percentage}% 󰍛";
+        interval = 1;
+      };
+
+      pulseaudio = {
+        format = "{icon} {volume}%";
+        format-bluetooth = "{volume}% {icon} {format_source}";
+        format-bluetooth-muted = "ﱝ {icon} {format_source}";
+        format-muted = "ﱝ";
+        format-source = "{volume}% ";
+        format-source-muted = "";
+        format-icons = {
+          headphones = "";
+          handsfree = "";
+          headset = "";
+          phone = "";
+          portable = "";
+          car = "";
+          default = ["" "" ""];
+        };
+        on-click = "pavucontrol";
+      };
+
+      battery = {
+        states = {
+          warning = 30;
+          critical = 15;
+        };
+        format = "{capacity}% {icon}";
+        format-charging = "{capacity}% 󰂅";
+        format-icons = ["󰁹" "󰂂" "󰂁" "󰂀" "󰁿" "󰁾" "󰁽" "󰁼" "󰁻" "󰁺"];
+        tooltip-format = "{time}";
+      };
+    }];
+  };
+
+  xdg = {
+    enable = true;
+
+    dataFile."applications/emacs-setup.desktop".text = pkgs.lib.generators.toINI {} {
+      "Desktop Entry" = {
+        Name = "Emacs Setup";
+        GenericName = "Text Editor";
+        Comment = "Spawn specific Emacs instances";
+        MimeType = "text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;";
+        Exec = "emacsclient -c -e \"(zezin-start-frames)\"";
+        Icon = "emacs";
+        Type = "Application";
+        Terminal = "false";
+        Categories = "Development;TextEditor;";
+        StartupWMClass = "Emacs";
+        Keywords = "Text;Editor;";
+      };
+    };
+
+    dataFile."applications/slack-wayland.desktop".text = pkgs.lib.generators.toINI {} {
+      "Desktop Entry" = {
+        Name = "Slack (Wayland)";
+        StartupWMClass = "Slack";
+        Comment = "Slack Desktop (Custom)";
+        GenericName = "Slack Client for Linux";
+        Exec = "/bin/slack --ozone-platform=wayland --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer";
+        Icon = "slack";
+        Type = "Application";
+        StartupNotify = "true";
+        Categories = "GNOME;GTK;Network;InstantMessaging;";
+        MimeType = "x-scheme-handler/slack;";
+      };
+    };
+  };
 
   home.file = {
     "switch_theme" = {
@@ -49,14 +231,6 @@ in {
     "yafl_ext" = {
       source = ./scripts/yafl_ext;
       target = ".local/bin/yafl_ext";
-    };
-
-    "rgconfig" = {
-      target = ".rgconfig";
-      text = ''
-        --hidden
-        --glob=!.git/*
-      '';
     };
 
     "gitignore_global" = {

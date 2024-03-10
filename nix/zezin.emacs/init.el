@@ -521,7 +521,7 @@
   (interactive)
   (load-theme +dark-theme t))
 
-(setq +font "Source Code Pro") ;; Could be JetbrainsMono Nerd Font also
+(setq +font "JetbrainsMono Nerd Font") ;; Source Code Pro is an alternative
 (setq +font-size 10)
 
 (if (daemonp)
