@@ -1,4 +1,25 @@
 {
   "lockfile_version": "1",
-  "packages": {}
+  "packages": {
+    "alejandra@latest": {
+      "last_modified": "2024-03-08T13:51:52Z",
+      "resolved": "github:NixOS/nixpkgs/a343533bccc62400e8a9560423486a3b6c11a23b#alejandra",
+      "source": "devbox-search",
+      "version": "3.0.0",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/0w2zrh1a32zrhq22x8g2z15z7i2dvc1h-alejandra-3.0.0"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/k50dr795wlsld9j5197n7wb6671mfzcc-alejandra-3.0.0"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/wnmv82am06cq5xv4qqqz5lvi3j3lqw4a-alejandra-3.0.0"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/pz8znxrk0i5li0xizakhf9ccdh3y9gi2-alejandra-3.0.0"
+        }
+      }
+    }
+  }
 }

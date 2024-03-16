@@ -1,7 +1,10 @@
 {
+  "packages": [
+    "alejandra@latest",
+  ],
   "shell":{
     "scripts": {
-      "nix": "nix run  -- home-manager switch -b backup --flake \".#guilherme\" --impure",
+      "hm": "nix run  -- home-manager switch -b backup --flake \".#guilherme\" --impure",
       "fmt": "git ls-files '*.nix' | xargs nix fmt",
     }
   }

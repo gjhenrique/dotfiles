@@ -243,7 +243,11 @@
   :mode "\\.ts\\'")
 
 (use-package nix-mode
-  :mode "\\.nix\\'")
+  :mode "\\.nix\\'"
+  :config
+   (reformatter-define nix-format
+        :program "alejandra"
+        :args '("-")))
 
 (use-package dockerfile-mode
   :mode (("\\Dockerfile.*\\'" . dockerfile-mode)))
@@ -533,3 +537,16 @@
 
 (provide 'init)
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values
+   '((eval nix-format-on-save-mode t) (nix-format-on-save-mode))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

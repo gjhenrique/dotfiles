@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   home.username = "guilherme";
   home.homeDirectory = "/home/guilherme";
 
@@ -19,16 +23,17 @@
     kubectl
     kubectx
     foot
+    mise
     neovim
     ripgrep
     theme-sh
-    (pkgs.callPackage ./yafl.nix { inherit pkgs; })
+    (pkgs.callPackage ./yafl.nix {inherit pkgs;})
   ];
 
   # WTF is this?
   # TODO: Make this use home.file and point to the correct symlink
   # Flakes doesn't work with mkOutOfStoreSymlink
-  home.activation.linkMyFiles = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+  home.activation.linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
     ln -sf ${config.home.homeDirectory}/Projects/mine/dotfiles/zezin.emacs/ ${config.home.homeDirectory}/.emacs.d
   '';
 
@@ -63,22 +68,22 @@
         outputs = [
           {
             criteria = "Dell Inc. DELL U2715H GH85D71G1R9S";
-            scale = 1.4;
+            scale = 1.33333333;
             transform = "270";
             position = "0,0";
             mode = "2560x1440";
           }
           {
-            criteria = "LG Electronics LG HDR 4K 0x00007673";
+            criteria = "LG Electronics LG HDR 4K 0x00067273";
             scale = 2.0;
-            position = "1040,450";
+            position = "1080,450";
             mode = "3840x2160";
           }
           {
             criteria = "Dell Inc. DELL S2319HS 95FVKS2";
             transform = "90";
             scale = 1.2;
-            position = "2970,0";
+            position = "3000,0";
             mode = "1920x1080";
           }
           {
@@ -118,68 +123,70 @@
     systemd.enable = true;
 
     style = builtins.readFile ./files/waybar-style.css;
-    settings = [{
-      position = "top";
-      height = 30;
-      modules-left = [ "hyprland/workspaces" ];
-      modules-center = [ "clock" ];
-      modules-right = [ "cpu" "memory" "pulseaudio" "battery" ];
+    settings = [
+      {
+        position = "top";
+        height = 30;
+        modules-left = ["hyprland/workspaces"];
+        modules-center = ["clock"];
+        modules-right = ["cpu" "memory" "pulseaudio" "battery"];
 
-      "hyprland/workspace" = {
-        "disable-scroll" = true;
-      };
-
-      clock = {
-        format = "󰸗 {:%d.%m - %H:%M}";
-        interval = 1;
-        tooltip-format = "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>";
-        on-click = "hyprctl dispatch exec xdg-open https://calendar.google.com";
-      };
-
-      cpu = {
-        format = "{usage}% ";
-        interval = 1;
-      };
-
-      memory = {
-        format = "{percentage}% 󰍛";
-        interval = 1;
-      };
-
-      pulseaudio = {
-        format = "{icon} {volume}%";
-        format-bluetooth = "{volume}% {icon} {format_source}";
-        format-bluetooth-muted = "ﱝ {icon} {format_source}";
-        format-muted = "ﱝ";
-        format-source = "{volume}% ";
-        format-source-muted = "";
-        format-icons = {
-          headphones = "";
-          handsfree = "";
-          headset = "";
-          phone = "";
-          portable = "";
-          car = "";
-          default = [ "" "" "" ];
+        "hyprland/workspace" = {
+          "disable-scroll" = true;
         };
-        on-click = "pavucontrol";
-      };
 
-      battery = {
-        states = {
-          warning = 30;
-          critical = 15;
+        clock = {
+          format = "󰸗 {:%d.%m - %H:%M}";
+          interval = 1;
+          tooltip-format = "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>";
+          on-click = "hyprctl dispatch exec xdg-open https://calendar.google.com";
         };
-        format = "{capacity}% {icon}";
-        format-charging = "{capacity}% 󰂅";
-        format-icons = [ "󰁹" "󰂂" "󰂁" "󰂀" "󰁿" "󰁾" "󰁽" "󰁼" "󰁻" "󰁺" ];
-        tooltip-format = "{time}";
-      };
-    }];
+
+        cpu = {
+          format = "{usage}% ";
+          interval = 1;
+        };
+
+        memory = {
+          format = "{percentage}% 󰍛";
+          interval = 1;
+        };
+
+        pulseaudio = {
+          format = "{icon} {volume}%";
+          format-bluetooth = "{volume}% {icon} {format_source}";
+          format-bluetooth-muted = "ﱝ {icon} {format_source}";
+          format-muted = "ﱝ";
+          format-source = "{volume}% ";
+          format-source-muted = "";
+          format-icons = {
+            headphones = "";
+            handsfree = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = ["" "" ""];
+          };
+          on-click = "pavucontrol";
+        };
+
+        battery = {
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+          format = "{capacity}% {icon}";
+          format-charging = "{capacity}% 󰂅";
+          format-icons = ["󰁹" "󰂂" "󰂁" "󰂀" "󰁿" "󰁾" "󰁽" "󰁼" "󰁻" "󰁺"];
+          tooltip-format = "{time}";
+        };
+      }
+    ];
   };
 
   xdg.enable = true;
-  xdg.dataFile."applications/emacs-setup.desktop".text = pkgs.lib.generators.toINI { } {
+  xdg.dataFile."applications/emacs-setup.desktop".text = pkgs.lib.generators.toINI {} {
     "Desktop Entry" = {
       Name = "Emacs Setup";
       GenericName = "Text Editor";
@@ -195,7 +202,7 @@
     };
   };
 
-  xdg.dataFile."applications/slack-wayland.desktop".text = pkgs.lib.generators.toINI { } {
+  xdg.dataFile."applications/slack-wayland.desktop".text = pkgs.lib.generators.toINI {} {
     "Desktop Entry" = {
       Name = "Slack (Wayland)";
       StartupWMClass = "Slack";
@@ -209,6 +216,11 @@
       MimeType = "x-scheme-handler/slack;";
     };
   };
+
+  # Move this to .profile when I move away from manjaro-sway
+  xdg.configFile."profile.d/01-path".text = ''
+    export PATH="$HOME/.nix-profile/bin:$HOME/.local/bin:$PATH"
+  '';
 
   xdg.configFile."yafl/config.toml".text = builtins.readFile ./files/yafl-config.toml;
   xdg.configFile."yafl/search.json".text = builtins.readFile ./files/yafl-search.json;
@@ -229,7 +241,6 @@
   home.sessionVariables = {
     EDITOR = "emacsclient";
     PATH = "$HOME/.local/bin:$PATH";
-    DNS_RESOLVER = "systemd-resolved";
   };
 
   programs.fzf = {
@@ -289,20 +300,35 @@
     extraConfig = builtins.readFile ./files/tmux.conf;
   };
 
+  # TODO: Move this to hyprland module once NixOS is in place
+  xdg.configFile."hypr/hyprland.conf".text = builtins.readFile ./files/hyprland.conf;
+  systemd.user.targets.hyprland-session = {
+    Unit = {
+      Description = "Hyprland compositor session";
+      Documentation = ["man:systemd.special(7)"];
+      BindsTo = ["graphical-session.target"];
+      Wants = ["graphical-session-pre.target"];
+      After = ["graphical-session-pre.target"];
+    };
+  };
+  # wayland.windowManager.hyprland = {
+  #   enable = true;
+  # };
+
   programs.foot = {
     enable = true;
     server.enable = true;
 
     settings = {
       main = {
-        font = "JetBrainsMono NF:size=8";
+        font = "JetBrainsMono NF:size=10";
       };
     };
   };
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     shellAliases = {
       pg = "ping google.com";
       images = "kubectl get pods --all-namespaces -o jsonpath=\"{.items[*].spec.containers[*].image}\" |tr -s '[[:space:]]' '\n' |sort |uniq -c";
@@ -312,21 +338,24 @@
     };
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "systemd" "autojump" "aws" "kubectl" ];
+      plugins = ["git" "systemd" "autojump" "aws" "kubectl"];
     };
   };
 
   programs.starship.enable = true;
+
   programs.k9s.enable = true;
+
   programs.atuin = {
     enable = true;
     settings = {
       inline_height = 30;
       style = "compact";
       search_mode = "fulltext";
-      history_filter = [ "^export" ];
+      history_filter = ["^export"];
     };
   };
+
   programs.autojump.enable = true;
 
   programs.direnv = {
@@ -345,7 +374,7 @@
         gradle = "8.2";
         python = "3.10";
         ruby = "3.2";
-        terraform = "1.5.4";
+        terraform = "1.7.5";
       };
     };
   };
@@ -370,18 +399,13 @@
 
     # Based on https://codeberg.org/dnkl/foot/wiki#dynamic-color-changes
     TRAPUSR1() {
-      TMUX= theme.sh $DARK_THEME
+    TMUX= theme.sh $DARK_THEME
     }
 
     TRAPUSR2() {
-      TMUX= theme.sh $LIGHT_THEME
+    TMUX= theme.sh $LIGHT_THEME
     }
   '';
-
-  wayland.windowManager.hyprland = {
-    enable = true;
-    extraConfig = builtins.readFile ./files/hyprland.conf;
-  };
 
   # TODO: Don't import file if it doesn't exist
   imports = [

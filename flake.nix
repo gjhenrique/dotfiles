@@ -6,24 +6,26 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { home-manager, nixpkgs, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      username = "guilherme";
+  outputs = {
+    home-manager,
+    nixpkgs,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    username = "guilherme";
 
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    in
-    {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+  in {
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
-      homeConfigurations = {
-        guilherme = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./home.nix ];
-        };
+    homeConfigurations = {
+      guilherme = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [./home.nix];
       };
     };
+  };
 }

@@ -86,26 +86,9 @@ class Theme
 
   def execute(input)
     if input.end_with? "on"
-      `/opt/bin/switch_theme on`
+      `switch_theme on`
     elsif input.end_with? "off"
-      `/opt/bin/switch_theme off`
-    end
-  end
-end
-
-class Theme
-  def list
-    [
-      "Turn theme on",
-      "Turn theme off",
-    ]
-  end
-
-  def execute(input)
-    if input.end_with? "on"
-      `/opt/bin/switch_theme on`
-    elsif input.end_with? "off"
-      `/opt/bin/switch_theme off`
+      `switch_theme off`
     end
   end
 end
