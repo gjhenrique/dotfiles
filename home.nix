@@ -34,7 +34,7 @@
   # TODO: Make this use home.file and point to the correct symlink
   # Flakes doesn't work with mkOutOfStoreSymlink
   home.activation.linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
-    ln -sf ${config.home.homeDirectory}/Projects/mine/dotfiles/zezin.emacs/ ${config.home.homeDirectory}/.emacs.d
+    ln -sf ${config.home.homeDirectory}/Projects/mine/dotfiles.git/main/zezin.emacs/ ${config.home.homeDirectory}/.emacs.d
   '';
 
   services.mako = {

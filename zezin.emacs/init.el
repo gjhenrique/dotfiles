@@ -421,7 +421,7 @@
   :straight nil
   :commands (browse-at-remote)
   :init
-  (setq +projects-directory '("~/Projects"))
+  (setq +projects-directory '("~/Projects" "~/.prezi"))
 
   :custom
   (project-switch-commands
