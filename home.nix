@@ -418,7 +418,7 @@
   # TODO: Don't import file if it doesn't exist
   imports = [
     # Needs --impure. How to keep outside of repo, but pure?
-    /home/guilherme/Life/work/work.nix
+    # /home/guilherme/Life/work/work.nix
     # (import ./work.nix { inherit pkgs config; })
   ];
 }
