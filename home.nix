@@ -18,12 +18,12 @@
     bat
     devbox
     gh
+    nodePackages.js-beautify
     jq
     kubie
     kubectl
     kubectx
     foot
-    mise
     neovim
     ripgrep
     theme-sh
@@ -369,7 +369,7 @@
     globalConfig = {
       tools = {
         node = "16";
-        golang = "1.20";
+        golang = "1.22";
         java = "11";
         gradle = "8.2";
         python = "3.10";

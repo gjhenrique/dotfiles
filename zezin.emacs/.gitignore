@@ -2,6 +2,7 @@ transient/
 straight/
 !straight/versions/default.el
 eln-cache/
+elpa/
 
 tramp
 recentf
