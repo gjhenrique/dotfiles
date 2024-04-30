@@ -610,7 +610,6 @@
       },
       "original": {
         "owner": "gjhenrique",
-        "ref": "flakes",
         "repo": "yafl",
 >>>>>>> dbe5677 (Add yafl package from flakes)
 >>>>>>> f9e81b3 (Add yafl package from flakes)
