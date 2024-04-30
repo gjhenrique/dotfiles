@@ -6,9 +6,15 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
+  inputs.yafl = {
+    url = "github:gjhenrique/yafl/flakes";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
   outputs = {
     home-manager,
     nixpkgs,
+    yafl,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -25,6 +31,10 @@
       guilherme = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [./home.nix];
+
+        extraSpecialArgs = {
+          yafl = yafl.packages.${system}.default;
+        };
       };
     };
   };

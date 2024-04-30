@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  yafl,
   ...
 }: {
   home.username = "guilherme";
@@ -17,6 +18,7 @@
     awscli2
     bat
     devbox
+    devenv
     gh
     nodePackages.js-beautify
     jq
@@ -27,7 +29,7 @@
     neovim
     ripgrep
     theme-sh
-    (pkgs.callPackage ./yafl.nix {inherit pkgs;})
+    yafl
   ];
 
   # WTF is this?
@@ -342,7 +344,13 @@
     };
   };
 
-  programs.starship.enable = true;
+  programs.starship = {
+    enable = true;
+    settings.kubernetes = {
+      disabled = false;
+      format = "on [⛵ $context \($namespace\)](dimmed green) ";
+    };
+  };
 
   programs.k9s.enable = true;
 
