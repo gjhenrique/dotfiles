@@ -1,10 +1,10 @@
 {
   config,
-  pkgs,
-  yafl,
   dream2nix,
-  system,
+  pkgs,
   secrets,
+  system,
+  yafl,
   ...
 }: {
   home.username = "guilherme";
@@ -48,10 +48,10 @@
     neovim
     ripgrep
     theme-sh
-    yafl
 
     devenv
     git-crypt
+    yafl
   ];
 
   # WTF is this?

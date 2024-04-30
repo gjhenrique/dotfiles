@@ -21,7 +21,7 @@
   };
 
   inputs.yafl = {
-    url = "github:gjhenrique/yafl";
+    url = "github:gjhenrique/yafl/flakes";
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -33,6 +33,7 @@
     dream2nix,
     hyprland,
     self,
+    yafl,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -62,6 +63,7 @@
       guilherme = home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = {
           inherit dream2nix system secrets;
+          yafl = yafl.packages.${system}.default;
         };
         pkgs = pkgs-unstable;
         modules = [

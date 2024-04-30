@@ -2,6 +2,7 @@
   "nodes": {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -85,14 +86,14 @@
 =======
 >>>>>>> 6071150 (Add git-crypt and work script)
     "dream2nix": {
+=======
+    "flake-utils": {
+>>>>>>> f9e81b3 (Add yafl package from flakes)
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs-unstable"
-        ],
-        "purescript-overlay": "purescript-overlay",
-        "pyproject-nix": "pyproject-nix"
+        "systems": "systems"
       },
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1718217355,
         "narHash": "sha256-43+re+vtkHc0jWUKCSOmOGHSl+byCSUnkoNo6WSKMeY=",
         "owner": "nix-community",
@@ -148,6 +149,18 @@
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
+=======
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+>>>>>>> f9e81b3 (Add yafl package from flakes)
         "type": "github"
       }
     },
@@ -330,11 +343,19 @@
     },
     "nixpkgs": {
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1718229064,
         "narHash": "sha256-ZFav8A9zPNfjZg/wrxh1uZeMJHELRfRgFP+meq01XYk=",
         "owner": "nixos",
         "repo": "nixpkgs",
         "rev": "5c2ec3a5c2ee9909904f860dadc19bc12cd9cc44",
+=======
+        "lastModified": 1713714899,
+        "narHash": "sha256-+z/XjO3QJs5rLE5UOf015gdVauVRQd2vZtsFkaXBq2Y=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "6143fc5eeb9c4f00163267708e26191d1e918932",
+>>>>>>> dbe5677 (Add yafl package from flakes)
         "type": "github"
       },
       "original": {
@@ -416,7 +437,11 @@
 =======
         "dream2nix": "dream2nix",
         "home-manager": "home-manager",
+<<<<<<< HEAD
 >>>>>>> 6071150 (Add git-crypt and work script)
+=======
+<<<<<<< HEAD
+>>>>>>> f9e81b3 (Add yafl package from flakes)
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable"
@@ -443,10 +468,15 @@
         "owner": "thomashoneyman",
         "repo": "slimlock",
         "type": "github"
+=======
+        "nixpkgs": "nixpkgs",
+        "yafl": "yafl"
+>>>>>>> dbe5677 (Add yafl package from flakes)
       }
     },
     "systems": {
       "locked": {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -473,16 +503,29 @@
 >>>>>>> c7eaa33 (more changes without git-crypt)
 =======
 >>>>>>> 6071150 (Add git-crypt and work script)
+=======
+>>>>>>> f9e81b3 (Add yafl package from flakes)
         "lastModified": 1689347949,
         "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
         "owner": "nix-systems",
         "repo": "default-linux",
         "rev": "31732fcf5e8fea42e59c2488ad31a0e651500f68",
+<<<<<<< HEAD
 >>>>>>> 1a3e874 (Initial NixOS configuration)
+=======
+=======
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+>>>>>>> dbe5677 (Add yafl package from flakes)
+>>>>>>> f9e81b3 (Add yafl package from flakes)
         "type": "github"
       },
       "original": {
         "owner": "nix-systems",
+<<<<<<< HEAD
 <<<<<<< HEAD
         "repo": "default",
         "type": "github"
@@ -508,6 +551,8 @@
         "owner": "gjhenrique",
         "repo": "yafl",
 =======
+=======
+>>>>>>> f9e81b3 (Add yafl package from flakes)
         "repo": "default-linux",
         "type": "github"
       }
@@ -539,7 +584,36 @@
       "original": {
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
+<<<<<<< HEAD
 >>>>>>> 1a3e874 (Initial NixOS configuration)
+=======
+=======
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "yafl": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "gomod2nix": "gomod2nix",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1714505152,
+        "narHash": "sha256-DLLdITcZtY6D+Ax98t6AxHG37Rhl/a+r1yK45dJnDqw=",
+        "owner": "gjhenrique",
+        "repo": "yafl",
+        "rev": "41a614b5a01c868728efe630c0c6a0bcb3f552db",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gjhenrique",
+        "ref": "flakes",
+        "repo": "yafl",
+>>>>>>> dbe5677 (Add yafl package from flakes)
+>>>>>>> f9e81b3 (Add yafl package from flakes)
         "type": "github"
       }
     }
