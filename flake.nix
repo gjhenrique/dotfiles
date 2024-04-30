@@ -7,7 +7,7 @@
   };
 
   inputs.yafl = {
-    url = "github:gjhenrique/yafl/flakes";
+    url = "github:gjhenrique/yafl";
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
