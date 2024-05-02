@@ -48,7 +48,6 @@
     theme-sh
 
     devenv
-    git-crypt
 
     (pkgs.callPackage ./yafl.nix { inherit pkgs; })
   ];
