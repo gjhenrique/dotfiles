@@ -18,6 +18,12 @@
       fsType = "ext4";
     };
 
+  fileSystems."/home/guilherme/Projects/mine/dotfiles.git" =
+    {
+      device = "nix";
+      fsType = "virtiofs";
+    };
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

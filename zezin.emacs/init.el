@@ -410,6 +410,7 @@
     (evil-define-key 'normal 'go-ts-mode-map (kbd "<leader>tf") '+go-test-current-file)
     (evil-define-key 'normal 'go-ts-mode-map (kbd "<leader>tc") 'go-test-current-test)
     (evil-define-key 'normal 'go-ts-mode-map (kbd "<leader>tp") 'go-test-current-project)
+    (evil-define-key 'normal 'go-ts-mode-map (kbd "<leader>gi") 'eglot-code-action-organize-imports)
 
     ;; buffer
     (evil-define-key 'normal 'global (kbd "<leader>bk") 'kill-current-buffer)

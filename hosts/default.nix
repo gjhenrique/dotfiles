@@ -1,6 +1,6 @@
 { pkgs, system, nixpkgs, hyprland }:
 {
-  nixos = nixpkgs.lib.nixosSystem {
+  vm = nixpkgs.lib.nixosSystem {
     inherit system;
 
     specialArgs = {
