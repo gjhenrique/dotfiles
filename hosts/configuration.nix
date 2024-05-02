@@ -98,6 +98,7 @@
     _1password-gui
     bitwarden
     vim
+    git-crypt
 
     emacs29-pgtk
   ];
