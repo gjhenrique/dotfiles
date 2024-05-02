@@ -18,11 +18,6 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
   inputs.yafl = {
@@ -37,7 +32,7 @@
     nixpkgs-unstable,
     dream2nix,
     hyprland,
-    agenix,
+    self,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -52,6 +47,8 @@
       inherit system;
       config.allowUnfree = true;
     };
+
+    secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
   in {
     formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.alejandra;
 
@@ -64,10 +61,12 @@
     homeConfigurations = {
       guilherme = home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = {
-          inherit dream2nix system agenix;
+          inherit dream2nix system secrets;
         };
         pkgs = pkgs-unstable;
-        modules = [./home.nix];
+        modules = [
+          ./home.nix
+        ];
 
         extraSpecialArgs = {
           yafl = yafl.packages.${system}.default;

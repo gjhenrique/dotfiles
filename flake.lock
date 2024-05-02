@@ -1,6 +1,7 @@
 {
   "nodes": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -81,6 +82,8 @@
         "type": "github"
       }
     },
+=======
+>>>>>>> 6071150 (Add git-crypt and work script)
     "dream2nix": {
       "inputs": {
         "nixpkgs": [
@@ -109,27 +112,6 @@
       }
     },
     "home-manager": {
-      "inputs": {
-        "nixpkgs": [
-          "agenix",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1703113217,
-        "narHash": "sha256-7ulcXOk63TIT2lVDSExj7XzFx09LpdSAPtvgtM7yQPE=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "3bfaacf46133c037bb356193bd2f1765d9dc82c1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "home-manager_2": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs-unstable"
@@ -199,7 +181,7 @@
         "nixpkgs": [
           "nixpkgs-unstable"
         ],
-        "systems": "systems_3",
+        "systems": "systems_2",
         "wlroots": "wlroots",
         "xdph": "xdph"
       },
@@ -249,7 +231,7 @@
           "hyprcursor",
           "nixpkgs"
         ],
-        "systems": "systems_2"
+        "systems": "systems"
       },
       "locked": {
         "lastModified": 1709914708,
@@ -364,6 +346,7 @@
     "root": {
       "inputs": {
 <<<<<<< HEAD
+<<<<<<< HEAD
         "home-manager": "home-manager",
 <<<<<<< HEAD
         "nixpkgs": "nixpkgs",
@@ -374,6 +357,10 @@
         "dream2nix": "dream2nix",
         "home-manager": "home-manager_2",
 >>>>>>> c7eaa33 (more changes without git-crypt)
+=======
+        "dream2nix": "dream2nix",
+        "home-manager": "home-manager",
+>>>>>>> 6071150 (Add git-crypt and work script)
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable"
@@ -406,6 +393,7 @@
       "locked": {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> c7eaa33 (more changes without git-crypt)
         "lastModified": 1681028828,
@@ -427,6 +415,8 @@
     "systems_2": {
       "locked": {
 >>>>>>> c7eaa33 (more changes without git-crypt)
+=======
+>>>>>>> 6071150 (Add git-crypt and work script)
         "lastModified": 1689347949,
         "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
         "owner": "nix-systems",
@@ -466,7 +456,7 @@
         "type": "github"
       }
     },
-    "systems_3": {
+    "systems_2": {
       "locked": {
         "lastModified": 1689347949,
         "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
