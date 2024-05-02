@@ -3,7 +3,7 @@
   pkgs,
   dream2nix,
   system,
-  agenix,
+  secrets,
   ...
 }: {
   home.username = "guilherme";
@@ -48,10 +48,10 @@
     theme-sh
 
     devenv
-    agenix.packages.${system}.agenix
+    git-crypt
 
-    (pkgs.callPackage ./yafl.nix { inherit pkgs; })]
-  ;
+    (pkgs.callPackage ./yafl.nix { inherit pkgs; })
+  ];
 
   # WTF is this?
   # TODO: Make this use home.file and point to the correct symlink
@@ -411,6 +411,6 @@
   imports = [
     # Needs --impure. How to keep outside of repo, but pure?
     # ./work.nix
-    (import ./work.nix { inherit pkgs config dream2nix system; })
+    (import ./work.nix { inherit pkgs config dream2nix system secrets; })
   ];
 }

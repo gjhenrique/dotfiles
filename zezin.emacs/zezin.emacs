@@ -1,1 +1,1 @@
-/home/guilherme/Projects/mine/dotfiles.git/main/zezin.emacs/
+/home/guilherme/Projects/mine/dotfiles.git/nixos/zezin.emacs/
