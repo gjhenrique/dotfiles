@@ -1,7 +1,13 @@
 {
   config,
   pkgs,
+<<<<<<< HEAD
   yafl,
+=======
+  dream2nix,
+  system,
+  agenix,
+>>>>>>> c7eaa33 (more changes without git-crypt)
   ...
 }: {
   home.username = "guilherme";
@@ -25,18 +31,43 @@
     kubie
     kubectl
     kubectx
+
+    go
+    gradle
+    jdk11
+    nodejs_18
+    python310
+    ruby
+    terraform
+
+    terraform-ls
+    gopls
+
     foot
+    htop
+    ripgrep
+    wget
+    curl
     neovim
     ripgrep
     theme-sh
+<<<<<<< HEAD
     yafl
   ];
+=======
+
+    devenv
+    agenix.packages.${system}.agenix
+
+    (pkgs.callPackage ./yafl.nix { inherit pkgs; })]
+  ;
+>>>>>>> c7eaa33 (more changes without git-crypt)
 
   # WTF is this?
   # TODO: Make this use home.file and point to the correct symlink
   # Flakes doesn't work with mkOutOfStoreSymlink
   home.activation.linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
-    ln -sf ${config.home.homeDirectory}/Projects/mine/dotfiles.git/main/zezin.emacs/ ${config.home.homeDirectory}/.emacs.d
+    ln -sf ${config.home.homeDirectory}/Projects/mine/dotfiles.git/nixos/zezin.emacs/ ${config.home.homeDirectory}/.emacs.d
   '';
 
   services.mako = {
@@ -58,8 +89,8 @@
 
       [mode=do-not-disturb]
       invisible=1
-    '';
-  };
+    '';}
+  ;
 
   services.kanshi = {
     enable = true;
@@ -241,7 +272,7 @@
   };
 
   home.sessionVariables = {
-    EDITOR = "emacsclient";
+    EDITOR = "vim";
     PATH = "$HOME/.local/bin:$PATH";
   };
 
@@ -256,6 +287,8 @@
     userEmail = "me@gjhenrique.com";
 
     extraConfig = {
+      advice.skippedCherryPicks = false;
+
       core = {
         editor = "emacsclient";
         excludesfile = "~/.config/git/gitignore";
@@ -302,20 +335,11 @@
     extraConfig = builtins.readFile ./files/tmux.conf;
   };
 
-  # TODO: Move this to hyprland module once NixOS is in place
-  xdg.configFile."hypr/hyprland.conf".text = builtins.readFile ./files/hyprland.conf;
-  systemd.user.targets.hyprland-session = {
-    Unit = {
-      Description = "Hyprland compositor session";
-      Documentation = ["man:systemd.special(7)"];
-      BindsTo = ["graphical-session.target"];
-      Wants = ["graphical-session-pre.target"];
-      After = ["graphical-session-pre.target"];
-    };
+  wayland.windowManager.hyprland = {
+    enable = true;
+
+    extraConfig = builtins.readFile ./files/hyprland.conf;
   };
-  # wayland.windowManager.hyprland = {
-  #   enable = true;
-  # };
 
   programs.foot = {
     enable = true;
@@ -371,22 +395,6 @@
     enableZshIntegration = true;
   };
 
-  programs.mise = {
-    enable = true;
-    enableZshIntegration = true;
-    globalConfig = {
-      tools = {
-        node = "16";
-        golang = "1.22";
-        java = "11";
-        gradle = "8.2";
-        python = "3.10";
-        ruby = "3.2";
-        terraform = "1.7.5";
-      };
-    };
-  };
-
   programs.zsh.initExtra = ''
     if [ -e /etc/profile.d/nix-daemon.sh  ]; then . /etc/profile.d/nix-daemon.sh; fi
 
@@ -418,7 +426,7 @@
   # TODO: Don't import file if it doesn't exist
   imports = [
     # Needs --impure. How to keep outside of repo, but pure?
-    # /home/guilherme/Life/work/work.nix
-    # (import ./work.nix { inherit pkgs config; })
+    # ./work.nix
+    (import ./work.nix { inherit pkgs config dream2nix system; })
   ];
 }

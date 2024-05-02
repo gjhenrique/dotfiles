@@ -15,6 +15,8 @@
   boot.loader.grub.useOSProber = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # required by devenv
+  nix.settings.trusted-users = ["root" "guilherme"];
 
   networking.hostName = host.hostName; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -64,10 +66,17 @@
     #media-session.enable = true;
   };
 
+  programs.zsh.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.guilherme = {
+    shell = pkgs.zsh;
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
+  };
+
+  virtualisation = {
+    docker.enable = true;
   };
 
   programs.firefox = {
@@ -75,27 +84,47 @@
     package = pkgs.firefox;
   };
 
-  programs.hyprland = {
+  programs.hyprland.enable = true;
+
+  services.syncthing = {
     enable = true;
+    user = "guilherme";
+    configDir = "/home/guilherme/.config/syncthing";
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    git
-    ripgrep
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    htop
-    gcc
-    unzip
+    _1password-gui
+    bitwarden
+    vim
+
+    emacs29-pgtk
   ];
 
-  fonts.packages = with pkgs; [
-    jetbrains-mono
-    font-awesome
-    noto-fonts-emoji
-  ];
+  fonts= {
+    packages = with pkgs; [
+      jetbrains-mono
+
+      # Waybar
+      font-awesome
+      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+
+      noto-fonts
+      noto-fonts-emoji
+
+      roboto
+      roboto-mono
+    ];
+
+    enableDefaultPackages = true;
+
+    fontconfig.defaultFonts = {
+      serif = [ "Noto Serif" "Source Han Serif" ];
+      sansSerif = [ "Jetbrains Mono" ];
+      emoji = [ "Noto Color Emoji" ];
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
