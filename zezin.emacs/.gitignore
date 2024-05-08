@@ -1,8 +1,9 @@
 transient/
-straight/
+straight/*
 !straight/versions/default.el
 eln-cache/
 elpa/
+url/
 
 tramp
 recentf
@@ -14,3 +15,4 @@ eshell/
 tldr/
 
 amx-items
+forge-database.sqlite

@@ -27,6 +27,7 @@
   (add-to-list 'purpose-user-mode-purposes '(js-mode . javascript))
   (add-to-list 'purpose-user-mode-purposes '(rjsx-mode . javascript))
   (add-to-list 'purpose-user-mode-purposes '(go-test-mode . search))
+  (add-to-list 'purpose-user-regexp-purposes '("^\\*ai.*" . search))
   (add-to-list 'purpose-user-regexp-purposes '("^\\magit" . magit)))
 
 (defun zezin-disable-purpose-with-dired ()

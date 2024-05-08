@@ -39,6 +39,9 @@
 (scroll-bar-mode -1)
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; Only store encrypted secrets on this file
+(setq auth-sources '("~/.authinfo.gpg"))
+
 (use-package tramp
   :defer
   :straight nil
@@ -93,7 +96,7 @@
 (use-package evil-collection
   :after evil
   :config
-  (setq evil-collection-mode-list '(magit dired ivy comint corfu))
+  (setq evil-collection-mode-list '(magit dired ivy comint corfu forge))
   (evil-collection-init))
 
 ;; ivy/counsel/swiper
@@ -210,6 +213,7 @@
 	  (markdown "https://github.com/ikatyang/tree-sitter-markdown")
 	  (python "https://github.com/tree-sitter/tree-sitter-python")
 	  (ruby "https://github.com/tree-sitter/tree-sitter-ruby")
+	  (rust "https://github.com/tree-sitter/tree-sitter-rust")
 	  (toml "https://github.com/tree-sitter/tree-sitter-toml")
 	  (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src"))
 	  (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src"))))
@@ -227,11 +231,13 @@
     (interactive)
     (mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist))))
 
+(use-package rust-ts-mode
+  :straight nil
+  :mode (("\\.rs\\'" . rust-ts-mode)))
 
 (use-package kotlin-ts-mode
   :mode (("\\.kt\\'" . kotlin-ts-mode)
 	 ("\\.gradle.kts\\'" . kotlin-ts-mode))
-  :hook ((kotlin-ts-mode . kotlin-format-on-save-mode))
   :config
   (reformatter-define
     kotlin-format
@@ -346,6 +352,11 @@
 (use-package gitignore-mode
   :straight nil
   :mode ("/.dockerignore\\'"))
+
+(use-package forge
+  :after magit
+  :preface
+  (setq forge-add-default-bindings nil))
 
 ;; IDE
 (use-package dumb-jump
@@ -468,6 +479,19 @@
 	(+remember-projects-inside project-dir))))
 
   :commands (project-switch-project project-current))
+
+(use-package gptel
+  :commands gptel
+  :custom
+  (gptel-default-mode 'org-mode)
+  (gptel-model "claude-3-5-sonnet-20240620")
+  (gptel-display-buffer-action 'switch-to-buffer-other-frame)
+  :config
+  (setq gptel-backend
+	(gptel-make-anthropic
+	    "*ai-"
+	  :stream t
+	  :key (auth-source-pick-first-password :host "claude.anthropic.com"))))
 
 (use-package tldr
   :commands tldr)

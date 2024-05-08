@@ -50,7 +50,6 @@
     theme-sh
 
     devenv
-    git-crypt
     yafl
     htop
     killall
@@ -169,9 +168,9 @@
         modules-center = ["clock"];
         modules-right = ["cpu" "memory" "pulseaudio" "battery"];
 
-        "hyprland/workspace" = {
-          "disable-scroll" = true;
-        };
+        # "hyprland/workspace" = {
+        #   "disable-scroll" = true;
+        # };
 
         clock = {
           format = "󰸗 {:%d.%m - %H:%M}";
@@ -298,6 +297,10 @@
         editor = "emacsclient";
         excludesfile = "~/.config/git/gitignore";
       };
+
+      github = {
+        user = "gjhenrique";
+      };
     };
   };
   xdg.configFile."git/gitignore".text = ''
@@ -398,6 +401,23 @@
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
+  };
+
+  programs.mise = {
+    enable = true;
+    enableZshIntegration = true;
+    globalConfig = {
+      tools = {
+        node = "16";
+        golang = "1.22";
+        java = "11";
+        gradle = "8.2";
+        python = "3.10";
+        ruby = "3.2";
+        terraform = "1.7.5";
+        rust = "1.79.0";
+      };
+    };
   };
 
   programs.zsh.initExtra = ''
