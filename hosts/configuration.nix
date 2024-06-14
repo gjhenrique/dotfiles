@@ -95,13 +95,23 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    _1password-gui
-    bitwarden
     vim
+
+    # this repo secrets
     git-crypt
 
     emacs29-pgtk
+
+    # security stuff
+    _1password-gui
+    bitwarden
+
+    age
+    age-plugin-yubikey
   ];
+
+  # https://github.com/montchr/dotfield/blob/78de8ff316ccb2d34fd98cd9bfd3bfb5ad775b0e/nixos/profiles/hardware/yubikey.nix#L3
+  services.pcscd.enable = true;
 
   fonts= {
     packages = with pkgs; [
@@ -130,10 +140,10 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
+  programs.gnupg.agent = {
+    enable = true;
   #   enableSSHSupport = true;
-  # };
+  };
 
   # List services that you want to enable:
 
