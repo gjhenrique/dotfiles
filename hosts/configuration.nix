@@ -9,11 +9,6 @@
   #     ./hardware-configuration.nix
   #   ];
 
-  # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/vda";
-  boot.loader.grub.useOSProber = true;
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # required by devenv
   nix.settings.trusted-users = ["root" "guilherme"];
@@ -98,6 +93,7 @@
     vim
 
     # this repo secrets
+    git
     git-crypt
 
     emacs29-pgtk
@@ -105,6 +101,9 @@
     # security stuff
     _1password-gui
     bitwarden
+
+    hyprland
+    kitty
 
     age
     age-plugin-yubikey
