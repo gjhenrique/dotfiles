@@ -92,6 +92,16 @@
     systemdTarget = "graphical-session.target";
 
     profiles = {
+      desktop = {
+        outputs = [
+          {
+            criteria = "LG Electronics LG HDR 4K 0x00067273";
+            scale = 2.0;
+            position = "0,0";
+            mode = "3840x2160";
+          }
+        ];
+      };
       docked = {
         outputs = [
           {
