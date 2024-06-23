@@ -102,11 +102,9 @@
     _1password-gui
     bitwarden
 
+    # to get the password in Bitwarden to invoke home-manager
     hyprland
     kitty
-
-    age
-    age-plugin-yubikey
   ];
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
