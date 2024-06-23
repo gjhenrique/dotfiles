@@ -109,6 +109,9 @@
     age-plugin-yubikey
   ];
 
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+
   # https://github.com/montchr/dotfield/blob/78de8ff316ccb2d34fd98cd9bfd3bfb5ad775b0e/nixos/profiles/hardware/yubikey.nix#L3
   services.pcscd.enable = true;
 
