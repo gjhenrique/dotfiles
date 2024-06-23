@@ -52,13 +52,17 @@
     devenv
     git-crypt
     yafl
+    htop
+    killall
+
+    bluetuith
   ];
 
   # WTF is this?
   # TODO: Make this use home.file and point to the correct symlink
   # Flakes doesn't work with mkOutOfStoreSymlink
   home.activation.linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
-    ln -sf ${config.home.homeDirectory}/Projects/mine/dotfiles.git/nixos/zezin.emacs/ ${config.home.homeDirectory}/.emacs.d
+    ln -sf ${config.home.homeDirectory}/Projects/mine/dotfiles/zezin.emacs/ ${config.home.homeDirectory}/.emacs.d
   '';
 
   services.mako = {
@@ -414,10 +418,7 @@
     }
   '';
 
-  # TODO: Don't import file if it doesn't exist
   imports = [
-    # Needs --impure. How to keep outside of repo, but pure?
-    # ./work.nix
     (import ./work.nix { inherit pkgs config dream2nix system secrets; })
   ];
 }
