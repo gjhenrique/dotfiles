@@ -26,12 +26,11 @@
   };
 
   outputs = {
-    home-manager,
-    nixpkgs,
-    yafl,
-    nixpkgs-unstable,
     dream2nix,
+    home-manager,
     hyprland,
+    nixpkgs,
+    nixpkgs-unstable,
     self,
     yafl,
     ...
@@ -69,10 +68,6 @@
         modules = [
           ./home.nix
         ];
-
-        extraSpecialArgs = {
-          yafl = yafl.packages.${system}.default;
-        };
       };
     };
   };
