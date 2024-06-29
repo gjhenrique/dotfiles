@@ -268,6 +268,16 @@
 
   # Scripts
   home.file = {
+    # "phinger-cursors-light" = {
+    #   source = "${pkgs.phinger-cursors}/cursors/theme_phinger-cursors-light";
+    #   target = ".local/share/icons/phinger-cursors-light-hyprcursor";
+    # };
+
+    "phinger-cursors-dark" = {
+      source = "${pkgs.phinger-cursors}/share/icons/phinger-cursors-dark";
+      target = ".local/share/icons/phinger-cursors-dark";
+    };
+
     "switch_theme" = {
       source = ./files/switch_theme;
       target = ".local/bin/switch_theme";
@@ -451,6 +461,13 @@
     TMUX= theme.sh $LIGHT_THEME
     }
   '';
+
+  gtk = {
+    enable = true;
+    cursorTheme = {
+      name = "phinger-cursors-dark";
+    };
+  };
 
   imports = [
     (import ./work.nix { inherit pkgs config dream2nix system secrets; })
