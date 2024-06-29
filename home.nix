@@ -90,9 +90,10 @@
     enable = true;
     systemdTarget = "graphical-session.target";
 
-    profiles = {
-      desktop = {
-        outputs = [
+    settings = [
+      {
+        profile.name = "desktop";
+        profile.outputs = [
           {
             criteria = "LG Electronics LG HDR 4K 0x00067273";
             scale = 2.0;
@@ -100,9 +101,10 @@
             mode = "3840x2160";
           }
         ];
-      };
-      docked = {
-        outputs = [
+      }
+      {
+        profile.name = "docked";
+        profile.outputs = [
           {
             criteria = "Dell Inc. DELL U2715H GH85D71G1R9S";
             scale = 1.33333333;
@@ -128,17 +130,19 @@
             status = "disable";
           }
         ];
-      };
-      undocked = {
-        outputs = [
+      }
+      {
+        profile.name = "undocked";
+        profile.outputs = [
           {
             criteria = "eDP-1";
             scale = 2.0;
           }
         ];
-      };
-      docked_room = {
-        outputs = [
+      }
+      {
+        profile.name = "docked_room";
+        profile.outputs = [
           {
             criteria = "BNQ BenQ EW3270U G9K02925019";
             mode = "3840x2160";
@@ -151,8 +155,8 @@
             scale = 2.0;
           }
         ];
-      };
-    };
+      }
+    ];
   };
 
   programs.waybar = {
