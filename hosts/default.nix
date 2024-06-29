@@ -1,10 +1,10 @@
-{ pkgs, system, nixpkgs, hyprland }:
+{ pkgs, system, nixpkgs }:
 {
   vm = nixpkgs.lib.nixosSystem {
     inherit system;
 
     specialArgs = {
-      inherit hyprland pkgs;
+      inherit pkgs;
 
       host = {
         hostName = "vm";
@@ -19,7 +19,7 @@
     inherit system;
 
     specialArgs = {
-      inherit hyprland pkgs;
+      inherit pkgs;
 
       host = {
         hostName = "desktop";

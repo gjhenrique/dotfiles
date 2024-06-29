@@ -13,11 +13,6 @@
       url = "github:nix-community/dream2nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
   inputs.yafl = {
@@ -28,7 +23,6 @@
   outputs = {
     dream2nix,
     home-manager,
-    hyprland,
     nixpkgs,
     nixpkgs-unstable,
     self,
@@ -54,7 +48,7 @@
 
     nixosConfigurations = (
       import ./hosts {
-        inherit pkgs system nixpkgs hyprland;
+        inherit pkgs system nixpkgs;
       }
     );
 
