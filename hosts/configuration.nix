@@ -81,6 +81,8 @@
 
   programs.hyprland.enable = true;
 
+  services.tailscale.enable = true;
+
   services.syncthing = {
     enable = true;
     user = "guilherme";
@@ -102,9 +104,10 @@
     _1password-gui
     bitwarden
 
-    # to get the password in Bitwarden to invoke home-manager
+    # to get the password in Bitwarden to invoke home-manager. home-manager is the one configuring it
     hyprland
     kitty
+
   ];
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
