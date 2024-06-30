@@ -171,10 +171,6 @@
         modules-center = ["clock"];
         modules-right = ["cpu" "memory" "pulseaudio" "battery"];
 
-        # "hyprland/workspace" = {
-        #   "disable-scroll" = true;
-        # };
-
         clock = {
           format = "󰸗 {:%d.%m - %H:%M}";
           interval = 1;
