@@ -243,22 +243,7 @@
     };
   };
 
-  xdg.dataFile."applications/slack-wayland.desktop".text = pkgs.lib.generators.toINI {} {
-    "Desktop Entry" = {
-      Name = "Slack (Wayland)";
-      StartupWMClass = "Slack";
-      Comment = "Slack Desktop (Custom)";
-      GenericName = "Slack Client for Linux";
-      Exec = "/bin/slack --ozone-platform=wayland --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer";
-      Icon = "slack";
-      Type = "Application";
-      StartupNotify = "true";
-      Categories = "GNOME;GTK;Network;InstantMessaging;";
-      MimeType = "x-scheme-handler/slack;";
-    };
-  };
-
-  # Move this to .profile when I move away from manjaro-sway
+    # Move this to .profile when I move away from manjaro-sway
   xdg.configFile."profile.d/01-path".text = ''
     export PATH="$HOME/.nix-profile/bin:$HOME/.local/bin:$PATH"
   '';

@@ -34,13 +34,45 @@ in {
     };
   };
 
+  xdg.configFile = {
+    "electron-flags.conf".text = ''
+    --enable-features=UseOzonePlatform
+    --ozone-platform=wayland
+    '';
+
+    "code-flags.conf".text = ''
+      --enable-features=UseOzonePlatform,WaylandWindowDecorations
+      --ozone-platform=wayland
+    '';
+  };
+
   home.sessionVariables = secrets.work.envs;
 
   home.packages = with pkgs; [
     ansible
     teleport
     onelogin-aws-assume-role
+    slack
+    spotify
+    vscode
   ];
+
+
+  xdg.dataFile."applications/slack-wayland.desktop".text = pkgs.lib.generators.toINI {} {
+    "Desktop Entry" = {
+      Name = "Slack (Wayland)";
+      StartupWMClass = "Slack";
+      Comment = "Slack Desktop (Custom)";
+      GenericName = "Slack Client for Linux";
+      Exec = "${pkgs.slack}/bin/slack --ozone-platform=wayland --enable-features=WaylandWindowDecorations,UseOzonePlatform,WebRTCPipeWireCapturer";
+      Icon = "slack";
+      Type = "Application";
+      StartupNotify = "true";
+      Categories = "GNOME;GTK;Network;InstantMessaging;";
+      MimeType = "x-scheme-handler/slack;";
+    };
+  };
+
 
   programs.git = {
     includes = [
