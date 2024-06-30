@@ -372,6 +372,34 @@
       enable = true;
       plugins = ["git" "systemd" "autojump" "aws" "kubectl"];
     };
+
+    initExtra = ''
+      if [ -e /etc/profile.d/nix-daemon.sh  ]; then . /etc/profile.d/nix-daemon.sh; fi
+
+      if [ "$TERM" != "linux" ] && [ "$TERM" != "dumb" ]
+      then
+        # Start shell with tmux
+        # If not running interactively, do not do anything
+        [[ $- != *i* ]] && return
+        [[ -z "$TMUX" ]] && TERM=xterm-256color exec tmux -2
+      fi
+
+      DARK_THEME=dracula
+      LIGHT_THEME=fruit-soda
+
+      CURRENT_THEME=$(grep -q light $XDG_RUNTIME_DIR/theme 2>/dev/null && echo $LIGHT_THEME || echo $DARK_THEME)
+
+      [[ $- == *i* ]] && TMUX= theme.sh $CURRENT_THEME
+
+      # Based on https://codeberg.org/dnkl/foot/wiki#dynamic-color-changes
+      TRAPUSR1() {
+      TMUX= theme.sh $DARK_THEME
+      }
+
+      TRAPUSR2() {
+      TMUX= theme.sh $LIGHT_THEME
+      }
+    '';
   };
 
   programs.starship = {
@@ -418,39 +446,16 @@
     };
   };
 
-  programs.zsh.initExtra = ''
-    if [ -e /etc/profile.d/nix-daemon.sh  ]; then . /etc/profile.d/nix-daemon.sh; fi
-
-    if [ "$TERM" != "linux" ] && [ "$TERM" != "dumb" ]
-    then
-      # Start shell with tmux
-      # If not running interactively, do not do anything
-      [[ $- != *i* ]] && return
-      [[ -z "$TMUX" ]] && TERM=xterm-256color exec tmux -2
-    fi
-
-    DARK_THEME=dracula
-    LIGHT_THEME=fruit-soda
-
-    CURRENT_THEME=$(grep -q light $XDG_RUNTIME_DIR/theme 2>/dev/null && echo $LIGHT_THEME || echo $DARK_THEME)
-
-    [[ $- == *i* ]] && TMUX= theme.sh $CURRENT_THEME
-
-    # Based on https://codeberg.org/dnkl/foot/wiki#dynamic-color-changes
-    TRAPUSR1() {
-    TMUX= theme.sh $DARK_THEME
-    }
-
-    TRAPUSR2() {
-    TMUX= theme.sh $LIGHT_THEME
-    }
-  '';
-
   gtk = {
     enable = true;
     cursorTheme = {
       name = "phinger-cursors-dark";
     };
+  };
+
+  services.gpg-agent = {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-gtk2;
   };
 
   imports = [
