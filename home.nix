@@ -17,18 +17,7 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    _1password
-    awscli2
-    bat
-    devbox
-    devenv
-    gh
-    nodePackages.js-beautify
-    jq
-    kubie
-    kubectl
-    kubectx
-
+    # languages
     go
     gradle
     jdk11
@@ -37,24 +26,34 @@
     ruby
     terraform
 
+    # language servers
     terraform-ls
     gopls
 
+    # tools
+    _1password
+    bluetuith
     foot
-    htop
-    ripgrep
-    wget
-    curl
     neovim
+
+    # command-line
+    awscli2
+    bat
+    curl
+    file
+    gh
+    htop
+    jq
+    killall
+    kubectl
+    kubectx
+    kubie
+    nodePackages.js-beautify
+    ripgrep
     ripgrep
     theme-sh
-
-    devenv
+    wget
     yafl
-    htop
-    killall
-
-    bluetuith
   ];
 
   # WTF is this?
