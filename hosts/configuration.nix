@@ -100,14 +100,15 @@
 
     emacs29-pgtk
 
-    # security stuff
-    _1password-gui
+    # for compiling tree-sitter grammars
+    libgcc
+
+    # security stuff for getting git-crypt secret
     bitwarden
 
     # to get the password in Bitwarden to invoke home-manager. home-manager is the one configuring it
     hyprland
     kitty
-
   ];
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth

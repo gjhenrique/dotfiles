@@ -37,11 +37,12 @@ in {
   home.sessionVariables = secrets.work.envs;
 
   home.packages = with pkgs; [
+    _1password-gui
     ansible
-    teleport
     onelogin-aws-assume-role
     slack
     spotify
+    teleport
     vscode
   ];
 
