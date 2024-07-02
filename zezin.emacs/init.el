@@ -489,7 +489,7 @@
   :config
   (setq gptel-backend
 	(gptel-make-anthropic
-	    "*ai-"
+	    "chat"
 	  :stream t
 	  :key (auth-source-pick-first-password :host "claude.anthropic.com"))))
 

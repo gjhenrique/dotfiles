@@ -400,9 +400,13 @@
 
   programs.starship = {
     enable = true;
-    settings.kubernetes = {
-      disabled = false;
-      format = "on [⛵ $context \($namespace\)](dimmed green) ";
+    settings = {
+      add_newline = true;
+
+      kubernetes = {
+        disabled = false;
+        format = "on [⛵ $context \($namespace\)](dimmed green) ";
+      };
     };
   };
 
