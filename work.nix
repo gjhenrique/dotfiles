@@ -39,6 +39,8 @@ in {
   home.packages = with pkgs; [
     _1password-gui
     ansible
+    devbox
+    devpod
     onelogin-aws-assume-role
     slack
     spotify

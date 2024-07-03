@@ -57,6 +57,7 @@
         extraSpecialArgs = {
           inherit dream2nix system secrets;
           yafl = yafl.packages.${system}.default;
+          stable = pkgs;
         };
         pkgs = pkgs-unstable;
         modules = [

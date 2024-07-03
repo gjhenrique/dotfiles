@@ -3,6 +3,7 @@
   dream2nix,
   pkgs,
   secrets,
+  stable,
   system,
   yafl,
   ...
@@ -340,6 +341,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
 
+    package = stable.hyprland;
     extraConfig = builtins.readFile ./files/hyprland.conf;
   };
 
