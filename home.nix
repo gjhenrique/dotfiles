@@ -420,7 +420,6 @@
       inline_height = 30;
       style = "compact";
       search_mode = "fulltext";
-      history_filter = ["^export"];
     };
   };
 
