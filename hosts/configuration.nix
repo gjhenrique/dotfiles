@@ -53,6 +53,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
@@ -109,6 +110,11 @@
     # to get the password in Bitwarden to invoke home-manager. home-manager is the one configuring it
     hyprland
     kitty
+
+    pavucontrol
+    playerctl
+
+    google-chrome
   ];
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth

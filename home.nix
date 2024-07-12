@@ -50,6 +50,7 @@
     kubectx
     kubie
     nodePackages.js-beautify
+    passage
     ripgrep
     ripgrep
     theme-sh
@@ -95,10 +96,24 @@
         profile.name = "desktop";
         profile.outputs = [
           {
+            criteria = "Dell Inc. DELL U2715H GH85D71G1R9S";
+            scale = 1.33333333;
+            transform = "270";
+            position = "0,0";
+            mode = "2560x1440";
+          }
+          {
             criteria = "LG Electronics LG HDR 4K 0x00067273";
             scale = 2.0;
-            position = "0,0";
+            position = "1080,450";
             mode = "3840x2160";
+          }
+          {
+            criteria = "Dell Inc. DELL S2319HS 95FVKS2";
+            transform = "90";
+            scale = 1.2;
+            position = "3000,0";
+            mode = "1920x1080";
           }
         ];
       }
@@ -247,6 +262,10 @@
   xdg.configFile."yafl/config.toml".text = builtins.readFile ./files/yafl-config.toml;
   xdg.configFile."yafl/search.json".text = builtins.readFile ./files/yafl-search.json;
 
+  xdg.configFile."pipewire/pipewire.conf.d/echo-cancel.conf".text = ''
+  context.modules = [{ name = libpipewire-module-echo-cancel }]
+  '';
+
   # Scripts
   home.file = {
     # "phinger-cursors-light" = {
@@ -314,6 +333,12 @@
     *~
     \#*\#
   '';
+
+  xdg.portal = {
+    enable = true;
+
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  };
 
   programs.gh = {
     enable = true;
