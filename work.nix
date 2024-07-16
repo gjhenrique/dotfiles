@@ -25,7 +25,7 @@ in {
 
     ".local/bin/aws-login" = {
       text = ''
-      #!/bin/bash
+      #!/usr/bin/env bash
 
       ${secrets.work.oneloginScript}
       '';
@@ -38,11 +38,17 @@ in {
 
   home.packages = with pkgs; [
     _1password-gui
+    amazon-ecr-credential-helper
     ansible
     devbox
     devpod
+
+    jetbrains.gateway
+    jetbrains.pycharm-community
+
     onelogin-aws-assume-role
     slack
+    stern
     spotify
     teleport
     vscode

@@ -68,11 +68,7 @@
   users.users.guilherme = {
     shell = pkgs.zsh;
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-  };
-
-  virtualisation = {
-    docker.enable = true;
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
   };
 
   programs.firefox = {
@@ -115,6 +111,8 @@
     playerctl
 
     google-chrome
+
+    virtiofsd # for sharing folder
   ];
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
@@ -122,6 +120,28 @@
 
   # https://github.com/montchr/dotfield/blob/78de8ff316ccb2d34fd98cd9bfd3bfb5ad775b0e/nixos/profiles/hardware/yubikey.nix#L3
   services.pcscd.enable = true;
+
+  virtualisation = {
+    docker.enable = true;
+
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        runAsRoot = true;
+        swtpm.enable = true;
+        ovmf = {
+          enable = true;
+          packages = [(pkgs.OVMF.override {
+            secureBoot = true;
+            tpmSupport = true;
+          }).fd];
+        };
+      };
+    };
+  };
+
+  programs.virt-manager.enable = true;
 
   fonts= {
     packages = with pkgs; [

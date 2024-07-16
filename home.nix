@@ -43,6 +43,8 @@
     curl
     file
     gh
+    gnumake
+    grim
     htop
     jq
     killall
@@ -53,8 +55,12 @@
     passage
     ripgrep
     ripgrep
+    slurp
     theme-sh
+    tree
+    unp
     wget
+    wl-clipboard
     yafl
   ];
 
@@ -290,7 +296,7 @@
   };
 
   home.sessionVariables = {
-    EDITOR = "vim";
+    EDITOR = "emacsclient";
     PATH = "$HOME/.local/bin:$PATH";
   };
 
