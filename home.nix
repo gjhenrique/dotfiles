@@ -472,7 +472,7 @@
         gradle = "8.2";
         python = "3.10";
         ruby = "3.2";
-        terraform = "1.7.5";
+        terraform = "1.8.3";
         rust = "1.79.0";
       };
     };
