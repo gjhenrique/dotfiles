@@ -51,6 +51,7 @@
     kubectl
     kubectx
     kubie
+    ncdu
     nodePackages.js-beautify
     passage
     ripgrep
