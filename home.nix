@@ -275,11 +275,6 @@
 
   # Scripts
   home.file = {
-    # "phinger-cursors-light" = {
-    #   source = "${pkgs.phinger-cursors}/cursors/theme_phinger-cursors-light";
-    #   target = ".local/share/icons/phinger-cursors-light-hyprcursor";
-    # };
-
     "phinger-cursors-dark" = {
       source = "${pkgs.phinger-cursors}/share/icons/phinger-cursors-dark";
       target = ".local/share/icons/phinger-cursors-dark";
