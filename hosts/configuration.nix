@@ -9,6 +9,11 @@
   #     ./hardware-configuration.nix
   #   ];
 
+  boot.kernel.sysctl = {
+    "fs.inotify.max_user_instances" = 4096;
+    "fs.inotify.max_user_watches" = 524288;
+  };
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # required by devenv
   nix.settings.trusted-users = ["root" "guilherme"];
