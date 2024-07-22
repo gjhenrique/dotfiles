@@ -43,6 +43,7 @@
     curl
     file
     gh
+    git-filter-repo
     gnumake
     grim
     htop
