@@ -62,6 +62,7 @@
     tree
     unp
     wget
+    whois
     wl-clipboard
     yafl
   ];

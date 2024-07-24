@@ -1,10 +1,10 @@
 (use-package org-present
   :commands (org-present org-present-quit)
   :config
-  (defvar my/fixed-width-font "Source Code Pro"
+  (defvar my/fixed-width-font "JetBrains Mono"
     "The font to use for monospaced (fixed width) text.")
 
-  (defvar my/variable-width-font "Source Code Pro"
+  (defvar my/variable-width-font "JetBrains Mono"
     "The font to use for variable-pitch (document) text.")
 
   (set-face-attribute 'default nil :font my/fixed-width-font :weight 'light :height 180)
