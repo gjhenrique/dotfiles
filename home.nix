@@ -65,6 +65,7 @@
     whois
     wl-clipboard
     yafl
+    youtube-dl
   ];
 
   # WTF is this?
