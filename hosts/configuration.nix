@@ -122,9 +122,6 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
-  # https://github.com/montchr/dotfield/blob/78de8ff316ccb2d34fd98cd9bfd3bfb5ad775b0e/nixos/profiles/hardware/yubikey.nix#L3
-  services.pcscd.enable = true;
-
   virtualisation = {
     docker.enable = true;
 
@@ -171,13 +168,28 @@
     };
   };
 
+  # https://nixos.wiki/wiki/Yubikey
+  # security.polkit.enable = true;
+  security.polkit.debug = true;
+
+  services.pcscd.enable = true;
+  # security.pam.yubico = {
+  #   enable = true;
+  #   debug = true;
+  #   mode = "challenge-response";
+  #   id = ["22433541"];
+  # };
+  programs._1password-gui.enable = true;
+  programs._1password-gui.polkitPolicyOwners = ["guilherme"];
+  programs._1password.enable = true;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
+  # programs.gnupg.agent = {
+    # enable = true;
   #   enableSSHSupport = true;
-  };
+  # };
 
   # List services that you want to enable:
 

@@ -32,7 +32,6 @@
     gopls
 
     # tools
-    _1password
     bluetuith
     foot
     neovim

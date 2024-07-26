@@ -18,9 +18,6 @@ in {
     [user]
       email = ${secrets.work.email}
       name = ${secrets.work.githubUsername}
-      signingKey = ~/.ssh/git-sign.pub
-    [gpg]
-      format = ssh
     '';
 
     ".local/bin/aws-login" = {
