@@ -36,6 +36,10 @@ in {
 
   home.sessionVariables = secrets.work.envs;
 
+  programs.zsh.initExtra = ''
+    ${secrets.work.script}
+  '';
+
   home.packages = with pkgs; [
     _1password-gui
     amazon-ecr-credential-helper

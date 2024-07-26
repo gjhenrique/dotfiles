@@ -46,9 +46,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -90,6 +87,8 @@
     user = "guilherme";
     configDir = "/home/guilherme/.config/syncthing";
   };
+
+  environment.localBinInPath = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -170,6 +169,12 @@
       sansSerif = [ "Jetbrains Mono" ];
       emoji = [ "Noto Color Emoji" ];
     };
+  };
+
+  programs.ssh = {
+    startAgent = true;
+    agentTimeout = "8h";
+    enableAskPassword = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -65,7 +65,6 @@
     whois
     wl-clipboard
     yafl
-    youtube-dl
   ];
 
   # WTF is this?
@@ -401,6 +400,12 @@
       plugins = ["git" "systemd" "autojump" "aws" "kubectl"];
     };
 
+    envExtra = ''
+      if [ -f /etc/set-environment ]; then
+        source /etc/set-environment
+      fi
+    '';
+
     initExtra = ''
       if [ -e /etc/profile.d/nix-daemon.sh  ]; then . /etc/profile.d/nix-daemon.sh; fi
 
@@ -421,11 +426,11 @@
 
       # Based on https://codeberg.org/dnkl/foot/wiki#dynamic-color-changes
       TRAPUSR1() {
-      TMUX= theme.sh $DARK_THEME
+        TMUX= theme.sh $DARK_THEME
       }
 
       TRAPUSR2() {
-      TMUX= theme.sh $LIGHT_THEME
+        TMUX= theme.sh $LIGHT_THEME
       }
     '';
   };
