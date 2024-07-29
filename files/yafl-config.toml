@@ -18,6 +18,11 @@ exec = "yafl_ext sunset"
 prefix = "n"
 name = "Turns on/off wlsunset"
 
+[modes.passage]
+exec = "yafl_ext passage"
+prefix = "p"
+name = "Copies passage entries to clipboard"
+
 [modes.search]
 exec = "yafl_ext search"
 prefix = "s"

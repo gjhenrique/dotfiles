@@ -21,7 +21,7 @@ SQL
 
   def list
     ff_dir = Dir["#{Dir.home}/.var/app/org.mozilla.firefox/.mozilla/firefox/*default-release"][0]
-    
+
     if not ff_dir
       pattern = File.expand_path('~/.mozilla/firefox/*.default*/')
       ff_dir = Dir.glob(pattern).find { |path| File.directory?(path) }
@@ -55,7 +55,7 @@ class BookmarkCopy < Bookmark
   end
 end
 
-class Search 
+class Search
   def execute(input)
     mode = config.find { |c| input.start_with? c[:trigger] }
     exit 1 if mode.nil?
@@ -116,6 +116,27 @@ class Sunset
   end
 end
 
+class Passage
+  require 'find'
+
+  def list
+    root_path = "/home/guilherme/.passage/store"
+    result = []
+
+    Find.find(root_path) do |path|
+      next if path == root_path || path.include?(".git") || path.include?(".age-recipients")
+
+      relative_path = path.sub("#{File.dirname(root_path)}/", '').gsub(".age", "").gsub("store/", "")
+      result << [relative_path] if File.file?(path) || Dir.empty?(path)
+    end
+
+    result
+  end
+
+  def execute(input)
+    `wl-copy $(passage #{input})`
+  end
+end
 
 entry = ARGV[0].split('_').map(&:capitalize).join
 handler = Module.const_get(entry).new
