@@ -109,19 +109,20 @@
             mode = "3840x2160";
             position = "0,0";
             scale = 2.0;
+            transform = "270";
           }
           {
             criteria = "BNQ BenQ EW3270U G9K02925019";
             mode = "3840x2160";
             position = "1080,300";
-            scale = 1.75;
+            scale = 1.666667;
           }
           {
             criteria = "Dell Inc. DELL U2715H GH85D71G1R9S";
+            mode = "2560x1440";
+            position = "3390,30";
             scale = 1.33333333;
             transform = "90";
-            position = "3300,0";
-            mode = "2560x1440";
           }
         ];
       }
@@ -133,12 +134,13 @@
             mode = "3840x2160";
             position = "0,0";
             scale = 2.0;
+            transform = "270";
           }
           {
             criteria = "BNQ BenQ EW3270U G9K02925019";
             mode = "3840x2160";
             position = "1080,300";
-            scale = 1.75;
+            scale = 1.666667;
           }
         ];
       }
