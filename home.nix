@@ -120,7 +120,7 @@
           {
             criteria = "Dell Inc. DELL U2715H GH85D71G1R9S";
             mode = "2560x1440";
-            position = "3390,30";
+            position = "3384,30";
             scale = 1.33333333;
             transform = "90";
           }
