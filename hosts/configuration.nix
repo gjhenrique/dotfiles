@@ -123,7 +123,14 @@
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   virtualisation = {
-    docker.enable = true;
+    docker = {
+      enable = true;
+      daemon.settings = {
+        dns = [
+          "172.17.0.1"
+        ];
+      };
+    };
 
     libvirtd = {
       enable = true;
@@ -199,13 +206,19 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+  networking.firewall.enable = true;
+  # allow docker to query dns with systemd-resolved
+  networking.firewall.trustedInterfaces = ["docker0"];
+
   networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
   services.resolved = {
     enable = true;
     domains = [ "~." ];
     fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
-    # dnssec = "true";
-    # dnsovertls = "true";
+    extraConfig = ''
+      # docker
+      DNSStubListenerExtra=172.17.0.1
+    '';
   };
 
   # This value determines the NixOS release from which the default
@@ -216,4 +229,3 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
 }
-

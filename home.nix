@@ -40,6 +40,7 @@
     awscli2
     bat
     curl
+    dogdns
     file
     gh
     git-filter-repo
@@ -52,6 +53,7 @@
     kubectx
     kubie
     ncdu
+    nftables
     nodePackages.js-beautify
     passage
     ripgrep
