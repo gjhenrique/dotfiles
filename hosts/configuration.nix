@@ -88,6 +88,9 @@
     configDir = "/home/guilherme/.config/syncthing";
   };
 
+  environment.variables = {
+    EDITOR = "emacsclient";
+  };
   environment.localBinInPath = true;
 
   # List packages installed in system profile. To search, run:

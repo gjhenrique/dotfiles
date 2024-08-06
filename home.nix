@@ -55,6 +55,7 @@
     kubectl
     kubectx
     kubie
+    meld
     ncdu
     nftables
     nodePackages.js-beautify
@@ -324,7 +325,7 @@
   xdg.portal = {
     enable = true;
 
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    extraPortals = [pkgs.xdg-desktop-portal-hyprland];
   };
 
   programs.gh = {
@@ -394,7 +395,7 @@
       xc = "wl-copy";
       xco = "wl-paste";
       # more powerful editing capabilities
-      ss = "grim -g \"$(slurp -d)\" - | swappy -f -"
+      ss = "grim -g \"$(slurp -d)\" - | swappy -f -";
     };
     oh-my-zsh = {
       enable = true;
@@ -464,23 +465,6 @@
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
-  };
-
-  programs.mise = {
-    enable = true;
-    enableZshIntegration = true;
-    globalConfig = {
-      tools = {
-        node = "16";
-        golang = "1.22";
-        java = "11";
-        gradle = "8.2";
-        python = "3.10";
-        ruby = "3.2";
-        terraform = "1.8.3";
-        rust = "1.79.0";
-      };
-    };
   };
 
   gtk = {
