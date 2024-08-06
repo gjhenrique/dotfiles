@@ -49,6 +49,7 @@ in {
 
     onelogin-aws-assume-role
     slack
+    src-cli
     stern
     spotify
     teleport

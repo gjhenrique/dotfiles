@@ -356,6 +356,22 @@
     extraConfig = builtins.readFile ./files/hyprland.conf;
   };
 
+  systemd.user.services.polkit-gnome = {
+      Unit = {
+        Description = "polkit-gnome-authentication-agent-1";
+        PartOf = "graphical-session.target";
+        Requires = "graphical-session.target";
+        After = "graphical-session.target";
+      };
+
+      Service = {
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+      };
+
+      Install = { WantedBy = [ "graphical-session.target" ]; };
+    };
+
   programs.foot = {
     enable = true;
     server.enable = true;

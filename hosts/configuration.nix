@@ -208,7 +208,7 @@
 
   networking.firewall.enable = true;
   # allow docker to query dns with systemd-resolved
-  networking.firewall.trustedInterfaces = ["docker0"];
+  networking.firewall.trustedInterfaces = ["docker0" "virbr0"];
 
   networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
   services.resolved = {
