@@ -41,12 +41,11 @@ in {
     _1password-gui
     amazon-ecr-credential-helper
     ansible
+    awscli2
     devbox
     devpod
-
     jetbrains.gateway
     jetbrains.pycharm-community
-
     onelogin-aws-assume-role
     slack
     src-cli

@@ -36,8 +36,12 @@
     foot
     neovim
 
+    #desktop specific
+    grim
+    slurp
+    swappy
+
     # command-line
-    awscli2
     bat
     curl
     dogdns
@@ -45,7 +49,6 @@
     gh
     git-filter-repo
     gnumake
-    grim
     htop
     jq
     killall
@@ -57,8 +60,6 @@
     nodePackages.js-beautify
     passage
     ripgrep
-    ripgrep
-    slurp
     theme-sh
     tree
     unp
@@ -392,6 +393,8 @@
       pods-image = "kubectl get pods -o wide --sort-by=.spec.nodeName";
       xc = "wl-copy";
       xco = "wl-paste";
+      # more powerful editing capabilities
+      ss = "grim -g \"$(slurp -d)\" - | swappy -f -"
     };
     oh-my-zsh = {
       enable = true;
