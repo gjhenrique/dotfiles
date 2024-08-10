@@ -20,10 +20,4 @@ Here are some of those:
 1. `atuin login` and `atuin sync` for syncing history
 1. `alt-A=I` to install tmux plugins with tpm
 1. Add passage to have secrets. You know the repo where the secrets are stored ;)
-1. Generate a gpg key with `gpg --quick-generate-key "Name <email@email.com>"` and create `~/.authinfo.gpg`
-
-## Impurities
-
-
-### Git forge
-1. Generate a new SSH key with `ssh-keygen -t ed25519 -C "name@host"`
+1. Generate a gpg key with `gpg --quick-generate-key "Emacs <emacs@gjhenrique.com>"` and create `~/.authinfo.gpg` with the right credentials

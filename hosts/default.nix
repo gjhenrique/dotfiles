@@ -30,4 +30,19 @@
       ./configuration.nix
     ];
   };
+  dell = nixpkgs.lib.nixosSystem {
+    inherit system;
+
+    specialArgs = {
+      inherit pkgs;
+
+      host = {
+        hostName = "dell";
+      };
+    };
+    modules = [
+      ./dell
+      ./configuration.nix
+    ];
+  };
 }

@@ -119,7 +119,7 @@
 
     google-chrome
 
-    virtiofsd # for sharing folder
+    virtiofsd # for sharing folder in libvirt
   ];
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
