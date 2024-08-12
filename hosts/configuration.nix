@@ -211,7 +211,14 @@
 
   networking.firewall.enable = true;
   # allow docker to query dns with systemd-resolved
-  networking.firewall.trustedInterfaces = ["docker0" "virbr0"];
+  networking.firewall.trustedInterfaces = [
+    # default docker
+    "docker0"
+    # libvirt
+    "virbr0"
+    # generated kind brige interface
+    "br-5d5b9af4af7f"
+  ];
 
   networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
   services.resolved = {
@@ -219,8 +226,10 @@
     domains = [ "~." ];
     fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
     extraConfig = ''
-      # docker
+      # docker default bridge
       DNSStubListenerExtra=172.17.0.1
+      # kind default bridge
+      DNSStubListenerExtra=172.18.0.1
     '';
   };
 
