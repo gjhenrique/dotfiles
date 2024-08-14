@@ -1,4 +1,4 @@
-{ dream2nix, config, pkgs, secrets, system, ... }:
+{ dream2nix, config, pkgs, system, ... }:
 
 let
   onelogin-aws-assume-role = dream2nix.lib.evalModules {
@@ -12,8 +12,12 @@ let
       }
     ];
   };
+
+  secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
 in {
   home.file = {
+    ".ssh/config".text = builtins.readFile ./secrets/ssh_config;
+
     ".prezi.gitconfig".text = ''
     [user]
       email = ${secrets.work.email}

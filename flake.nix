@@ -42,7 +42,6 @@
       config.allowUnfree = true;
     };
 
-    secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
   in {
     formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.alejandra;
 
@@ -55,7 +54,7 @@
     homeConfigurations = {
       guilherme = home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = {
-          inherit dream2nix system secrets;
+          inherit dream2nix system;
           yafl = yafl.packages.${system}.default;
           stable = pkgs;
         };
