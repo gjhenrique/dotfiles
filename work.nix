@@ -18,6 +18,8 @@ in {
   home.file = {
     ".ssh/config".text = builtins.readFile ./secrets/ssh_config;
 
+    ".ssh/config.overrides".text = builtins.readFile ./secrets/ssh_overrides;
+
     ".prezi.gitconfig".text = ''
     [user]
       email = ${secrets.work.email}
