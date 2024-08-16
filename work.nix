@@ -51,7 +51,7 @@ in {
     devbox
     devpod
     jetbrains.gateway
-    jetbrains.pycharm-community
+    jetbrains.idea-community-bin
     onelogin-aws-assume-role
     slack
     src-cli

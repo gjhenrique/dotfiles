@@ -90,6 +90,7 @@
 
   environment.variables = {
     EDITOR = "emacsclient";
+    PINENTRY_PROGRAM = "${pkgs.pinentry-gtk2}/bin/pinentry-gtk-2";
   };
   environment.localBinInPath = true;
 
@@ -97,6 +98,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
+
+    gcc
 
     # this repo secrets
     git

@@ -36,6 +36,11 @@
     foot
     neovim
 
+    # security
+    age-plugin-yubikey
+    passage
+    rage
+
     #desktop specific
     grim
     slurp
@@ -59,7 +64,6 @@
     ncdu
     nftables
     nodePackages.js-beautify
-    passage
     ripgrep
     theme-sh
     tree
@@ -275,11 +279,6 @@
       source = ./files/yafl_ext;
       target = ".local/bin/yafl_ext";
     };
-  };
-
-  home.sessionVariables = {
-    EDITOR = "emacsclient";
-    PATH = "$HOME/.local/bin:$PATH";
   };
 
   programs.fzf = {

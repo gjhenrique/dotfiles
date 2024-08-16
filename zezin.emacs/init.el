@@ -40,7 +40,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; Only store encrypted secrets on this file
-(setq auth-sources '("~/.authinfo.gpg"))
+(setq auth-sources '("~/.authinfo.age"))
 
 (use-package tramp
   :defer
@@ -429,6 +429,20 @@
     (evil-define-key 'normal 'global (kbd "<leader>bl") 'evil-switch-to-windows-last-buffer)))
 
 (bind-keys ("M-x" . counsel-M-x))
+
+(use-package age
+  :ensure t
+  :demand t
+  :custom
+  (age-program "rage")
+  (age-default-identity "~/.passage/age_yubikey")
+  (age-default-recipient '("~/.passage/age_yubikey.pub"))
+  :config
+  (age-file-enable))
+
+(use-package passage
+  :straight (:host github :repo "anticomputer/passage.el")
+  :commands (passage))
 
 (use-package project
   :straight nil
