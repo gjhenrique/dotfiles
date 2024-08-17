@@ -14,10 +14,21 @@ It would be awesome to store everyting declaratively, but doing for some tasks w
 
 Here are some of those:
 
+### Services
 1. Sign in to firefox
 1. Sign in to tailscale with `tailscale loginh` to access internal services
 1. Configure syncthing
 1. `atuin login` and `atuin sync` for syncing history
 1. `alt-A=I` to install tmux plugins with tpm
-1. Add passage to have secrets. You know the repo where the secrets are stored ;)
-1. Generate a gpg key with `gpg --quick-generate-key "Emacs <emacs@gjhenrique.com>"` and create `~/.authinfo.gpg` with the right credentials
+
+### Emacs secrets
+
+<!-- TODO: Get the anthropic key  -->
+1. TODO: Show format of anthropic keys and github repo
+1. `age-plugin-yubikey --identity > $HOME/.ssh/age_yubikey`
+1. `age-plugin-yubikey --list > $HOME/.ssh/age_yubikey.pub`
+
+### Secrets
+1. `mkdir -p $HOME/.passage`
+1. Run `age-plugin-yubikey --identity >> $HOME/.passage/identities`
+1. Clone the repo in (you know where it is ;)) `~/.passage/store`

@@ -435,8 +435,8 @@
   :demand t
   :custom
   (age-program "rage")
-  (age-default-identity "~/.passage/age_yubikey")
-  (age-default-recipient '("~/.passage/age_yubikey.pub"))
+  (age-default-identity "~/.ssh/age_yubikey")
+  (age-default-recipient '("~/.ssh/age_yubikey.pub"))
   :config
   (age-file-enable))
 
