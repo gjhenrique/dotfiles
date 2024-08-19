@@ -4,6 +4,9 @@
 
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # Update this more frequently than unstanble. Updating unstable frequently breaks stuff during work
+    nixpkgs-edge.url = "github:nixos/nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -25,6 +28,7 @@
     home-manager,
     nixpkgs,
     nixpkgs-unstable,
+    nixpkgs-edge,
     self,
     yafl,
     ...
@@ -38,6 +42,11 @@
     };
 
     pkgs-unstable = import nixpkgs-unstable {
+      inherit system;
+      config.allowUnfree = true;
+    };
+
+    pkgs-edge = import nixpkgs-edge {
       inherit system;
       config.allowUnfree = true;
     };
@@ -57,6 +66,7 @@
           inherit dream2nix system;
           yafl = yafl.packages.${system}.default;
           stable = pkgs;
+          edgePkgs = pkgs-edge;
         };
         pkgs = pkgs-unstable;
         modules = [

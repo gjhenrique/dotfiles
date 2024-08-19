@@ -24,7 +24,7 @@ Here are some of those:
 ### Emacs secrets
 
 <!-- TODO: Get the anthropic key  -->
-1. TODO: Show format of anthropic keys and github repo
+1. Save the `.authinfo.age` file into `machine claude.anthropic.com login emacs password <api_key>`
 1. `age-plugin-yubikey --identity > $HOME/.ssh/age_yubikey`
 1. `age-plugin-yubikey --list > $HOME/.ssh/age_yubikey.pub`
 

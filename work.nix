@@ -1,4 +1,4 @@
-{ dream2nix, config, pkgs, system, ... }:
+{ dream2nix, config, edgePkgs, pkgs, system, ... }:
 
 let
   onelogin-aws-assume-role = dream2nix.lib.evalModules {
@@ -58,8 +58,7 @@ in {
     stern
     spotify
     teleport
-    vscode
-  ];
+  ] ++ [edgePkgs.vscode];
 
 
   xdg.dataFile."applications/slack-wayland.desktop".text = pkgs.lib.generators.toINI {} {
