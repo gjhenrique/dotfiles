@@ -279,6 +279,7 @@
     "pfzf" = {
       source = ./files/passage-fzf;
       target = ".local/bin/pfzf";
+      executable = true;
     };
 
     "yafl_ext" = {
