@@ -276,6 +276,11 @@
       target = ".local/bin/switch_theme";
     };
 
+    "pfzf" = {
+      source = ./files/passage-fzf;
+      target = ".local/bin/pfzf";
+    };
+
     "yafl_ext" = {
       source = ./files/yafl_ext;
       target = ".local/bin/yafl_ext";
