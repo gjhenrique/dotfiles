@@ -25,6 +25,7 @@
     jdk11
     nodejs_18
     python310
+    virtualenv
     ruby
     terraform
 
@@ -44,6 +45,7 @@
 
     #desktop specific
     grim
+    pinta
     slurp
     swappy
 
@@ -66,6 +68,7 @@
     nftables
     nodePackages.js-beautify
     ripgrep
+    tcpdump
     theme-sh
     tree
     unp
