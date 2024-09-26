@@ -404,7 +404,7 @@
       xc = "wl-copy";
       xco = "wl-paste";
       # more powerful editing capabilities
-      ss = "grim -g \"$(slurp -d)\" - | swappy -f -";
+      ssi = "grim -g \"$(slurp -d)\" - | swappy -f -";
     };
     oh-my-zsh = {
       enable = true;
