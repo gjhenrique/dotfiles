@@ -258,9 +258,9 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
-  networking.firewall.enable = true;
+  # networking.firewall.enable = true;
   # allow docker to query dns with systemd-resolved
   networking.firewall.trustedInterfaces = [
     # default docker
