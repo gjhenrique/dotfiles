@@ -258,9 +258,10 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  networking.firewall.enable = false;
 
   # networking.firewall.enable = true;
+  networking.firewall.enable = false;
+
   # allow docker to query dns with systemd-resolved
   networking.firewall.trustedInterfaces = [
     # default docker
@@ -269,6 +270,7 @@
     "virbr0"
     # generated kind brige interface
     "br-5d5b9af4af7f"
+    "br-1e56f9cdce85"
   ];
 
   networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
