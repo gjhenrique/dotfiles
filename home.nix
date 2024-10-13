@@ -77,6 +77,8 @@
     wl-clipboard
     xdg-utils
     yafl
+  ] ++ [
+    edgePkgs.aider-chat
   ];
 
   # WTF is this?
@@ -325,6 +327,9 @@
 
     # direnv stuff
     .envrc
+
+    # aider
+    .aider*
 
     # emacs
     *~

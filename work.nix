@@ -59,7 +59,6 @@ in {
     spotify
     teleport
   ] ++ [
-    edgePkgs.aider-chat
     edgePkgs.devpod
     edgePkgs.vscode
   ];
