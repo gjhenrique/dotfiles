@@ -23,6 +23,8 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
+  inputs.nixpkgs-edge.url = "github:nixos/nixpkgs/nixos-unstable";
+
   outputs = {
     dream2nix,
     home-manager,
