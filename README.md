@@ -32,3 +32,13 @@ Here are some of those:
 1. `mkdir -p $HOME/.passage`
 1. Run `age-plugin-yubikey --identity >> $HOME/.passage/identities`
 1. Clone the repo in (you know where it is ;)) `~/.passage/store`
+
+## Update only nixpkgs-edge
+
+To avoid disrupting my work during the week, I would like to only add some packages to the latest version.
+
+Instead of running `nix flake update` to update all inputs, use this to only update the latest version.
+
+``` shell
+nix flake lock --update-input nixpkgs-edge
+```
