@@ -49,7 +49,6 @@ in {
     ansible
     awscli2
     devbox
-    devpod
     dive
     jetbrains.gateway
     jetbrains.idea-community-bin
@@ -59,7 +58,11 @@ in {
     stern
     spotify
     teleport
-  ] ++ [edgePkgs.vscode];
+  ] ++ [
+    edgePkgs.aider-chat
+    edgePkgs.devpod
+    edgePkgs.vscode
+  ];
 
 
   xdg.dataFile."applications/slack-wayland.desktop".text = pkgs.lib.generators.toINI {} {
