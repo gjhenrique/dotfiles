@@ -57,6 +57,7 @@ in {
     src-cli
     stern
     spotify
+    ssm-session-manager-plugin
     teleport
   ] ++ [
     edgePkgs.devpod

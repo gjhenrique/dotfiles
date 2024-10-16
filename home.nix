@@ -79,6 +79,7 @@
     yafl
   ] ++ [
     edgePkgs.aider-chat
+    edgePkgs.plandex
   ];
 
   # WTF is this?
