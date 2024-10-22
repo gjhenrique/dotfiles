@@ -50,10 +50,16 @@ in {
     awscli2
     devbox
     dive
-    helm
     helmfile
     jetbrains.gateway
     jetbrains.idea-community-bin
+    (wrapHelm kubernetes-helm {
+      plugins = with pkgs.kubernetes-helmPlugins; [
+        helm-diff
+        helm-git
+      ];
+    })
+    kubernetes-helmPlugins.helm-git
     onelogin-aws-assume-role
     slack
     src-cli
