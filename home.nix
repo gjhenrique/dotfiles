@@ -27,6 +27,7 @@
     python310
     virtualenv
     ruby
+    opentofu
     terraform
 
     # language servers
