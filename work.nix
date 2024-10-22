@@ -59,6 +59,7 @@ in {
     spotify
     ssm-session-manager-plugin
     teleport
+    terragrunt
   ] ++ [
     edgePkgs.devpod
     edgePkgs.vscode
