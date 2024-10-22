@@ -50,6 +50,8 @@ in {
     awscli2
     devbox
     dive
+    helm
+    helmfile
     jetbrains.gateway
     jetbrains.idea-community-bin
     onelogin-aws-assume-role
