@@ -68,6 +68,7 @@
     ncdu
     nftables
     nodePackages.js-beautify
+    openssl
     ripgrep
     tcpdump
     theme-sh

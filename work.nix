@@ -50,6 +50,7 @@ in {
     awscli2
     devbox
     dive
+    fluxcd
     helmfile
     jetbrains.gateway
     jetbrains.idea-community-bin
@@ -60,6 +61,7 @@ in {
       ];
     })
     kubernetes-helmPlugins.helm-git
+    mysql-client
     onelogin-aws-assume-role
     slack
     src-cli
