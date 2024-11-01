@@ -499,7 +499,7 @@
   :commands gptel
   :custom
   (gptel-default-mode 'org-mode)
-  (gptel-model "claude-3-5-sonnet-20240620")
+  (gptel-model "claude-3-5-sonnet-20241022")
   (gptel-display-buffer-action 'switch-to-buffer-other-frame)
   :config
   (setq gptel-backend
