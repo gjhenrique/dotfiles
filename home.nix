@@ -400,7 +400,7 @@
 
     settings = {
       main = {
-        font = "JetBrainsMono NF:size=10";
+        font = "JetBrainsMono NF:size=12";
       };
     };
   };

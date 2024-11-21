@@ -566,7 +566,7 @@
   (load-theme +dark-theme t))
 
 (setq +font "Jetbrains Mono") ;; Source Code Pro is an alternative
-(setq +font-size 10)
+(setq +font-size 12)
 
 (if (daemonp)
     (add-hook 'after-make-frame-functions
