@@ -47,12 +47,15 @@
     #desktop specific
     grim
     pinta
+    okular
     slurp
     swappy
 
     # command-line
     bat
+    bc
     curl
+    delve
     dogdns
     file
     gh
