@@ -1,5 +1,8 @@
-{ pkgs, system, nixpkgs }:
 {
+  pkgs,
+  system,
+  nixpkgs,
+}: {
   vm = nixpkgs.lib.nixosSystem {
     inherit system;
 

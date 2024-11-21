@@ -1,0 +1,165 @@
+{
+  "fetchPipMetadata": {
+    "sources": {
+      "boto3": {
+        "is_direct": false,
+        "sha256": "09a610f8cf4d3c22d4ca69c1f89079e3a1c82805ce94fa0eb4ecdd4d2ba6c4bc",
+        "type": "url",
+        "url": "https://files.pythonhosted.org/packages/01/c8/fcf1ec25b0320af58be3a3d8c0f8ed06513133c65b318895e7eb39ef14ab/boto3-1.35.66-py3-none-any.whl",
+        "version": "1.35.66"
+      },
+      "botocore": {
+        "is_direct": false,
+        "sha256": "d0683e9c18bb6852f768da268086c3749d925332a664db0dd1459cfa7e96e475",
+        "type": "url",
+        "url": "https://files.pythonhosted.org/packages/92/f0/372c2474cd198485ac427ccdd54796b05c2e730bdff0523c26012fe40ad7/botocore-1.35.66-py3-none-any.whl",
+        "version": "1.35.66"
+      },
+      "certifi": {
+        "is_direct": false,
+        "sha256": "922820b53db7a7257ffbda3f597266d435245903d80737e34f8a45ff3e3230d8",
+        "type": "url",
+        "url": "https://files.pythonhosted.org/packages/12/90/3c9ff0512038035f59d279fddeb79f5f1eccd8859f06d6163c58798b9487/certifi-2024.8.30-py3-none-any.whl",
+        "version": "2024.8.30"
+      },
+      "charset-normalizer": {
+        "is_direct": false,
+        "sha256": "6dba5d19c4dfab08e58d5b36304b3f92f3bd5d42c1a3fa37b5ba5cdf6dfcbcee",
+        "type": "url",
+        "url": "https://files.pythonhosted.org/packages/bf/19/411a64f01ee971bed3231111b69eb56f9331a769072de479eae7de52296d/charset_normalizer-3.4.0-cp311-cp311-macosx_11_0_arm64.whl",
+        "version": "3.4.0"
+      },
+      "defusedxml": {
+        "is_direct": false,
+        "sha256": "a352e7e428770286cc899e2542b6cdaedb2b4953ff269a210103ec58f6198a61",
+        "type": "url",
+        "url": "https://files.pythonhosted.org/packages/07/6c/aa3f2f849e01cb6a001cd8554a88d4c77c5c1a31c95bdf1cf9301e6d9ef4/defusedxml-0.7.1-py2.py3-none-any.whl",
+        "version": "0.7.1"
+      },
+      "idna": {
+        "is_direct": false,
+        "sha256": "946d195a0d259cbba61165e88e65941f16e9b36ea6ddb97f00452bae8b1287d3",
+        "type": "url",
+        "url": "https://files.pythonhosted.org/packages/76/c6/c88e154df9c4e1a2a66ccf0005a88dfb2650c1dffb6f5ce603dfbd452ce3/idna-3.10-py3-none-any.whl",
+        "version": "3.10"
+      },
+      "jmespath": {
+        "is_direct": false,
+        "sha256": "02e2e4cc71b5bcab88332eebf907519190dd9e6e82107fa7f83b1003a6252980",
+        "type": "url",
+        "url": "https://files.pythonhosted.org/packages/31/b4/b9b800c45527aadd64d5b442f9b932b00648617eb5d63d2c7a6587b7cafc/jmespath-1.0.1-py3-none-any.whl",
+        "version": "1.0.1"
+      },
+      "lxml": {
+        "is_direct": false,
+        "sha256": "74bcb423462233bc5d6066e4e98b0264e7c1bed7541fff2f4e34fe6b21563c8b",
+        "type": "url",
+        "url": "https://files.pythonhosted.org/packages/5c/a8/449faa2a3cbe6a99f8d38dcd51a3ee8844c17862841a6f769ea7c2a9cd0f/lxml-5.3.0-cp311-cp311-macosx_10_9_universal2.whl",
+        "version": "5.3.0"
+      },
+      "onelogin": {
+        "is_direct": false,
+        "sha256": "1f7fd4d94b62d8a5fefc2731f48ab4b4828ab06cab0a21f6a6db584be625962a",
+        "type": "url",
+        "url": "https://files.pythonhosted.org/packages/40/10/0898d3cfbc863f588cfb95fe99566a18c59af53937a01ccd070f74c3e912/onelogin-2.0.4-py3-none-any.whl",
+        "version": "2.0.4"
+      },
+      "onelogin-aws-assume-role": {
+        "is_direct": false,
+        "sha256": "8f9f7b82a90f77ed15d711a2dc3502dfc27780b18e5e290dce8a22e869375229",
+        "type": "url",
+        "url": "https://files.pythonhosted.org/packages/f4/6a/207f6ff292d55792e025361bd752eebca9492bb66fe1600c66e1a10ba858/onelogin_aws_assume_role-1.10.1-py3-none-any.whl",
+        "version": "1.10.1"
+      },
+      "python-dateutil": {
+        "is_direct": false,
+        "sha256": "a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427",
+        "type": "url",
+        "url": "https://files.pythonhosted.org/packages/ec/57/56b9bcc3c9c6a792fcbaf139543cee77261f3651ca9da0c93f5c1221264b/python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+        "version": "2.9.0.post0"
+      },
+      "pyyaml": {
+        "is_direct": false,
+        "sha256": "1e2120ef853f59c7419231f3bf4e7021f1b936f6ebd222406c3b60212205d2ee",
+        "type": "url",
+        "url": "https://files.pythonhosted.org/packages/8b/62/b9faa998fd185f65c1371643678e4d58254add437edb764a08c5a98fb986/PyYAML-6.0.2-cp311-cp311-macosx_11_0_arm64.whl",
+        "version": "6.0.2"
+      },
+      "requests": {
+        "is_direct": false,
+        "sha256": "70761cfe03c773ceb22aa2f671b4757976145175cdfca038c02654d061d6dcc6",
+        "type": "url",
+        "url": "https://files.pythonhosted.org/packages/f9/9b/335f9764261e915ed497fcdeb11df5dfd6f7bf257d4a6a2a686d80da4d54/requests-2.32.3-py3-none-any.whl",
+        "version": "2.32.3"
+      },
+      "s3transfer": {
+        "is_direct": false,
+        "sha256": "244a76a24355363a68164241438de1b72f8781664920260c48465896b712a41e",
+        "type": "url",
+        "url": "https://files.pythonhosted.org/packages/66/05/7957af15543b8c9799209506df4660cba7afc4cf94bfb60513827e96bed6/s3transfer-0.10.4-py3-none-any.whl",
+        "version": "0.10.4"
+      },
+      "six": {
+        "is_direct": false,
+        "sha256": "8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254",
+        "type": "url",
+        "url": "https://files.pythonhosted.org/packages/d9/5a/e7c31adbe875f2abbb91bd84cf2dc52d792b5a01506781dbcf25c91daf11/six-1.16.0-py2.py3-none-any.whl",
+        "version": "1.16.0"
+      },
+      "urllib3": {
+        "is_direct": false,
+        "sha256": "ca899ca043dcb1bafa3e262d73aa25c465bfb49e0bd9dd5d59f1d0acba2f8fac",
+        "type": "url",
+        "url": "https://files.pythonhosted.org/packages/ce/d9/5f4c13cecde62396b0d3fe530a50ccea91e7dfc1ccf0e09c228841bb5ba8/urllib3-2.2.3-py3-none-any.whl",
+        "version": "2.2.3"
+      }
+    },
+    "targets": {
+      "default": {
+        "boto3": [
+          "botocore",
+          "jmespath",
+          "s3transfer"
+        ],
+        "botocore": [
+          "jmespath",
+          "python-dateutil",
+          "urllib3"
+        ],
+        "certifi": [],
+        "charset-normalizer": [],
+        "defusedxml": [],
+        "idna": [],
+        "jmespath": [],
+        "lxml": [],
+        "onelogin": [
+          "defusedxml",
+          "python-dateutil",
+          "requests"
+        ],
+        "onelogin-aws-assume-role": [
+          "boto3",
+          "lxml",
+          "onelogin",
+          "pyyaml"
+        ],
+        "python-dateutil": [
+          "six"
+        ],
+        "pyyaml": [],
+        "requests": [
+          "certifi",
+          "charset-normalizer",
+          "idna",
+          "urllib3"
+        ],
+        "s3transfer": [
+          "botocore"
+        ],
+        "six": [],
+        "urllib3": []
+      }
+    }
+  },
+  "invalidationHash": "751ff64605bfdee73bf3f8ce50619304f9c549cd46f7137f50f9730b7b8c9ef9"
+}

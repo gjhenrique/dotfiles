@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -14,9 +12,11 @@
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = true;
-    listenAddresses = [{
+    listenAddresses = [
+      {
         addr = "0.0.0.0";
         port = 22;
-    }];
+      }
+    ];
   };
 }

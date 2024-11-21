@@ -1,2 +1,5 @@
 # nix dir
 result
+
+# linkMyFiles stores a symlink inside zezin.emacs
+zezin.emacs/zezin.emacs

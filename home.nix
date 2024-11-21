@@ -6,86 +6,77 @@
   secrets,
   stable,
   system,
+  user,
+  homeDirectory,
   yafl,
   ...
 }: {
-  home.username = "guilherme";
-  home.homeDirectory = "/home/guilherme";
-
+  home.username = user;
+  home.homeDirectory = homeDirectory;
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   nixpkgs.config.allowUnfree = true;
 
   programs.home-manager.enable = true;
 
-  home.packages = with pkgs; [
-    # languages
-    go
-    gradle
-    jdk11
-    nodejs_18
-    python310
-    virtualenv
-    ruby
-    opentofu
-    terraform
+  home.packages = with pkgs;
+    [
+      # languages
+      go
+      gradle
+      jdk11
+      nodejs_18
+      python310
+      virtualenv
+      ruby
+      opentofu
+      terraform
 
-    # language servers
-    terraform-ls
-    gopls
+      # language servers
+      terraform-ls
+      gopls
 
-    # tools
-    bluetuith
-    foot
-    neovim
+      # security
+      age-plugin-yubikey
+      passage
+      rage
 
-    # security
-    age-plugin-yubikey
-    passage
-    rage
-
-    #desktop specific
-    grim
-    pinta
-    okular
-    slurp
-    swappy
-
-    # command-line
-    bat
-    bc
-    curl
-    delve
-    dogdns
-    file
-    gh
-    git-filter-repo
-    gnumake
-    htop
-    jq
-    killall
-    kubectl
-    kubectx
-    kubie
-    meld
-    ncdu
-    nftables
-    nodePackages.js-beautify
-    openssl
-    ripgrep
-    tcpdump
-    theme-sh
-    tree
-    unp
-    wget
-    whois
-    wl-clipboard
-    xdg-utils
-    yafl
-  ] ++ [
-    edgePkgs.aider-chat
-    edgePkgs.plandex
-  ];
+      # command-line
+      bat
+      bc
+      curl
+      delve
+      dogdns
+      file
+      gh
+      git
+      git-filter-repo
+      gnumake
+      htop
+      jq
+      killall
+      kubectl
+      kubectx
+      kubie
+      meld
+      ncdu
+      neovim
+      openssl
+      ripgrep
+      tcpdump
+      theme-sh
+      tree
+      unp
+      wget
+      whois
+      wl-clipboard
+      xdg-utils
+      yafl
+    ]
+    ++ [
+      edgePkgs.aider-chat
+      edgePkgs.plandex
+    ];
 
   # WTF is this?
   # TODO: Make this use home.file and point to the correct symlink
@@ -93,158 +84,6 @@
   home.activation.linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
     ln -sf ${config.home.homeDirectory}/Projects/mine/dotfiles/zezin.emacs/ ${config.home.homeDirectory}/.emacs.d
   '';
-
-  services.mako = {
-    enable = true;
-
-    defaultTimeout = 5000;
-    width = 300;
-    height = 200;
-    padding = "20";
-    margin = "20";
-    font = "JetBrainsMono NF 14";
-    backgroundColor = "#24273a";
-    borderColor = "#8aadf4";
-    textColor = "#cad3f5";
-
-    extraConfig = ''
-      [urgency=high]
-      border-color=#f5a97f
-
-      [mode=do-not-disturb]
-      invisible=1
-    '';}
-  ;
-
-  services.kanshi = {
-    enable = true;
-    systemdTarget = "graphical-session.target";
-
-    settings = [
-      {
-        profile.name = "desktop";
-        profile.outputs = [
-          {
-            criteria = "LG Electronics LG HDR 4K 0x00067273";
-            mode = "3840x2160";
-            position = "0,0";
-            scale = 2.0;
-            transform = "270";
-          }
-          {
-            criteria = "BNQ BenQ EW3270U G9K02925019";
-            mode = "3840x2160";
-            position = "1080,300";
-            scale = 1.666667;
-          }
-          {
-            criteria = "Dell Inc. DELL U2715H GH85D71G1R9S";
-            mode = "2560x1440";
-            position = "3384,30";
-            scale = 1.33333333;
-            transform = "90";
-          }
-        ];
-      }
-      {
-        profile.name = "desktop-2";
-        profile.outputs = [
-          {
-            criteria = "LG Electronics LG HDR 4K 0x00067273";
-            mode = "3840x2160";
-            position = "0,0";
-            scale = 2.0;
-            transform = "270";
-          }
-          {
-            criteria = "BNQ BenQ EW3270U G9K02925019";
-            mode = "3840x2160";
-            position = "1080,300";
-            scale = 1.666667;
-          }
-        ];
-      }
-      {
-        profile.name = "docked-notebook";
-        profile.outputs = [
-          {
-            criteria = "BNQ BenQ EW3270U G9K02925019";
-            mode = "3840x2160";
-            position = "0,0";
-            scale = 2.0;
-          }
-          {
-            criteria = "eDP-1";
-            position = "1930,0";
-            scale = 2.0;
-          }
-        ];
-      }
-    ];
-  };
-
-  programs.waybar = {
-    enable = true;
-    systemd.enable = true;
-
-    style = builtins.readFile ./files/waybar-style.css;
-    settings = [
-      {
-        position = "top";
-        height = 30;
-        modules-left = ["hyprland/workspaces"];
-        modules-center = ["clock"];
-        modules-right = ["cpu" "memory" "pulseaudio" "battery"];
-
-        clock = {
-          format = "󰸗 {:%d.%m - %H:%M}";
-          interval = 1;
-          tooltip-format = "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>";
-          on-click = "hyprctl dispatch exec xdg-open https://calendar.google.com";
-        };
-
-        cpu = {
-          format = "{usage}% ";
-          interval = 1;
-        };
-
-        memory = {
-          format = "{percentage}% 󰍛";
-          interval = 1;
-        };
-
-        pulseaudio = {
-          format = "{icon} {volume}%";
-          format-bluetooth = "{volume}% {icon} {format_source}";
-          format-bluetooth-muted = "ﱝ {icon} {format_source}";
-          format-muted = "ﱝ";
-          format-source = "{volume}% ";
-          format-source-muted = "";
-          format-icons = {
-            headphones = "";
-            handsfree = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = ["" "" ""];
-          };
-          on-click = "pavucontrol";
-        };
-
-        battery = {
-          states = {
-            warning = 30;
-            critical = 15;
-          };
-          format = "{capacity}% {icon}";
-          format-charging = "{capacity}% 󰂅";
-          format-icons = ["󰁹" "󰂂" "󰂁" "󰂀" "󰁿" "󰁾" "󰁽" "󰁼" "󰁻" "󰁺"];
-          tooltip-format = "{time}";
-        };
-      }
-    ];
-  };
 
   xdg.enable = true;
   xdg.dataFile."applications/emacs-setup.desktop".text = pkgs.lib.generators.toINI {} {
@@ -263,7 +102,7 @@
     };
   };
 
-    # Move this to .profile when I move away from manjaro-sway
+  # Move this to .profile when I move away from manjaro-sway
   xdg.configFile."profile.d/01-path".text = ''
     export PATH="$HOME/.nix-profile/bin:$HOME/.local/bin:$PATH"
   '';
@@ -272,7 +111,7 @@
   xdg.configFile."yafl/search.json".text = builtins.readFile ./files/yafl-search.json;
 
   xdg.configFile."pipewire/pipewire.conf.d/echo-cancel.conf".text = ''
-  context.modules = [{ name = libpipewire-module-echo-cancel }]
+    context.modules = [{ name = libpipewire-module-echo-cancel }]
   '';
 
   # Scripts
@@ -333,6 +172,7 @@
 
     # direnv stuff
     .envrc
+    .direnv
 
     # aider
     .aider*
@@ -341,12 +181,6 @@
     *~
     \#*\#
   '';
-
-  xdg.portal = {
-    enable = true;
-
-    extraPortals = [pkgs.xdg-desktop-portal-hyprland];
-  };
 
   programs.gh = {
     enable = true;
@@ -369,40 +203,6 @@
     enable = true;
     sensibleOnTop = false;
     extraConfig = builtins.readFile ./files/tmux.conf;
-  };
-
-  wayland.windowManager.hyprland = {
-    enable = true;
-
-    package = stable.hyprland;
-    extraConfig = builtins.readFile ./files/hyprland.conf;
-  };
-
-  systemd.user.services.polkit-gnome = {
-      Unit = {
-        Description = "polkit-gnome-authentication-agent-1";
-        PartOf = "graphical-session.target";
-        Requires = "graphical-session.target";
-        After = "graphical-session.target";
-      };
-
-      Service = {
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-      };
-
-      Install = { WantedBy = [ "graphical-session.target" ]; };
-    };
-
-  programs.foot = {
-    enable = true;
-    server.enable = true;
-
-    settings = {
-      main = {
-        font = "JetBrainsMono NF:size=12";
-      };
-    };
   };
 
   programs.zsh = {
@@ -487,19 +287,7 @@
     enableZshIntegration = true;
   };
 
-  gtk = {
-    enable = true;
-    cursorTheme = {
-      name = "phinger-cursors-dark";
-    };
-  };
-
-  services.gpg-agent = {
-    enable = true;
-    pinentryPackage = pkgs.pinentry-gtk2;
-  };
-
   imports = [
-    (import ./work.nix { inherit pkgs edgePkgs config dream2nix system secrets; })
+    (import ./work.nix {inherit pkgs edgePkgs config dream2nix system secrets;})
   ];
 }

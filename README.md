@@ -6,7 +6,7 @@ Personals setup using NixOS, Hyprland and Emacs
 
 1. On this repo, type `git-crypt unlock /tmp/key` (Get the key in bitwarden)
 1. `sudo nixos-rebuild switch --flake .` for NixOS configuration
-1. `nix run  -- home-manager switch -b backup --flake ".#guilherme"` for home-manager configuration
+1. `nix run  -- home-manager switch -b backup --flake ".#guilherme@[darwin|linux]"` for home-manager configuration
 
 ## Impurities
 
@@ -16,7 +16,7 @@ Here are some of those:
 
 ### Services
 1. Sign in to firefox
-1. Sign in to tailscale with `tailscale loginh` to access internal services
+1. Sign in to tailscale with `tailscale login` to access internal services
 1. Configure syncthing
 1. `atuin login` and `atuin sync` for syncing history
 1. `alt-A=I` to install tmux plugins with tpm

@@ -1,9 +1,11 @@
 # Edit this configuration file to define what should be installed on # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ host, config, pkgs, ... }:
-
 {
+  host,
+  config,
+  pkgs,
+  ...
+}: {
   # imports =
   #   [ # Include the results of the hardware scan.
   #     ./hardware-configuration.nix
@@ -14,7 +16,7 @@
     "fs.inotify.max_user_watches" = 524288;
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   # required by devenv
   nix.settings.trusted-users = ["root" "guilherme"];
 
@@ -55,7 +57,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-
 
     wireplumber.extraConfig = {
       "50-bluez" = {
@@ -118,7 +119,7 @@
   users.users.guilherme = {
     shell = pkgs.zsh;
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
+    extraGroups = ["networkmanager" "wheel" "docker" "libvirtd"];
   };
 
   programs.firefox = {
@@ -146,23 +147,13 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim
-
     gcc
-
-    # this repo secrets
-    git
-    git-crypt
 
     emacs29-pgtk
 
     # for compiling tree-sitter grammars
     libgcc
 
-    # security stuff for getting git-crypt secret
-    bitwarden
-
-    # to get the password in Bitwarden to invoke home-manager. home-manager is the one configuring it
     hyprland
     kitty
 
@@ -195,10 +186,13 @@
         swtpm.enable = true;
         ovmf = {
           enable = true;
-          packages = [(pkgs.OVMF.override {
-            secureBoot = true;
-            tpmSupport = true;
-          }).fd];
+          packages = [
+            (pkgs.OVMF.override {
+              secureBoot = true;
+              tpmSupport = true;
+            })
+            .fd
+          ];
         };
       };
     };
@@ -206,13 +200,13 @@
 
   programs.virt-manager.enable = true;
 
-  fonts= {
+  fonts = {
     packages = with pkgs; [
       jetbrains-mono
 
       # Waybar
       font-awesome
-      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
 
       noto-fonts
       noto-fonts-emoji
@@ -224,9 +218,9 @@
     enableDefaultPackages = true;
 
     fontconfig.defaultFonts = {
-      serif = [ "Noto Serif" "Source Han Serif" ];
-      sansSerif = [ "Jetbrains Mono" ];
-      emoji = [ "Noto Color Emoji" ];
+      serif = ["Noto Serif" "Source Han Serif"];
+      sansSerif = ["Jetbrains Mono"];
+      emoji = ["Noto Color Emoji"];
     };
   };
 
@@ -234,7 +228,7 @@
   services.pcscd.enable = true;
   security.polkit.enable = true;
   security.polkit.debug = true;
-  services.udev.packages = [ pkgs.yubikey-personalization ];
+  services.udev.packages = [pkgs.yubikey-personalization];
   security.pam.yubico = {
     enable = true;
     # debug = true;
@@ -250,7 +244,7 @@
   # programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
-  #   enableSSHSupport = true;
+    #   enableSSHSupport = true;
   };
 
   # List services that you want to enable:
@@ -274,11 +268,11 @@
     "br-1e56f9cdce85"
   ];
 
-  networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+  networking.nameservers = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
   services.resolved = {
     enable = true;
-    domains = [ "~." ];
-    fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+    domains = ["~."];
+    fallbackDns = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
     extraConfig = ''
       # docker default bridge
       DNSStubListenerExtra=172.17.0.1

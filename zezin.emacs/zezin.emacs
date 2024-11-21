@@ -1,1 +1,0 @@
-/home/guilherme/Projects/mine/dotfiles/zezin.emacs/
