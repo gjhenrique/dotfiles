@@ -69,12 +69,11 @@ in {
       src-cli
       stern
       ssm-session-manager-plugin
+      teleport
       terragrunt
     ]
     ++ [
       edgePkgs.devpod
-      # back to pkgs once I bump it
-      edgePkgs.teleport
       edgePkgs.vscode
     ];
 
