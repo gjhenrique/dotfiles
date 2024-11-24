@@ -145,18 +145,10 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    gcc
-
-    emacs29-pgtk
-
-    # for compiling tree-sitter grammars
-    libgcc
-
     hyprland
     kitty
 
     pavucontrol
-    playerctl
 
     google-chrome
 

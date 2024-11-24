@@ -15,10 +15,14 @@
     # tools
     bluetuith
     foot
+    emacs29-pgtk
+    # for compiling tree-sitter
+    libgcc
 
     # cli
     nftables
     nodePackages.js-beautify
+    playerctl
   ];
 
   services.mako = {
