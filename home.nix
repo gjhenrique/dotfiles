@@ -15,6 +15,10 @@
   home.homeDirectory = homeDirectory;
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  home.sessionVariables = {
+    PATH = "$PATH:$HOME/.local/bin";
+  };
+
   nixpkgs.config.allowUnfree = true;
 
   programs.home-manager.enable = true;
@@ -229,6 +233,7 @@
     '';
 
     initExtra = ''
+      # nixos variables
       if [ -e /etc/profile.d/nix-daemon.sh  ]; then . /etc/profile.d/nix-daemon.sh; fi
 
       if [ "$TERM" != "linux" ] && [ "$TERM" != "dumb" ]

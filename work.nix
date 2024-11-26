@@ -41,7 +41,9 @@ in {
     };
   };
 
-  home.sessionVariables = secrets.work.envs;
+  home.sessionVariables = secrets.work.envs // {
+    TERRAGRUNT_FETCH_DEPENDENCY_OUTPUT_FROM_STATE = "true";
+  };
 
   programs.zsh.initExtra = ''
     ${secrets.work.script}

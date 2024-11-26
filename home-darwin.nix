@@ -10,6 +10,11 @@ in {
     jetbrains-mono
   ];
 
+  home.sessionVariables = {
+    PINENTRY_PROGRAM = "${stable.pinentry-gtk2}/bin/pinentry-gtk-2";
+    EDITOR = "nvim";
+  };
+
   # For linux, NixOS is responsible for managing the fonts
   fonts.fontconfig.enable = true;
 }

@@ -135,13 +135,6 @@
     configDir = "/home/guilherme/.config/syncthing";
   };
 
-  environment.variables = {
-    EDITOR = "emacsclient";
-    PINENTRY_PROGRAM = "${pkgs.pinentry-gtk2}/bin/pinentry-gtk-2";
-    TERRAGRUNT_FETCH_DEPENDENCY_OUTPUT_FROM_STATE = "true";
-  };
-  environment.localBinInPath = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
