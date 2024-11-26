@@ -2,11 +2,31 @@
 
 set -eou pipefail
 
+# Detect OS
+OS="$(uname -s)"
+
 PREFIX="${PASSAGE_DIR:-$HOME/.passage/store}"
 FZF_DEFAULT_OPTS=""
 
-name="$(find "$PREFIX" -type f -name '*.age' | \
-  sed -e "s|$PREFIX/||" -e 's|\.age$||' | \
-  fzf --height 40% --reverse --no-multi)"
+if [ "$OS" = "Darwin" ]; then
+    COPY_CMD="pbcopy"
+elif [ "$OS" = "Darwin" ]; then
+    COPY_CMD="wl-copy"
+fi
 
-passage "${@}" "$name" | wl-copy
+name="$(find "$PREFIX" -type f -name '*.age' | \
+      sed -e "s|$PREFIX/||" -e 's|\.age$||' | \
+      fzf $FZF_DEFAULT_OPTS)"
+
+echo $name
+
+# Execute passage and copy to clipboard
+passage "$name" | $COPY_CMD
+
+if [ "$OS" = "Linux" ]; then
+    if command -v notify-send >/dev/null 2>&1; then
+        notify-send "Password Copied" "Password for $name has been copied to clipboard"
+    fi
+elif [ "$OS" = "Darwin" ]; then
+    osascript -e "display notification \"Password for $name has been copied to clipboard\" with title \"Password Copied\""
+fi
