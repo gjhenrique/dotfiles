@@ -27,7 +27,6 @@
 
   home.sessionVariables = {
     PINENTRY_PROGRAM = "${stable.pinentry-gtk2}/bin/pinentry-gtk-2";
-    EDITOR = "emacsclient";
   };
 
   services.mako = {

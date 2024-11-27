@@ -10,9 +10,13 @@ in {
     jetbrains-mono
   ];
 
-  home.sessionVariables = {
-    PINENTRY_PROGRAM = "${stable.pinentry-gtk2}/bin/pinentry-gtk-2";
-    EDITOR = "nvim";
+
+  home.file = {
+    "emacs" = {
+      text = "${pkgs.emacs29-macport}/Applications/Emacs.app/Contents/MacOS/Emacs \"$@\"";
+      target = ".local/bin/emacs";
+      executable = true;
+    };
   };
 
   # For linux, NixOS is responsible for managing the fonts

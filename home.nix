@@ -16,7 +16,8 @@
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   home.sessionVariables = {
-    PATH = "$PATH:$HOME/.local/bin";
+    PATH = "$HOME/.local/bin:$PATH";
+    EDITOR = "emacsclient";
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -105,11 +106,6 @@
       Keywords = "Text;Editor;";
     };
   };
-
-  # Move this to .profile when I move away from manjaro-sway
-  xdg.configFile."profile.d/01-path".text = ''
-    export PATH="$HOME/.nix-profile/bin:$HOME/.local/bin:$PATH"
-  '';
 
   xdg.configFile."yafl/config.toml".text = builtins.readFile ./files/yafl-config.toml;
   xdg.configFile."yafl/search.json".text = builtins.readFile ./files/yafl-search.json;
