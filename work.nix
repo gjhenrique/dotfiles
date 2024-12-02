@@ -2,6 +2,7 @@
   dream2nix,
   config,
   edgePkgs,
+  stable,
   pkgs,
   system,
   secrets,
@@ -43,7 +44,11 @@ in {
 
   home.sessionVariables = secrets.work.envs // {
     TERRAGRUNT_FETCH_DEPENDENCY_OUTPUT_FROM_STATE = "true";
-  };
+    EDITOR = "emacsclient";
+  } // (if pkgs.stdenv.isLinux then {
+    # use nixos pkgs because it comes from there
+    PINENTRY_PROGRAM = "${stable.pinentry-gtk2}/bin/pinentry-gtk-2";
+  } else {});
 
   programs.zsh.initExtra = ''
     ${secrets.work.script}

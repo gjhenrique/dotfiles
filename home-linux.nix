@@ -25,10 +25,6 @@
     playerctl
   ];
 
-  home.sessionVariables = {
-    PINENTRY_PROGRAM = "${stable.pinentry-gtk2}/bin/pinentry-gtk-2";
-  };
-
   services.mako = {
     enable = true;
 

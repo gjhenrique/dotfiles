@@ -15,10 +15,9 @@
   home.homeDirectory = homeDirectory;
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  home.sessionVariables = {
-    PATH = "$HOME/.local/bin:$PATH";
-    EDITOR = "emacsclient";
-  };
+  home.sessionPath = [
+    "$HOME/.local/bin:$PATH"
+  ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -289,6 +288,6 @@
   };
 
   imports = [
-    (import ./work.nix {inherit pkgs edgePkgs config dream2nix system secrets;})
+    (import ./work.nix {inherit pkgs edgePkgs config dream2nix system secrets stable;})
   ];
 }
