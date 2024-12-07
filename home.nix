@@ -236,7 +236,7 @@
         # Start shell with tmux
         # If not running interactively, do not do anything
         [[ $- != *i* ]] && return
-        [[ -z "$TMUX" ]] && TERM=xterm-256color exec tmux -2
+        [[ -z "$TMUX" ]] && TERM=xterm-256color exec ${pkgs.tmux}/bin/tmux -2
       fi
 
       DARK_THEME=dracula
@@ -255,6 +255,11 @@
         TMUX= theme.sh $LIGHT_THEME
       }
     '';
+  };
+
+  programs.wezterm = {
+    enable = true;
+    extraConfig = builtins.readFile ./files/wezterm.lua;
   };
 
   programs.starship = {

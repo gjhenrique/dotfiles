@@ -309,6 +309,10 @@
   :mode ("\\.groovy\\'")
   :hook (groovy-mode . jenkinsfile-mode))
 
+(use-package lua-mode
+  :commands (lua-mode)
+  :mode "\\.lua$")
+
 (use-package cue-mode
   :commands (cue-mode)
   :mode "\\.cue$"
@@ -528,7 +532,7 @@
   :commands (org-present org-present-quit))
 
 (use-package writeroom-mode
-  :defer t)
+  :commands (writeroom-mode))
 
 (use-package yasnippet
   :commands (yas-expand yas-minor-mode)

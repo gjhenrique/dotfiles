@@ -3,7 +3,13 @@
   stable,
   system,
   ...
-}: {
+}: let
+  sshOverrides = builtins.readFile ./secrets/ssh_overrides;
+in {
+  home.file = {
+    ".ssh/config.overrides".text = builtins.replaceStrings ["@1p-agent@"] ["~/.1password/agent.sock"] sshOverrides;
+  }
+
   home.packages = with pkgs; [
     #desktop specific
     grim
