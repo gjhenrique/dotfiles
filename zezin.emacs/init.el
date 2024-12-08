@@ -444,10 +444,6 @@
   :config
   (age-file-enable))
 
-(use-package passage
-  :straight (:host github :repo "anticomputer/passage.el")
-  :commands (passage))
-
 (use-package project
   :straight nil
   :commands (browse-at-remote)
