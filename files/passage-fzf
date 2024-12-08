@@ -10,7 +10,7 @@ FZF_DEFAULT_OPTS=""
 
 if [ "$OS" = "Darwin" ]; then
     COPY_CMD="pbcopy"
-elif [ "$OS" = "Darwin" ]; then
+elif [ "$OS" = "Linux" ]; then
     COPY_CMD="wl-copy"
 fi
 
