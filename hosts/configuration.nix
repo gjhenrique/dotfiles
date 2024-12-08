@@ -6,11 +6,7 @@
   pkgs,
   ...
 }: {
-  # imports =
-  #   [ # Include the results of the hardware scan.
-  #     ./hardware-configuration.nix
-  #   ];
-
+  boot.tmp.useTmpfs = true;
   boot.kernel.sysctl = {
     "fs.inotify.max_user_instances" = 4096;
     "fs.inotify.max_user_watches" = 524288;
