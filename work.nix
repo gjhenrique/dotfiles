@@ -55,7 +55,6 @@ in {
   home.packages = with pkgs;
     [
       amazon-ecr-credential-helper
-      ansible
       awscli2
       devbox
       dive
