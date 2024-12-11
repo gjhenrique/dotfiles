@@ -59,6 +59,7 @@ in {
       devbox
       dive
       fluxcd
+      google-cloud-sdk
       helmfile
       jetbrains.gateway
       jetbrains.idea-community-bin
