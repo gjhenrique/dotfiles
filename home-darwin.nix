@@ -8,10 +8,11 @@
   sshOverrides = builtins.readFile ./secrets/ssh_overrides;
 in {
   home.packages = with pkgs; [
+    _1password-cli
     emacs29-macport
+    gcc
     jetbrains-mono
     libgccjit
-    gcc
   ];
 
   home.file = {
