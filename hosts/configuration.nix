@@ -131,6 +131,10 @@
     configDir = "/home/guilherme/.config/syncthing";
   };
 
+  environment.variables = {
+    EDITOR = "emacsclient";
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [

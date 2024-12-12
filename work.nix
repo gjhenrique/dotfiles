@@ -42,11 +42,13 @@ in {
 
   home.sessionVariables = secrets.work.envs // {
     TERRAGRUNT_FETCH_DEPENDENCY_OUTPUT_FROM_STATE = "true";
-    EDITOR = "emacsclient";
   } // (if pkgs.stdenv.isLinux then {
     # use nixos pkgs because it comes from there
     PINENTRY_PROGRAM = "${stable.pinentry-gtk2}/bin/pinentry-gtk-2";
-  } else {});
+  } else {
+    # don't use emacsclient in macos
+    EDITOR = "nvim";
+  });
 
   programs.zsh.initExtra = ''
     ${secrets.work.script}
