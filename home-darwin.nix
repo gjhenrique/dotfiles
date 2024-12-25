@@ -15,6 +15,13 @@ in {
     libgccjit
   ];
 
+
+  programs.zsh = {
+    shellAliases = {
+      tailscale = "/Applications/Tailscale.app/Contents/MacOS/home";
+    };
+  };
+
   home.file = {
     ".ssh/config.overrides".text = builtins.replaceStrings ["@1p-agent@"] [secrets.work.mac1pAgent] sshOverrides;
 
