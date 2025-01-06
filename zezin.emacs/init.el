@@ -430,7 +430,19 @@
 
     ;; buffer
     (evil-define-key 'normal 'global (kbd "<leader>bk") 'kill-current-buffer)
-    (evil-define-key 'normal 'global (kbd "<leader>bl") 'evil-switch-to-windows-last-buffer)))
+    (evil-define-key 'normal 'global (kbd "<leader>bl") 'evil-switch-to-windows-last-buffer)
+
+    ;; aider keybindings
+    (evil-define-key 'normal 'global (kbd "<leader>aa") 'aider-run-aider)
+    (evil-define-key 'normal 'global (kbd "<leader>az") 'aider-switch-to-buffer)
+    (evil-define-key 'normal 'global (kbd "<leader>af") 'aider-add-current-file)
+    (evil-define-key 'normal 'global (kbd "<leader>aw") 'aider-add-files-in-current-window)
+    (evil-define-key 'normal 'global (kbd "<leader>at") 'aider-architect-discussion)
+    (evil-define-key 'normal 'global (kbd "<leader>ac") 'aider-code-change)
+    (evil-define-key 'normal 'global (kbd "<leader>ar") 'aider-function-or-region-refactor)
+    (evil-define-key 'normal 'global (kbd "<leader>ae") 'aider-function-or-region-explain)
+    (evil-define-key 'normal 'global (kbd "<leader>aq") 'aider-ask-question)
+    (evil-define-key 'normal 'global (kbd "<leader>ay") 'aider-go-ahead)))
 
 (bind-keys ("M-x" . counsel-M-x))
 
