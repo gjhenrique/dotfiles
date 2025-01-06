@@ -177,6 +177,7 @@
 
     # aider
     .aider*
+    .env
 
     # emacs
     *~
