@@ -28,6 +28,7 @@
   (add-to-list 'purpose-user-mode-purposes '(rjsx-mode . javascript))
   (add-to-list 'purpose-user-mode-purposes '(go-test-mode . search))
   (add-to-list 'purpose-user-regexp-purposes '("^\\*ai.*" . search))
+  (add-to-list 'purpose-user-regexp-purposes '("^\\*aider" . search))
   (add-to-list 'purpose-user-regexp-purposes '("^\\magit" . magit)))
 
 (defun zezin-disable-purpose-with-dired ()
@@ -109,6 +110,7 @@
     (zezin-add-reusable-buffers "\\*Go Test\\*")
     (zezin-add-reusable-buffers "\\**compilation\\*")
     (zezin-add-reusable-buffers "\\magit*")
+    (zezin-add-reusable-buffers "\\*aider")
     (zezin-add-purposes)
     (zezin-disable-purpose-with-dired)
     (purpose-compile-user-configuration)))

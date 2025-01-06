@@ -524,8 +524,13 @@
 
 (use-package aider
   :straight (:host github :repo "tninja/aider.el" :files ("aider.el" "aider-doom.el"))
-  :config
-  (setq aider-args '("--model" "openai/us.anthropic.claude-3-5-sonnet-20241022-v2:0" "--no-show-model-warnings")))
+  :custom
+  (aider-args
+	'("--no-gitignore"
+	  "--no-auto-commits"
+	  "--model"
+	  "openai/us.anthropic.claude-3-5-sonnet-20241022-v2:0"
+	  "--no-show-model-warnings")))
 
 (use-package tldr
   :commands tldr)
