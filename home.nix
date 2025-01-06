@@ -71,11 +71,13 @@
       theme-sh
       tree
       unp
+      usbutils
       wget
       whois
       wl-clipboard
       xdg-utils
       yafl
+      yq
     ]
     ++ [
       edgePkgs.aider-chat

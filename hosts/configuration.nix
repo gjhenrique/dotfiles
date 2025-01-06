@@ -163,6 +163,8 @@
       };
     };
 
+    spiceUSBRedirection.enable = true;
+
     libvirtd = {
       enable = true;
       qemu = {
