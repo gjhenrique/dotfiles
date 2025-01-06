@@ -499,14 +499,21 @@
   :commands gptel
   :custom
   (gptel-default-mode 'org-mode)
-  (gptel-model "claude-3-5-sonnet-20241022")
   (gptel-display-buffer-action 'switch-to-buffer-other-frame)
   :config
   (setq gptel-backend
-	(gptel-make-anthropic
-	    "chat"
+	(gptel-make-openai "local"
 	  :stream t
-	  :key (auth-source-pick-first-password :host "claude.anthropic.com"))))
+	  :protocol "http"
+	  :endpoint "/api/v1/chat/completions"
+	  :host (getenv "OPENAI_API_HOST")
+	  :key (getenv "OPENAI_API_KEY")
+	  :models '(us.anthropic.claude-3-5-sonnet-20241022-v2:0))))
+
+(use-package aider
+  :straight (:host github :repo "tninja/aider.el" :files ("aider.el" "aider-doom.el"))
+  :config
+  (setq aider-args '("--model" "openai/us.anthropic.claude-3-5-sonnet-20241022-v2:0" "--no-show-model-warnings")))
 
 (use-package tldr
   :commands tldr)
