@@ -23,10 +23,17 @@ in {
   home.file = {
     ".ssh/config".text = builtins.readFile ./secrets/ssh_config;
 
+    ".gitignore_work".text = ''
+      # some apps don't like .devcontainer
+      .devcontainer
+    '';
+
     ".prezi.gitconfig".text = ''
       [user]
         email = ${secrets.work.email}
         name = ${secrets.work.githubUsername}
+      [core]
+        excludesfile = ~/.gitignore_work
     '';
 
     ".local/bin/aws-login" = {
