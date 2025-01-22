@@ -16,11 +16,10 @@
       url = "github:nix-community/dream2nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-  };
-
-  inputs.yafl = {
-    url = "github:gjhenrique/yafl";
-    inputs.nixpkgs.follows = "nixpkgs";
+    yafl = {
+      url = "github:gjhenrique/yafl";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {

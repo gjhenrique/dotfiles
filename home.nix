@@ -46,6 +46,7 @@
       rage
 
       # command-line
+      android-tools
       bat
       bc
       curl
@@ -165,6 +166,10 @@
   xdg.configFile."git/gitignore".text = ''
     .dir-locals.el
 
+    # some apps don't like .devcontainer
+    .devcontainer
+
+    venv
     virtualenv
 
     # lsp-mode

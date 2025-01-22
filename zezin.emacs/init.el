@@ -305,6 +305,16 @@
 (use-package scala-mode
   :mode ("\\.scala\\'"))
 
+(use-package pytest
+  :commands (pytest-one
+	     pytest-pdb-one
+	     pytest-all
+	     pytest-pdb-all
+	     pytest-last-failed
+	     pytest-pdb-last-failed
+	     pytest-module
+	     pytest-pdb-module))
+
 (use-package groovy-mode
   :mode ("\\.groovy\\'")
   :hook (groovy-mode . jenkinsfile-mode))
