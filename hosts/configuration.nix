@@ -196,6 +196,9 @@
       noto-fonts
       noto-fonts-emoji
 
+      # for compiling some stuff
+      gcc
+
       roboto
       roboto-mono
     ];
