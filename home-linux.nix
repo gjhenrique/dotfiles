@@ -61,6 +61,17 @@ in {
         profile.name = "desktop";
         profile.outputs = [
           {
+            criteria = "BNQ BenQ EW3270U G9K02925019";
+            mode = "3840x2160";
+            position = "0,0";
+            scale = 1.666667;
+          }
+        ];
+      }
+      {
+        profile.name = "docked-notebook";
+        profile.outputs = [
+          {
             criteria = "LG Electronics LG HDR 4K 0x00067273";
             mode = "3840x2160";
             position = "0,0";
@@ -80,39 +91,9 @@ in {
             scale = 1.33333333;
             transform = "90";
           }
-        ];
-      }
-      {
-        profile.name = "desktop-2";
-        profile.outputs = [
-          {
-            criteria = "LG Electronics LG HDR 4K 0x00067273";
-            mode = "3840x2160";
-            position = "0,0";
-            scale = 2.0;
-            transform = "270";
-          }
-          {
-            criteria = "BNQ BenQ EW3270U G9K02925019";
-            mode = "3840x2160";
-            position = "1080,300";
-            scale = 1.666667;
-          }
-        ];
-      }
-      {
-        profile.name = "docked-notebook";
-        profile.outputs = [
-          {
-            criteria = "BNQ BenQ EW3270U G9K02925019";
-            mode = "3840x2160";
-            position = "0,0";
-            scale = 2.0;
-          }
           {
             criteria = "eDP-1";
-            position = "1930,0";
-            scale = 2.0;
+            status = "disable";
           }
         ];
       }

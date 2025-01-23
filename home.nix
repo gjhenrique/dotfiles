@@ -67,6 +67,7 @@
       ncdu
       neovim
       openssl
+      pciutils
       ripgrep
       tcpdump
       theme-sh
