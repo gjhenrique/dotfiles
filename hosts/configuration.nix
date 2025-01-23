@@ -141,8 +141,6 @@
     hyprland
     kitty
 
-    pavucontrol
-
     google-chrome
 
     virtiofsd # for sharing folder in libvirt

@@ -24,6 +24,8 @@ in {
     emacs29-pgtk
     # for compiling tree-sitter
     libgcc
+    pwvucontrol
+
 
     # cli
     nftables
@@ -146,7 +148,7 @@ in {
             car = "";
             default = ["" "" ""];
           };
-          on-click = "pavucontrol";
+          on-click = "pwvucontrol";
         };
 
         battery = {
