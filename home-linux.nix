@@ -64,7 +64,7 @@ in {
         profile.outputs = [
           {
             criteria = "BNQ BenQ EW3270U G9K02925019";
-            mode = "3840x2160";
+            mode = "3840x2160@60";
             position = "0,0";
             scale = 1.666667;
           }
@@ -74,28 +74,28 @@ in {
         profile.name = "docked-notebook";
         profile.outputs = [
           {
-            criteria = "LG Electronics LG HDR 4K 0x00067273";
-            mode = "3840x2160";
-            position = "0,0";
-            scale = 2.0;
-            transform = "270";
+            criteria = "eDP-1";
+            status = "enable";
           }
           {
             criteria = "BNQ BenQ EW3270U G9K02925019";
-            mode = "3840x2160";
+            mode = "3840x2160@60";
             position = "1080,300";
             scale = 1.666667;
           }
           {
             criteria = "Dell Inc. DELL U2715H GH85D71G1R9S";
             mode = "2560x1440";
-            position = "3384,30";
+            position = "3385,30";
             scale = 1.33333333;
             transform = "90";
           }
           {
-            criteria = "eDP-1";
-            status = "disable";
+            criteria = "LG Electronics LG HDR 4K 0x00067273";
+            mode = "3840x2160@60";
+            position = "0,0";
+            scale = 2.0;
+            transform = "270";
           }
         ];
       }
