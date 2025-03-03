@@ -70,6 +70,7 @@ in {
         plugins = with pkgs.kubernetes-helmPlugins; [
           helm-diff
           helm-git
+          helm-s3
         ];
       })
       mysql-client

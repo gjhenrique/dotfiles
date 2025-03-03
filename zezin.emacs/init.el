@@ -238,12 +238,7 @@
 
 (use-package kotlin-ts-mode
   :mode (("\\.kt\\'" . kotlin-ts-mode)
-	 ("\\.gradle.kts\\'" . kotlin-ts-mode))
-  :config
-  (reformatter-define
-    kotlin-format
-    :program "ktlint"
-    :args '("-F" "--stdin" "--log-level=error")))
+	 ("\\.gradle.kts\\'" . kotlin-ts-mode)))
 
 (use-package typescript-ts-mode
   :straight nil
@@ -530,7 +525,7 @@
 	  :endpoint "/api/v1/chat/completions"
 	  :host (getenv "OPENAI_API_HOST")
 	  :key (getenv "OPENAI_API_KEY")
-	  :models '(us.anthropic.claude-3-5-sonnet-20241022-v2:0))))
+	  :models '(us.anthropic.claude-3-7-sonnet-20250219-v1:0))))
 
 (use-package aider
   :straight (:host github :repo "tninja/aider.el" :files ("aider.el" "aider-doom.el"))
@@ -539,7 +534,7 @@
 	'("--no-gitignore"
 	  "--no-auto-commits"
 	  "--model"
-	  "openai/us.anthropic.claude-3-5-sonnet-20241022-v2:0"
+	  "openai/us.anthropic.claude-3-7-sonnet-20250219-v1:0"
 	  "--no-show-model-warnings")))
 
 (use-package tldr

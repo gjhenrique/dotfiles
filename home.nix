@@ -31,10 +31,13 @@
       jdk11
       nodejs_18
       python310
+      python310Packages.pip
+      # python310Packages.requests
       virtualenv
       ruby
       opentofu
       terraform
+      uv
 
       # language servers
       terraform-ls
