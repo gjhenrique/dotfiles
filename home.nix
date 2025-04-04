@@ -52,7 +52,8 @@
       android-tools
       bat
       bc
-      curl
+      # fix .netrc issue
+      edgePkgs.curl
       delve
       dogdns
       file
@@ -86,7 +87,6 @@
     ]
     ++ [
       edgePkgs.aider-chat
-      edgePkgs.plandex
     ];
 
   # WTF is this?

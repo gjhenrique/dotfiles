@@ -41,7 +41,7 @@ in {
   };
 
   home.sessionVariables = secrets.work.envs // {
-    TERRAGRUNT_FETCH_DEPENDENCY_OUTPUT_FROM_STATE = "true";
+    TG_DEPENDENCY_FETCH_OUTPUT_FROM_STATE = "true";
   } // (if pkgs.stdenv.isLinux then {
     # use nixos pkgs because it comes from there
     PINENTRY_PROGRAM = "${stable.pinentry-gtk2}/bin/pinentry-gtk-2";
@@ -71,6 +71,7 @@ in {
           helm-diff
           helm-git
           helm-s3
+          helm-unittest
         ];
       })
       mysql-client

@@ -79,7 +79,7 @@ in {
           }
           {
             criteria = "BNQ BenQ EW3270U G9K02925019";
-            mode = "3840x2160@60";
+            mode = "3840x2160@30";
             position = "1080,300";
             scale = 1.666667;
           }

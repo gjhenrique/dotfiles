@@ -6,8 +6,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  services.tlp.enable = true;
-
   security.pki.certificates = [
     ''
       -----BEGIN CERTIFICATE-----
