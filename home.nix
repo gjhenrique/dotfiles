@@ -9,6 +9,7 @@
   user,
   homeDirectory,
   yafl,
+  flox,
   ...
 }: {
   home.username = user;
@@ -57,6 +58,7 @@
       delve
       dogdns
       file
+      flox
       gh
       git
       git-filter-repo

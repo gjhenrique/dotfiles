@@ -12,6 +12,7 @@ in {
 
   home.packages = with pkgs; [
     #desktop specific
+    alsa-utils
     grim
     pinta
     okular
@@ -65,6 +66,21 @@ in {
           {
             criteria = "BNQ BenQ EW3270U G9K02925019";
             mode = "3840x2160@60";
+            position = "0,0";
+            scale = 1.666667;
+          }
+        ];
+      }
+      {
+        profile.name = "single-screen";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            status = "enable";
+          }
+          {
+            criteria = "BNQ BenQ EW3270U G9K02925019";
+            mode = "3840x2160";
             position = "0,0";
             scale = 1.666667;
           }
