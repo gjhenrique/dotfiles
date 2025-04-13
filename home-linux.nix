@@ -32,6 +32,7 @@ in {
     nftables
     nodePackages.js-beautify
     playerctl
+    usbutils
   ];
 
   services.mako = {

@@ -31,6 +31,7 @@
       gradle
       jdk11
       nodejs_18
+      python312
       python310
       python310Packages.pip
       # python310Packages.requests
@@ -79,7 +80,6 @@
       theme-sh
       tree
       unp
-      usbutils
       wget
       whois
       wl-clipboard
