@@ -1,11 +1,4 @@
 {
-  nixConfig.extra-substituters = [
-    "https://cache.flox.dev"
-  ];
-  nixConfig.extra-trusted-public-keys = [
-    "flox-cache-public-1:7F4OyH7ZCnFhcze3fJdfyXYLQw/aV7GEed86nQ7IsOs="
-  ];
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
 
@@ -22,9 +15,6 @@
     dream2nix = {
       url = "github:nix-community/dream2nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-    flox = {
-      url = "github:flox/flox/v1.3.17";
     };
     yafl = {
       url = "github:gjhenrique/yafl";
@@ -128,7 +118,6 @@
           edgePkgs = pkgsEdgeFor.x86_64-linux;
           user = "guilherme";
           homeDirectory = "/home/guilherme";
-          flox = inputs.flox.packages.x86_64-linux.default;
         };
         pkgs = pkgsUnstableFor.x86_64-linux;
         modules = [
@@ -146,7 +135,6 @@
           edgePkgs = pkgsEdgeFor.aarch64-darwin;
           user = secrets.work.macUser;
           homeDirectory = "/Users/${secrets.work.macUser}";
-          flox = inputs.flox.packages.aarch64-darwin.default;
         };
         pkgs = pkgsUnstableFor.aarch64-darwin;
         modules = [

@@ -9,7 +9,6 @@
   user,
   homeDirectory,
   yafl,
-  flox,
   ...
 }: {
   home.username = user;
@@ -31,7 +30,6 @@
       gradle
       jdk11
       nodejs_18
-      python312
       python310
       python310Packages.pip
       # python310Packages.requests
@@ -59,7 +57,6 @@
       delve
       dogdns
       file
-      flox
       gh
       git
       git-filter-repo
