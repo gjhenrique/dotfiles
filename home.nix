@@ -52,8 +52,7 @@
       android-tools
       bat
       bc
-      # fix .netrc issue
-      edgePkgs.curl
+      .curl
       delve
       dogdns
       file
