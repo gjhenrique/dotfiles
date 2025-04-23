@@ -435,19 +435,7 @@
 
     ;; buffer
     (evil-define-key 'normal 'global (kbd "<leader>bk") 'kill-current-buffer)
-    (evil-define-key 'normal 'global (kbd "<leader>bl") 'evil-switch-to-windows-last-buffer)
-
-    ;; aider keybindings
-    (evil-define-key 'normal 'global (kbd "<leader>aa") 'aider-run-aider)
-    (evil-define-key 'normal 'global (kbd "<leader>az") 'aider-switch-to-buffer)
-    (evil-define-key 'normal 'global (kbd "<leader>af") 'aider-add-current-file)
-    (evil-define-key 'normal 'global (kbd "<leader>aw") 'aider-add-files-in-current-window)
-    (evil-define-key 'normal 'global (kbd "<leader>at") 'aider-architect-discussion)
-    (evil-define-key 'normal 'global (kbd "<leader>ac") 'aider-code-change)
-    (evil-define-key 'normal 'global (kbd "<leader>ar") 'aider-function-or-region-refactor)
-    (evil-define-key 'normal 'global (kbd "<leader>ae") 'aider-function-or-region-explain)
-    (evil-define-key 'normal 'global (kbd "<leader>aq") 'aider-ask-question)
-    (evil-define-key 'normal 'global (kbd "<leader>ay") 'aider-go-ahead)))
+    (evil-define-key 'normal 'global (kbd "<leader>bl") 'evil-switch-to-windows-last-buffer)))
 
 (bind-keys ("M-x" . counsel-M-x))
 
@@ -527,15 +515,11 @@
 	  :key (getenv "OPENAI_API_KEY")
 	  :models '(us.anthropic.claude-3-7-sonnet-20250219-v1:0))))
 
-(use-package aider
-  :straight (:host github :repo "tninja/aider.el" :files ("aider.el" "aider-doom.el"))
+(use-package aidermacs
+  :bind (("C-c a" . aidermacs-transient-menu))
   :custom
-  (aider-args
-	'("--no-gitignore"
-	  "--no-auto-commits"
-	  "--model"
-	  "openai/us.anthropic.claude-3-7-sonnet-20250219-v1:0"
-	  "--no-show-model-warnings")))
+  (aidermacs-use-architect-mode t)
+  (aidermacs-default-model "openai/us.anthropic.claude-3-7-sonnet-20250219-v1:0"))
 
 (use-package tldr
   :commands tldr)
