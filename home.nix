@@ -30,8 +30,8 @@
       gradle
       jdk11
       nodejs_18
-      python310
-      python310Packages.pip
+      python311
+      python311Packages.pip
       # python310Packages.requests
       virtualenv
       ruby

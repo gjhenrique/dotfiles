@@ -2,6 +2,7 @@
   pkgs,
   system,
   nixpkgs,
+  edgePkgs
 }: {
   vm = nixpkgs.lib.nixosSystem {
     inherit system;
@@ -19,7 +20,7 @@
     ];
   };
   desktop = nixpkgs.lib.nixosSystem {
-    inherit system;
+    inherit pkgs edgePkgs;
 
     specialArgs = {
       inherit pkgs;
@@ -37,7 +38,7 @@
     inherit system;
 
     specialArgs = {
-      inherit pkgs;
+      inherit pkgs edgePkgs;
 
       host = {
         hostName = "dell";

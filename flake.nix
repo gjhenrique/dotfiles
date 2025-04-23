@@ -105,6 +105,7 @@
         inherit nixpkgs;
         system = "x86_64_linux";
         pkgs = pkgsFor.x86_64-linux;
+        edgePkgs = pkgsEdgeFor.x86_64-linux;
       }
     );
 
