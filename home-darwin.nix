@@ -9,7 +9,7 @@
 in {
   home.packages = with pkgs; [
     _1password-cli
-    emacs29-macport
+    emacs-macport
     gcc
     jetbrains-mono
     libgccjit

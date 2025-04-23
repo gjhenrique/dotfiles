@@ -45,6 +45,13 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  services.xserver.enable = true;
+  services.xserver = {
+    xkbOptions = "caps:escape";
+  };
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
+
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {

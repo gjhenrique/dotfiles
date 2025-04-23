@@ -15,14 +15,14 @@ in {
     alsa-utils
     grim
     pinta
-    okular
+    kdePackages.okular
     slurp
     swappy
 
     # tools
     bluetuith
     foot
-    emacs29-pgtk
+    emacs-pgtk
     # for compiling tree-sitter
     libgcc
     pwvucontrol

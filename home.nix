@@ -52,7 +52,7 @@
       android-tools
       bat
       bc
-      .curl
+      edgePkgs.curl
       delve
       dogdns
       file
