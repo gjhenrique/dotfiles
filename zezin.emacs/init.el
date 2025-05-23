@@ -517,7 +517,7 @@
 	  :endpoint "/api/v1/chat/completions"
 	  :host (getenv "OPENAI_API_HOST")
 	  :key (getenv "OPENAI_API_KEY")
-	  :models '(openai/us.anthropic.claude-sonnet-4-20250514-v1:0))))
+	  :models '(us.anthropic.claude-sonnet-4-20250514-v1:0))))
 
 (use-package aidermacs
   :bind (("C-c a" . aidermacs-transient-menu))
