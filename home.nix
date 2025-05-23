@@ -29,7 +29,7 @@
       go
       gradle
       jdk11
-      nodejs_18
+      nodejs_22
       python311
       python311Packages.pip
       # python310Packages.requests
@@ -55,6 +55,7 @@
       edgePkgs.curl
       delve
       dogdns
+      envsubst
       file
       gh
       git
@@ -67,6 +68,7 @@
       kubectx
       kubie
       meld
+      mpv
       ncdu
       neovim
       openssl

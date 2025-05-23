@@ -151,6 +151,8 @@
 
     google-chrome
 
+    qemu
+
     virtiofsd # for sharing folder in libvirt
   ];
 
@@ -158,6 +160,8 @@
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   virtualisation = {
     docker = {

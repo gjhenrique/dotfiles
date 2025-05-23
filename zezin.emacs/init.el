@@ -112,6 +112,10 @@
   :defer 5)
 
 (use-package counsel
+  :init
+  (setq counsel-rg-base-command
+      (split-string
+       "rg --hidden --glob=!.git/ --sort path -M 240 --no-heading --line-number --color never %s"))
   :config
   (cl-defun +region-or-symbol (&optional initial-text)
     (or initial-text
@@ -513,13 +517,13 @@
 	  :endpoint "/api/v1/chat/completions"
 	  :host (getenv "OPENAI_API_HOST")
 	  :key (getenv "OPENAI_API_KEY")
-	  :models '(us.anthropic.claude-3-7-sonnet-20250219-v1:0))))
+	  :models '(openai/us.anthropic.claude-sonnet-4-20250514-v1:0))))
 
 (use-package aidermacs
   :bind (("C-c a" . aidermacs-transient-menu))
   :custom
   (aidermacs-use-architect-mode t)
-  (aidermacs-default-model "openai/us.anthropic.claude-3-7-sonnet-20250219-v1:0"))
+  (aidermacs-default-model "openai/us.anthropic.claude-sonnet-4-20250514-v1:0"))
 
 (use-package tldr
   :commands tldr)
