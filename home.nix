@@ -57,6 +57,7 @@
       dogdns
       envsubst
       file
+      ffmpeg
       gh
       git
       git-filter-repo
@@ -87,6 +88,7 @@
     ]
     ++ [
       edgePkgs.aider-chat
+      edgePkgs.claude-code
     ];
 
   # WTF is this?
@@ -187,6 +189,8 @@
     # aider
     .aider*
     .env
+
+    .claude/
 
     # emacs
     *~

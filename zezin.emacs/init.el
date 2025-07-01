@@ -514,16 +514,16 @@
 	(gptel-make-openai "local"
 	  :stream t
 	  :protocol "http"
-	  :endpoint "/api/v1/chat/completions"
+	  :endpoint "/chat/completions"
 	  :host (getenv "OPENAI_API_HOST")
 	  :key (getenv "OPENAI_API_KEY")
-	  :models '(us.anthropic.claude-sonnet-4-20250514-v1:0))))
+	  :models '(claude-4-sonnet))))
 
 (use-package aidermacs
   :bind (("C-c a" . aidermacs-transient-menu))
   :custom
   (aidermacs-use-architect-mode t)
-  (aidermacs-default-model "openai/us.anthropic.claude-sonnet-4-20250514-v1:0"))
+  (aidermacs-default-model "openai/claude-4-sonnet"))
 
 (use-package tldr
   :commands tldr)

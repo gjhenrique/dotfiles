@@ -61,6 +61,7 @@ in {
       awscli2
       devbox
       dive
+      diffoci
       fluxcd
       google-cloud-sdk
       helmfile
@@ -84,7 +85,6 @@ in {
     ]
     ++ [
       edgePkgs.devpod
-      edgePkgs.vscode
     ];
 
   programs.git = {

@@ -20,6 +20,10 @@
   networking.hostName = host.hostName; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
+  networking.extraHosts = ''
+    127.0.0.1 image-build-cache.registry.svc.cluster.local
+  '';
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -149,6 +153,9 @@
     hyprland
     kitty
 
+    # run buildkit locally
+    runc
+
     google-chrome
 
     qemu
@@ -171,6 +178,15 @@
         dns = [
           "172.17.0.1"
         ];
+      };
+    };
+
+    oci-containers = {
+      backend = "docker";
+      containers.registry = {
+        image = "registry:2";
+        ports = ["5001:5000"];
+        volumes = ["/var/lib/registry:/var/lib/registry"];
       };
     };
 

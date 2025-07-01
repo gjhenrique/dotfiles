@@ -2,6 +2,7 @@
   pkgs,
   stable,
   system,
+  edgePkgs,
   ...
 }: let
   sshOverrides = builtins.readFile ./secrets/ssh_overrides;
@@ -235,6 +236,6 @@ in {
   };
 
   imports = [
-    (import ./work-linux.nix {inherit pkgs;})
+    (import ./work-linux.nix {inherit pkgs edgePkgs;})
   ];
 }
