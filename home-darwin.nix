@@ -11,6 +11,7 @@ in {
     _1password-cli
     emacs-macport
     gcc
+    gnutar
     jetbrains-mono
     libgccjit
   ];
