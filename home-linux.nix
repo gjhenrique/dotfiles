@@ -187,6 +187,11 @@ in {
     enable = true;
 
     extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+
+    # make it work on zoom
+    config.hyprland = {
+      "org.freedesktop.impl.portal.ScreenCast" = "hyprland";
+    };
   };
 
   wayland.windowManager.hyprland = {

@@ -7,6 +7,8 @@
     # Update this more frequently than unstanble. Updating unstable frequently breaks stuff during work
     nixpkgs-edge.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -25,6 +27,7 @@
   outputs = {
     dream2nix,
     home-manager,
+    nixos-hardware,
     nixpkgs,
     nixpkgs-unstable,
     nixpkgs-edge,
@@ -103,6 +106,8 @@
     nixosConfigurations = (
       import ./hosts {
         inherit nixpkgs;
+
+        dellNvidia = nixos-hardware.nixosModules.dell-xps-15-9560-nvidia;
         system = "x86_64_linux";
         pkgs = pkgsFor.x86_64-linux;
         edgePkgs = pkgsEdgeFor.x86_64-linux;

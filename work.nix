@@ -65,6 +65,7 @@ in {
       fluxcd
       google-cloud-sdk
       helmfile
+      http-server
       jetbrains.gateway
       jetbrains.idea-community-bin
       (wrapHelm kubernetes-helm {

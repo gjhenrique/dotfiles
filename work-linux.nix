@@ -3,6 +3,8 @@
     _1password-gui
     slack
     spotify
-    edgePkgs.vscode
-  ];
+  ] ++ [
+      edgePkgs.vscode
+      edgePkgs.zoom-us
+   ];
 }

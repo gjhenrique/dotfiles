@@ -2,7 +2,8 @@
   pkgs,
   system,
   nixpkgs,
-  edgePkgs
+  edgePkgs,
+  dellNvidia
 }: {
   vm = nixpkgs.lib.nixosSystem {
     inherit system;
@@ -38,7 +39,7 @@
     inherit system;
 
     specialArgs = {
-      inherit pkgs edgePkgs;
+      inherit pkgs edgePkgs dellNvidia;
 
       host = {
         hostName = "dell";
@@ -47,6 +48,7 @@
     modules = [
       ./dell
       ./configuration.nix
+      dellNvidia
     ];
   };
 }
