@@ -133,7 +133,7 @@
   };
 
   environment.variables = {
-    EDITOR = "emacsclient";
+    EDITOR = "nvim";
   };
 
   # List packages installed in system profile. To search, run:
@@ -141,6 +141,8 @@
   environment.systemPackages = with pkgs; [
     hyprland
     kitty
+
+    neovim
 
     # run buildkit locally
     runc
@@ -189,13 +191,13 @@
         swtpm.enable = true;
         ovmf = {
           enable = true;
-          packages = [
-            (pkgs.OVMF.override {
-              secureBoot = true;
-              tpmSupport = true;
-            })
-            .fd
-          ];
+          #packages = [
+          #  (pkgs.OVMF.override {
+          #    secureBoot = true;
+          #    tpmSupport = true;
+          #  })
+          #  .fd
+          #];
         };
       };
     };

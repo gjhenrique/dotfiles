@@ -4,7 +4,7 @@
 
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Update this more frequently than unstanble. Updating unstable frequently breaks stuff during work
+    # Update this more frequently than unstable. Updating unstable frequently breaks stuff during work
     nixpkgs-edge.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";

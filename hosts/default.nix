@@ -5,33 +5,18 @@
   edgePkgs,
   dellNvidia
 }: {
-  vm = nixpkgs.lib.nixosSystem {
+  lisa = nixpkgs.lib.nixosSystem {
     inherit system;
 
     specialArgs = {
-      inherit pkgs;
+      inherit pkgs edgePkgs;
 
       host = {
-        hostName = "vm";
+        hostName = "lisa";
       };
     };
     modules = [
-      ./vm
-      ./configuration.nix
-    ];
-  };
-  desktop = nixpkgs.lib.nixosSystem {
-    inherit pkgs edgePkgs;
-
-    specialArgs = {
-      inherit pkgs;
-
-      host = {
-        hostName = "desktop";
-      };
-    };
-    modules = [
-      ./desktop
+      ./lisa
       ./configuration.nix
     ];
   };
