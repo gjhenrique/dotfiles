@@ -59,7 +59,7 @@ in {
       act
       amazon-ecr-credential-helper
       awscli2
-      devbox
+      edgePkgs.devbox
       dive
       diffoci
       fluxcd
