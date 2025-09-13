@@ -83,7 +83,7 @@
       whois
       wl-clipboard
       xdg-utils
-      # yafl
+      yafl
       yq
     ]
     ++ [
