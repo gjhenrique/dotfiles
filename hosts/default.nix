@@ -4,6 +4,7 @@
   dellNvidia
 }: {
   lisa = nixpkgs.lib.nixosSystem {
+    system = "x86_64_linux";
 
     specialArgs = {
       pkgs = pkgsFor."x86_64-linux";
@@ -19,6 +20,8 @@
     ];
   };
   rpi = nixpkgs.lib.nixosSystem {
+    system = "aarch64_linux";
+
     specialArgs = {
       pkgs = pkgsFor."aarch64-linux";
 
@@ -32,6 +35,8 @@
     ];
   };
   dell = nixpkgs.lib.nixosSystem {
+    system = "x86_64_linux";
+
     specialArgs = {
       pkgs = pkgsFor."x86_64-linux";
 
