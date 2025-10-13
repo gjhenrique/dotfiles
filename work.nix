@@ -68,6 +68,7 @@ in {
       http-server
       jetbrains.gateway
       jetbrains.idea-community-bin
+      kustomize
       (wrapHelm kubernetes-helm {
         plugins = with pkgs.kubernetes-helmPlugins; [
           helm-diff
@@ -86,6 +87,7 @@ in {
     ]
     ++ [
       edgePkgs.devpod
+      edgePkgs.pnpm
     ];
 
   programs.git = {

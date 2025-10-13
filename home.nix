@@ -84,7 +84,7 @@
       wl-clipboard
       xdg-utils
       yafl
-      yq
+      yq-go
     ]
     ++ [
       edgePkgs.aider-chat

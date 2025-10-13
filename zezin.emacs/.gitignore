@@ -13,6 +13,7 @@ projects
 history
 eshell/
 tldr/
+multisession/
 
 amx-items
 forge-database.sqlite
