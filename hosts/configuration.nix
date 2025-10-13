@@ -49,7 +49,6 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.guilherme = {
-    shell = pkgs.zsh;
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel" "docker" "libvirtd"];
   };
@@ -61,10 +60,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim
-
-    # for compiling some stuff
+    # basic packages for servers and desktop
     gcc
+    git
+    htop
+    neovim
   ];
 
   environment.localBinInPath = true;

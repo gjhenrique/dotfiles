@@ -1,15 +1,13 @@
 {
-  pkgs,
-  system,
+  pkgsFor,
   nixpkgs,
-  edgePkgs,
   dellNvidia
 }: {
   lisa = nixpkgs.lib.nixosSystem {
-    inherit system;
+    system = "x86_64-linux";
 
     specialArgs = {
-      inherit pkgs edgePkgs;
+      pkgs = pkgsFor."x86_64-linux";
 
       host = {
         hostName = "lisa";
@@ -19,13 +17,32 @@
       ./lisa
       ./configuration.nix
       ../modules/scanning.nix
+      ../modules/ssh-auth.nix
+    ];
+  };
+  rpi = nixpkgs.lib.nixosSystem {
+    system = "aarch64-linux";
+
+    specialArgs = {
+      pkgs = pkgsFor."aarch64-linux";
+
+      host = {
+        hostName = "rpi";
+      };
+    };
+    modules = [
+      ./rpi
+      ./configuration.nix
+      ../modules/ssh-auth.nix
     ];
   };
   dell = nixpkgs.lib.nixosSystem {
-    inherit system;
+    system = "x86_64-linux";
 
     specialArgs = {
-      inherit pkgs edgePkgs dellNvidia;
+      pkgs = pkgsFor."x86_64-linux";
+
+      inherit dellNvidia;
 
       host = {
         hostName = "dell";

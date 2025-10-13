@@ -6,6 +6,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  users.users.guilherme.shell = pkgs.zsh;
+
   security.pki.certificates = [
     ''
       -----BEGIN CERTIFICATE-----
@@ -61,15 +63,8 @@
   ''
   ];
 
-  services.desktop = {
-    enable = true;
-  };
-
-  services.virtualization = {
-    enable = true;
-  };
-
-  services.yubikey = {
-    enable = true;
-  };
+  # Custom modules
+  services.desktop.enable = true;
+  services.virtualization.enable = true;
+  services.yubikey.enable = true;
 }

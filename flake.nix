@@ -35,9 +35,10 @@
     yafl,
     ...
   } @ inputs: let
-    linux = "x86_64-linux";
+    linux_x86 = "x86_64-linux";
+    linux_arm = "aarch64-linux";
     mac = "aarch64-darwin";
-    systems = [linux mac];
+    systems = [linux_x86 linux_arm mac];
 
     forAllSystems = nixpkgs.lib.genAttrs systems;
 
@@ -105,12 +106,9 @@
 
     nixosConfigurations = (
       import ./hosts {
-        inherit nixpkgs;
+        inherit nixpkgs pkgsFor;
 
         dellNvidia = nixos-hardware.nixosModules.dell-xps-15-9560-nvidia;
-        system = "x86_64_linux";
-        pkgs = pkgsFor.x86_64-linux;
-        edgePkgs = pkgsEdgeFor.x86_64-linux;
       }
     );
 
@@ -118,7 +116,7 @@
       "guilherme@linux" = home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = {
           inherit dream2nix secrets;
-          system = linux;
+          system = linux_x86;
           yafl = yafl.packages.x86_64-linux.default;
           stable = pkgsFor.x86_64-linux;
           edgePkgs = pkgsEdgeFor.x86_64-linux;
