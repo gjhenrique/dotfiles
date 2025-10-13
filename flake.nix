@@ -106,11 +106,9 @@
 
     nixosConfigurations = (
       import ./hosts {
-        inherit nixpkgs;
+        inherit nixpkgs pkgsFor;
 
         dellNvidia = nixos-hardware.nixosModules.dell-xps-15-9560-nvidia;
-        pkgs = pkgsFor.aarch64-linux;
-        edgePkgs = pkgsEdgeFor.aarch_64-linux;
       }
     );
 

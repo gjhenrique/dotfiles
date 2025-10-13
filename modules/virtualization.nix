@@ -17,7 +17,6 @@ with lib;
   };
 
   config = mkIf config.services.virtualization.enable {
-    boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
     virtualisation = {
       oci-containers = {
         backend = "docker";
