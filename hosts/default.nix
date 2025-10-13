@@ -18,6 +18,7 @@
     modules = [
       ./lisa
       ./configuration.nix
+      ../modules/scanning.nix
     ];
   };
   dell = nixpkgs.lib.nixosSystem {
@@ -34,6 +35,7 @@
       ./dell
       ./configuration.nix
       dellNvidia
+      ../modules/scanning.nix
     ];
   };
 }
