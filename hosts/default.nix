@@ -6,7 +6,7 @@
   dellNvidia
 }: {
   lisa = nixpkgs.lib.nixosSystem {
-    inherit system;
+    system = "x86_64_linux";
 
     specialArgs = {
       inherit pkgs edgePkgs;
@@ -21,8 +21,23 @@
       ../modules/scanning.nix
     ];
   };
+  rpi = nixpkgs.lib.nixosSystem {
+    system = "aarch64_linux";
+
+    specialArgs = {
+      inherit pkgs edgePkgs;
+
+      host = {
+        hostName = "rpi";
+      };
+    };
+    modules = [
+      ./rpi
+      ./configuration.nix
+    ];
+  };
   dell = nixpkgs.lib.nixosSystem {
-    inherit system;
+    system = "x86_64_linux";
 
     specialArgs = {
       inherit pkgs edgePkgs dellNvidia;
