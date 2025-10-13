@@ -56,7 +56,7 @@ let
       rm --verbose image*
 
       # Atomic move converted PDF to destination directory
-      paperlessdir="/mnt/external/paperless/consume/"
+      paperlessdir="/mnt/external/documents/consume/"
       cp -pv "$filename" $paperlessdir/"$filename".tmp &&
       mv $paperlessdir/"$filename".tmp $paperlessdir/"$filename" &&
       rm "$filename"
