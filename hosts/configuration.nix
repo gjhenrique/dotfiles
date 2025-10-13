@@ -63,6 +63,8 @@
   environment.systemPackages = with pkgs; [
     neovim
 
+    git
+
     # for compiling some stuff
     gcc
   ];
