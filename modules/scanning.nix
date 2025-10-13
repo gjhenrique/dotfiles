@@ -64,12 +64,8 @@ let
       popd
       rm -r "$tmpdir"
     '';
-
 in
-
 {
-
-  ###### interface
   options = {
 
     services.scanbd.enable = mkOption {
@@ -152,7 +148,6 @@ in
 
   };
 
-  ###### implementation
   config = mkIf config.services.scanbd.enable {
     environment.systemPackages = with pkgs; [
       # Scanning

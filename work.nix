@@ -82,6 +82,7 @@ in {
       src-cli
       stern
       ssm-session-manager-plugin
+      runc
       teleport
       terragrunt
     ]

@@ -36,6 +36,9 @@
       ./configuration.nix
       dellNvidia
       ../modules/scanning.nix
+      ../modules/desktop.nix
+      ../modules/virtualization.nix
+      ../modules/yubikey.nix
     ];
   };
 }
