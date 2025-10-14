@@ -6,6 +6,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  users.users.guilherme.shell = pkgs.zsh;
+
   services.openssh = {
   enable = true;
   ports = [ 2200 ];

@@ -6,6 +6,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  users.users.guilherme.shell = pkgs.zsh;
+
   security.pki.certificates = [
     ''
       -----BEGIN CERTIFICATE-----
