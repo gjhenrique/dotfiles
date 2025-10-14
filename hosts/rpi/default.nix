@@ -11,7 +11,7 @@
 
     fileSystems."/mnt/external" = {
     device = "/dev/sda1";
-    fsType = "btrfs";
+    fsType = "ext4";
     options = [ "nofail" ];
   };
 }
