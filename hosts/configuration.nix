@@ -61,12 +61,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim
-
-    git
-
-    # for compiling some stuff
+    # basic packages for servers and desktop
     gcc
+    git
+    htop
+    neovim
   ];
 
   environment.localBinInPath = true;
