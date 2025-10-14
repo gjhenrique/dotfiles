@@ -5,6 +5,7 @@
 
   boot.loader.grub.enable = false;
   boot.loader.generic-extlinux-compatible.enable = true;
+  users.users.guilherme.shell = pkgs.bash;
 
   services.openssh = {
   enable = true;
