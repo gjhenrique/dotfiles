@@ -7,11 +7,13 @@
   boot.loader.generic-extlinux-compatible.enable = true;
   users.users.guilherme.shell = pkgs.bash;
 
+  services.ssh-auth.enable = true;
+
   services.openssh = {
   enable = true;
   ports = [ 2201 ];
   settings = {
-    PasswordAuthentication = true;
+    PasswordAuthentication = false;
     AllowUsers = [ "guilherme" ];
     UseDns = true;
     X11Forwarding = false;
