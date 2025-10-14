@@ -17,4 +17,10 @@
     PermitRootLogin = "prohibit-password";
     };
   };
+
+  fileSystems."/mnt/external" = {
+    device = "/dev/sda";
+    fsType = "auto";
+    options = [ "nofail" ];
+  };
 }
