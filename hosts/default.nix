@@ -17,6 +17,7 @@
       ./lisa
       ./configuration.nix
       ../modules/scanning.nix
+      ../modules/ssh-auth.nix
     ];
   };
   rpi = nixpkgs.lib.nixosSystem {
@@ -32,6 +33,7 @@
     modules = [
       ./rpi
       ./configuration.nix
+      ../modules/ssh-auth.nix
     ];
   };
   dell = nixpkgs.lib.nixosSystem {
