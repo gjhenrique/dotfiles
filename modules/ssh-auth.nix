@@ -13,7 +13,6 @@ with lib;
         Add SSH keys authentication
       '';
     };
-
   };
 
   config = mkIf config.services.ssh-auth.enable {
@@ -21,5 +20,17 @@ with lib;
       "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIJukjvvy7oit8HPiS3alfmjoxLflH6cg9ZZXg2i0PApfAAAABHNzaDo= guilherme@dell"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM/HLFVWHMqNfNcN7cQrnWxgP7r8G18JTkHcaWnnavpR SSH Key"
     ];
+
+    services.openssh = {
+      enable = true;
+      ports = [ 2200 ];
+      settings = {
+        PasswordAuthentication = false;
+        AllowUsers = [ "guilherme" ];
+        UseDns = true;
+        X11Forwarding = false;
+        PermitRootLogin = "prohibit-password";
+      };
+    };
   };
 }
