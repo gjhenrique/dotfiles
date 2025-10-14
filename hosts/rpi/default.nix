@@ -19,8 +19,8 @@
   };
 
   fileSystems."/mnt/external" = {
-    device = "/dev/sda";
-    fsType = "auto";
+    device = "/dev/sda1";
+    fsType = "ext4";
     options = [ "nofail" ];
   };
 }
