@@ -49,7 +49,6 @@
       rage
 
       # command-line
-      android-tools
       bat
       bc
       edgePkgs.curl
@@ -60,7 +59,6 @@
       ffmpeg
       gh
       git
-      git-filter-repo
       gnumake
       htop
       jq
@@ -69,7 +67,6 @@
       kubectx
       kubie
       meld
-      mpv
       ncdu
       neovim
       openssl
@@ -87,7 +84,6 @@
       yq-go
     ]
     ++ [
-      edgePkgs.aider-chat
       edgePkgs.claude-code
     ];
 

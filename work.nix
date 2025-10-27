@@ -62,11 +62,11 @@ in {
       edgePkgs.devbox
       dive
       diffoci
+      distrobox
       fluxcd
       google-cloud-sdk
       helmfile
       http-server
-      jetbrains.gateway
       jetbrains.idea-community-bin
       kustomize
       (wrapHelm kubernetes-helm {
@@ -87,7 +87,6 @@ in {
       terragrunt
     ]
     ++ [
-      edgePkgs.devpod
       edgePkgs.pnpm
     ];
 
