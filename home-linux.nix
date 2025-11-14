@@ -22,8 +22,10 @@ in {
 
     # tools
     bluetuith
+    distrobox
     foot
     emacs-pgtk
+    runc
     # for compiling tree-sitter
     libgcc
     pwvucontrol

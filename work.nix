@@ -63,7 +63,6 @@ in {
       devenv
       dive
       diffoci
-      distrobox
       fluxcd
       google-cloud-sdk
       helmfile
@@ -83,7 +82,6 @@ in {
       src-cli
       stern
       ssm-session-manager-plugin
-      runc
       teleport
       terragrunt
     ]
