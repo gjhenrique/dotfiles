@@ -67,4 +67,5 @@
   services.desktop.enable = true;
   services.virtualization.enable = true;
   services.yubikey.enable = true;
+  services.scanbd.enable = true;
 }

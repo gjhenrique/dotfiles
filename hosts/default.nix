@@ -56,6 +56,7 @@
       ../modules/desktop.nix
       ../modules/virtualization.nix
       ../modules/yubikey.nix
+      ../modules/scanning.nix
     ];
   };
 }

@@ -246,7 +246,13 @@
 
 (use-package typescript-ts-mode
   :straight nil
-  :mode "\\.ts\\'")
+  :mode "\\.ts\\'"
+  :hook (typescript-ts-mode . typescript-format-on-save-mode)
+  :config
+  (reformatter-define
+   typescript-format
+   :program "npx"
+   :args '("prettier" "--stdin-filepath" "--parser=typescript")))
 
 (use-package nix-mode
   :mode "\\.nix\\'"
@@ -518,12 +524,6 @@
 	  :host (getenv "OPENAI_API_HOST")
 	  :key (getenv "OPENAI_API_KEY")
 	  :models '(claude-4-sonnet))))
-
-(use-package aidermacs
-  :bind (("C-c a" . aidermacs-transient-menu))
-  :custom
-  (aidermacs-use-architect-mode t)
-  (aidermacs-default-model "openai/claude-4-sonnet"))
 
 (use-package tldr
   :commands tldr)

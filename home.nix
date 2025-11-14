@@ -32,6 +32,7 @@
       nodejs_22
       python311
       python311Packages.pip
+      edgePkgs.typescript-language-server
       # python310Packages.requests
       virtualenv
       ruby
@@ -182,9 +183,7 @@
     .envrc
     .direnv
 
-    # aider
-    .aider*
-    .env
+    devenv.nix
 
     .claude/
 

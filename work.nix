@@ -60,6 +60,7 @@ in {
       amazon-ecr-credential-helper
       awscli2
       edgePkgs.devbox
+      devenv
       dive
       diffoci
       distrobox
