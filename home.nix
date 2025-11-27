@@ -86,6 +86,7 @@
     ]
     ++ [
       edgePkgs.claude-code
+      edgePkgs.docker
     ];
 
   # WTF is this?

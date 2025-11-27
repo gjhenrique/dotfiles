@@ -74,7 +74,7 @@
 
   virtualisation = {
     docker = {
-      package = pkgs.docker;
+      package = edgePkgs.docker;
       enable = true;
       daemon.settings = {
         dns = [
