@@ -523,7 +523,7 @@
 	  :endpoint "/chat/completions"
 	  :host (getenv "OPENAI_API_HOST")
 	  :key (getenv "OPENAI_API_KEY")
-	  :models '(claude-4-sonnet))))
+	  :models '(claude-4-5-sonnet))))
 
 (use-package tldr
   :commands tldr)
