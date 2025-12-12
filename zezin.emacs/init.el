@@ -252,7 +252,7 @@
   (reformatter-define
    typescript-format
    :program "npx"
-   :args '("prettier" "--stdin-filepath" "--parser=typescript")))
+   :args '("prettier" "--stdin-filepath")))
 
 (use-package nix-mode
   :mode "\\.nix\\'"

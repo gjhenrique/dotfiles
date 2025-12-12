@@ -84,9 +84,7 @@ in {
       ssm-session-manager-plugin
       teleport
       terragrunt
-    ]
-    ++ [
-      edgePkgs.pnpm
+      volta
     ];
 
   programs.git = {

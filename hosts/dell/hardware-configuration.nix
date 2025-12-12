@@ -16,7 +16,7 @@
   boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"];
   # boot.blacklistedKernelModules = ["nouveau"];
   boot.initrd.kernelModules = [];
-  boot.kernelModules = [ "kvm-intel" "v4l2loopback" ];
+  boot.kernelModules = [ "kvm-intel" "v4l2loopback" "sg" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   boot.extraModprobeConfig = ''
     options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1

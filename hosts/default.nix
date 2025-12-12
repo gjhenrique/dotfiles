@@ -2,14 +2,11 @@
   pkgsFor,
   nixpkgs,
   dellNvidia,
-  nixpkgs-edge,
 }: {
   lisa = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
 
     specialArgs = {
-      inherit edgePkgs;
-
       pkgs = pkgsFor."x86_64-linux";
 
       host = {
@@ -27,7 +24,6 @@
     system = "aarch64-linux";
 
     specialArgs = {
-      inherit edgePkgs;
 
       pkgs = pkgsFor."aarch64-linux";
 
@@ -47,7 +43,7 @@
     specialArgs = {
       pkgs = pkgsFor."x86_64-linux";
 
-      inherit dellNvidia edgePkgs;
+      inherit dellNvidia;
 
       host = {
         hostName = "dell";

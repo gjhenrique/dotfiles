@@ -29,7 +29,8 @@
       go
       gradle
       jdk11
-      nodejs_22
+      # don't delete it. needed for generating CA tokens
+      nodejs
       python311
       python311Packages.pip
       edgePkgs.typescript-language-server
@@ -266,6 +267,12 @@
       TRAPUSR2() {
         TMUX= theme.sh $LIGHT_THEME
       }
+
+      if [ -n "$DISTROBOX_ENTER_PATH" ]; then
+        export VOLTA_HOME="$HOME/.volta"
+        export PATH="$VOLTA_HOME/bin:$PATH"
+        export VOLTA_FEATURE_PNPM=1
+      fi
     '';
   };
 

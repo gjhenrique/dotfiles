@@ -4,7 +4,6 @@
   host,
   config,
   pkgs,
-  edgePkgs,
   ...
 }: {
   boot.tmp.useTmpfs = true;
@@ -74,7 +73,7 @@
 
   virtualisation = {
     docker = {
-      package = edgePkgs.docker;
+      package = pkgs.docker;
       enable = true;
       daemon.settings = {
         dns = [
