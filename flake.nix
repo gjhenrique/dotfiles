@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
 
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -18,6 +18,7 @@
       url = "github:nix-community/dream2nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
     yafl = {
       url = "github:gjhenrique/yafl";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -106,9 +107,11 @@
 
     nixosConfigurations = (
       import ./hosts {
-        inherit nixpkgs pkgsFor;
+        inherit nixpkgs;
 
         dellNvidia = nixos-hardware.nixosModules.dell-xps-15-9560-nvidia;
+        system = "x86_64_linux";
+        pkgs = pkgsFor.x86_64-linux;
       }
     );
 

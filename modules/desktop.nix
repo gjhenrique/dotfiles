@@ -1,5 +1,3 @@
-# Copied from https://github.com/Cody-W-Tucker/nix-config/blob/bc93a321127d40a5d857736c92fcc148c2859e61/modules/server/paperless-scanning.nix
-
 { config, lib, pkgs, ... }:
 
 with lib;
@@ -31,10 +29,10 @@ with lib;
 
         # Waybar
         font-awesome
-        (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+        nerd-fonts.symbols-only
 
         noto-fonts
-        noto-fonts-emoji
+        noto-fonts-color-emoji
 
         roboto
         roboto-mono
@@ -50,7 +48,6 @@ with lib;
     };
     # Enable networking
     networking.networkmanager.enable = true;
-    systemd.services.NetworkManager-wait-online.enable = false;
 
     programs._1password-gui.enable = true;
     programs._1password-gui.polkitPolicyOwners = ["guilherme"];
@@ -124,13 +121,6 @@ with lib;
       # no need to redefine it in your config for now)
       #media-session.enable = true;
     };
-
-    services.xserver.enable = true;
-    services.xserver = {
-      xkbOptions = "caps:escape";
-    };
-    services.displayManager.sddm.enable = true;
-    services.desktopManager.plasma6.enable = true;
 
     programs.firefox = {
       enable = true;

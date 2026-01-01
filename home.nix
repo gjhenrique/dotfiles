@@ -152,10 +152,13 @@
 
   programs.git = {
     enable = true;
-    userName = "gjhenrique";
-    userEmail = "me@gjhenrique.com";
 
-    extraConfig = {
+    settings = {
+      user = {
+        name = "gjhenrique";
+        email = "me@gjhenrique.com";
+      };
+
       advice.skippedCherryPicks = false;
 
       core = {

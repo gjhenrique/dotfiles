@@ -25,6 +25,7 @@ in {
     distrobox
     foot
     emacs-pgtk
+    mpv
     runc
     # for compiling tree-sitter
     libgcc
@@ -41,15 +42,17 @@ in {
   services.mako = {
     enable = true;
 
-    defaultTimeout = 5000;
-    width = 300;
-    height = 200;
-    padding = "20";
-    margin = "20";
-    font = "JetBrainsMono NF 14";
-    backgroundColor = "#24273a";
-    borderColor = "#8aadf4";
-    textColor = "#cad3f5";
+    settings = {
+      default-timeout = 5000;
+      width = 300;
+      height = 200;
+      padding = "20";
+      margin = "20";
+      font = "JetBrainsMono NF 14";
+      background-color = "#24273a";
+      border-color = "#8aadf4";
+      text-color = "#cad3f5";
+    };
 
     extraConfig = ''
       [urgency=high]
@@ -196,12 +199,12 @@ in {
     };
   };
 
-  wayland.windowManager.hyprland = {
-    enable = true;
+  #wayland.windowManager.hyprland = {
+   # enable = true;
 
-    package = stable.hyprland;
-    extraConfig = builtins.readFile ./files/hyprland.conf;
-  };
+   # package = stable.hyprland;
+   # extraConfig = builtins.readFile ./files/hyprland.conf;
+   #};
 
   systemd.user.services.polkit-gnome = {
     Unit = {
@@ -239,7 +242,7 @@ in {
 
   services.gpg-agent = {
     enable = true;
-    pinentryPackage = pkgs.pinentry-gtk2;
+    pinentry.package = pkgs.pinentry-gtk2;
   };
 
   imports = [

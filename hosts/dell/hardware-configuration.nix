@@ -56,14 +56,4 @@
       ];
     })
   ];
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = [
-      pkgs.libva
-      pkgs.vaapiVdpau
-      pkgs.libvdpau-va-gl
-    ];
-  };
 }

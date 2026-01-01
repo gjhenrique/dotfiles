@@ -77,7 +77,7 @@ in {
           helm-unittest
         ];
       })
-      mysql-client
+      mariadb.client
       onelogin-aws-assume-role
       src-cli
       stern

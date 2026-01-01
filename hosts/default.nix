@@ -1,15 +1,14 @@
 {
-  pkgsFor,
+  pkgs,
   nixpkgs,
   dellNvidia,
+  system,
 }: {
   dell = nixpkgs.lib.nixosSystem {
-    system = "x86_64-linux";
+    inherit system;
 
     specialArgs = {
-      pkgs = pkgsFor."x86_64-linux";
-
-      inherit dellNvidia;
+      inherit pkgs dellNvidia;
 
       host = {
         hostName = "dell";
