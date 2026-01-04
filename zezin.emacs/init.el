@@ -373,11 +373,6 @@
   :straight nil
   :mode ("/.dockerignore\\'"))
 
-(use-package forge
-  :after magit
-  :preface
-  (setq forge-add-default-bindings nil))
-
 ;; IDE
 (use-package dumb-jump
   :commands dumb-jump-go
@@ -448,16 +443,6 @@
     (evil-define-key 'normal 'global (kbd "<leader>bl") 'evil-switch-to-windows-last-buffer)))
 
 (bind-keys ("M-x" . counsel-M-x))
-
-(use-package age
-  :ensure t
-  :demand t
-  :custom
-  (age-program "rage")
-  (age-default-identity "~/.ssh/age_yubikey")
-  (age-default-recipient '("~/.ssh/age_yubikey.pub"))
-  :config
-  (age-file-enable))
 
 (use-package project
   :straight nil
