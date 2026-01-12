@@ -13,12 +13,14 @@ in {
 
   home.packages = with pkgs; [
     #desktop specific
+    alacritty
     alsa-utils
     grim
     pinta
     kdePackages.okular
     slurp
     swappy
+    xwayland-satellite
 
     # tools
     bluetuith
@@ -243,6 +245,11 @@ in {
   services.gpg-agent = {
     enable = true;
     pinentry.package = pkgs.pinentry-gtk2;
+  };
+
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri;
   };
 
   imports = [

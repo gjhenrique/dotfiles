@@ -113,7 +113,7 @@
 
     nixosConfigurations = (
       import ./hosts {
-        inherit nixpkgs niri;
+        inherit nixpkgs;
 
         dellNvidia = nixos-hardware.nixosModules.dell-xps-15-9560-nvidia;
         system = "x86_64_linux";
@@ -134,6 +134,7 @@
         };
         pkgs = pkgsUnstableFor.x86_64-linux;
         modules = [
+          niri.homeModules.niri
           ./home.nix
           ./home-linux.nix
         ];

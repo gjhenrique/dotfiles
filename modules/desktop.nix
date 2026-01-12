@@ -128,7 +128,6 @@ with lib;
     };
 
     programs.hyprland.enable = true;
-    programs.niri.enable = true;
 
     services.tailscale.enable = true;
 
