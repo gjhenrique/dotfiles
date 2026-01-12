@@ -21,13 +21,6 @@ Here are some of those:
 1. `atuin login` and `atuin sync` for syncing history
 1. `alt-A=I` to install tmux plugins with tpm
 
-### Emacs secrets
-
-<!-- TODO: Get the anthropic key  -->
-1. Save the `.authinfo.age` file into `machine claude.anthropic.com login emacs password <api_key>`
-1. `age-plugin-yubikey --identity > $HOME/.ssh/age_yubikey`
-1. `age-plugin-yubikey --list > $HOME/.ssh/age_yubikey.pub`
-
 ### Secrets
 1. `mkdir -p $HOME/.passage`
 1. Run `age-plugin-yubikey --identity >> $HOME/.passage/identities`
