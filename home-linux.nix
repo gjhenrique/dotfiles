@@ -22,6 +22,7 @@ in {
 
     # tools
     bluetuith
+    git-crypt
     distrobox
     foot
     emacs-pgtk
@@ -191,7 +192,7 @@ in {
   xdg.portal = {
     enable = true;
 
-    extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+    #extraPortals = [pkgs.xdg-desktop-portal-hyprland];
 
     # make it work on zoom
     config.hyprland = {
@@ -199,12 +200,12 @@ in {
     };
   };
 
-  #wayland.windowManager.hyprland = {
-   # enable = true;
+  wayland.windowManager.hyprland = {
+    enable = true;
 
-   # package = stable.hyprland;
-   # extraConfig = builtins.readFile ./files/hyprland.conf;
-   #};
+    package = stable.hyprland;
+    extraConfig = builtins.readFile ./files/hyprland.conf;
+  };
 
   systemd.user.services.polkit-gnome = {
     Unit = {

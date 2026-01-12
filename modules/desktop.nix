@@ -17,7 +17,7 @@ with lib;
 
   config = mkIf config.services.desktop.enable {
     environment.systemPackages = with pkgs; [
-      hyprland
+      #hyprland
       kitty # other terminal thank foot for initial bootstrap
 
       google-chrome
@@ -127,7 +127,7 @@ with lib;
       package = pkgs.firefox;
     };
 
-    programs.hyprland.enable = true;
+    #programs.hyprland.enable = true;
 
     services.tailscale.enable = true;
 
