@@ -1,6 +1,7 @@
 {
   pkgs,
   nixpkgs,
+  niri,
   dellNvidia,
   system,
 }: {
@@ -18,6 +19,7 @@
       ./dell
       ./configuration.nix
       dellNvidia
+      niri.nixosModules.niri
       ../modules/desktop.nix
       ../modules/virtualization.nix
       ../modules/yubikey.nix

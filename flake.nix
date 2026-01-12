@@ -23,11 +23,17 @@
       url = "github:gjhenrique/yafl";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     dream2nix,
     home-manager,
+    niri,
     nixos-hardware,
     nixpkgs,
     nixpkgs-unstable,
@@ -107,7 +113,7 @@
 
     nixosConfigurations = (
       import ./hosts {
-        inherit nixpkgs;
+        inherit nixpkgs niri;
 
         dellNvidia = nixos-hardware.nixosModules.dell-xps-15-9560-nvidia;
         system = "x86_64_linux";
