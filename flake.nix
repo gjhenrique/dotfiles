@@ -128,6 +128,7 @@
         };
         pkgs = pkgsUnstableFor.x86_64-linux;
         modules = [
+          niri.homeModules.niri
           ./home.nix
           ./home-linux.nix
         ];
