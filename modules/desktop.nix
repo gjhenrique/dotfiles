@@ -127,7 +127,7 @@ with lib;
       package = pkgs.firefox;
     };
 
-    #programs.hyprland.enable = true;
+    programs.hyprland.enable = true;
 
     services.tailscale.enable = true;
 
