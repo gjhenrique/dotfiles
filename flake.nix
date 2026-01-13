@@ -23,11 +23,16 @@
       url = "github:gjhenrique/yafl";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+    };
   };
 
   outputs = {
     dream2nix,
     home-manager,
+    niri,
     nixos-hardware,
     nixpkgs,
     nixpkgs-unstable,
