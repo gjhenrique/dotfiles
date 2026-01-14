@@ -13,6 +13,11 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  # authorize dock station
+  services.hardware.bolt.enable = true;
+  # update firmware
+  services.fwupd.enable = true;
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/28f79441-13e7-4b55-8632-c210b10a3077";
       fsType = "ext4";

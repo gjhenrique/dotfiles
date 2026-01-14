@@ -89,7 +89,7 @@ in {
             status = "enable";
           }
           {
-            criteria = "BNQ BenQ EW3270U G9K02925019";
+            criteria = "PNP(BNQ) BenQ EW3270U G9K02925019";
             mode = "3840x2160";
             position = "0,0";
             scale = 1.666667;
@@ -104,17 +104,10 @@ in {
             status = "enable";
           }
           {
-            criteria = "BNQ BenQ EW3270U G9K02925019";
+            criteria = "PNP(BNQ) BenQ EW3270U G9K02925019";
             mode = "3840x2160@30";
             position = "1080,300";
             scale = 1.666667;
-          }
-          {
-            criteria = "Dell Inc. DELL U2715H GH85D71G1R9S";
-            mode = "2560x1440";
-            position = "3385,30";
-            scale = 1.33333333;
-            transform = "90";
           }
           {
             criteria = "LG Electronics LG HDR 4K 0x00067273";
@@ -137,7 +130,7 @@ in {
       {
         position = "top";
         height = 30;
-        modules-left = ["hyprland/workspaces"];
+        modules-left = ["niri/workspaces"];
         modules-center = ["clock"];
         modules-right = ["cpu" "memory" "pulseaudio" "battery"];
 
@@ -191,24 +184,6 @@ in {
     ];
   };
 
-  xdg.portal = {
-    enable = true;
-
-    #extraPortals = [pkgs.xdg-desktop-portal-hyprland];
-
-    # make it work on zoom
-    config.hyprland = {
-      "org.freedesktop.impl.portal.ScreenCast" = "hyprland";
-    };
-  };
-
-  wayland.windowManager.hyprland = {
-    enable = true;
-
-    package = stable.hyprland;
-    extraConfig = builtins.readFile ./files/hyprland.conf;
-  };
-
   systemd.user.services.polkit-gnome = {
     Unit = {
       Description = "polkit-gnome-authentication-agent-1";
@@ -232,6 +207,17 @@ in {
     settings = {
       main = {
         font = "JetBrainsMono NF:size=13";
+      };
+    };
+  };
+
+  programs.fuzzel = {
+    enable = true;
+    settings = {
+      main = {
+        font = "JetBrainsMono NF:size=14";
+        width = 50;
+        lines = 15;
       };
     };
   };

@@ -36,7 +36,7 @@ SQL
     array = []
     db = SQLite3::Database.new "/tmp/places.sqlite"
     db.execute QUERY do |row|
-      array << "#{row[0]}\x1f#{row[1]}"
+      array << "#{row[0]}\t#{row[1]}"
     end
 
     return array
@@ -61,7 +61,7 @@ class Search
     exit 1 if mode.nil?
 
     input = CGI.escape(input.gsub("#{mode[:trigger]} ", ""))
-    url = mode[:url].gsub("#{mode[:trigger]} ", "").gsub("%s", input)
+    url = mode[:url].gsub("%s", input)
 
     `xdg-open "#{url}"`
   end
@@ -79,62 +79,6 @@ class Search
     parse_json(".config/yafl/search.json").tap do |config|
       config.push(*parse_json("Life/work/search.json")); rescue nil
     end
-  end
-end
-
-class Theme
-  def list
-    [
-      "Turn theme on",
-      "Turn theme off",
-    ]
-  end
-
-  def execute(input)
-    if input.end_with? "on"
-      `switch_theme on`
-    elsif input.end_with? "off"
-      `switch_theme off`
-    end
-  end
-end
-
-class Sunset
-  def list
-    [
-      "Turn sunset on",
-      "Turn sunset off",
-    ]
-  end
-
-  def execute(input)
-    if input.end_with? "on"
-      `wlsunset`
-    elsif input.end_with? "off"
-      `pkill wlsunset`
-    end
-  end
-end
-
-class Passage
-  require 'find'
-
-  def list
-    root_path = "/home/guilherme/.passage/store"
-    result = []
-
-    Find.find(root_path) do |path|
-      next if path == root_path || path.include?(".git") || path.include?(".age-recipients")
-
-      relative_path = path.sub("#{File.dirname(root_path)}/", '').gsub(".age", "").gsub("store/", "")
-      result << [relative_path] if File.file?(path) || Dir.empty?(path)
-    end
-
-    result
-  end
-
-  def execute(input)
-    `wl-copy $(passage #{input})`
   end
 end
 

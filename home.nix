@@ -36,7 +36,8 @@
       edgePkgs.typescript-language-server
       # python310Packages.requests
       virtualenv
-      ruby
+      # yafl_ext
+      (ruby.withPackages (ps: with ps; [ sqlite3 ]))
       opentofu
       terraform
       uv

@@ -210,7 +210,7 @@
 	  ;; Recent tree-sitter is not compatible with emacs 29. Try it again with Emacs 30
 	  (go "https://github.com/tree-sitter/tree-sitter-go" "v0.20.0")
 	  (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
-	  (go-template "https://github.com/ngalaiko/tree-sitter-go-template")
+	  ;; (go-template "https://github.com/ngalaiko/tree-sitter-go-template")
 	  (java "https://github.com/tree-sitter/tree-sitter-java")
 	  (json "https://github.com/tree-sitter/tree-sitter-json")
 	  (kotlin "https://github.com/fwcd/tree-sitter-kotlin")
