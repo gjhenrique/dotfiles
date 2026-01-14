@@ -26,6 +26,16 @@ Here are some of those:
 1. Run `age-plugin-yubikey --identity >> $HOME/.passage/identities`
 1. Clone the repo in (you know where it is ;)) `~/.passage/store`
 
+### sudo with yubikey
+
+According to the [NixOS wiki](https://nixos.wiki/wiki/Yubikey), you need to store the challenge-response on slot 2:
+
+``` shell
+nix-shell -p yubico-pam -p yubikey-manager
+ykman otp chalresp --touch --generate 2
+ykpamcfg -2 -v
+```
+
 ## Update only nixpkgs-edge
 
 To avoid disrupting my work during the week, I would like to only add some packages to the latest version.

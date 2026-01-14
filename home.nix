@@ -124,11 +124,6 @@
 
   # Scripts
   home.file = {
-    "phinger-cursors-dark" = {
-      source = "${pkgs.phinger-cursors}/share/icons/phinger-cursors-dark";
-      target = ".local/share/icons/phinger-cursors-dark";
-    };
-
     "switch_theme" = {
       source = ./files/switch_theme;
       target = ".local/bin/switch_theme";

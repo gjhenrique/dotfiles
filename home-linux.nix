@@ -225,8 +225,18 @@ in {
   gtk = {
     enable = true;
     cursorTheme = {
-      name = "phinger-cursors-dark";
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
+      size = 24;
     };
+  };
+
+  home.pointerCursor = {
+    name = "Adwaita";
+    package = pkgs.adwaita-icon-theme;
+    size = 24;
+    gtk.enable = true;
+    x11.enable = true;
   };
 
   services.gpg-agent = {
@@ -236,7 +246,7 @@ in {
 
   programs.niri = {
     enable = true;
-    package = pkgs.niri;
+    package = stable.niri;
   };
 
   imports = [

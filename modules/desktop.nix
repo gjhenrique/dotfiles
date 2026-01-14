@@ -22,6 +22,9 @@ with lib;
       google-chrome
     ];
 
+    # mesa and friends
+    hardware.graphics.enable = true;
+
     fonts = {
       packages = with pkgs; [
         jetbrains-mono
