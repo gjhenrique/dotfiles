@@ -138,7 +138,7 @@ in {
           format = "󰸗 {:%d.%m - %H:%M}";
           interval = 1;
           tooltip-format = "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>";
-          on-click = "hyprctl dispatch exec xdg-open https://calendar.google.com";
+          on-click = "niri msg action spawn -- xdg-open https://calendar.google.com";
         };
 
         cpu = {

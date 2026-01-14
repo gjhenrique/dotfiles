@@ -4,7 +4,6 @@
   host,
   config,
   pkgs,
-  hyprland,
   ...
 }: {
   boot.tmp.useTmpfs = true;

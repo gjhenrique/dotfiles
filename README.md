@@ -1,6 +1,6 @@
 # dotfiles
 
-Personals setup using NixOS, Hyprland and Emacs
+Personal setup using NixOS, niri and Emacs
 
 ## steps
 
