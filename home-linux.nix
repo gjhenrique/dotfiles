@@ -33,6 +33,7 @@ in {
     # for compiling tree-sitter
     libgcc
     mpv
+    qovery-cli
     runc
     pwvucontrol
 
