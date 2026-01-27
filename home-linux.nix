@@ -155,8 +155,8 @@ in {
         pulseaudio = {
           format = "{icon} {volume}%";
           format-bluetooth = "{volume}% {icon} {format_source}";
-          format-bluetooth-muted = "ﱝ {icon} {format_source}";
-          format-muted = "ﱝ";
+          format-bluetooth-muted = "󰖁 {icon} {format_source}";
+          format-muted = "󰝟";
           format-source = "{volume}% ";
           format-source-muted = "";
           format-icons = {
