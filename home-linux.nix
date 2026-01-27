@@ -24,17 +24,17 @@ in {
 
     # tools
     bluetuith
-    git-crypt
+    brightnessctl
     distrobox
-    foot
     emacs-pgtk
+    foot
+    git-crypt
     iotop
-    mpv
-    runc
     # for compiling tree-sitter
     libgcc
+    mpv
+    runc
     pwvucontrol
-
 
     # cli
     nftables
