@@ -28,6 +28,7 @@ in {
     distrobox
     foot
     emacs-pgtk
+    iotop
     mpv
     runc
     # for compiling tree-sitter

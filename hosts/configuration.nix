@@ -18,6 +18,16 @@
 
   services.seatd.enable = true;
 
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd niri-session";
+        user = "greeter";
+      };
+    };
+  };
+
   networking.hostName = host.hostName; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 

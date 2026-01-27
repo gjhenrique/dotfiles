@@ -19,13 +19,10 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    yafl = {
-      url = "github:gjhenrique/yafl";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     niri = {
       url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
     };
   };
 
@@ -38,7 +35,6 @@
     nixpkgs-unstable,
     nixpkgs-edge,
     self,
-    yafl,
     ...
   } @ inputs: let
     linux_x86 = "x86_64-linux";
@@ -125,7 +121,6 @@
         extraSpecialArgs = {
           inherit dream2nix secrets;
           system = linux_x86;
-          yafl = yafl.packages.x86_64-linux.default;
           stable = pkgsFor.x86_64-linux;
           edgePkgs = pkgsEdgeFor.x86_64-linux;
           user = "guilherme";
@@ -143,7 +138,6 @@
         extraSpecialArgs = {
           inherit dream2nix secrets;
           system = mac;
-          yafl = yafl.packages.aarch64-darwin.default;
           stable = pkgsFor.aarch64-darwin;
           edgePkgs = pkgsEdgeFor.aarch64-darwin;
           user = secrets.work.macUser;

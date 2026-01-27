@@ -8,7 +8,6 @@
   system,
   user,
   homeDirectory,
-  yafl,
   ...
 }: {
   home.username = user;
@@ -83,7 +82,6 @@
       whois
       wl-clipboard
       xdg-utils
-      yafl
       yq-go
     ]
     ++ [
@@ -115,8 +113,7 @@
     };
   };
 
-  xdg.configFile."yafl/config.toml".text = builtins.readFile ./files/yafl-config.toml;
-  xdg.configFile."yafl/search.json".text = builtins.readFile ./files/yafl-search.json;
+  xdg.configFile."launcher/search.json".text = builtins.readFile ./files/launcher-search.json;
 
   xdg.configFile."pipewire/pipewire.conf.d/echo-cancel.conf".text = ''
     context.modules = [{ name = libpipewire-module-echo-cancel }]
@@ -135,9 +132,9 @@
       executable = true;
     };
 
-    "yafl_ext" = {
-      source = ./files/yafl_ext;
-      target = ".local/bin/yafl_ext";
+    "launcher_ext" = {
+      source = ./files/launcher_ext;
+      target = ".local/bin/launcher_ext";
     };
   };
 

@@ -76,7 +76,7 @@ class Search
   end
 
   def config
-    parse_json(".config/yafl/search.json").tap do |config|
+    parse_json(".config/launcher/search.json").tap do |config|
       config.push(*parse_json("Life/work/search.json")); rescue nil
     end
   end
