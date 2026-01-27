@@ -248,6 +248,7 @@ in {
   programs.niri = {
     enable = true;
     package = stable.niri;
+    config = builtins.readFile ./files/niri-config.kdl;
   };
 
   imports = [
