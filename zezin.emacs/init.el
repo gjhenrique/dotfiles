@@ -14,6 +14,7 @@
 ;; emacs configuration
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
+(global-auto-revert-mode 1)
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 (setq load-prefer-newer t)

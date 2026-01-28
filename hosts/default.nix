@@ -2,13 +2,10 @@
   pkgs,
   nixpkgs,
   dellNvidia,
-  system,
 }: {
   dell = nixpkgs.lib.nixosSystem {
-    inherit system;
-
     specialArgs = {
-      inherit pkgs dellNvidia;
+      inherit dellNvidia;
 
       host = {
         hostName = "dell";
@@ -21,6 +18,8 @@
       ../modules/desktop.nix
       ../modules/virtualization.nix
       ../modules/yubikey.nix
+      nixpkgs.nixosModules.readOnlyPkgs
+      {nixpkgs.pkgs = pkgs;}
     ];
   };
 }

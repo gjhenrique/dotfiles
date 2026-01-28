@@ -111,7 +111,6 @@
         inherit nixpkgs;
 
         dellNvidia = nixos-hardware.nixosModules.dell-xps-15-9560-nvidia;
-        system = "x86_64_linux";
         pkgs = pkgsFor.x86_64-linux;
       }
     );
