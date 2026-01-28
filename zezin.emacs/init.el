@@ -449,7 +449,8 @@
   :straight nil
   :commands (browse-at-remote)
   :init
-  (setq +projects-directory '("~/Projects" "~/.prezi"))
+  (setq +projects-directory '("~/Projects"))
+  (setq +projects-ignore-directories '("~/Projects/worktrees/" "~/Projects/mine/dotfiles/zezin.emacs"))
 
   :custom
   (project-switch-commands
@@ -470,10 +471,12 @@
 
   (defun +remember-project ()
     (when (project-current)
-      (unless
-	  (member (project-root (project-current))
-		  (project-known-project-roots))
-	(project-remember-project (project-current)))))
+      (let ((root (project-root (project-current))))
+        (unless (or (member root (project-known-project-roots))
+                    (seq-some (lambda (dir)
+                                (string-prefix-p (expand-file-name dir) (expand-file-name root)))
+                              +projects-ignore-directories))
+          (project-remember-project (project-current))))))
 
   ;; Remember project when visiting a file
   (add-hook 'find-file-hook '+remember-project)
