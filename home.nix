@@ -35,7 +35,7 @@
       edgePkgs.typescript-language-server
       # python310Packages.requests
       virtualenv
-      # yafl_ext
+      # launcher_ext
       (ruby.withPackages (ps: with ps; [ sqlite3 ]))
       opentofu
       terraform
@@ -86,6 +86,7 @@
     ]
     ++ [
       edgePkgs.claude-code
+      edgePkgs.opencode
       edgePkgs.docker
     ];
 
