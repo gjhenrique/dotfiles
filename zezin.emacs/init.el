@@ -510,8 +510,9 @@
 	  :key (getenv "OPENAI_API_KEY")
 	  :models '(claude-4-5-sonnet))))
 
-(use-package tldr
-  :commands tldr)
+(use-package agent-shell
+  :commands (agent-shell agent-shell-opencode-command agent-shell-anthropic-claude-command)
+  :straight (:host github :repo "xenodium/agent-shell"))
 
 (use-package json-mode
   :commands json-mode-beautify)

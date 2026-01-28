@@ -33,7 +33,6 @@
       python311
       python311Packages.pip
       edgePkgs.typescript-language-server
-      # python310Packages.requests
       virtualenv
       # launcher_ext
       (ruby.withPackages (ps: with ps; [ sqlite3 ]))
@@ -86,6 +85,7 @@
     ]
     ++ [
       edgePkgs.claude-code
+      edgePkgs.claude-code-acp
       edgePkgs.opencode
       edgePkgs.docker
     ];
@@ -185,6 +185,7 @@
     devenv.nix
 
     .claude/
+    .agent-shell
 
     # emacs
     *~
