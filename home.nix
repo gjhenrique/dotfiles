@@ -37,11 +37,9 @@
       # launcher_ext
       (ruby.withPackages (ps: with ps; [ sqlite3 ]))
       opentofu
-      terraform
       uv
 
       # language servers
-      terraform-ls
       gopls
 
       # security
@@ -79,7 +77,6 @@
       unp
       wget
       whois
-      wl-clipboard
       xdg-utils
       yq-go
     ]

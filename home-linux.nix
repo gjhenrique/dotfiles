@@ -36,6 +36,7 @@ in {
     qovery-cli
     runc
     pwvucontrol
+    wl-clipboard
 
     # cli
     nftables

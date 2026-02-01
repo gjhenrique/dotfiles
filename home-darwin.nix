@@ -27,7 +27,7 @@ in {
     ".ssh/config.overrides".text = builtins.replaceStrings ["@1p-agent@"] [secrets.work.mac1pAgent] sshOverrides;
 
     "emacs-gui" = {
-      text = "${pkgs.emacs29-macport}/Applications/Emacs.app/Contents/MacOS/Emacs \"$@\"";
+      text = "${pkgs.emacs-macport}/Applications/Emacs.app/Contents/MacOS/Emacs \"$@\"";
       target = ".local/bin/emacs-gui";
       executable = true;
     };
