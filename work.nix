@@ -42,6 +42,9 @@ in {
 
   home.sessionVariables = secrets.work.envs // {
     TG_DEPENDENCY_FETCH_OUTPUT_FROM_STATE = "true";
+    TG_PROVIDER_CACHE_DIR="${config.home.homeDirectory}/.cache/terraform";
+    TG_PROVIDER_CACHE="1";
+    TF_PLUGIN_CACHE_DIR="${config.home.homeDirectory}/.cache/terraform";
   } // (if pkgs.stdenv.isLinux then {
     # use nixos pkgs because it comes from there
     PINENTRY_PROGRAM = "${stable.pinentry-gtk2}/bin/pinentry-gtk-2";
@@ -51,6 +54,9 @@ in {
   });
 
   programs.zsh.initExtra = ''
+    # create cache directory if it doesn't exist
+    [[ -d "$HOME/.cache/terraform" ]] || mkdir -p "$HOME/.cache/terraform"
+
     ${secrets.work.script}
   '';
 
