@@ -4,6 +4,7 @@
   host,
   config,
   pkgs,
+  secrets,
   ...
 }: {
   boot.tmp.useTmpfs = true;
@@ -105,6 +106,23 @@
       DNSStubListenerExtra=172.17.0.1
       # kind default bridge
       DNSStubListenerExtra=172.18.0.1
+    '';
+  };
+
+  # Route DNS queries for home domain to local server
+  # Work VPN forces all DNS queries to go through their DNS server
+  systemd.services.home-dns-routing = {
+    description = "DNS routing for home domain";
+    after = ["systemd-resolved.service" "NetworkManager-wait-online.service"];
+    requires = ["systemd-resolved.service"];
+    wantedBy = ["multi-user.target"];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    path = [pkgs.systemd];
+    script = ''
+      resolvectl domain wlp0s20f3 "~${secrets.homeServerDomain}"
     '';
   };
 

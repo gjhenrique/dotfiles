@@ -1,12 +1,11 @@
 {
   pkgs,
   nixpkgs,
-  dellNvidia,
+  secrets,
 }: {
   dell = nixpkgs.lib.nixosSystem {
     specialArgs = {
-      inherit dellNvidia;
-
+      inherit secrets;
       host = {
         hostName = "dell";
       };
@@ -14,7 +13,6 @@
     modules = [
       ./dell
       ./configuration.nix
-      dellNvidia
       ../modules/desktop.nix
       ../modules/virtualization.nix
       ../modules/yubikey.nix
