@@ -73,6 +73,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # basic packages for servers and desktop
+    # samba
+    cifs-utils
     gcc
     git
     htop
@@ -125,6 +127,9 @@
       resolvectl domain wlp0s20f3 "~${secrets.homeServerDomain}"
     '';
   };
+
+  # mtp
+  services.gvfs.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

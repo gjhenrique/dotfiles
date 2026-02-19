@@ -181,7 +181,6 @@
 
     devenv.nix
 
-    .claude/
     .agent-shell
 
     # emacs
