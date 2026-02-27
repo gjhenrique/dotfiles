@@ -7,6 +7,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   users.users.guilherme.shell = pkgs.zsh;
+  users.users.guilherme.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIALVCokcHsh/mRxP92nbldzFZFWPy+OggUsZaa5uvtGt guilherme@dell"
+  ];
 
   security.pki.certificates = [
     ''
@@ -64,6 +67,10 @@
   ];
 
   # Custom modules
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+  };
   services.desktop.enable = true;
   services.virtualization.enable = true;
   services.yubikey.enable = true;
