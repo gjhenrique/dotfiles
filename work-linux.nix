@@ -4,7 +4,6 @@
     slack
     spotify
   ] ++ [
-      edgePkgs.vscode
       edgePkgs.zoom-us
    ];
 }

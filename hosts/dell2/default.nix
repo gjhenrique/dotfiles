@@ -1,0 +1,74 @@
+{pkgs, ...}: {
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  users.users.guilherme.shell = pkgs.zsh;
+  users.users.guilherme.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIALVCokcHsh/mRxP92nbldzFZFWPy+OggUsZaa5uvtGt guilherme@dell"
+  ];
+
+  security.pki.certificates = [
+    ''
+      -----BEGIN CERTIFICATE-----
+      MIIDNTCCAh2gAwIBAgIUPyrQfQcN1lO9VfFVxWvwfhzqqsgwDQYJKoZIhvcNAQEL
+      BQAwKDESMBAGA1UEAwwJbWl0bXByb3h5MRIwEAYDVQQKDAltaXRtcHJveHkwHhcN
+      MjQxMDExMTgyODU0WhcNMzQxMDExMTgyODU0WjAoMRIwEAYDVQQDDAltaXRtcHJv
+      eHkxEjAQBgNVBAoMCW1pdG1wcm94eTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC
+      AQoCggEBAL3GLPdLaroS8DNw+wzHxuEUVcUBPDfV7c7aQQbeayGtaODaAy2npTXk
+      fiS4YsYEADHOaySrvB32V1nBjgeuY1wKZXKm2LPFR2n4Q+buk/7Q74llZcuzWFOS
+      6ywtWb0vWCHH+sbY0PpFBz/VfEi/AQcXLmKx6pxAQ+K+dSCfaf17hXJSXx2v1tZw
+      u3B6kj1ULFrPRWWGEd6oJKw5FzHnWS+Ki6MyFjAI1QU6xgahJp3+h3zKRARNbm7f
+      h2HDULymV4R8xMoh9jhjBkJMIGDxZ1FsQda4tFq9eBwWn09tbVt5WyyBvcTz+r46
+      Q4H9/zm0h1/K1swJwfMqTOtnqwwt6PECAwEAAaNXMFUwDwYDVR0TAQH/BAUwAwEB
+      /zATBgNVHSUEDDAKBggrBgEFBQcDATAOBgNVHQ8BAf8EBAMCAQYwHQYDVR0OBBYE
+      FE03oiw93q5+6Q5Etn9GLqdHOef1MA0GCSqGSIb3DQEBCwUAA4IBAQClvJX+qtaf
+      27qFmhxnhspRWOFHuNAA3mVIeCO8UPanfZorksntZ8+4F+MqsbETW0K41ck10Wpo
+      CHABYkLPKMM8rUYdsMo7HIDjdDk3ks0rnwmriPtAdlzoe2Kkke51ZPfMCL+eKCRi
+      hzcvYcaPQB4JJUUAe5mbveSkLTh5vv2nKCZVg5ErtoUvXoe0R+QrEchT6GnSZIMX
+      3G5azwJwIg+q7vuifhl7rmTfWRxX6rm7EO1p/Aqvd4l9dkCJnCvBLisT1rJoIEsx
+      6RxDaOTTcr5rterDw4LFNhREG0HWxMbeAPHpthhl1N2T7O/XoA0CatowzEN6N9aH
+      whM4k6iGYQpb
+      -----END CERTIFICATE-----
+    ''] ++
+    [''
+      -----BEGIN CERTIFICATE-----
+      MIIE0zCCAzugAwIBAgIQQgZxEpF3yLV0gqR5ygyhIDANBgkqhkiG9w0BAQsFADCB
+      gTEeMBwGA1UEChMVbWtjZXJ0IGRldmVsb3BtZW50IENBMSswKQYDVQQLDCJha2Fs
+      bWFuQGFrYWxtYW4teDEgKEFuZHJhcyBLYWxtYW4pMTIwMAYDVQQDDClta2NlcnQg
+      YWthbG1hbkBha2FsbWFuLXgxIChBbmRyYXMgS2FsbWFuKTAeFw0yMzEwMTIxNTMx
+      MTBaFw0zMzEwMTIxNTMxMTBaMIGBMR4wHAYDVQQKExVta2NlcnQgZGV2ZWxvcG1l
+      bnQgQ0ExKzApBgNVBAsMImFrYWxtYW5AYWthbG1hbi14MSAoQW5kcmFzIEthbG1h
+      bikxMjAwBgNVBAMMKW1rY2VydCBha2FsbWFuQGFrYWxtYW4teDEgKEFuZHJhcyBL
+      YWxtYW4pMIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAusK/5pvMPCj4
+      /Lg5vc552WeId+SbZppFfOdPX6KIS2hxWrFPm1v4cWfm54XnaeYa+3Nhgv+JHrtT
+      3TeNQFeYVe7Qv+Ir62MAJhqqMWC7S6tRIZvff8eoWn5ay7U678jOI/EAUj9f8t7u
+      0YEhGGlAryNrH/cAiOSRzz3eZBnMdeqtbQAd2lIVjYI5BdPVsna4KCE1vGVr5qJ8
+      hEt8o3oCSRp4A+VFQgZSKR4uj7oHFaCV00mpzkSsieW51CET3V7W/Y/PmXnd7gyT
+      PAZ7CxxRYEKjnWJ9lzo7FpdyS5e7WRQccllL7BAxYm0enQGZIs+DaUxEFg/Yjhgj
+      bxrynIxVsaEJ1myWNvVQJ2BrjgcwbuffhqneANRFT9IK+0YvoIt9E5L/D6s9D4Se
+      w7o1IMutBs0JRInNMmi/4B/nwHwQZTW2igtgtpN+1di7MbPxgXze72i7yctIUhsb
+      fG7G4d2Lc+z99GGbiw4NuYViabQWmALOYMxfItrybQmLy0ujRAtNAgMBAAGjRTBD
+      MA4GA1UdDwEB/wQEAwICBDASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdDgQWBBR2
+      wCa7+QMcHKchOtQDTDPh+59EUDANBgkqhkiG9w0BAQsFAAOCAYEAkmIIE+LT8gLI
+      6xUzbonoBTvqYxkogyG0zMSEqL2sSiWm1XLLK0ksYsQ1iLYm8w5ZOYnyUkVfMNQv
+      zdiEdOx870OI3dTVlrPql9T3YUH0W016Ayov/f2x2GkHOvq0BN7XKYkAvXmFnJvE
+      xY1DqT7d2SF/Sjn638C7qb4KFWTU5Zyhm0FCI1tPcfD0qNIuZePSJ3iOaHLvKVzA
+      zWGs32w06DF6ywSRcEVxWyNC/YI+TK1fHlwpHVKTXKyNUSqwF32pwgMSTLxK43zt
+      DcNSVHn5QRm3CgYx8Ps5d8dIodfKpM9QYwWblRcnH5mBGwqvgxizaPL3lidQpOXo
+      G7KUysYE3MgNov6YzJAmaiR0mnl3aG/sv+zO41jWH+U5A/AFrWrQCX0X7MHKShCP
+      JwoLCl+SuHZ+ryAvtuQy3AbSwZZe9AzAOq2VtedliR27A7k0+DqVEUa5hP9RDPuC
+      MqJwCjWqZUXwVQfmS9LYsCMeSdu8gYesm5yhD2CR2sNK+8ihpQJD
+      -----END CERTIFICATE-----
+  ''
+  ];
+
+  # Custom modules
+  services.openssh.enable = true;
+  services.desktop.enable = true;
+  services.virtualization.enable = true;
+  services.yubikey.enable = true;
+}

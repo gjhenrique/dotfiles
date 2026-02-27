@@ -20,4 +20,22 @@
       {nixpkgs.pkgs = pkgs;}
     ];
   };
+
+  dell2 = nixpkgs.lib.nixosSystem {
+    specialArgs = {
+      inherit secrets;
+      host = {
+        hostName = "dell2";
+      };
+    };
+    modules = [
+      ./dell2
+      ./configuration.nix
+      ../modules/desktop.nix
+      ../modules/virtualization.nix
+      ../modules/yubikey.nix
+      nixpkgs.nixosModules.readOnlyPkgs
+      {nixpkgs.pkgs = pkgs;}
+    ];
+  };
 }
