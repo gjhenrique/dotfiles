@@ -165,11 +165,10 @@
   xdg.configFile."git/gitignore".text = ''
     .dir-locals.el
 
-    # some apps don't like .devcontainer
-    .devcontainer
-
     venv
     virtualenv
+
+    .claude/
 
     # lsp-mode
     .log
