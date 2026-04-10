@@ -113,19 +113,31 @@
 
   # Route DNS queries for home domain to local server
   # Work VPN forces all DNS queries to go through their DNS server
+  # Case 1: Whenever the network reconnects
+  environment.etc."NetworkManager/dispatcher.d/10-home-dns-routing" = {
+    mode = "0755";
+    text = ''
+      #!/bin/sh
+      INTERFACE=$1
+      ACTION=$2
+      if [ "$INTERFACE" = "wlp0s20f3" ] && [ "$ACTION" = "up" ]; then
+        sleep 3
+        ${pkgs.systemd}/bin/resolvectl domain wlp0s20f3 "~${secrets.homeServerDomain}"
+      fi
+    '';
+  };
+
+  # Case 2: Whenever systmed-resolved restarts
   systemd.services.home-dns-routing = {
-    description = "DNS routing for home domain";
-    after = ["systemd-resolved.service" "NetworkManager-wait-online.service"];
+    description = "Re-apply home DNS routing after resolved restart";
+    after = ["systemd-resolved.service"];
     requires = ["systemd-resolved.service"];
-    wantedBy = ["multi-user.target"];
+    wantedBy = ["systemd-resolved.service"];
     serviceConfig = {
       Type = "oneshot";
-      RemainAfterExit = true;
+      ExecStartPre = "${pkgs.coreutils}/bin/sleep 3";
+      ExecStart = "${pkgs.systemd}/bin/resolvectl domain wlp0s20f3 ~${secrets.homeServerDomain}";
     };
-    path = [pkgs.systemd];
-    script = ''
-      resolvectl domain wlp0s20f3 "~${secrets.homeServerDomain}"
-    '';
   };
 
   # mtp
