@@ -63,13 +63,13 @@ in {
   home.packages = with pkgs;
     [
       act
+      argocd
       amazon-ecr-credential-helper
       awscli2
       edgePkgs.devbox
       devenv
       dive
       diffoci
-      fluxcd
       google-cloud-sdk
       helmfile
       http-server
