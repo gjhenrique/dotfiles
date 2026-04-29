@@ -4,7 +4,6 @@
   host,
   config,
   pkgs,
-  secrets,
   ...
 }: {
   boot.tmp.useTmpfs = true;
@@ -109,35 +108,6 @@
       # kind default bridge
       DNSStubListenerExtra=172.18.0.1
     '';
-  };
-
-  # Route DNS queries for home domain to local server
-  # Work VPN forces all DNS queries to go through their DNS server
-  # Case 1: Whenever the network reconnects
-  environment.etc."NetworkManager/dispatcher.d/10-home-dns-routing" = {
-    mode = "0755";
-    text = ''
-      #!/bin/sh
-      INTERFACE=$1
-      ACTION=$2
-      if [ "$INTERFACE" = "wlp0s20f3" ] && [ "$ACTION" = "up" ]; then
-        sleep 3
-        ${pkgs.systemd}/bin/resolvectl domain wlp0s20f3 "~${secrets.homeServerDomain}"
-      fi
-    '';
-  };
-
-  # Case 2: Whenever systmed-resolved restarts
-  systemd.services.home-dns-routing = {
-    description = "Re-apply home DNS routing after resolved restart";
-    after = ["systemd-resolved.service"];
-    requires = ["systemd-resolved.service"];
-    wantedBy = ["systemd-resolved.service"];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStartPre = "${pkgs.coreutils}/bin/sleep 3";
-      ExecStart = "${pkgs.systemd}/bin/resolvectl domain wlp0s20f3 ~${secrets.homeServerDomain}";
-    };
   };
 
   # mtp
