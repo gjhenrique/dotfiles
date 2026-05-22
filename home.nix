@@ -83,6 +83,7 @@
     ++ [
       edgePkgs.claude-code
       edgePkgs.opencode
+      edgePkgs.pi-coding-agent
     ];
 
   # WTF is this?
