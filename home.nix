@@ -66,6 +66,7 @@
       kubectx
       kubie
       meld
+      mtr
       ncdu
       neovim
       openssl
