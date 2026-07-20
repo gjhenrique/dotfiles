@@ -40,7 +40,7 @@ in {
 
     # cli
     nftables
-    nodePackages.js-beautify
+    js-beautify
     playerctl
     usbutils
   ];

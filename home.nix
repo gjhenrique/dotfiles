@@ -30,8 +30,8 @@
       jdk11
       # don't delete it. needed for generating CA tokens
       nodejs
-      python311
-      python311Packages.pip
+      # python311
+      # python311Packages.pip
       edgePkgs.typescript-language-server
       virtualenv
       # launcher_ext
@@ -52,7 +52,7 @@
       bc
       edgePkgs.curl
       delve
-      dogdns
+      doggo
       envsubst
       file
       ffmpeg

@@ -74,6 +74,7 @@
     ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="5413", TEST=="power/control", ATTR{power/control}="on"
     ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="0487", TEST=="power/control", ATTR{power/control}="on"
     ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="0413", TEST=="power/control", ATTR{power/control}="on"
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{device}=="0x15ef", TEST=="power/control", ATTR{power/control}="on"
   '';
 
   # Custom modules

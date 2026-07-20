@@ -70,10 +70,10 @@ in {
       devenv
       dive
       diffoci
+      fluxcd
       google-cloud-sdk
       helmfile
       http-server
-      jetbrains.idea-community-bin
       kustomize
       (wrapHelm kubernetes-helm {
         plugins = with pkgs.kubernetes-helmPlugins; [
