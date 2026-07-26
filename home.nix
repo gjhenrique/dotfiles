@@ -1,6 +1,5 @@
 {
   config,
-  dream2nix,
   edgePkgs,
   pkgs,
   secrets,
@@ -305,6 +304,6 @@
   };
 
   imports = [
-    (import ./work.nix {inherit pkgs edgePkgs config dream2nix system secrets stable;})
+    (import ./work.nix {inherit pkgs edgePkgs config system secrets stable;})
   ];
 }

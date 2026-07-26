@@ -12,11 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    dream2nix = {
-      url = "github:nix-community/dream2nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -25,7 +20,6 @@
   };
 
   outputs = {
-    dream2nix,
     home-manager,
     niri,
     nixpkgs,
@@ -113,7 +107,7 @@
     homeConfigurations = {
       "guilherme@linux" = home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = {
-          inherit dream2nix secrets;
+          inherit secrets;
           system = linux_x86;
           stable = pkgsFor.x86_64-linux;
           edgePkgs = pkgsEdgeFor.x86_64-linux;
@@ -130,7 +124,7 @@
 
       "guilherme@darwin" = home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = {
-          inherit dream2nix secrets;
+          inherit secrets;
           system = mac;
           stable = pkgsFor.aarch64-darwin;
           edgePkgs = pkgsEdgeFor.aarch64-darwin;

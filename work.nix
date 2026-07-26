@@ -1,5 +1,4 @@
 {
-  dream2nix,
   config,
   edgePkgs,
   stable,
@@ -7,19 +6,7 @@
   system,
   secrets,
   ...
-}: let
-  onelogin-aws-assume-role = dream2nix.lib.evalModules {
-    packageSets.nixpkgs = pkgs;
-    modules = [
-      ./onelogin-aws-assume-role.nix
-      {
-        paths.projectRoot = ./.;
-        paths.projectRootFile = ".git";
-        paths.package = ./.;
-      }
-    ];
-  };
-in {
+}: {
   home.file = {
     ".ssh/config".text = builtins.readFile ./secrets/ssh_config;
 
@@ -28,16 +15,6 @@ in {
         email = ${secrets.work.email}
         name = ${secrets.work.githubUsername}
     '';
-
-    ".local/bin/aws-login" = {
-      text = ''
-        #!/usr/bin/env bash
-
-        ${secrets.work.oneloginScript}
-      '';
-      executable = true;
-      target = ".local/bin/aws-login";
-    };
   };
 
   home.sessionVariables = secrets.work.envs // {
@@ -84,7 +61,6 @@ in {
         ];
       })
       mariadb.client
-      onelogin-aws-assume-role
       src-cli
       stern
       ssm-session-manager-plugin
