@@ -499,21 +499,6 @@
 
   :commands (project-switch-project project-current))
 
-(use-package gptel
-  :commands gptel
-  :custom
-  (gptel-default-mode 'org-mode)
-  (gptel-display-buffer-action 'switch-to-buffer-other-frame)
-  :config
-  (setq gptel-backend
-	(gptel-make-openai "local"
-	  :stream t
-	  :protocol "http"
-	  :endpoint "/chat/completions"
-	  :host (getenv "OPENAI_API_HOST")
-	  :key (getenv "OPENAI_API_KEY")
-	  :models '(claude-4-5-sonnet))))
-
 (use-package json-mode
   :commands json-mode-beautify)
 
