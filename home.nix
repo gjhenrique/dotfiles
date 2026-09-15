@@ -29,7 +29,7 @@
       jdk11
       # don't delete it. needed for generating CA tokens
       nodejs
-      # python311
+      python314
       # python311Packages.pip
       edgePkgs.typescript-language-server
       virtualenv
@@ -58,6 +58,7 @@
       gh
       git
       gnumake
+      hey
       htop
       jq
       killall
@@ -82,8 +83,8 @@
     ]
     ++ [
       edgePkgs.claude-code
-      edgePkgs.opencode
       edgePkgs.pi-coding-agent
+      edgePkgs.herdr
     ];
 
   # WTF is this?
