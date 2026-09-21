@@ -48,6 +48,12 @@ with lib;
         emoji = ["Noto Color Emoji"];
       };
     };
+    # GNOME itself is a system service; user-level GNOME configuration lives
+    # in Home Manager (home-linux.nix).
+    services.desktopManager.gnome.enable = true;
+    services.displayManager.gdm.enable = true;
+    programs.dconf.enable = true;
+
     # Enable networking
     networking.networkmanager.enable = true;
 

@@ -11,7 +11,77 @@ in {
     ".ssh/config.overrides".text = builtins.replaceStrings ["@1p-agent@"] ["~/.1password/agent.sock"] sshOverrides;
   };
 
+  dconf.settings = {
+    "org/gnome/desktop/input-sources".xkb-options = ["caps:swapescape"];
+
+    "org/gnome/desktop/wm/keybindings" = {
+      switch-to-workspace-1 = ["<Super>1"];
+      switch-to-workspace-2 = ["<Super>2"];
+      switch-to-workspace-3 = ["<Super>3"];
+      switch-to-workspace-4 = ["<Super>4"];
+      switch-to-workspace-5 = ["<Super>5"];
+      switch-to-workspace-6 = ["<Super>6"];
+      switch-to-workspace-7 = ["<Super>7"];
+      switch-to-workspace-8 = ["<Super>8"];
+      switch-to-workspace-9 = ["<Super>9"];
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys".custom-keybindings = [
+      "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/"
+      "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/launcher/"
+      "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/web-search/"
+      "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/bookmark/"
+    ];
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal" = {
+      name = "Open a Terminal: foot";
+      command = "foot";
+      binding = "<Super>t";
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/launcher" = {
+      name = "Run an Application: fuzzel";
+      command = "fuzzel";
+      binding = "<Super>d";
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/web-search" = {
+      name = "Web Search";
+      command = ''sh -c 'launcher_ext search "$(launcher_ext search | fuzzel --dmenu)"' '';
+      binding = "<Super>s";
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/bookmark" = {
+      name = "Open Bookmark";
+      command = ''sh -c 'launcher_ext bookmark_open "$(launcher_ext bookmark_open | fuzzel --cache=$HOME/.cache/fuzzel-bookmark --dmenu --with-nth=2 --accept-nth=1)"' '';
+      binding = "<Super>b";
+    };
+
+    # Free Super+1..9 from GNOME's application-launch shortcuts for PaperWM workspaces.
+    "org/gnome/shell/keybindings" = {
+      switch-to-application-1 = [];
+      switch-to-application-2 = [];
+      switch-to-application-3 = [];
+      switch-to-application-4 = [];
+      switch-to-application-5 = [];
+      switch-to-application-6 = [];
+      switch-to-application-7 = [];
+      switch-to-application-8 = [];
+      switch-to-application-9 = [];
+    };
+
+    "org/gnome/shell".enabled-extensions = [
+      pkgs.gnomeExtensions.paperwm.extensionUuid
+    ];
+
+    "org/gnome/shell/extensions/paperwm/keybindings" = {
+      switch-monitor-left = ["<Super>h"];
+      switch-monitor-right = ["<Super>l"];
+    };
+  };
+
   home.packages = with pkgs; [
+    gnomeExtensions.paperwm
     #desktop specific
     alacritty
     alsa-utils
