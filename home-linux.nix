@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   stable,
   system,
@@ -22,7 +23,10 @@ in {
   '';
 
   dconf.settings = {
-    "org/gnome/desktop/input-sources".xkb-options = ["caps:swapescape"];
+    "org/gnome/desktop/input-sources" = {
+      sources = [(lib.hm.gvariant.mkTuple ["xkb" "us+altgr-intl"])];
+      xkb-options = ["caps:swapescape"];
+    };
 
     "org/gnome/desktop/wm/keybindings" = {
       close = ["<Super>q"];
