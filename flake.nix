@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
 
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -12,16 +12,10 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
-    };
   };
 
   outputs = {
     home-manager,
-    niri,
     nixpkgs,
     nixpkgs-unstable,
     nixpkgs-edge,
@@ -116,7 +110,6 @@
         };
         pkgs = pkgsUnstableFor.x86_64-linux;
         modules = [
-          niri.homeModules.niri
           ./home.nix
           ./home-linux.nix
         ];

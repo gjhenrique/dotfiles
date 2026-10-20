@@ -17,8 +17,6 @@ with lib;
 
   config = mkIf config.services.desktop.enable {
     environment.systemPackages = with pkgs; [
-      alacritty
-
       google-chrome
     ];
 
@@ -29,7 +27,7 @@ with lib;
       packages = with pkgs; [
         jetbrains-mono
 
-        # Waybar
+        # Icon fonts
         font-awesome
         nerd-fonts.symbols-only
 
@@ -61,13 +59,6 @@ with lib;
     programs._1password-gui.polkitPolicyOwners = ["guilherme"];
     programs._1password.enable = true;
 
-    # Some programs need SUID wrappers, can be configured further or are
-    # started in user sessions.
-    # programs.mtr.enable = true;
-    programs.gnupg.agent = {
-      enable = true;
-      #   enableSSHSupport = true;
-    };
 
     services.pipewire = {
       enable = true;

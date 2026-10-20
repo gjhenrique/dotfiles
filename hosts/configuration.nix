@@ -16,8 +16,6 @@
   # required by devenv
   nix.settings.trusted-users = ["root" "guilherme"];
 
-  services.seatd.enable = true;
-
   networking.hostName = host.hostName; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -51,7 +49,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.guilherme = {
     isNormalUser = true;
-    extraGroups = ["networkmanager" "wheel" "docker" "libvirtd" "seat"];
+    extraGroups = ["networkmanager" "wheel" "docker" "libvirtd"];
   };
 
   environment.variables = {
@@ -91,13 +89,13 @@
 
   services.resolved = {
     enable = true;
-    domains = ["~."];
-    extraConfig = ''
-      # docker default bridge
-      DNSStubListenerExtra=172.17.0.1
-      # kind default bridge
-      DNSStubListenerExtra=172.18.0.1
-    '';
+    settings.Resolve = {
+      Domains = ["~."];
+      DNSStubListenerExtra = [
+        "172.17.0.1" # docker default bridge
+        "172.18.0.1" # kind default bridge
+      ];
+    };
   };
 
   # mtp

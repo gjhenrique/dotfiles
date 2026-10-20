@@ -91,7 +91,7 @@
   # TODO: Make this use home.file and point to the correct symlink
   # Flakes doesn't work with mkOutOfStoreSymlink
   home.activation.linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
-    ln -sf ${config.home.homeDirectory}/Projects/mine/dotfiles/zezin.emacs/ ${config.home.homeDirectory}/.emacs.d
+    run ln -sfn "${config.home.homeDirectory}/Projects/mine/dotfiles/zezin.emacs/" "${config.home.homeDirectory}/.emacs.d"
   '';
 
   xdg.enable = true;
@@ -139,6 +139,7 @@
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
+    historyWidget.zsh.command = ""; # Atuin owns Ctrl-R.
   };
 
   programs.git = {
@@ -212,6 +213,7 @@
 
   programs.zsh = {
     enable = true;
+    dotDir = config.home.homeDirectory;
     autosuggestion.enable = true;
     shellAliases = {
       pg = "ping google.com";
@@ -219,8 +221,6 @@
       pods-image = "kubectl get pods -o wide --sort-by=.spec.nodeName";
       xc = "wl-copy";
       xco = "wl-paste";
-      # more powerful editing capabilities
-      ssi = "grim -g \"$(slurp -d)\" - | swappy -f -";
     };
     oh-my-zsh = {
       enable = true;
@@ -233,7 +233,7 @@
       fi
     '';
 
-    initExtra = ''
+    initContent = ''
       # nixos variables
       if [ -e /etc/profile.d/nix-daemon.sh  ]; then . /etc/profile.d/nix-daemon.sh; fi
 

@@ -1,6 +1,6 @@
 # dotfiles
 
-Personal setup using NixOS, niri and Emacs
+Personal setup using NixOS, GNOME (PaperWM) and Emacs
 
 ## steps
 

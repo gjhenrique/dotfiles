@@ -2,8 +2,6 @@
   config,
   lib,
   pkgs,
-  stable,
-  system,
   edgePkgs,
   ...
 }: let
@@ -23,6 +21,11 @@ in {
   '';
 
   dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      cursor-theme = config.home.pointerCursor.name;
+      cursor-size = config.home.pointerCursor.size;
+    };
+
     "org/gnome/desktop/input-sources" = {
       sources = [(lib.hm.gvariant.mkTuple ["xkb" "us+altgr-intl"])];
       xkb-options = ["caps:swapescape"];
@@ -131,19 +134,14 @@ in {
     #desktop specific
     alacritty
     alsa-utils
-    grim
     pinta
     kdePackages.okular
-    slurp
-    swappy
-    xwayland-satellite
 
     # tools
     bluetuith
     brightnessctl
     distrobox
     emacs-pgtk
-    foot
     git-crypt
     iotop
     # for compiling tree-sitter
@@ -161,177 +159,6 @@ in {
     usbutils
   ];
 
-  # Same as niri's shipped niri-portals.conf, but FileChooser goes to the gtk
-  # portal: the gnome one delegates it to nautilus, which we don't install
-  xdg.portal = {
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
-    config.niri = {
-      default = ["gnome" "gtk"];
-      "org.freedesktop.impl.portal.FileChooser" = ["gtk"];
-      "org.freedesktop.impl.portal.Access" = ["gtk"];
-      "org.freedesktop.impl.portal.Notification" = ["gtk"];
-      "org.freedesktop.impl.portal.Secret" = ["gnome-keyring"];
-    };
-  };
-
-  services.mako = {
-    enable = true;
-
-    settings = {
-      default-timeout = 5000;
-      width = 300;
-      height = 200;
-      padding = "20";
-      margin = "20";
-      font = "JetBrainsMono NF 14";
-      background-color = "#24273a";
-      border-color = "#8aadf4";
-      text-color = "#cad3f5";
-    };
-
-    extraConfig = ''
-      [urgency=high]
-      border-color=#f5a97f
-      [mode=do-not-disturb]
-      invisible=1
-    '';
-  };
-
-  services.kanshi = {
-    enable = true;
-    systemdTarget = "graphical-session.target";
-
-    settings = [
-      {
-        profile.name = "desktop";
-        profile.outputs = [
-          {
-            criteria = "BNQ BenQ EW3270U G9K02925019";
-            mode = "3840x2160@60";
-            position = "0,0";
-            scale = 1.666667;
-          }
-        ];
-      }
-      {
-        profile.name = "single-screen";
-        profile.outputs = [
-          {
-            criteria = "eDP-1";
-            status = "enable";
-          }
-          {
-            criteria = "PNP(BNQ) BenQ EW3270U G9K02925019";
-            mode = "3840x2160";
-            position = "0,0";
-            scale = 1.666667;
-          }
-        ];
-      }
-      {
-        profile.name = "docked-notebook";
-        profile.outputs = [
-          {
-            criteria = "eDP-1";
-            status = "enable";
-          }
-          {
-            criteria = "PNP(BNQ) BenQ EW3270U G9K02925019";
-            mode = "3840x2160@30";
-            position = "1080,300";
-            scale = 1.666667;
-          }
-          {
-            criteria = "LG Electronics LG HDR 4K 0x00067273";
-            mode = "3840x2160@60";
-            position = "0,0";
-            scale = 2.0;
-            transform = "270";
-          }
-        ];
-      }
-    ];
-  };
-
-  programs.waybar = {
-    enable = true;
-    systemd.enable = true;
-
-    style = builtins.readFile ./files/waybar-style.css;
-    settings = [
-      {
-        position = "top";
-        height = 30;
-        modules-left = ["niri/workspaces"];
-        modules-center = ["clock"];
-        modules-right = ["cpu" "memory" "pulseaudio" "battery"];
-
-        clock = {
-          format = "󰸗 {:%d.%m - %H:%M}";
-          interval = 1;
-          tooltip-format = "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>";
-          on-click = "niri msg action spawn -- xdg-open https://calendar.google.com";
-        };
-
-        cpu = {
-          format = "{usage}% ";
-          interval = 1;
-        };
-
-        memory = {
-          format = "{percentage}% 󰍛";
-          interval = 1;
-        };
-
-        pulseaudio = {
-          format = "{icon} {volume}%";
-          format-bluetooth = "{volume}% {icon} {format_source}";
-          format-bluetooth-muted = "󰖁 {icon} {format_source}";
-          format-muted = "󰝟";
-          format-source = "{volume}% ";
-          format-source-muted = "";
-          format-icons = {
-            headphones = "";
-            handsfree = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = ["" "" ""];
-          };
-          on-click = "pwvucontrol";
-        };
-
-        battery = {
-          states = {
-            warning = 30;
-            critical = 15;
-          };
-          format = "{capacity}% {icon}";
-          format-charging = "{capacity}% 󰂅";
-          format-icons = ["󰁹" "󰂂" "󰂁" "󰂀" "󰁿" "󰁾" "󰁽" "󰁼" "󰁻" "󰁺"];
-          tooltip-format = "{time}";
-        };
-      }
-    ];
-  };
-
-  systemd.user.services.polkit-gnome = {
-    Unit = {
-      Description = "polkit-gnome-authentication-agent-1";
-      PartOf = "graphical-session.target";
-      Requires = "graphical-session.target";
-      After = "graphical-session.target";
-    };
-
-    Service = {
-      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-      Restart = "on-failure";
-    };
-
-    Install = {WantedBy = ["graphical-session.target"];};
-  };
-
   programs.foot = {
     enable = true;
     server.enable = true;
@@ -343,27 +170,10 @@ in {
     };
   };
 
-  programs.fuzzel = {
-    enable = true;
-    settings = {
-      main = {
-        font = "JetBrainsMono NF:size=14";
-        width = 50;
-        lines = 15;
-      };
-    };
-  };
-
-  gtk = {
-    enable = true;
-    cursorTheme = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
-      size = 24;
-    };
-  };
+  gtk.enable = true;
 
   home.pointerCursor = {
+    enable = true;
     name = "Adwaita";
     package = pkgs.adwaita-icon-theme;
     size = 24;
@@ -371,15 +181,10 @@ in {
     x11.enable = true;
   };
 
+  programs.gpg.enable = true;
   services.gpg-agent = {
     enable = true;
-    pinentry.package = pkgs.pinentry-gtk2;
-  };
-
-  programs.niri = {
-    enable = true;
-    package = stable.niri;
-    config = builtins.readFile ./files/niri-config.kdl;
+    pinentry.package = pkgs.pinentry-gnome3;
   };
 
   imports = [

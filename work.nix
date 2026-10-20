@@ -22,15 +22,15 @@
     TG_PROVIDER_CACHE_DIR="${config.home.homeDirectory}/.cache/terraform";
     TG_PROVIDER_CACHE="1";
     TF_PLUGIN_CACHE_DIR="${config.home.homeDirectory}/.cache/terraform";
-  } // (if pkgs.stdenv.isLinux then {
+  } // (if pkgs.stdenv.hostPlatform.isLinux then {
     # use nixos pkgs because it comes from there
-    PINENTRY_PROGRAM = "${stable.pinentry-gtk2}/bin/pinentry-gtk-2";
+    PINENTRY_PROGRAM = "${stable.pinentry-gnome3}/bin/pinentry-gnome3";
   } else {
     # don't use emacsclient in macos
     EDITOR = "nvim";
   });
 
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     # create cache directory if it doesn't exist
     [[ -d "$HOME/.cache/terraform" ]] || mkdir -p "$HOME/.cache/terraform"
 
